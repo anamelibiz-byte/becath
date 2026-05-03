@@ -4,13 +4,6 @@
 [build]
   publish = "."
 
-# Make /app and /app/ both serve the app's index.html cleanly
-[[redirects]]
-  from = "/app"
-  to = "/app/"
-  status = 301
-  force = true
-
 # Cache static images aggressively
 [[headers]]
   for = "/app/img/*"
