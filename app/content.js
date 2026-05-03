@@ -120,17 +120,368 @@ window.BECATH_CONTENT = {
     blocks: [
       { type:'p', text:'A short, honest journey through the historical, philosophical, and personal evidence for the Catholic faith. Whether you\'re seeking, struggling, or simply curious — start here.' },
       { type:'lead', eyebrow:'Seven Days · Seven Questions',
-        text:'Each day takes about 10 minutes. By the end, you\'ll have seen the case the Church makes for itself — the evidence, the reasoning, and the witnesses.' },
-      { type:'list', items:[
-        '<strong>Day 1:</strong> Did Jesus really live?',
-        '<strong>Day 2:</strong> The empty tomb',
-        '<strong>Day 3:</strong> Mary\'s appearances',
-        '<strong>Day 4:</strong> The unbroken Church',
-        '<strong>Day 5:</strong> The saints and miracles',
-        '<strong>Day 6:</strong> The sacraments',
-        '<strong>Day 7:</strong> Why this Church, and not another'
+        text:'Each day takes about 10 minutes. Tap any day to begin.' },
+      { type:'dayLinks', items:[
+        { day:'Day 1', key:'proof-jesus',     title:'Did Jesus really live?',           meta:'Historical evidence · 12 min' },
+        { day:'Day 2', key:'empty-tomb',      title:'The empty tomb',                   meta:'The Resurrection case · 10 min' },
+        { day:'Day 3', key:'apparitions',     title:'Mary\'s appearances',               meta:'Documented apparitions · 10 min' },
+        { day:'Day 4', key:'unbroken-church', title:'The unbroken Church',              meta:'2,000 years of succession · 10 min' },
+        { day:'Day 5', key:'saints-miracles', title:'The saints and miracles',          meta:'Witnesses to the truth · 10 min' },
+        { day:'Day 6', key:'sacraments',      title:'The sacraments',                   meta:'Seven channels of grace · 12 min' },
+        { day:'Day 7', key:'why-this-church', title:'Why this Church, and not another', meta:'The 6-step argument · 10 min' }
       ]},
       { type:'quote', text:'You have made us for Yourself, O Lord, and our heart is restless until it rests in You.', cite:'St. Augustine' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 1 · Did Jesus Really Live?
+  // ────────────────────────────────────────────────────────
+  'proof-jesus': {
+    eyebrow: 'Day 1 · Why Catholic?',
+    title: 'Did Jesus Really Live?',
+    meta: 'Historical evidence · ~12 min',
+    img: 'img/jesus.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'The case for the historical Jesus is stronger than for almost any ancient figure', body:'More manuscripts. Earlier sources. More cross-references. Even hostile non-Christian historians of the period record Him. Today, virtually no credentialed historian — Christian, Jewish, atheist, agnostic — disputes that Jesus of Nazareth was a real person. The debate is about who He was, not whether He existed.' },
+
+      { type:'accordion', eyebrow:'1', title:'Hostile Roman historians', subtitle:'Non-Christian sources record Him', open:true, blocks:[
+        { type:'h', text:'Tacitus (~115 AD) — Annals 15.44' },
+        { type:'p', text:'The greatest Roman historian of his era, writing about Nero blaming Christians for the great fire of Rome:' },
+        { type:'quote', text:'Christus, the founder of the name, was put to death by Pontius Pilate, procurator of Judea in the reign of Tiberius.', cite:'Tacitus, Annals' },
+        { type:'p', text:'Tacitus was a senator who had access to imperial archives. He had no motive to invent or confirm Christian claims — he called Christianity "a most mischievous superstition." His confirmation of the basic facts is exactly what historians weigh as serious evidence.' },
+        { type:'h', text:'Pliny the Younger (~112 AD)' },
+        { type:'p', text:'Roman governor of Bithynia, writing to Emperor Trajan asking how to handle Christians: "they sing hymns to Christ as to a god." Documents Christian worship within 80 years of the Crucifixion.' },
+        { type:'h', text:'Suetonius (~120 AD)' },
+        { type:'p', text:'Mentions Emperor Claudius expelling Jews from Rome around 49 AD because of disturbances "instigated by Chrestus" — likely a reference to debates about Christ.' }
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'Josephus — the Jewish historian', subtitle:'Two independent references', blocks:[
+        { type:'p', text:'Flavius Josephus (37–100 AD), a Jewish-Roman historian, mentions Jesus twice in his Antiquities of the Jews. Even after critical scholars strip out parts they consider later additions, the core remains:' },
+        { type:'list', items:[
+          'Jesus existed and was a wise teacher',
+          'He was the brother of James',
+          'He was crucified under Pontius Pilate',
+          'His followers continued to gather after His death'
+        ]},
+        { type:'p', text:'Josephus was not a Christian. He had no theological motive. His testimony is independent confirmation from a hostile, well-placed witness.' }
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'The earliest Christian sources', subtitle:'Within a generation of His life', blocks:[
+        { type:'p', text:'The earliest writings about Jesus are not the Gospels — they are St. Paul\'s letters, written between 50–65 AD. That is 17–35 years after the Crucifixion. By the standards of ancient history, this is extraordinarily close to the events.' },
+        { type:'callout', tone:'blue', title:'Compare', body:'The earliest biographies of Alexander the Great are 400 years after his death. No serious historian doubts Alexander existed. We have New Testament fragments dated within 50 years of Christ. We have over 5,800 Greek manuscripts of the New Testament — orders of magnitude more than any other ancient document.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'The 1 Corinthians 15 creed', subtitle:'Likely composed within 5 years of the Resurrection', blocks:[
+        { type:'p', text:'In 1 Corinthians 15:3–7, Paul quotes a creed he received and passed on. Based on linguistic features, scholars (Christian and skeptical alike) date the original creed to within 2–5 years of the Crucifixion:' },
+        { type:'quote', text:'…that Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day according to the Scriptures, and that he appeared to Cephas, then to the Twelve. Then he appeared to more than five hundred brothers at one time, most of whom are still living…', cite:'1 Corinthians 15:3–6' },
+        { type:'p', text:'This is not legend developed over generations. This is what the earliest Christians were saying within a couple years of Jesus\' death — including the names of named witnesses who could be cross-examined.' }
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'The criterion of embarrassment', subtitle:'Details too awkward to invent', blocks:[
+        { type:'p', text:'Historians look for details a writer would never invent because they hurt their case. The Gospels are full of them:' },
+        { type:'list', items:[
+          'Jesus was baptized by John — implying subordination',
+          'Women were the first witnesses of the Resurrection — inadmissible in court at the time',
+          'Peter denied Him three times — embarrassing for the leader of the early Church',
+          'Jesus did not know the day of His return (Mark 13:32)',
+          'He was crucified — the most shameful death in the Roman world',
+          'His own family thought He was crazy at one point (Mark 3:21)'
+        ]},
+        { type:'p', text:'A propaganda piece would airbrush all of this out. The Gospels keep it in — because that is what happened, and the writers were committed to getting it right rather than getting it polished.' }
+      ]},
+
+      { type:'quote', text:'The basic story of the Gospels is so well attested by such a variety of sources that no historian can dismiss it.', cite:'Bart Ehrman, agnostic NT scholar' },
+
+      { type:'callout', tone:'sage', title:'Where this leaves you', body:'Whether Jesus was God is a question of faith. But whether He existed is a question of history — and the historical case is overwhelming. Tomorrow we go further: did He stay dead?' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 3 · Mary's Apparitions
+  // ────────────────────────────────────────────────────────
+  'apparitions': {
+    eyebrow: 'Day 3 · Why Catholic?',
+    title: 'Mary\'s Apparitions',
+    meta: 'Documented appearances · ~10 min',
+    img: 'img/mary.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'A 2,000-year pattern that cannot be ignored', body:'The mother of Jesus has appeared, again and again, to people across centuries and continents. Each time she carries a message that always points back to her Son. Each time she leaves physical evidence behind — evidence that has been examined by skeptics, scientists, doctors, and journalists. The pattern is impossible to dismiss.' },
+
+      { type:'accordion', eyebrow:'1', title:'Guadalupe, Mexico (1531)', subtitle:'The image that converted a continent', open:true, blocks:[
+        { type:'p', text:'Mary appeared to a recently-converted Aztec peasant, St. Juan Diego, on Tepeyac Hill outside Mexico City. She left her image imprinted on his tilma — a cloak woven from cactus fiber that should have decomposed in 30 years. It is now nearly 500 years old and still intact.' },
+        { type:'h', text:'What scientists have documented' },
+        { type:'list', items:[
+          'The image is not painted — there is no brushstroke, no underdrawing, no preparation layer',
+          'The fabric should have decomposed centuries ago — it has not',
+          'Microscopic examination of Mary\'s eyes reveals reflected images of the people present at the unveiling — including Juan Diego, Bishop Zumárraga, and others',
+          'The eyes show the precise distortion of a real human eye reflecting a scene (the Purkinje-Sanson effect)',
+          'The temperature of the tilma is 98.6°F — body temperature — when the air is colder',
+          'Following the apparition, 9 million Aztecs converted to Christianity within 7 years'
+        ]},
+        { type:'callout', tone:'blue', title:'No natural explanation has held', body:'The image has been examined by NASA scientists, ophthalmologists, art historians, and skeptics for 500 years. None has produced a plausible naturalistic account of how the image was made or how the cactus-fiber cloak survives.' }
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'Lourdes, France (1858)', subtitle:'18 apparitions to St. Bernadette', blocks:[
+        { type:'p', text:'A 14-year-old peasant girl, Bernadette Soubirous, was gathering firewood when she saw a beautiful Lady in a grotto. The Lady appeared 18 times over the next several months, eventually identifying herself: <em>"I am the Immaculate Conception."</em> The phrase had been formally defined as Catholic doctrine just four years earlier — Bernadette had no theological education and could not have invented this phrase.' },
+        { type:'p', text:'Mary asked her to dig in the dirt — a spring opened up that flows to this day, producing 27,000 gallons of water per hour. The Lourdes Medical Bureau, a panel of doctors of all faiths, has examined healings at the site since 1883:' },
+        { type:'list', items:[
+          '70 healings declared "medically inexplicable" by international medical panels',
+          'Late-stage cancers, multiple sclerosis, paralysis, blindness',
+          'Standards so strict that thousands more healings remain unverified despite documentation'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'Fatima, Portugal (1917)', subtitle:'The Miracle of the Sun before 70,000 witnesses', blocks:[
+        { type:'p', text:'Mary appeared to three shepherd children in 1917 — Lúcia, Francisco, and Jacinta — across six monthly apparitions. She announced that on October 13 she would perform a miracle "so all may believe." The newspapers — secular, mocking — published the prediction in advance.' },
+        { type:'p', text:'On October 13, 1917, between 50,000 and 70,000 people gathered in a muddy field. After torrential rain, the clouds parted. The sun appeared to spin in the sky, change colors, and plunge toward the earth before returning to its position. Witnesses up to 25 miles away reported the phenomenon. Their soaked clothes and the muddy ground became completely dry instantly.' },
+        { type:'callout', tone:'gold', title:'The hostile press confirmed it', body:'The Lisbon newspaper <em>O Século</em> — anti-Catholic, secular — published the next day: "Before the astonished eyes of the crowd, whose aspect was Biblical as they stood bareheaded, eagerly searching the sky, the sun trembled, made sudden incredible movements outside all cosmic laws — the sun \'danced.\'"' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'Knock, Akita, Kibeho, Medjugorje', subtitle:'The pattern continues', blocks:[
+        { type:'p', text:'Mary continues to appear into the modern era. The Church investigates each claim with skeptical caution — most are dismissed. The ones officially approved share consistent features: messages of prayer, repentance, and reconciliation; physical evidence; and lasting fruits of faith.' },
+        { type:'list', items:[
+          '<strong>Knock, Ireland (1879)</strong> — silent apparition witnessed by 15 people of all ages, in pouring rain, around a brilliantly-lit gable wall',
+          '<strong>Akita, Japan (1973–1981)</strong> — wooden statue of Mary wept human tears 101 times, recorded on Japanese national television; lab analysis confirmed real human tears, blood, sweat',
+          '<strong>Kibeho, Rwanda (1981–1989)</strong> — Mary warned of a coming massacre; the genocide came in 1994',
+          '<strong>Zeitoun, Egypt (1968)</strong> — luminous apparition of Mary atop a Coptic church for 2+ years, witnessed by millions including Muslims and the Egyptian president'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'Why these matter', subtitle:'The witness of 2,000 years', blocks:[
+        { type:'p', text:'You can dismiss any single apparition as hoax, hallucination, or hysteria. You cannot dismiss the entire pattern. Across centuries, continents, languages, witnesses of every age and education — the same Person appears, leaving the same physical evidence, calling people back to her Son.' },
+        { type:'callout', tone:'sage', title:'What she always says', body:'In every approved apparition, the message is the same: pray, repent, return to my Son, receive the sacraments, love the poor. The messenger never claims worship. She always points to Jesus.' }
+      ]},
+
+      { type:'quote', text:'Behold your mother.', cite:'John 19:27 — Jesus\' last words to His disciple about Mary' },
+
+      { type:'callout', tone:'gold', title:'Where this leaves you', body:'The Catholic claim is not that Mary is divine. The claim is that she is Christ\'s mother — and that He continues to send her into history with messages for His people. That claim has 2,000 years of physical, medical, and witnessed evidence behind it. Even if you remain skeptical, the evidence demands a hearing.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 2 · The Empty Tomb
+  // ────────────────────────────────────────────────────────
+  'empty-tomb': {
+    eyebrow: 'Day 2 · Why Catholic?',
+    title: 'The Empty Tomb',
+    meta: 'The Resurrection case · ~10 min',
+    img: 'img/jesus.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'The single most important fact in history', body:'If Jesus did not rise from the dead, Christianity is false. Paul says so himself: "If Christ has not been raised, our preaching is useless and so is your faith." (1 Cor 15:14) The whole faith stands or falls on one event. So — what is the historical case?' },
+
+      { type:'accordion', eyebrow:'1', title:'Even hostile sources concede the tomb was empty', subtitle:'Start here', open:true, blocks:[
+        { type:'p', text:'The earliest counter-explanation given by the religious authorities was not "Jesus is still in the tomb" — it was that the disciples stole the body (Matthew 28:13). That is significant. The tomb being empty was never disputed by the people most motivated to disprove the Resurrection.' },
+        { type:'list', items:[
+          'The tomb was sealed and guarded by Roman soldiers',
+          'It was located in Jerusalem — the very city where Christianity exploded weeks later',
+          'Anyone could have walked over and verified the body',
+          'No body was ever produced'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'The witnesses don\'t make sense as fiction', subtitle:'Women first', blocks:[
+        { type:'p', text:'In 1st-century Jewish culture, a woman\'s testimony was inadmissible in court. If you were inventing a Resurrection story to convince Jews, you would never make women the first witnesses. The Gospels do — because that\'s what actually happened.' },
+        { type:'p', text:'Mary Magdalene, the Marys at the tomb, the women who ran to tell the apostles. The most embarrassing detail to a 1st-century mind is preserved verbatim. Historians call this the criterion of embarrassment — details that would have been edited out if the story were being shaped for persuasion.' }
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'The disciples were transformed', subtitle:'From terrified to martyred', blocks:[
+        { type:'p', text:'On Friday they fled. Peter denied Jesus three times. By Sunday evening they were locked in a room "for fear of the Jews" (John 20:19). Six weeks later they were preaching in the streets of Jerusalem and being arrested for it. Within a generation, almost all of them were dead — executed for refusing to deny what they had seen.' },
+        { type:'callout', tone:'blue', title:'The lie hypothesis fails here', body:'People die for things they believe to be true. They do not die for things they know to be false. Eleven men, all in different cities, all going to their deaths insisting they had seen the risen Christ — and not one of them ever recanted. No conspiracy of that scale has ever held under that pressure.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'Paul and James — the hostile witnesses', subtitle:'Skeptics turned martyrs', blocks:[
+        { type:'p', text:'Saul of Tarsus was actively persecuting Christians when he had his encounter on the road to Damascus. He went from imprisoning believers to writing nearly half the New Testament. He, too, was eventually executed for the faith.' },
+        { type:'p', text:'James, the brother of Jesus, had been a skeptic during Jesus\' ministry (John 7:5). After the Resurrection he became the leader of the Jerusalem church and was martyred for it. Two enemies of the movement, both transformed, both willing to die.' }
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'Alternative theories don\'t fit the evidence', subtitle:'Stolen body? Hallucination? Wrong tomb?', blocks:[
+        { type:'list', items:[
+          '<strong>Stolen body</strong> — by whom? The disciples were terrified and outnumbered. The Romans and Jews would have produced the body to crush the movement.',
+          '<strong>Mass hallucination</strong> — hallucinations are individual, not group experiences. Paul reports 500 witnesses seeing Jesus at once (1 Cor 15:6). That\'s not a hallucination, that\'s an event.',
+          '<strong>Wrong tomb</strong> — they could have just gone to the right one.',
+          '<strong>Swoon theory</strong> (Jesus survived crucifixion) — Roman soldiers were experts at execution. The spear-thrust through the side ruled out survival. A half-dead man would not have convinced anyone of a triumphant resurrection.'
+        ]},
+        { type:'callout', tone:'gold', title:'The historian\'s test', body:'When evaluating a historical claim, the question is: which explanation best accounts for ALL the known evidence? The Resurrection accounts for the empty tomb, the transformation of the disciples, the conversions of Paul and James, the explosion of Christianity in Jerusalem weeks after Jesus died, the willingness of eyewitnesses to die, and 2,000 years of continued witness. No alternative explanation accounts for all of it.' }
+      ]},
+
+      { type:'quote', text:'And if Christ has not been raised, your faith is futile and you are still in your sins.', cite:'1 Corinthians 15:17' },
+
+      { type:'callout', tone:'sage', title:'Where this leaves you', body:'You don\'t have to be certain. But you do have to take the evidence seriously. The Resurrection is either the most important event in human history, or the most successful lie ever told. Both options demand investigation — not dismissal.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 4 · The Unbroken Church
+  // ────────────────────────────────────────────────────────
+  'unbroken-church': {
+    eyebrow: 'Day 4 · Why Catholic?',
+    title: 'The Unbroken Church',
+    meta: '2,000 years of succession · ~10 min',
+    img: 'img/pope.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'No other Christian body can claim this', body:'Pope Leo XIV is the 267th successor of Saint Peter. Every Catholic bishop alive today can trace his ordination back through an unbroken chain of laying-on-of-hands all the way to the Apostles — and through them, to Jesus Christ Himself. This is not a metaphor. It is documented history.' },
+
+      { type:'accordion', eyebrow:'1', title:'Jesus founded a Church, not a book', subtitle:'Authority before Scripture', open:true, blocks:[
+        { type:'quote', text:'You are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it.', cite:'Matthew 16:18' },
+        { type:'p', text:'Jesus did not hand the apostles a New Testament and tell them to figure it out. He gave them <strong>authority</strong> — to bind and loose (Matt 16:19), to forgive sins (John 20:23), to teach all nations (Matt 28:19). The New Testament was written, collected, and canonized BY this Church over centuries.' },
+        { type:'list', items:[
+          'The first Christians had no New Testament — they had the Apostles',
+          'The earliest complete New Testament canon is from 367 AD',
+          'The Church existed for 300+ years before the book existed',
+          'The Catholic Church decided which books were Scripture'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'Apostolic Succession — the chain of hands', subtitle:'Documented from Peter forward', blocks:[
+        { type:'p', text:'When the Apostles needed to replace Judas, they did not hold an election among believers. Peter laid hands on Matthias (Acts 1:26). When Paul and Barnabas were sent out, hands were laid on them (Acts 13:3). Paul tells Timothy: <em>"fan into flame the gift of God which is in you through the laying on of my hands"</em> (2 Tim 1:6). This is the apostolic chain still in operation today.' },
+        { type:'h', text:'A short list — bishops of Rome' },
+        { type:'list', items:[
+          'St. Peter (martyred ~64 AD)',
+          'St. Linus (~64–76)',
+          'St. Anacletus (~76–88)',
+          'St. Clement I (~88–99) — wrote the Letter to the Corinthians, oldest non-biblical Christian document',
+          '… [unbroken line of 260+ successors] …',
+          'Pope John Paul II (1978–2005)',
+          'Pope Benedict XVI (2005–2013)',
+          'Pope Francis (2013–2025)',
+          'Pope Leo XIV (2025–present)'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'The Four Marks of the True Church', subtitle:'One, Holy, Catholic, Apostolic', blocks:[
+        { type:'p', text:'Christ said His Church would have four marks. The Nicene Creed (325 AD) lists them: "We believe in one, holy, catholic and apostolic Church."' },
+        { type:'rolegrid', items:[
+          { title:'One',       body:'A unified body, not thousands of splits' },
+          { title:'Holy',      body:'Set apart, sanctifying its members' },
+          { title:'Catholic',  body:'Universal — for all peoples, all times' },
+          { title:'Apostolic', body:'Founded on the Apostles, traceable back' }
+        ]},
+        { type:'callout', tone:'blue', title:'Apply the test', body:'Run any Christian denomination through these four marks honestly. Most fail at least one — usually unity (40,000+ Protestant denominations) or apostolicity (no chain to the Apostles). The Catholic Church is the only body that has continuously claimed all four for 2,000 years.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'The historical alternative is silence', subtitle:'Where would the true Church be?', blocks:[
+        { type:'p', text:'If the Catholic Church is not the Church Christ founded — where was the true Church for the first 1,500 years of Christianity? Every Christian who lived between 33 AD and 1517 AD was Catholic or Orthodox. The Reformers themselves were Catholic priests. There is no continuous Christian community outside Catholicism and Orthodoxy that predates the 16th century.' },
+        { type:'p', text:'This is a serious historical problem for any Protestant claim to be the true Church. Either the Church died for 1,500 years (Christ\'s promise failed) or it survived in the body that maintained the apostolic succession.' }
+      ]},
+
+      { type:'quote', text:'I will build my church, and the gates of Hades will not overcome it.', cite:'Matthew 16:18' },
+
+      { type:'callout', tone:'sage', title:'Where this leaves you', body:'You can disagree with Catholic teaching on specific points. But the historical claim — that this is the same Church Jesus founded, with documented continuity for 2,000 years — is unique among Christian bodies. It deserves a serious look before being dismissed.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 5 · The Saints and Miracles
+  // ────────────────────────────────────────────────────────
+  'saints-miracles': {
+    eyebrow: 'Day 5 · Why Catholic?',
+    title: 'The Saints and Miracles',
+    meta: 'Witnesses to the truth · ~10 min',
+    img: 'img/eucharist-miracle.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'Christianity is not abstract', body:'It is not a philosophy, a theory, or a moral system. It is the claim that the living God acts in human history — and the evidence is the saints and the miracles. People who lived radically different lives. Events that defy natural explanation. Two thousand years of witnesses. They cannot all be lying. They cannot all be deluded. Something is happening.' },
+
+      { type:'accordion', eyebrow:'1', title:'The saints — what they have in common', subtitle:'A pattern across centuries', open:true, blocks:[
+        { type:'p', text:'Saints come from every century, every continent, every social class. A French peasant girl who led an army (Joan of Arc). An African prostitute who became a desert hermit (Mary of Egypt). A medieval mystic who advised popes (Catherine of Siena). A 20th-century Polish friar who died in Auschwitz (Maximilian Kolbe). And yet — they all share strange common features:' },
+        { type:'list', items:[
+          'Radical, lifelong holiness — not just good behavior, but transformed character',
+          'Extraordinary love for the poor, the suffering, and the difficult',
+          'Documented mystical experiences — visions, locutions, ecstasies',
+          'Often, miraculous healings before, during, or after their lives',
+          'Heroic deaths — many martyred, all faithful to the end'
+        ]},
+        { type:'callout', tone:'blue', title:'The naturalistic problem', body:'If holiness on this scale is universal across cultures, centuries, and contexts — pointing to the same God, the same Christ, the same sacraments — what natural force produces it? Atheism has no compelling answer. The saints are evidence.' }
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'Stigmata — the wounds of Christ', subtitle:'Documented in 60+ saints', blocks:[
+        { type:'p', text:'Beginning with St. Francis of Assisi in 1224, more than sixty Catholic saints have manifested the wounds of Christ on their own bodies — the marks of nails in hands and feet, the spear-thrust in the side, the scourging marks. Most modern: St. Padre Pio (1918–1968), studied for 50 years by skeptical doctors. The wounds bled fresh blood. They never became infected. They closed at his death.' },
+        { type:'p', text:'No medical explanation has ever held. Self-inflicted wounds become infected. Hysteria does not produce identical wound patterns matching crucifixion. Stigmata are real, documented, and only happen to people deeply united to Christ in prayer.' }
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'Incorruption — bodies that don\'t decay', subtitle:'200+ documented cases', blocks:[
+        { type:'p', text:'St. Bernadette Soubirous of Lourdes died in 1879. Her body was exhumed three times — in 1909, 1919, and 1925 — for the canonization process. Each time, doctors and Church officials documented the same finding: her body was incorrupt. Today she is on public view in a glass coffin in Nevers, France. You can go see her. She looks like she is sleeping.' },
+        { type:'list', items:[
+          'St. Catherine of Siena (1380) — head and finger preserved, no decay',
+          'St. Vincent de Paul (1660) — body intact for 350+ years',
+          'St. John Vianney (1859) — body and heart preserved separately',
+          'St. Padre Pio (1968) — exhumed 2008, body recognizable',
+          'Plus more than 200 other documented cases across history'
+        ]},
+        { type:'callout', tone:'gold', title:'Not embalmed, not refrigerated', body:'These bodies were not preserved by any human means. Many were buried in damp ground for decades or centuries. Other bodies in the same cemeteries decomposed normally. The Church does not declare incorruption a miracle automatically — but the consistent pattern, only in Catholic saints, has no natural explanation.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'Eucharistic miracles', subtitle:'Across centuries, around the world', blocks:[
+        { type:'p', text:'Lanciano, Italy, 700 AD. A monk doubting the Real Presence celebrated Mass — and the host visibly turned to flesh in his hands, the wine to blood. The relics survive today. Modern lab analysis (1971): real human heart muscle tissue, type AB blood, in a state consistent with extreme stress before death. No preservatives. Twelve centuries old.' },
+        { type:'list', items:[
+          '<strong>Buenos Aires (1996)</strong> — host turned to flesh; tested by Cardinal Bergoglio (later Pope Francis); type AB blood, heart tissue under stress',
+          '<strong>Sokółka, Poland (2008)</strong> — same finding, two independent universities',
+          '<strong>Tixtla, Mexico (2006)</strong> — host bleeding fresh blood for years',
+          '<strong>Legnica, Poland (2013)</strong> — heart tissue, type AB',
+          'Type AB blood — same as the Shroud of Turin'
+        ]}
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'Lourdes — medically certified miracles', subtitle:'70 healings the medical bureau cannot explain', blocks:[
+        { type:'p', text:'At the Marian shrine of Lourdes, France (the site of Mary\'s 1858 apparitions to St. Bernadette), the Lourdes Medical Bureau has been examining reported healings since 1883. The Bureau is staffed by doctors of all faiths and none. To date, 70 healings have been declared <em>medically inexplicable</em> by international medical panels — meaning the cure cannot be explained by medicine, psychology, or any known natural process.' },
+        { type:'callout', tone:'sage', title:'These are not exaggerations', body:'Late-stage cancers vanishing in days. Multiple sclerosis lesions disappearing on MRI. A man with one leg six centimeters shorter than the other — verified by X-ray — bathing in the spring and walking out with two equal legs. The medical bureau\'s standard for accepting a miracle is so strict that thousands of healings remain "unverified" because the documentation is merely 99% conclusive instead of 100%.' }
+      ]},
+
+      { type:'quote', text:'You shall know them by their fruits.', cite:'Matthew 7:16' },
+
+      { type:'callout', tone:'gold', title:'Where this leaves you', body:'A faith with no fruits is dead. Catholicism produces fruits no other tradition produces at this scale — saints, mystics, healings, miracles. You don\'t have to accept every claim. But the pattern across 2,000 years deserves an explanation, and "they\'re all making it up" is not it.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // 7-DAY JOURNEY · Day 7 · Why This Church?
+  // ────────────────────────────────────────────────────────
+  'why-this-church': {
+    eyebrow: 'Day 7 · Why Catholic?',
+    title: 'Why This Church, Not Another?',
+    meta: 'The 6-step argument · ~10 min',
+    img: 'img/sacraments.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'Why Catholic, not just Christian?', body:'Once you accept Jesus is God, the question becomes: which church did He actually found? There are over 40,000 Christian denominations. They cannot all be right — they teach contradictory things on essential matters. Here is the argument that moves people from generic Christianity to Catholic Christianity.' },
+
+      { type:'accordion', eyebrow:'1', title:'Jesus founded a Church — not a Bible', subtitle:'Authority came first', open:true, blocks:[
+        { type:'p', text:'Jesus gave authority to Peter and the Apostles (Matthew 16, John 20, Luke 10). He never said "here is a book — figure it out yourselves." The early Church operated for 300+ years before the New Testament canon was finalized. The Church decided which books were Scripture, not the other way around.' },
+        { type:'callout', tone:'blue', title:'The chicken-and-egg problem', body:'You cannot use the Bible to disprove the Catholic Church — because it was the Catholic Church that gave you the Bible. The 27 books of the New Testament were canonized at the Catholic Councils of Hippo (393) and Carthage (397). Reject the Catholic Church\'s authority and you have no reason to trust the table of contents in your own Bible.' }
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'That Church has a traceable line', subtitle:'Apostolic succession is documented', blocks:[
+        { type:'p', text:'Pope Leo XIV is the 267th successor of Peter. Every Catholic bishop can trace his ordination back through laying-on-of-hands to the Apostles. No other Christian body has this. This is not a Catholic claim — it is a documented historical fact, accepted by every honest historian.' }
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'The Four Marks narrow it down', subtitle:'One, Holy, Catholic, Apostolic', blocks:[
+        { type:'p', text:'The Nicene Creed (325 AD) — older than the New Testament canon — lists four marks of the true Church: One, Holy, Catholic, Apostolic. Run every Christian denomination through these four. Most fail at least one (usually unity or apostolicity). Only one body has continuously claimed all four for 2,000 years.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'The Eucharist is the decisive issue', subtitle:'"This is my body" — symbol or reality?', blocks:[
+        { type:'p', text:'Jesus said <em>"this is my body"</em> — not <em>"this represents my body."</em> When His followers were scandalized and left over this teaching (John 6), Jesus did not call them back and clarify it was a metaphor. He let them go. He meant it literally.' },
+        { type:'p', text:'For the first 1,500 years of Christianity, every single Christian believed in the Real Presence of Christ in the Eucharist. The earliest Christian writings (St. Ignatius of Antioch, ~107 AD; St. Justin Martyr, ~150 AD) state this explicitly. The symbolic interpretation was introduced in 1517 by the Protestant Reformation.' },
+        { type:'callout', tone:'gold', title:'The historical problem', body:'If the Real Presence is wrong, the entire Church got Christ\'s most important sacrament wrong for 1,500 years — including all the apostolic Fathers, all the saints, all the martyrs, all the councils. That is a heavy claim. The simpler explanation is that the Reformation got it wrong, not the apostles.' }
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'Sola Scriptura is self-defeating', subtitle:'"Scripture alone" cannot be found in Scripture', blocks:[
+        { type:'p', text:'The Protestant principle that "Scripture alone" is the authority for Christians cannot itself be found in Scripture. It is a 16th-century doctrine added on top of the Bible. It also requires a Church to tell you which books are Scripture — which 66 (Protestant) or 73 (Catholic) belong. That decision was made by Catholic councils.' },
+        { type:'p', text:'You cannot consistently hold "Scripture alone" without also accepting the Church that gave you the canon of Scripture in the first place.' }
+      ]},
+
+      { type:'accordion', eyebrow:'6', title:'The miracles follow the sacraments', subtitle:'Where the Eucharist is, the supernatural follows', blocks:[
+        { type:'p', text:'Eucharistic miracles. Healings at Lourdes, Fatima, Knock. Incorrupt bodies. Stigmata. The physical, verifiable miracles of Christianity are overwhelmingly concentrated in the Catholic and Orthodox traditions — the traditions that maintained belief in the Real Presence and the seven sacraments.' },
+        { type:'callout', tone:'sage', title:'Fruits, again', body:'Christ said "by their fruits you will know them" (Matt 7:16). If you take an honest inventory of where the most documented Christian miracles, the most heroic saints, and the most stable doctrinal continuity have appeared in 2,000 years — they appear under the apostolic succession of the Catholic Church.' }
+      ]},
+
+      { type:'quote', text:'The Church is not a human society of people united by their natural sympathies, but the Body of Christ, in which all members, however different, must share the common life, complementing and helping one another precisely by their differences.', cite:'C.S. Lewis' },
+
+      { type:'callout', tone:'gold', title:'The end of the journey', body:'You have now seen the case the Catholic Church makes for itself: historical Jesus, the empty tomb, Mary\'s apparitions, the unbroken Church, the saints and miracles, the seven sacraments, and the Catholic claim. None of this forces faith. But none of it is dismissable, either. The honest next step is not to walk away — it is to walk into a Catholic church on Sunday and see for yourself.' }
     ]
   },
 
