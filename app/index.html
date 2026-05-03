@@ -1,0 +1,2840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1020" media="(prefers-color-scheme: dark)">
+<title>BeCath — Catholic Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   BeCath v3 — Adaptive Light/Dark, Hallow-style
+   ───────────────────────────────────────────── */
+:root {
+  /* Light theme (default) */
+  --bg: #FBFAF7;
+  --bg-elev: #FFFFFF;
+  --bg-soft: #F4F1EA;
+  --text: #15161B;
+  --text-soft: #5C5F69;
+  --text-mute: #8A8E98;
+  --line: #ECEAE3;
+  --gold: #B8893A;
+  --gold-soft: #E8D9B8;
+  --navy: #1A2240;
+  --accent: #B8893A;
+  --shadow-sm: 0 1px 2px rgba(20,20,40,0.04), 0 1px 1px rgba(20,20,40,0.03);
+  --shadow-md: 0 4px 14px rgba(20,20,40,0.06), 0 2px 4px rgba(20,20,40,0.04);
+  --shadow-lg: 0 12px 30px rgba(20,20,40,0.08);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+  --ff: 'Inter', -apple-system, system-ui, sans-serif;
+  --ff-serif: 'Cormorant Garamond', Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1020;
+    --bg-elev: #141A2E;
+    --bg-soft: #1B2238;
+    --text: #F5F3EE;
+    --text-soft: #B7BBC8;
+    --text-mute: #7B8198;
+    --line: #232A40;
+    --gold: #D9A94C;
+    --gold-soft: #3A2E15;
+    --navy: #0B1020;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.45);
+    --shadow-lg: 0 14px 40px rgba(0,0,0,0.55);
+  }
+}
+/* Manual override classes */
+html.theme-light { color-scheme: light; }
+html.theme-dark  { color-scheme: dark; }
+html.theme-dark {
+  --bg: #0B1020; --bg-elev: #141A2E; --bg-soft: #1B2238;
+  --text: #F5F3EE; --text-soft: #B7BBC8; --text-mute: #7B8198;
+  --line: #232A40; --gold: #D9A94C; --gold-soft: #3A2E15;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.45);
+  --shadow-lg: 0 14px 40px rgba(0,0,0,0.55);
+}
+html.theme-light {
+  --bg: #FBFAF7; --bg-elev: #FFFFFF; --bg-soft: #F4F1EA;
+  --text: #15161B; --text-soft: #5C5F69; --text-mute: #8A8E98;
+  --line: #ECEAE3; --gold: #B8893A; --gold-soft: #E8D9B8;
+  --shadow-sm: 0 1px 2px rgba(20,20,40,0.04), 0 1px 1px rgba(20,20,40,0.03);
+  --shadow-md: 0 4px 14px rgba(20,20,40,0.06), 0 2px 4px rgba(20,20,40,0.04);
+  --shadow-lg: 0 12px 30px rgba(20,20,40,0.08);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+button { font-family: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ── App shell ── */
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg);
+}
+
+/* ── Top bar ── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px 10px;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  padding-top: calc(env(safe-area-inset-top) + 12px);
+}
+.topbar-greet {
+  font-size: 0.72rem; color: var(--text-mute); font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.topbar-name {
+  font-family: var(--ff-serif); font-size: 1.45rem; font-weight: 600;
+  color: var(--text); line-height: 1.1; margin-top: 1px;
+}
+.topbar-icons { display: flex; gap: 8px; }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-soft); border: none; cursor: pointer;
+  display: grid; place-items: center;
+  color: var(--text); transition: transform 0.15s, background 0.15s;
+}
+.icon-btn:active { transform: scale(0.93); }
+.icon-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── Page system w/ fade ── */
+.page {
+  display: none;
+  padding: 6px 0 110px;
+  animation: fadeUp 0.32s cubic-bezier(.2,.8,.2,1) both;
+}
+.page.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Section headers ── */
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 24px 18px 12px;
+}
+.section-title {
+  font-family: var(--ff-serif); font-size: 1.4rem; font-weight: 600;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.section-sub {
+  font-size: 0.78rem; color: var(--text-mute); font-weight: 500;
+  margin-top: 2px;
+}
+.section-link {
+  font-size: 0.78rem; color: var(--gold); font-weight: 600;
+  background: none; border: none; cursor: pointer;
+}
+
+/* ── Featured hero (16:9) ── */
+.featured {
+  margin: 0 18px 8px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s;
+}
+.featured:active { transform: scale(0.99); }
+.featured-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.featured:hover .featured-img { transform: scale(1.04); }
+.featured-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.78) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 25%);
+}
+.featured-content {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 22px 22px 20px;
+  color: #fff;
+}
+.featured-eyebrow {
+  display: inline-block;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: #FFD98A;
+  background: rgba(184,137,58,0.22);
+  border: 1px solid rgba(255,217,138,0.4);
+  padding: 4px 10px; border-radius: 100px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(6px);
+}
+.featured-title {
+  font-family: var(--ff-serif); font-size: 1.75rem; font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 6px;
+}
+.featured-desc {
+  font-size: 0.85rem; opacity: 0.92; line-height: 1.45; max-width: 90%;
+}
+
+/* ── Horizontal scroll rows ── */
+.h-row {
+  display: flex; gap: 12px;
+  padding: 0 18px 6px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.h-row::-webkit-scrollbar { display: none; }
+.h-row > * { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Vertical-stacked column row (Hallow Morning Routines pattern) */
+.v-col-row {
+  display: flex; gap: 18px;
+  padding: 0 18px 6px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.v-col-row::-webkit-scrollbar { display: none; }
+.v-col-row > .v-col {
+  display: flex; flex-direction: column; gap: 14px;
+  width: 86vw; max-width: 360px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+.card-row {
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.card-row:active { transform: scale(0.98); }
+.card-row-thumb {
+  width: 64px; height: 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-soft);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+.card-row-thumb img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+}
+.card-row-thumb .gradient-cover {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff;
+}
+.card-row-thumb .gradient-cover svg {
+  width: 28px; height: 28px;
+  stroke: currentColor; fill: none; stroke-width: 1.6;
+}
+.card-row-info { flex: 1; min-width: 0; }
+.card-row-title {
+  font-family: var(--ff-serif); font-size: 1.05rem; font-weight: 700;
+  color: var(--text); line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-row-meta {
+  font-size: 0.78rem; color: var(--text-mute);
+  margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── Square card (audio/track) ── */
+.card-sq {
+  width: 158px;
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+.card-sq:active { transform: scale(0.96); }
+.card-sq-cover {
+  width: 158px; height: 158px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  background: var(--bg-soft);
+}
+.card-sq-cover img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.card-sq-cover .gradient-cover {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff;
+}
+.card-sq-cover .gradient-cover svg {
+  width: 48px; height: 48px; opacity: 0.92;
+  stroke: currentColor; fill: none; stroke-width: 1.6;
+}
+.card-sq-title {
+  margin-top: 10px;
+  font-size: 0.92rem; font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-sq-meta {
+  margin-top: 2px;
+  font-size: 0.74rem; color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* ── Wide card (collection) ── */
+.card-wide {
+  width: 240px;
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+.card-wide:active { transform: scale(0.97); }
+.card-wide-cover {
+  width: 240px; height: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  background: var(--bg-soft);
+}
+.card-wide-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.card-wide-cover .gradient-cover {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end;
+  padding: 14px;
+  color: #fff;
+}
+.card-wide-title {
+  margin-top: 10px;
+  font-size: 1rem; font-weight: 600; color: var(--text);
+  line-height: 1.3;
+}
+.card-wide-meta {
+  margin-top: 2px; font-size: 0.78rem; color: var(--text-mute);
+}
+
+/* ── Gradient cover variants (used when no img) ── */
+.gc-jesus    { background: linear-gradient(135deg, #2A3358 0%, #5B4A85 100%); }
+.gc-mary     { background: linear-gradient(135deg, #3B4F8A 0%, #7E8FC1 100%); }
+.gc-saints   { background: linear-gradient(135deg, #6B4E2C 0%, #B8893A 100%); }
+.gc-rosary   { background: linear-gradient(135deg, #2C2A4A 0%, #6B5B95 100%); }
+.gc-prayer   { background: linear-gradient(135deg, #1A2240 0%, #3D4F7A 100%); }
+.gc-sleep    { background: linear-gradient(135deg, #0B1020 0%, #2C2A4A 100%); }
+.gc-miracles { background: linear-gradient(135deg, #5C3A2A 0%, #C49B5C 100%); }
+.gc-angels   { background: linear-gradient(135deg, #4B5C7E 0%, #C5B89E 100%); }
+.gc-bible    { background: linear-gradient(135deg, #2E3D2C 0%, #6B7F5C 100%); }
+.gc-eucharist{ background: linear-gradient(135deg, #6B2C2C 0%, #B85A4A 100%); }
+.gc-pope     { background: linear-gradient(135deg, #6B5B2C 0%, #C4A85A 100%); }
+.gc-prophets { background: linear-gradient(135deg, #2A4A4A 0%, #5C8A8A 100%); }
+.gc-night    { background: linear-gradient(135deg, #0B1020 0%, #1B2238 100%); }
+.gc-morning  { background: linear-gradient(135deg, #C49B5C 0%, #E8C68B 100%); color: #2A1A0E; }
+
+/* ── List rows (vertical) ── */
+.list { padding: 0 18px; }
+.list-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:active { background: var(--bg-soft); }
+.list-thumb {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-soft);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+.list-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.list-thumb .gradient-cover {
+  position: absolute; inset: 0;
+  display: grid; place-items: center; color: #fff;
+}
+.list-thumb svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.list-body { flex: 1; min-width: 0; }
+.list-title {
+  font-size: 0.95rem; font-weight: 600; color: var(--text);
+  line-height: 1.3;
+}
+.list-meta {
+  font-size: 0.78rem; color: var(--text-mute); margin-top: 2px;
+}
+.list-arrow {
+  color: var(--text-mute); flex-shrink: 0;
+}
+
+/* ── Bottom nav ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: color-mix(in oklab, var(--bg-elev) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  padding: 6px 4px calc(env(safe-area-inset-bottom) + 4px);
+  z-index: 100;
+}
+.nav-tab {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 4px;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-mute);
+  transition: color 0.15s, transform 0.12s;
+}
+.nav-tab:active { transform: scale(0.92); }
+.nav-tab.active { color: var(--gold); }
+.nav-tab svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.nav-tab span {
+  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.02em;
+}
+
+/* ── Search (overlay/inline) ── */
+.search-bar {
+  margin: 6px 18px 0;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  padding: 11px 14px;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text-mute);
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.search-bar:active { border-color: var(--gold); }
+.search-bar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── Mini player ── */
+.mini-player {
+  position: fixed;
+  bottom: calc(64px + env(safe-area-inset-bottom));
+  left: 12px; right: 12px;
+  max-width: 456px;
+  margin: 0 auto;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px 10px 8px 8px;
+  display: none;
+  align-items: center; gap: 10px;
+  box-shadow: var(--shadow-lg);
+  z-index: 99;
+}
+.mini-player.show { display: flex; animation: fadeUp 0.3s both; }
+.mini-player-art {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--gold);
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  color: #fff;
+}
+.mini-player-art svg { width: 18px; height: 18px; fill: currentColor; }
+.mini-player-info { flex: 1; min-width: 0; }
+.mini-player-title {
+  font-size: 0.86rem; font-weight: 600; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mini-player-sub {
+  font-size: 0.72rem; color: var(--text-mute);
+}
+.mini-player-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg-elev);
+  border: none; cursor: pointer;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.mini-player-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* ── Detail page ── */
+.detail-hero {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+.detail-hero img { width: 100%; height: 100%; object-fit: cover; }
+.detail-hero .gradient-cover {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: rgba(255,255,255,0.85);
+}
+.detail-hero .gradient-cover svg { width: 80px; height: 80px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.detail-back {
+  position: absolute; top: calc(env(safe-area-inset-top) + 12px); left: 14px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border: none; cursor: pointer;
+  display: grid; place-items: center;
+  color: #15161B;
+  z-index: 10;
+}
+.detail-back svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+.detail-content { padding: 22px 18px 0; }
+.detail-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 8px;
+}
+.detail-title {
+  font-family: var(--ff-serif); font-size: 1.85rem; font-weight: 700;
+  color: var(--text); line-height: 1.15; letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+.detail-meta {
+  font-size: 0.85rem; color: var(--text-mute);
+  margin-bottom: 18px;
+}
+.btn-primary {
+  width: 100%;
+  background: var(--text); color: var(--bg-elev);
+  border: none; border-radius: 14px;
+  padding: 16px;
+  font-size: 1rem; font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: transform 0.12s;
+}
+.btn-primary:active { transform: scale(0.985); }
+.btn-primary svg { width: 18px; height: 18px; fill: currentColor; }
+.btn-secondary {
+  width: 100%;
+  background: var(--bg-soft); color: var(--text);
+  border: none; border-radius: 14px;
+  padding: 14px;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; margin-top: 10px;
+}
+
+.detail-body {
+  margin-top: 26px;
+  font-family: var(--ff-serif); font-size: 1.1rem;
+  line-height: 1.6; color: var(--text-soft);
+}
+.detail-body p { margin: 0 0 14px; }
+
+/* ── Empty state ── */
+.empty {
+  text-align: center; padding: 60px 24px;
+  color: var(--text-mute);
+}
+.empty-icon {
+  width: 64px; height: 64px; margin: 0 auto 16px;
+  border-radius: 50%; background: var(--bg-soft);
+  display: grid; place-items: center;
+  color: var(--gold);
+}
+.empty-icon svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.empty h3 {
+  font-family: var(--ff-serif); font-size: 1.3rem;
+  font-weight: 600; color: var(--text); margin: 0 0 6px;
+}
+.empty p { font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 280px; margin-inline: auto; }
+
+/* ── Quote / large pull text ── */
+.quote {
+  margin: 18px;
+  padding: 22px;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold);
+}
+.quote-text {
+  font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic;
+  color: var(--text); line-height: 1.5;
+}
+.quote-cite {
+  margin-top: 10px;
+  font-size: 0.78rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ── Pill chip row ── */
+.chip-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding: 0 18px 8px;
+}
+.chip {
+  background: var(--bg-soft);
+  color: var(--text-soft);
+  border: 1px solid transparent;
+  padding: 7px 13px;
+  border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip.active {
+  background: var(--text); color: var(--bg-elev);
+}
+
+/* ── Theme toggle in profile ── */
+.profile-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.profile-row-label { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+.theme-segment {
+  display: flex; gap: 4px;
+  background: var(--bg-soft);
+  padding: 3px;
+  border-radius: 100px;
+}
+.theme-segment button {
+  background: none; border: none; cursor: pointer;
+  padding: 6px 12px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-mute);
+  border-radius: 100px;
+}
+.theme-segment button.active {
+  background: var(--bg-elev); color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ═══ Detail body rich blocks ═══ */
+.detail-body p { margin: 0 0 14px; font-family: var(--ff-serif); font-size: 1.08rem; line-height: 1.6; color: var(--text-soft); }
+.detail-body strong { color: var(--text); font-weight: 700; }
+.detail-body em { font-style: italic; }
+.db-h {
+  font-family: var(--ff-serif); font-size: 1.3rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.01em;
+  margin: 26px 0 10px;
+}
+.db-section-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--gold);
+  margin: 28px 0 12px;
+}
+.db-quote {
+  margin: 16px 0;
+  padding: 16px 18px;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+  font-family: var(--ff-serif); font-style: italic;
+  font-size: 1.12rem; line-height: 1.55;
+  color: var(--text);
+}
+.db-quote cite {
+  display: block; margin-top: 8px;
+  font-family: var(--ff); font-style: normal;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--text-mute); text-transform: uppercase;
+}
+.db-callout {
+  margin: 14px 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 0.92rem; line-height: 1.55;
+  color: var(--text-soft);
+}
+.db-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.db-callout-gold { background: var(--gold-soft); color: var(--text); }
+.db-callout-gold strong { color: var(--text); }
+.db-callout-blue { background: color-mix(in oklab, var(--bg-soft) 60%, #3D4F7A 12%); }
+.db-callout-rose { background: color-mix(in oklab, var(--bg-soft) 60%, #B85A4A 12%); }
+.db-callout-sage { background: color-mix(in oklab, var(--bg-soft) 60%, #5C8A6A 12%); }
+
+.db-lead {
+  margin: 16px 0;
+  padding: 22px 20px;
+  background: linear-gradient(135deg, var(--navy) 0%, #2A3358 100%);
+  border-radius: var(--radius-lg);
+  color: #fff;
+}
+.db-lead-eyebrow {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: #FFD98A;
+  margin-bottom: 10px;
+}
+.db-lead-text {
+  font-family: var(--ff-serif); font-size: 1.18rem;
+  line-height: 1.5; color: #fff;
+}
+.db-lead-text em { font-style: italic; }
+.db-lead-quote {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  font-family: var(--ff-serif); font-style: italic;
+  font-size: 0.98rem; line-height: 1.55;
+  color: rgba(255,255,255,0.92);
+}
+.db-lead-quote span {
+  display: block; margin-top: 5px;
+  font-family: var(--ff); font-style: normal;
+  font-size: 0.7rem; letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.5);
+}
+
+.db-subsection {
+  margin: 14px 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.db-subsection-head {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+.db-subsection-title {
+  font-family: var(--ff-serif); font-size: 1.08rem; font-weight: 700;
+  color: var(--text);
+}
+.db-subsection-sub {
+  margin-top: 2px;
+  font-size: 0.78rem; color: var(--text-mute);
+}
+.db-subsection-body { padding: 14px 16px; }
+.db-subsection-body > *:first-child { margin-top: 0; }
+.db-subsection-body > *:last-child { margin-bottom: 0; }
+
+.db-rolegrid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  margin: 14px 0;
+}
+.db-role {
+  background: var(--bg-soft);
+  border-radius: 14px;
+  padding: 14px;
+}
+.db-role-title {
+  font-family: var(--ff-serif); font-size: 1.05rem; font-weight: 700;
+  color: var(--text); margin-bottom: 5px;
+}
+.db-role-body {
+  font-size: 0.83rem; line-height: 1.5; color: var(--text-soft);
+}
+
+.db-archangel {
+  display: flex; gap: 14px;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.db-arch-icon {
+  font-size: 1.8rem;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  background: var(--bg-elev);
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.db-arch-name {
+  font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 700;
+  color: var(--text);
+}
+.db-arch-meaning {
+  font-size: 0.78rem; font-style: italic; color: var(--gold);
+  margin: 2px 0 6px; font-weight: 600;
+}
+.db-arch-desc {
+  font-size: 0.88rem; line-height: 1.55; color: var(--text-soft);
+}
+
+.db-prayer {
+  margin: 14px 0;
+  padding: 16px 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.db-prayer-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 10px;
+}
+.db-prayer-text {
+  font-family: var(--ff-serif); font-size: 1.05rem; line-height: 1.65;
+  color: var(--text); font-style: italic;
+}
+
+.db-list {
+  margin: 12px 0; padding-left: 22px;
+}
+.db-list li {
+  font-family: var(--ff-serif); font-size: 1.05rem;
+  line-height: 1.6; color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.db-verselist { margin: 14px 0; }
+.db-verse {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.db-verse:last-child { border-bottom: none; }
+.db-verse-cite {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.db-verse-text {
+  font-family: var(--ff-serif); font-size: 1.02rem;
+  line-height: 1.55; color: var(--text);
+}
+
+.db-audio {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.db-audio:active { background: var(--gold-soft); }
+.db-audio-play {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg-elev);
+  display: grid; place-items: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.db-audio-title {
+  font-size: 0.95rem; font-weight: 600; color: var(--text);
+}
+.db-audio-meta {
+  font-size: 0.78rem; color: var(--text-mute); margin-top: 2px;
+}
+
+/* ═══ Journal ═══ */
+.journal-prompt-card {
+  margin: 14px 0;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--bg-soft));
+  border: 1px solid var(--gold-soft);
+  border-left: 3px solid var(--gold);
+  border-radius: 14px;
+}
+.journal-prompt-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.journal-prompt-eyebrow {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--gold);
+}
+.journal-prompt-next {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.journal-prompt-text {
+  font-family: var(--ff-serif); font-size: 1.1rem;
+  line-height: 1.55; color: var(--text);
+  font-style: italic;
+  transition: opacity 0.22s ease;
+}
+.journal-compose {
+  margin: 16px 0;
+  padding: 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.journal-compose-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 8px;
+}
+.journal-compose textarea {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--ff-serif); font-size: 1rem;
+  line-height: 1.55;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+.journal-compose textarea:focus { border-color: var(--gold); }
+.journal-mood-row {
+  margin: 12px 0 10px;
+}
+.journal-mood-label {
+  display: block;
+  font-size: 0.74rem; color: var(--text-mute);
+  margin-bottom: 8px;
+}
+.journal-mood-btns {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.journal-mood {
+  background: var(--bg-soft);
+  border: 1.5px solid transparent;
+  color: var(--text-soft);
+  padding: 6px 10px;
+  border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600;
+  cursor: pointer;
+}
+.journal-mood.selected {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--text);
+}
+.journal-actions {
+  display: flex; justify-content: flex-end;
+  margin-top: 8px;
+}
+.journal-save {
+  background: var(--text); color: var(--bg-elev);
+  border: none; cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-size: 0.85rem; font-weight: 700;
+}
+.journal-section-label {
+  margin: 22px 0 10px;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--gold);
+}
+.journal-entry {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.journal-entry-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.journal-entry-date {
+  font-size: 0.74rem; color: var(--text-mute); font-weight: 600;
+}
+.journal-entry-mood { margin-left: 6px; font-size: 0.95rem; }
+.journal-entry-del {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.3rem; color: var(--text-mute);
+  width: 24px; height: 24px; line-height: 1;
+  border-radius: 50%;
+}
+.journal-entry-del:hover { background: var(--bg-soft); color: #B85A4A; }
+.journal-entry-text {
+  font-family: var(--ff-serif); font-size: 1rem;
+  line-height: 1.55; color: var(--text-soft);
+}
+.journal-empty {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--text-mute);
+  font-style: italic;
+  background: var(--bg-soft);
+  border-radius: 12px;
+}
+
+/* ═══ Pray-page daily checklist ═══ */
+.pray-checklist {
+  margin: 6px 18px 18px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--bg-elev));
+  border: 1.5px solid var(--gold-soft);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.pray-checklist-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.pray-checklist-title {
+  font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 700;
+  color: var(--text);
+}
+.pray-checklist-sub {
+  font-size: 0.74rem; color: var(--text-mute);
+  margin-top: 2px;
+}
+.pray-checklist-count {
+  font-family: var(--ff-serif); font-size: 1.5rem; font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.pray-checklist-count .pray-of { color: var(--text-mute); font-size: 1rem; margin: 0 2px; }
+.pray-progress {
+  height: 6px;
+  background: var(--bg-soft);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.pray-progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold), #E8C68B);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+.pray-checks {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+}
+.pray-checks li {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 11px;
+  background: var(--bg-elev);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.pray-checks li:active { transform: scale(0.97); }
+.pray-checks li .pray-chk {
+  width: 18px; height: 18px;
+  border: 2px solid var(--gold-soft);
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  font-size: 0.7rem; font-weight: 800; color: #fff;
+  background: var(--bg-elev);
+  transition: all 0.15s;
+}
+.pray-checks li.done {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--text);
+  text-decoration: line-through;
+  text-decoration-color: var(--text-mute);
+}
+.pray-checks li.done .pray-chk {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.pray-checks li.done .pray-chk::after { content: '✓'; }
+
+/* ═══ Accordion (collapsible big-section drop-downs) ═══ */
+.db-accordion {
+  margin: 14px 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.db-accordion[open] {
+  border-color: var(--gold-soft);
+  box-shadow: var(--shadow-sm);
+}
+.db-accordion summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "eyebrow eyebrow arrow"
+    "title   title   arrow"
+    "sub     sub     arrow";
+  align-items: center;
+  gap: 4px 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.12s;
+}
+.db-accordion summary::-webkit-details-marker { display: none; }
+.db-accordion summary:active { background: var(--bg-soft); }
+.db-accordion-eyebrow {
+  grid-area: eyebrow;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--gold);
+}
+.db-accordion-title {
+  grid-area: title;
+  font-family: var(--ff-serif); font-size: 1.18rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.005em; line-height: 1.25;
+}
+.db-accordion-sub {
+  grid-area: sub;
+  font-size: 0.78rem; color: var(--text-mute);
+  margin-top: 2px;
+}
+.db-accordion-arrow {
+  grid-area: arrow;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--text-mute);
+  font-size: 1.2rem; font-weight: 600;
+  line-height: 1;
+  transition: transform 0.22s, background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.db-accordion[open] .db-accordion-arrow {
+  transform: rotate(45deg);
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.db-accordion-body {
+  padding: 4px 18px 18px;
+  border-top: 1px solid var(--line);
+}
+.db-accordion-body > *:first-child { margin-top: 14px; }
+.db-accordion-body > *:last-child { margin-bottom: 0; }
+/* Inside an accordion, nested subsections look slightly recessed */
+.db-accordion-body .db-subsection {
+  background: var(--bg-soft);
+}
+.db-accordion-body .db-subsection-head {
+  background: transparent;
+  border-bottom-color: var(--line);
+}
+
+/* ═══ Dictionary search + alphabet pills ═══ */
+.dict-search {
+  position: sticky; top: 80px; z-index: 5;
+  display: flex; align-items: center; gap: 10px;
+  margin: 14px 0 12px;
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.dict-search:focus-within {
+  border-color: var(--gold);
+  background: var(--bg-elev);
+}
+.dict-search svg {
+  width: 18px; height: 18px;
+  color: var(--text-mute);
+  flex-shrink: 0;
+}
+.dict-search input {
+  flex: 1;
+  border: none; background: none; outline: none;
+  font-family: var(--ff); font-size: 1rem; color: var(--text);
+  min-width: 0;
+}
+.dict-search input::placeholder { color: var(--text-mute); }
+.dict-clear {
+  display: none;
+  background: var(--text-mute); color: var(--bg-elev);
+  border: none; cursor: pointer;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  font-size: 1rem; line-height: 22px;
+  flex-shrink: 0;
+}
+
+.dict-pills {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin: 0 0 14px;
+}
+.dict-pill {
+  background: var(--bg-soft);
+  color: var(--text-soft);
+  border: 1px solid transparent;
+  padding: 6px 11px;
+  min-width: 32px;
+  border-radius: 100px;
+  font-size: 0.82rem; font-weight: 600;
+  font-family: var(--ff);
+  cursor: pointer;
+  transition: all 0.12s;
+  text-align: center;
+}
+.dict-pill:hover { background: var(--bg-elev); }
+.dict-pill.active {
+  background: var(--text); color: var(--bg-elev);
+}
+
+.dict-count {
+  font-size: 0.78rem; color: var(--text-mute);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.dict-entries { padding-bottom: 24px; }
+.dict-entry {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.dict-entry[open] {
+  border-color: var(--gold-soft);
+  box-shadow: var(--shadow-sm);
+}
+.dict-entry summary {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.12s;
+}
+.dict-entry summary::-webkit-details-marker { display: none; }
+.dict-entry summary:active { background: var(--bg-soft); }
+.dict-entry-title {
+  flex: 1;
+  font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.005em;
+}
+.dict-entry-sub {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--gold); text-transform: uppercase;
+  background: var(--gold-soft);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+.dict-entry-arrow {
+  width: 24px; height: 24px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--text-mute);
+  font-size: 1.15rem; font-weight: 600;
+  line-height: 1;
+  transition: transform 0.2s, background 0.15s;
+  flex-shrink: 0;
+}
+.dict-entry[open] .dict-entry-arrow {
+  transform: rotate(45deg);
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.dict-entry-body {
+  padding: 0 16px 14px;
+}
+.dict-entry-body p {
+  font-family: var(--ff-serif); font-size: 1rem;
+  line-height: 1.55; color: var(--text-soft);
+  margin: 0 0 10px;
+}
+.dict-entry-body p:last-child { margin-bottom: 0; }
+.dict-entry-body strong { color: var(--text); }
+
+.dict-empty {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.92rem;
+  color: var(--text-mute);
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ═══════════════ TOP BAR ═══════════════ -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-brand" onclick="goPage('home')" style="cursor:pointer;display:flex;align-items:center;gap:10px;">
+      <img src="img/logo.jpg" alt="BeCath" class="topbar-logo" style="height:40px;width:auto;display:block;">
+      <div>
+        <div class="topbar-greet" id="greet">Good morning</div>
+      </div>
+    </div>
+    <div class="topbar-icons">
+      <button class="icon-btn" onclick="goPage('search')" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" onclick="goPage('me')" aria-label="Profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════ HOME ═══════════════ -->
+  <section class="page active" id="page-home">
+
+    <!-- Featured: Why Catholic? -->
+    <div class="featured" onclick="openDetail('why-catholic')">
+      <img class="featured-img" src="img/jesus.jpg" alt="">
+      <div class="featured-overlay"></div>
+      <div class="featured-content">
+        <span class="featured-eyebrow">Featured</span>
+        <div class="featured-title">Why Catholic?</div>
+        <div class="featured-desc">A 7-day journey through the proof of Christ — the historical, scientific, and personal evidence for the faith.</div>
+      </div>
+    </div>
+
+    <!-- Continue (hidden if empty) -->
+    <div id="continue-section" style="display:none;">
+      <div class="section-head">
+        <div>
+          <div class="section-title">Continue</div>
+          <div class="section-sub">Pick up where you left off</div>
+        </div>
+      </div>
+      <div class="h-row" id="continue-row"></div>
+    </div>
+
+    <!-- Today -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Today</div>
+        <div class="section-sub" id="today-date"></div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('today-saint')">
+        <div class="card-sq-cover">
+          <img src="img/saintday.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Saint of the Day</div>
+        <div class="card-sq-meta" id="today-saint-name">Today's saint</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('today-mass')">
+        <div class="card-sq-cover">
+          <img src="img/masseuchjesus.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Mass Readings</div>
+        <div class="card-sq-meta">Daily liturgy</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('today-prayer')">
+        <div class="card-sq-cover">
+          <img src="img/jesusapostles.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Morning Offering</div>
+        <div class="card-sq-meta">Start your day · ~2 min</div>
+      </div>
+      <div class="card-sq" onclick="goPage('journal')">
+        <div class="card-sq-cover">
+          <img src="img/happyjesusbook.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Prayer Starter</div>
+        <div class="card-sq-meta">Today's reflection</div>
+      </div>
+    </div>
+
+    <!-- Why Catholic? -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Why Catholic?</div>
+        <div class="section-sub">Proof, history, and the case for the faith</div>
+      </div>
+      <button class="section-link" onclick="goPage('learn')">See all</button>
+    </div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('proof-jesus')">
+        <div class="card-wide-cover">
+          <img src="img/jesus.jpg" alt="">
+        </div>
+        <div class="card-wide-title">Did Jesus Really Live?</div>
+        <div class="card-wide-meta">Historical evidence · 12 min</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('apparitions')">
+        <div class="card-wide-cover">
+          <img src="img/mary.jpg" alt="">
+        </div>
+        <div class="card-wide-title">Mary's Apparitions</div>
+        <div class="card-wide-meta">Fatima, Lourdes, Guadalupe</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('commandments')">
+        <div class="card-wide-cover">
+          <img src="img/ten.jpg" alt="">
+        </div>
+        <div class="card-wide-title">The Ten Commandments</div>
+        <div class="card-wide-meta">Foundation of moral law</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('apologetics')">
+        <div class="card-wide-cover">
+          <img src="img/whyjesus.jpg" alt="">
+        </div>
+        <div class="card-wide-title">Why Jesus?</div>
+        <div class="card-wide-meta">The case for Christ · 8 lessons</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('prophets')">
+        <div class="card-wide-cover"><img src="img/prophets.jpg" alt=""></div>
+        <div class="card-wide-title">The Prophets</div>
+        <div class="card-wide-meta">Fulfilled prophecy</div>
+      </div>
+    </div>
+
+    <!-- Miracles -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Miracles</div>
+        <div class="section-sub">Documented, investigated, undeniable</div>
+      </div>
+      <button class="section-link" onclick="goPage('miracles')">See all</button>
+    </div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('miracle-eucharist')">
+        <div class="card-sq-cover">
+          <img src="img/eucharist-miracle.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Eucharistic Miracles</div>
+        <div class="card-sq-meta">Lanciano, Buenos Aires &amp; more</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('miracle-shroud')">
+        <div class="card-sq-cover">
+          <img src="img/shroud.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Shroud of Turin</div>
+        <div class="card-sq-meta">Image science</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('miracle-fatima')">
+        <div class="card-sq-cover">
+          <img src="img/mary.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Miracle of the Sun</div>
+        <div class="card-sq-meta">Fatima, 1917</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('miracle-incorrupt')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-saints">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Incorrupt Saints</div>
+        <div class="card-sq-meta">Bodies that don't decay</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('miracle-lourdes')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-mary">
+            <svg viewBox="0 0 24 24"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Healings at Lourdes</div>
+        <div class="card-sq-meta">Medically verified</div>
+      </div>
+    </div>
+
+    <!-- Angels -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Angels</div>
+        <div class="section-sub">Guardians, archangels, and the unseen world</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('guardian-angel')">
+        <div class="card-wide-cover">
+          <img src="img/guardian.jpg" alt="">
+        </div>
+        <div class="card-wide-title">Your Guardian Angel</div>
+        <div class="card-wide-meta">Who they are, what they do</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('archangels')">
+        <div class="card-wide-cover">
+          <img src="img/archangel.jpg" alt="">
+        </div>
+        <div class="card-wide-title">The Archangels</div>
+        <div class="card-wide-meta">Michael, Gabriel, Raphael</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('angel-prayer')">
+        <div class="card-wide-cover">
+          <img src="img/angelofgod.jpg" alt="">
+        </div>
+        <div class="card-wide-title">Angel of God</div>
+        <div class="card-wide-meta">Classic prayer · Audio</div>
+      </div>
+    </div>
+
+    <!-- Rosary & Mary -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">The Rosary &amp; Mary</div>
+        <div class="section-sub">Pray with the Mother of God</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('rosary-joyful')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-rosary">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="18" r="2"/><path d="M12 8v2M12 14v2"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Joyful Mysteries</div>
+        <div class="card-sq-meta">Mon · Sat · ~18 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('rosary-sorrowful')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-rosary">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Sorrowful Mysteries</div>
+        <div class="card-sq-meta">Tue · Fri · ~18 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('rosary-glorious')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-rosary">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Glorious Mysteries</div>
+        <div class="card-sq-meta">Wed · Sun · ~18 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('rosary-luminous')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-rosary">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          </div>
+        </div>
+        <div class="card-sq-title">Luminous Mysteries</div>
+        <div class="card-sq-meta">Thu · ~18 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('hail-mary')">
+        <div class="card-sq-cover">
+          <img src="img/mary.jpg" alt="">
+        </div>
+        <div class="card-sq-title">The Hail Mary</div>
+        <div class="card-sq-meta">Origins &amp; meaning</div>
+      </div>
+    </div>
+
+    <!-- Saints -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Saints</div>
+        <div class="section-sub">Lives that changed the world</div>
+      </div>
+      <button class="section-link" onclick="openDetail('saints-library')">See all</button>
+    </div>
+    <div class="v-col-row">
+
+      <!-- Column 1 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-joseph')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Joseph</div><div class="card-row-meta">Foster Father of Jesus · Mar 19</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-therese-full')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Thérèse of Lisieux</div><div class="card-row-meta">The Little Flower · Oct 1</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-padre-pio-full')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Padre Pio</div><div class="card-row-meta">Stigmatist · Sep 23</div></div>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-faustina')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Faustina</div><div class="card-row-meta">Divine Mercy · Oct 5</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-monica')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Monica</div><div class="card-row-meta">Mother of St. Augustine · Aug 27</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-magdalene')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Mary Magdalene</div><div class="card-row-meta">Apostle to the Apostles · Jul 22</div></div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-francis-full')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Francis of Assisi</div><div class="card-row-meta">Patron of Creation · Oct 4</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-augustine')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Augustine</div><div class="card-row-meta">Doctor of the Church · Aug 28</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-aquinas-full')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Thomas Aquinas</div><div class="card-row-meta">The Angelic Doctor · Jan 28</div></div>
+        </div>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-anthony-padua')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Anthony of Padua</div><div class="card-row-meta">Lost things · Jun 13</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-mother-teresa-full')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Teresa of Calcutta</div><div class="card-row-meta">Mother Teresa · Sep 5</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-bernadette')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Bernadette</div><div class="card-row-meta">Visionary of Lourdes · Apr 16</div></div>
+        </div>
+      </div>
+
+      <!-- Column 5 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-joan')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Joan of Arc</div><div class="card-row-meta">Patroness of France · May 30</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-jpii')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. John Paul II</div><div class="card-row-meta">Pope · Oct 22</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-michael')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Michael the Archangel</div><div class="card-row-meta">Defender · Sep 29</div></div>
+        </div>
+      </div>
+
+      <!-- Column 6 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-peter')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Peter the Apostle</div><div class="card-row-meta">First Pope · Jun 29</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-paul')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Paul the Apostle</div><div class="card-row-meta">Apostle to the Gentiles · Jun 29</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-kolbe')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Maximilian Kolbe</div><div class="card-row-meta">Martyr of Charity · Aug 14</div></div>
+        </div>
+      </div>
+
+      <!-- Column 7 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-rita')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Rita of Cascia</div><div class="card-row-meta">Impossible causes · May 22</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-gianna')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Gianna Molla</div><div class="card-row-meta">Mother & Martyr · Apr 28</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-ignatius')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Ignatius of Loyola</div><div class="card-row-meta">Founder of the Jesuits · Jul 31</div></div>
+        </div>
+      </div>
+
+      <!-- Column 8 -->
+      <div class="v-col">
+        <div class="card-row" onclick="openDetail('saint-teresa-avila')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Teresa of Ávila</div><div class="card-row-meta">Doctor of the Church · Oct 15</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saint-catherine-siena')">
+          <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
+          <div class="card-row-info"><div class="card-row-title">St. Catherine of Siena</div><div class="card-row-meta">Doctor of the Church · Apr 29</div></div>
+        </div>
+        <div class="card-row" onclick="openDetail('saints-library')">
+          <div class="card-row-thumb"><div class="gradient-cover gc-gold-soft" style="background:linear-gradient(135deg,#B8893A 0%,#E8C68B 100%);"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div></div>
+          <div class="card-row-info"><div class="card-row-title">Full Saints Library</div><div class="card-row-meta">All saints · A–Z reference</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Audio Prayers -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Audio Prayers</div>
+        <div class="section-sub">Pray with your ears</div>
+      </div>
+      <button class="section-link" onclick="goPage('pray')">See all</button>
+    </div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('audio-morning')">
+        <div class="card-sq-cover">
+          <img src="img/jesusapostles.jpg" alt="">
+        </div>
+        <div class="card-sq-title">Morning Offering</div>
+        <div class="card-sq-meta">Audio · ~2 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('audio-angelus')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 8c-.3 2-1.5 3-3 3H10c-1.5 0-2.7-1-3-3L6 8z"/><path d="M9 4l3-2 3 2"/></svg></div>
+        </div>
+        <div class="card-sq-title">The Angelus</div>
+        <div class="card-sq-meta">Audio · ~3 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('audio-divine-mercy')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6M12 16h.01"/></svg></div>
+        </div>
+        <div class="card-sq-title">Divine Mercy Chaplet</div>
+        <div class="card-sq-meta">Audio · ~12 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('audio-examen')">
+        <div class="card-sq-cover">
+          <div class="gradient-cover gc-night"><svg viewBox="0 0 24 24"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div>
+        </div>
+        <div class="card-sq-title">Evening Examen</div>
+        <div class="card-sq-meta">Audio · ~8 min</div>
+      </div>
+    </div>
+
+    <!-- Sleep & Night -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Sleep &amp; Night Prayer</div>
+        <div class="section-sub">End the day in peace</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('compline')">
+        <div class="card-sq-cover"><img src="img/night.jpg" alt=""></div>
+        <div class="card-sq-title">Night Prayer</div>
+        <div class="card-sq-meta">Compline · ~12 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('sleep-rosary')">
+        <div class="card-sq-cover"><img src="img/sleep.jpg" alt=""></div>
+        <div class="card-sq-title">Sleep Rosary</div>
+        <div class="card-sq-meta">Gentle · ~25 min</div>
+      </div>
+      <div class="card-sq" onclick="openDetail('psalm-91')">
+        <div class="card-sq-cover"><img src="img/woods.jpg" alt=""></div>
+        <div class="card-sq-title">Psalm 91</div>
+        <div class="card-sq-meta">"He who dwells…" · ~4 min</div>
+      </div>
+    </div>
+
+    <!-- Devotions -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Devotions</div>
+        <div class="section-sub">Walk with Christ through the year</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('stations-of-cross')">
+        <div class="card-wide-cover"><img src="img/stations.jpg" alt=""></div>
+        <div class="card-wide-title">Stations of the Cross</div>
+        <div class="card-wide-meta">14 stations · Fridays &amp; Lent</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('mary-full')">
+        <div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div>
+        <div class="card-wide-title">Mary &amp; Her Appearances</div>
+        <div class="card-wide-meta">15 visits across 2,000 years</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('healing-love')">
+        <div class="card-wide-cover"><img src="img/healing.jpg" alt=""></div>
+        <div class="card-wide-title">Healing &amp; Love</div>
+        <div class="card-wide-meta">What the Church teaches</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('daily-rhythm')">
+        <div class="card-wide-cover"><img src="img/daily.jpg" alt=""></div>
+        <div class="card-wide-title">A Daily Rhythm</div>
+        <div class="card-wide-meta">A complete prayer day</div>
+      </div>
+    </div>
+
+    <!-- The Church -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">The Church</div>
+        <div class="section-sub">How it works, who leads it</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('pope')">
+        <div class="card-wide-cover"><img src="img/pope.jpg" alt=""></div>
+        <div class="card-wide-title">The Pope</div>
+        <div class="card-wide-meta">266 in unbroken line</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('sacraments')">
+        <div class="card-wide-cover"><img src="img/sacraments.jpg" alt=""></div>
+        <div class="card-wide-title">The Seven Sacraments</div>
+        <div class="card-wide-meta">Channels of divine life</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('baptism-full')">
+        <div class="card-wide-cover"><img src="img/baptism.jpg" alt=""></div>
+        <div class="card-wide-title">Catholic Baptism</div>
+        <div class="card-wide-meta">A complete guide</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('eucharist')">
+        <div class="card-wide-cover"><img src="img/eucharist.jpg" alt=""></div>
+        <div class="card-wide-title">The Eucharist</div>
+        <div class="card-wide-meta">Source &amp; summit</div>
+      </div>
+    </div>
+
+    <!-- Scripture -->
+    <div class="section-head">
+      <div>
+        <div class="section-title">Scripture</div>
+        <div class="section-sub">The Word of God</div>
+      </div>
+    </div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('prophets')">
+        <div class="card-wide-cover"><img src="img/prophets.jpg" alt=""></div>
+        <div class="card-wide-title">The Prophets</div>
+        <div class="card-wide-meta">Voices across the ages</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('revelation')">
+        <div class="card-wide-cover"><img src="img/revelation.jpg" alt=""></div>
+        <div class="card-wide-title">Book of Revelation</div>
+        <div class="card-wide-meta">Christ&rsquo;s victory revealed</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('apologetics')">
+        <div class="card-wide-cover"><img src="img/whyjesus.jpg" alt=""></div>
+        <div class="card-wide-title">Why Jesus?</div>
+        <div class="card-wide-meta">The case for Christ</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('dictionary')">
+        <div class="card-wide-cover"><img src="img/dictionary.jpg" alt=""></div>
+        <div class="card-wide-title">Catholic Dictionary</div>
+        <div class="card-wide-meta">Every key term defined</div>
+      </div>
+    </div>
+
+    <!-- Closing quote -->
+    <div class="quote">
+      <div class="quote-text">"You have made us for Yourself, O Lord, and our heart is restless until it rests in You."</div>
+      <div class="quote-cite">St. Augustine</div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ PRAY ═══════════════ -->
+  <section class="page" id="page-pray">
+    <div class="section-head"><div><div class="section-title">Pray</div><div class="section-sub">Your daily rhythm of prayer</div></div></div>
+
+    <!-- Daily Checklist -->
+    <div class="pray-checklist" id="prayChecklist">
+      <div class="pray-checklist-head">
+        <div>
+          <div class="pray-checklist-title">Today's Prayers</div>
+          <div class="pray-checklist-sub" id="prayChecklistSub">Tap each one as you pray it · resets daily</div>
+        </div>
+        <div class="pray-checklist-count"><span id="prayDoneCount">0</span><span class="pray-of">/</span><span id="prayTotalCount">8</span></div>
+      </div>
+      <div class="pray-progress"><div class="pray-progress-bar" id="prayProgressBar"></div></div>
+      <ul class="pray-checks" id="prayChecks">
+        <li data-pkey="morning-offering" onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Morning Offering</li>
+        <li data-pkey="guardian-angel"   onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Guardian Angel Prayer</li>
+        <li data-pkey="gospel"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Gospel Reading</li>
+        <li data-pkey="angelus"          onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Angelus at Noon</li>
+        <li data-pkey="mercy"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Divine Mercy at 3 PM</li>
+        <li data-pkey="rosary"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>The Rosary</li>
+        <li data-pkey="examen"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Examination of Conscience</li>
+        <li data-pkey="night"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Night Prayer</li>
+      </ul>
+    </div>
+
+    <!-- Daily Rhythm card -->
+    <div class="section-head"><div><div class="section-title">A Catholic Daily Rhythm</div><div class="section-sub">A complete prayer day · ~45–60 min</div></div></div>
+    <div style="padding:0 18px 6px;">
+      <div class="card-wide" onclick="openDetail('daily-rhythm')" style="width:100%;max-width:none;">
+        <div class="card-wide-cover" style="width:100%;height:160px;"><img src="img/daily.jpg" alt=""></div>
+        <div class="card-wide-title">A Catholic Daily Rhythm</div>
+        <div class="card-wide-meta">Wake to bedtime · prayers + reflections</div>
+      </div>
+    </div>
+
+    <!-- Audio Prayers -->
+    <div class="section-head"><div><div class="section-title">Audio Prayers</div><div class="section-sub">Listen along · pray with your ears</div></div></div>
+    <div class="chip-row">
+      <button class="chip active">All</button>
+      <button class="chip">Morning</button>
+      <button class="chip">Rosary</button>
+      <button class="chip">Chaplet</button>
+      <button class="chip">Night</button>
+    </div>
+    <div class="list">
+      <div class="list-row" onclick="openDetail('audio-morning')">
+        <div class="list-thumb"><div class="gradient-cover gc-morning"><svg viewBox="0 0 24 24" stroke="#2A1A0E"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Morning Offering</div><div class="list-meta">Audio · ~2 min</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('audio-angelus')">
+        <div class="list-thumb"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 8c-.3 2-1.5 3-3 3H10c-1.5 0-2.7-1-3-3L6 8z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">The Angelus</div><div class="list-meta">Audio · ~3 min</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('rosary-glorious')">
+        <div class="list-thumb"><div class="gradient-cover gc-rosary"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">The Rosary</div><div class="list-meta">All four mysteries · ~18 min each</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('audio-divine-mercy')">
+        <div class="list-thumb"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Divine Mercy Chaplet</div><div class="list-meta">Audio · ~12 min</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('audio-examen')">
+        <div class="list-thumb"><div class="gradient-cover gc-night"><svg viewBox="0 0 24 24"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Evening Examen</div><div class="list-meta">Ignatian review · ~8 min</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('compline')">
+        <div class="list-thumb"><div class="gradient-cover gc-night"><svg viewBox="0 0 24 24"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Night Prayer (Compline)</div><div class="list-meta">Liturgy of the Hours · ~12 min</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LEARN ═══════════════ -->
+  <section class="page" id="page-learn">
+    <div class="section-head"><div><div class="section-title">Learn</div><div class="section-sub">Why Catholic — and why it's true</div></div></div>
+
+    <div class="featured" style="margin-top:6px;" onclick="openDetail('why-catholic')">
+      <img class="featured-img" src="img/jesus.jpg" alt="">
+      <div class="featured-overlay"></div>
+      <div class="featured-content">
+        <span class="featured-eyebrow">Start Here</span>
+        <div class="featured-title">Why Catholic?</div>
+        <div class="featured-desc">7 days of evidence — historical, scientific, philosophical.</div>
+      </div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Why Jesus?</div><div class="section-sub">The case for Christ — reason &amp; evidence</div></div></div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('proof-jesus')"><div class="card-wide-cover"><img src="img/jesus.jpg" alt=""></div><div class="card-wide-title">Did Jesus Really Live?</div><div class="card-wide-meta">Historical evidence</div></div>
+      <div class="card-wide" onclick="openDetail('apparitions')"><div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div><div class="card-wide-title">Mary's Apparitions</div><div class="card-wide-meta">Documented</div></div>
+      <div class="card-wide" onclick="openDetail('commandments')"><div class="card-wide-cover"><img src="img/ten.jpg" alt=""></div><div class="card-wide-title">Ten Commandments</div><div class="card-wide-meta">Moral foundation</div></div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Scripture</div><div class="section-sub">The Word of God</div></div></div>
+    <div class="list">
+      <div class="list-row" onclick="openDetail('prophets')">
+        <div class="list-thumb"><div class="gradient-cover gc-prophets"><svg viewBox="0 0 24 24"><path d="M3 3l9 9 9-9M3 21l9-9 9 9"/></svg></div></div>
+        <div class="list-body"><div class="list-title">The Prophets</div><div class="list-meta">Fulfilled prophecy of Christ</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('revelation')">
+        <div class="list-thumb"><div class="gradient-cover gc-bible"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Book of Revelation</div><div class="list-meta">End times explained</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('catechism')">
+        <div class="list-thumb"><div class="gradient-cover gc-bible"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Catechism</div><div class="list-meta">Official teaching</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Sacraments</div><div class="section-sub">The seven channels of grace</div></div></div>
+    <div class="h-row">
+      <div class="card-sq" onclick="openDetail('eucharist')"><div class="card-sq-cover"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><path d="M3 3h18l-2 9c-.5 2-2.3 3-4.3 3H9.3c-2 0-3.8-1-4.3-3L3 3z"/></svg></div></div><div class="card-sq-title">Eucharist</div><div class="card-sq-meta">Real presence</div></div>
+      <div class="card-sq" onclick="openDetail('baptism')"><div class="card-sq-cover"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg></div></div><div class="card-sq-title">Baptism</div><div class="card-sq-meta">Born again</div></div>
+      <div class="card-sq" onclick="openDetail('confession')"><div class="card-sq-cover"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 12h14"/></svg></div></div><div class="card-sq-title">Confession</div><div class="card-sq-meta">Forgiveness</div></div>
+      <div class="card-sq" onclick="openDetail('confirmation')"><div class="card-sq-cover"><div class="gradient-cover gc-pope"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-5 5-5 10a5 5 0 0 0 10 0c0-3-2-5-2-5"/></svg></div></div><div class="card-sq-title">Confirmation</div><div class="card-sq-meta">Sealed in Spirit</div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MIRACLES ═══════════════ -->
+  <section class="page" id="page-miracles">
+    <div class="section-head"><div><div class="section-title">Miracles</div><div class="section-sub">Documented, investigated, verified</div></div></div>
+
+    <div class="quote">
+      <div class="quote-text">"Miracles do not happen in contradiction to nature, but only in contradiction to that which is known to us of nature."</div>
+      <div class="quote-cite">St. Augustine</div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Eucharistic Miracles</div><div class="section-sub">When the Host became flesh</div></div></div>
+    <div class="list">
+      <div class="list-row" onclick="openDetail('miracle-lanciano')">
+        <div class="list-thumb"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Lanciano, Italy (8th century)</div><div class="list-meta">Heart muscle tissue · Type AB blood</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('miracle-buenosaires')">
+        <div class="list-thumb"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Buenos Aires (1996)</div><div class="list-meta">Investigated by Pope Francis</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('miracle-sokolka')">
+        <div class="list-thumb"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Sokółka, Poland (2008)</div><div class="list-meta">Heart tissue under stress</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Marian Apparitions</div><div class="section-sub">When Heaven visited Earth</div></div></div>
+    <div class="h-row">
+      <div class="card-wide" onclick="openDetail('miracle-fatima')">
+        <div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div>
+        <div class="card-wide-title">Fatima, Portugal</div>
+        <div class="card-wide-meta">1917 · Miracle of the Sun · 70,000 witnesses</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('miracle-lourdes')">
+        <div class="card-wide-cover"><div class="gradient-cover gc-mary"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg></div></div>
+        <div class="card-wide-title">Lourdes, France</div>
+        <div class="card-wide-meta">1858 · 70+ medical healings</div>
+      </div>
+      <div class="card-wide" onclick="openDetail('miracle-guadalupe')">
+        <div class="card-wide-cover"><div class="gradient-cover gc-mary"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6"><circle cx="12" cy="10" r="3"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div></div>
+        <div class="card-wide-title">Guadalupe, Mexico</div>
+        <div class="card-wide-meta">1531 · The tilma image</div>
+      </div>
+    </div>
+
+    <div class="section-head"><div><div class="section-title">Saintly Miracles</div><div class="section-sub">Stigmata, incorruption, bilocation</div></div></div>
+    <div class="list">
+      <div class="list-row" onclick="openDetail('miracle-padre-pio')">
+        <div class="list-thumb"><div class="gradient-cover gc-saints"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Padre Pio's Stigmata</div><div class="list-meta">50 years of bleeding wounds</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('miracle-incorrupt')">
+        <div class="list-thumb"><div class="gradient-cover gc-saints"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 9l7-7 7 7"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Incorrupt Saints</div><div class="list-meta">Bernadette, Catherine, Padre Pio</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="list-row" onclick="openDetail('miracle-shroud')">
+        <div class="list-thumb"><div class="gradient-cover gc-miracles"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M7 18c1-3 3-4 5-4s4 1 5 4"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Shroud of Turin</div><div class="list-meta">Image science · Negative photograph</div></div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+
+    <div class="empty">
+      <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div>
+      <h3>More miracles coming</h3>
+      <p>This collection is being expanded. Each miracle will include the historical record, scientific investigation, and Church verification.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ME ═══════════════ -->
+  <section class="page" id="page-me">
+    <div class="section-head"><div><div class="section-title">Me</div><div class="section-sub">Settings &amp; preferences</div></div></div>
+    <div style="padding:0;">
+      <div class="profile-row">
+        <div class="profile-row-label">Theme</div>
+        <div class="theme-segment" id="theme-seg">
+          <button data-theme="auto" class="active">Auto</button>
+          <button data-theme="light">Light</button>
+          <button data-theme="dark">Dark</button>
+        </div>
+      </div>
+      <div class="profile-row" onclick="openDetail('journal')">
+        <div class="profile-row-label">My Prayer Journal</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="openDetail('prosperity')">
+        <div class="profile-row-label">Prosperity Scriptures</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="openDetail('about')">
+        <div class="profile-row-label">About BeCath</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="openDetail('daily-rhythm')">
+        <div class="profile-row-label">A Daily Rhythm</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="openDetail('dictionary')">
+        <div class="profile-row-label">Catholic Dictionary</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="openDetail('saints-canonization')">
+        <div class="profile-row-label">How Saints Are Made</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="alert('Notifications: coming soon')">
+        <div class="profile-row-label">Notifications</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DETAIL ═══════════════ -->
+  <section class="page" id="page-detail">
+    <div class="detail-hero" id="detail-hero">
+      <button class="detail-back" onclick="goBack()" aria-label="Back">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+    <div class="detail-content">
+      <div class="detail-eyebrow" id="detail-eyebrow">Why Catholic?</div>
+      <div class="detail-title" id="detail-title">Loading…</div>
+      <div class="detail-meta" id="detail-meta"></div>
+      <button class="btn-primary" onclick="playMiniPlayer()">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21"/></svg>
+        Begin
+      </button>
+      <button class="btn-secondary" onclick="alert('Saved to your library')">Save for later</button>
+      <div class="detail-body" id="detail-body"></div>
+    </div>
+  </section>
+
+</div><!-- /.app -->
+
+<!-- Mini player -->
+<div class="mini-player" id="mini-player">
+  <div class="mini-player-art"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21"/></svg></div>
+  <div class="mini-player-info">
+    <div class="mini-player-title" id="mp-title">Morning Offering</div>
+    <div class="mini-player-sub">Now playing</div>
+  </div>
+  <button class="mini-player-btn" onclick="closeMiniPlayer()" aria-label="Pause">
+    <svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+  </button>
+</div>
+
+<!-- Bottom nav -->
+<nav class="bottom-nav">
+  <button class="nav-tab active" data-page="home" onclick="goPage('home')">
+    <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="nav-tab" data-page="pray" onclick="goPage('pray')">
+    <svg viewBox="0 0 24 24"><path d="M14 4l-2 8h6l-8 8 2-8H6l8-8z"/></svg>
+    <span>Pray</span>
+  </button>
+  <button class="nav-tab" data-page="learn" onclick="goPage('learn')">
+    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Learn</span>
+  </button>
+  <button class="nav-tab" data-page="miracles" onclick="goPage('miracles')">
+    <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+    <span>Miracles</span>
+  </button>
+  <button class="nav-tab" data-page="me" onclick="goPage('me')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    <span>Me</span>
+  </button>
+</nav>
+
+<script src="content.js?v=20260503"></script>
+<script>
+  // ── Theme ──
+  function applyTheme(mode){
+    var html = document.documentElement;
+    html.classList.remove('theme-light','theme-dark');
+    if (mode === 'light') html.classList.add('theme-light');
+    else if (mode === 'dark') html.classList.add('theme-dark');
+    try { localStorage.setItem('becath-theme', mode); } catch(e){}
+    document.querySelectorAll('#theme-seg button').forEach(function(b){
+      b.classList.toggle('active', b.dataset.theme === mode);
+    });
+  }
+  (function(){
+    var saved = 'auto';
+    try { saved = localStorage.getItem('becath-theme') || 'auto'; } catch(e){}
+    applyTheme(saved);
+    document.querySelectorAll('#theme-seg button').forEach(function(b){
+      b.addEventListener('click', function(){ applyTheme(b.dataset.theme); });
+    });
+  })();
+
+  // ── Page nav ──
+  var _pageStack = ['home'];
+  function goPage(name, opts){
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    var pg = document.getElementById('page-' + name);
+    if (pg) pg.classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(function(t){
+      t.classList.toggle('active', t.dataset.page === name);
+    });
+    if (!opts || !opts.silent) {
+      if (_pageStack[_pageStack.length-1] !== name) _pageStack.push(name);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function goBack(){
+    _pageStack.pop();
+    var prev = _pageStack[_pageStack.length-1] || 'home';
+    goPage(prev, { silent: true });
+  }
+
+  // ── Detail content. Rich entries live in content.js (window.BECATH_CONTENT) and
+  //    are merged in below — they take precedence over any stub here. ──
+  var DETAIL = {
+    'why-catholic':       { eyebrow:'Featured', title:'Why Catholic?', meta:'7 days · ~10 min each', img:'img/jesus.jpg', body:'A short, honest journey through the historical, philosophical, and personal evidence for the Catholic faith. Day 1: Did Jesus really live? Day 2: The empty tomb. Day 3: Mary\'s appearances. Day 4: The unbroken Church. Day 5: The saints and miracles. Day 6: The sacraments. Day 7: Why this Church, and not another.' },
+    'today-saint':        { eyebrow:'Today', title:'Saint of the Day', meta:'Updated daily', body:'Today\'s saint, their life, what they teach us, and a short prayer asking their intercession.' },
+    'today-mass':         { eyebrow:'Today', title:'Mass Readings', meta:'Daily liturgy · ~5 min', body:'First reading, responsorial psalm, gospel acclamation, gospel, and a short reflection.' },
+    'today-prayer':       { eyebrow:'Today', title:'Prayer Starter', meta:'Reflection prompt', body:'A daily prompt to begin your prayer — drawn from Scripture, the saints, or the liturgical season.' },
+    'proof-jesus':        { eyebrow:'Apologetics', title:'Did Jesus Really Live?', meta:'12 min read', img:'img/jesus.jpg', body:'Even hostile Roman and Jewish historians — Tacitus, Josephus, Pliny the Younger, Suetonius — record Jesus as a real historical figure. The earliest manuscripts of the Gospels date to within a generation of His life. The case for the historical Jesus is stronger than for nearly any other ancient figure.' },
+    'apparitions':        { eyebrow:'Apologetics', title:"Mary's Apparitions", meta:'Documented appearances', img:'img/mary.jpg', body:'Guadalupe (1531). Lourdes (1858). Fatima (1917). Each investigated by skeptics, doctors, and the Church. Each producing evidence — a miraculous tilma, medically certified healings, the Miracle of the Sun before 70,000 witnesses.' },
+    'commandments':       { eyebrow:'Foundation', title:'The Ten Commandments', meta:'Moral law', img:'img/ten.jpg', body:'Given to Moses at Sinai. The bedrock of Western moral and legal tradition. Each commandment is both a "thou shalt not" and an invitation to a fuller life.' },
+    'apologetics':        { eyebrow:'Course', title:'Apologetics Essentials', meta:'8 lessons', body:'How to defend the faith with reason: the existence of God, the divinity of Christ, the authority of the Church, the truth of the sacraments, the meaning of suffering, and answers to the hardest objections.' },
+    'prophets':           { eyebrow:'Scripture', title:'The Prophets', meta:'Old Testament voices', body:'Isaiah, Jeremiah, Ezekiel, Daniel — and how their prophecies of the Messiah were fulfilled in Christ.' },
+
+    'miracle-eucharist':  { eyebrow:'Miracle', title:'Eucharistic Miracles', meta:'Lanciano · Buenos Aires · Sokółka', body:'Across the centuries, in different countries and under different scientific examinations, consecrated Hosts have been found to contain real human heart muscle tissue under stress, with type AB blood — the same blood type found on the Shroud of Turin.' },
+    'miracle-lanciano':   { eyebrow:'Miracle', title:'Lanciano, Italy (8th century)', meta:'Heart muscle · Type AB blood', body:'A Basilian monk doubting the Real Presence saw the Host and wine become flesh and blood during Mass. Modern testing in 1971 by Prof. Odoardo Linoli confirmed: human heart muscle, type AB blood, perfectly preserved without preservatives for over 1,200 years.' },
+    'miracle-buenosaires':{ eyebrow:'Miracle', title:'Buenos Aires (1996)', meta:'Investigated by Cardinal Bergoglio', body:'A consecrated Host was found bleeding. Cardinal Bergoglio (later Pope Francis) ordered scientific testing. Dr. Frederick Zugibe of Columbia University identified the tissue as a heart muscle in a state of agony — testing was done blind, the doctor not knowing the source.' },
+    'miracle-sokolka':    { eyebrow:'Miracle', title:'Sokółka, Poland (2008)', meta:'Heart tissue under stress', body:'A dropped Host placed in water transformed into heart tissue. Independent histopathology by two universities confirmed myocardium fibers under agony — fused with bread fibers in a way no human technique can reproduce.' },
+    'miracle-fatima':     { eyebrow:'Miracle', title:'Miracle of the Sun', meta:'Fatima, Portugal · 1917', img:'img/mary.jpg', body:'On October 13, 1917, before 70,000 people including atheist journalists, the sun appeared to dance in the sky for ten minutes. Witnesses up to 25 miles away reported seeing it. The Lisbon press — secular and anti-Catholic — confirmed the event.' },
+    'miracle-lourdes':    { eyebrow:'Miracle', title:'Healings at Lourdes', meta:'Medical Bureau · 70+ verified', body:'Since 1858, over 7,000 healings have been reported at Lourdes. The Lourdes Medical Bureau, staffed by doctors of every faith and none, has officially declared 70+ healings medically inexplicable — instantaneous, complete, lasting, with no medical explanation.' },
+    'miracle-guadalupe':  { eyebrow:'Miracle', title:'Our Lady of Guadalupe', meta:'1531 · The tilma', body:'Mary appeared to St. Juan Diego in Mexico, leaving an image on his cactus-fiber tilma. After nearly 500 years the fabric should have decayed in 20. The image still has no detectable brushstrokes, paint, or pigment. The eyes contain reflections of multiple people in correct optical perspective.' },
+    'miracle-shroud':     { eyebrow:'Miracle', title:'Shroud of Turin', meta:'Image science · 14ft cloth', body:'A linen cloth bearing the front and back image of a crucified man, consistent with the Gospels. Discovered in 1898 to be a photographic negative — centuries before photography existed. Pollen, blood (type AB), 3D depth information encoded in the image, and microscopic findings continue to defy explanation.' },
+    'miracle-incorrupt':  { eyebrow:'Miracle', title:'Incorrupt Saints', meta:'Bodies that don\'t decay', body:'St. Bernadette of Lourdes (d. 1879). St. Catherine Labouré (d. 1876). Padre Pio (d. 1968). Their bodies remain intact, supple, and uncorrupted decades — sometimes centuries — after death, without embalming.' },
+    'miracle-padre-pio':  { eyebrow:'Miracle', title:"Padre Pio's Stigmata", meta:'1918–1968 · 50 years', body:'For 50 years, Padre Pio bore the visible wounds of Christ — bleeding daily, examined repeatedly by skeptical doctors, never infected, never healed. He also exhibited bilocation, the reading of souls in confession, and miraculous healings, all documented during his lifetime.' },
+
+    'guardian-angel':     { eyebrow:'Angels', title:'Your Guardian Angel', meta:'A daily companion', body:'The Catechism teaches that "from infancy to death, human life is surrounded by their watchful care and intercession." Your guardian angel is given to you personally — to guide, protect, and pray with you.' },
+    'archangels':         { eyebrow:'Angels', title:'The Archangels', meta:'Michael · Gabriel · Raphael', body:'Michael — defender against evil. Gabriel — God\'s messenger. Raphael — healer. The three archangels named in Scripture, each with a feast day and a distinct role in the spiritual life.' },
+    'angel-prayer':       { eyebrow:'Audio', title:'Angel of God', meta:'Classic prayer · ~1 min', body:'"Angel of God, my guardian dear, to whom God\'s love commits me here, ever this day be at my side, to light and guard, to rule and guide. Amen."' },
+
+    'rosary-joyful':      { eyebrow:'Rosary', title:'Joyful Mysteries', meta:'Mon · Sat · ~18 min', body:'Annunciation, Visitation, Nativity, Presentation, Finding in the Temple. Five mysteries that contemplate the joy of Christ\'s coming.' },
+    'rosary-sorrowful':   { eyebrow:'Rosary', title:'Sorrowful Mysteries', meta:'Tue · Fri · ~18 min', body:'Agony in the Garden, Scourging, Crowning with Thorns, Carrying the Cross, Crucifixion. Five mysteries of the Passion.' },
+    'rosary-glorious':    { eyebrow:'Rosary', title:'Glorious Mysteries', meta:'Wed · Sun · ~18 min', body:'Resurrection, Ascension, Descent of the Holy Spirit, Assumption, Coronation of Mary. Five mysteries of triumph.' },
+    'rosary-luminous':    { eyebrow:'Rosary', title:'Luminous Mysteries', meta:'Thu · ~18 min', body:'Baptism in the Jordan, Wedding at Cana, Proclamation of the Kingdom, Transfiguration, Institution of the Eucharist. Five mysteries of light.' },
+    'hail-mary':          { eyebrow:'Prayer', title:'The Hail Mary', meta:'Origins &amp; meaning', img:'img/mary.jpg', body:'The first half is Scripture itself — Gabriel\'s greeting (Luke 1:28) and Elizabeth\'s exclamation (Luke 1:42). The second half — "Holy Mary, Mother of God…" — was added by the Church to ask Mary\'s intercession.' },
+
+    'saint-therese':      { eyebrow:'Saint', title:'St. Thérèse of Lisieux', meta:'1873–1897 · The Little Way', body:'A French Carmelite nun who died at 24. Her "little way" — doing small things with great love — has shaped modern spirituality. Doctor of the Church.' },
+    'saint-francis':      { eyebrow:'Saint', title:'St. Francis of Assisi', meta:'1181–1226', body:'Son of a wealthy merchant who renounced everything to serve the poor. Founded the Franciscan order. Received the stigmata. Patron of animals, ecology, Italy.' },
+    'saint-aquinas':      { eyebrow:'Saint', title:'St. Thomas Aquinas', meta:'1225–1274 · Doctor of the Church', body:'The greatest theologian of the Middle Ages. His Summa Theologica synthesized faith and reason. Patron of students and Catholic schools.' },
+    'saint-padre-pio':    { eyebrow:'Saint', title:'Padre Pio', meta:'1887–1968', body:'Italian Capuchin priest. Bore the stigmata for 50 years. Bilocated, read souls, healed the sick — all documented during his lifetime by skeptical doctors and journalists.' },
+    'saint-mother-teresa':{ eyebrow:'Saint', title:'St. Teresa of Calcutta', meta:'1910–1997', body:'Founded the Missionaries of Charity. Served the poorest of the poor in the slums of India. Nobel Peace Prize 1979. Canonized 2016.' },
+
+    'audio-morning':      { eyebrow:'Audio', title:'Morning Offering', meta:'~2 min', body:'A short prayer to give your day to God: "O Jesus, through the Immaculate Heart of Mary, I offer you all my prayers, works, joys, and sufferings of this day…"' },
+    'audio-angelus':      { eyebrow:'Audio', title:'The Angelus', meta:'~3 min', body:'Traditionally prayed at 6am, noon, and 6pm. A meditation on the Incarnation: "The Angel of the Lord declared unto Mary…"' },
+    'audio-divine-mercy': { eyebrow:'Audio', title:'Divine Mercy Chaplet', meta:'~12 min', body:'Given to St. Faustina by Christ. Prayed on rosary beads. "For the sake of His sorrowful Passion, have mercy on us and on the whole world."' },
+    'audio-examen':       { eyebrow:'Audio', title:'Evening Examen', meta:'~8 min', body:'St. Ignatius\'s daily review: gratitude, awareness, response, sorrow, resolution. A guided five-step prayer to end your day.' },
+
+    'compline':           { eyebrow:'Sleep', title:'Night Prayer (Compline)', meta:'Liturgy of the Hours · ~12 min', body:'The Church\'s official night prayer. Psalms, examination of conscience, the Nunc Dimittis, and an antiphon to Mary.' },
+    'sleep-rosary':       { eyebrow:'Sleep', title:'Sleep Rosary', meta:'Gentle pace · ~25 min', body:'A slow, ambient version of the Rosary designed to help you fall asleep in prayer.' },
+    'psalm-91':           { eyebrow:'Sleep', title:'Psalm 91', meta:'~4 min', body:'"He who dwells in the shelter of the Most High, who abides in the shadow of the Almighty…" The Psalm of God\'s protection.' },
+
+    'eucharist':          { eyebrow:'Sacrament', title:'The Eucharist', meta:'Source &amp; summit', body:'The Real Presence of Christ — body, blood, soul, and divinity — under the appearances of bread and wine. The center of Catholic worship.' },
+    'baptism':            { eyebrow:'Sacrament', title:'Baptism', meta:'New birth', body:'Washes away original sin. Makes us children of God and members of the Church. The gateway to all the other sacraments.' },
+    'confession':         { eyebrow:'Sacrament', title:'Confession', meta:'Reconciliation', body:'The sacrament of mercy. Christ Himself, through the priest, forgives sins. "Whose sins you forgive are forgiven." (John 20:23)' },
+    'confirmation':       { eyebrow:'Sacrament', title:'Confirmation', meta:'Sealed in the Spirit', body:'The sacrament that completes baptism. Strengthens us with the gifts of the Holy Spirit and makes us soldiers of Christ.' },
+    'revelation':         { eyebrow:'Scripture', title:'Book of Revelation', meta:'End times', body:'St. John\'s vision on Patmos. Often misunderstood. Read in light of the Liturgy and the Old Testament prophets.' },
+    'catechism':          { eyebrow:'Reference', title:'Catechism of the Catholic Church', meta:'Official teaching', body:'The complete summary of Catholic doctrine. Promulgated by Pope John Paul II in 1992. Organized in four pillars: Creed, Sacraments, Life in Christ, Prayer.' },
+
+    'about':              { eyebrow:'About', title:'About BeCath', meta:'Our mission', body:'BeCath exists to help people discover why the Catholic faith is true — through evidence, prayer, and the witness of the saints. Built with care, designed to lead you closer to God.' },
+    'journal':            { eyebrow:'Personal', title:'My Journal', meta:'Private prayer reflections', img:'img/journal.jpg', body:'Your journal is private and stored only on your device. Open it from the Today card on Home, or from this menu.' },
+    'prosperity':         { eyebrow:'Scripture', title:'Prosperity Scriptures', meta:'God\'s promises of provision', img:'img/prosperity.jpg', body:'Scripture teaches that God provides for those who trust Him. "And my God will supply every need of yours according to his riches in glory in Christ Jesus." (Phil 4:19) "Seek first the kingdom of God and his righteousness, and all these things will be added to you." (Matt 6:33) "The Lord is my shepherd; I shall not want." (Ps 23:1) True prosperity in the Catholic tradition is wholeness — body, soul, family, work — flowing from a heart aligned with God\'s will.' }
+  };
+
+  // Merge rich content from content.js — these override any stub above.
+  if (window.BECATH_CONTENT) {
+    Object.keys(window.BECATH_CONTENT).forEach(function(k){
+      DETAIL[k] = window.BECATH_CONTENT[k];
+    });
+  }
+
+  // ── Rich block renderer ──
+  // A detail entry can have either { body: "string" } (legacy) or { blocks: [...] }
+  // Blocks: { type: 'p'|'lead'|'quote'|'callout'|'sectionLabel'|'subsection'|'rolegrid'|'archangel'|'prayer'|'list'|'verseList'|'audioRow', ... }
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+  function renderInline(s){
+    // Allow basic <em>, <strong>, <br>; nothing else.
+    return (s||'').replace(/&lt;(\/?(?:em|strong|br\s*\/?))&gt;/g, '<$1>');
+  }
+  function renderBlock(b){
+    var t = b.type;
+    if (t === 'p')         return '<p>' + renderInline(escapeHtml(b.text)) + '</p>';
+    if (t === 'lead')      return '<div class="db-lead"><div class="db-lead-eyebrow">' + escapeHtml(b.eyebrow||'') + '</div><div class="db-lead-text">' + renderInline(escapeHtml(b.text)) + '</div>' + (b.quote ? '<div class="db-lead-quote">"' + escapeHtml(b.quote.text) + '"<span>— ' + escapeHtml(b.quote.cite) + '</span></div>' : '') + '</div>';
+    if (t === 'quote')     return '<blockquote class="db-quote">"' + escapeHtml(b.text) + '"<cite>— ' + escapeHtml(b.cite||'') + '</cite></blockquote>';
+    if (t === 'callout')   return '<div class="db-callout db-callout-' + (b.tone||'gold') + '"><strong>' + escapeHtml(b.title||'') + '</strong>' + renderInline(escapeHtml(b.body||'')) + '</div>';
+    if (t === 'sectionLabel') return '<div class="db-section-label">' + escapeHtml(b.text) + '</div>';
+    if (t === 'subsection') {
+      var inner = (b.blocks||[]).map(renderBlock).join('');
+      return '<div class="db-subsection"><div class="db-subsection-head"><div class="db-subsection-title">' + escapeHtml(b.title||'') + '</div>' + (b.subtitle ? '<div class="db-subsection-sub">' + escapeHtml(b.subtitle) + '</div>' : '') + '</div><div class="db-subsection-body">' + inner + '</div></div>';
+    }
+    if (t === 'accordion') {
+      var inner2 = (b.blocks||[]).map(renderBlock).join('');
+      var openAttr = b.open ? ' open' : '';
+      return '<details class="db-accordion"' + openAttr + '>' +
+        '<summary>' +
+          (b.eyebrow ? '<span class="db-accordion-eyebrow">' + escapeHtml(b.eyebrow) + '</span>' : '') +
+          '<span class="db-accordion-title">' + escapeHtml(b.title||'') + '</span>' +
+          (b.subtitle ? '<span class="db-accordion-sub">' + escapeHtml(b.subtitle) + '</span>' : '') +
+          '<span class="db-accordion-arrow">+</span>' +
+        '</summary>' +
+        '<div class="db-accordion-body">' + inner2 + '</div>' +
+      '</details>';
+    }
+    if (t === 'rolegrid')  return '<div class="db-rolegrid">' + (b.items||[]).map(function(it){ return '<div class="db-role"><div class="db-role-title">' + escapeHtml(it.title) + '</div><div class="db-role-body">' + escapeHtml(it.body) + '</div></div>'; }).join('') + '</div>';
+    if (t === 'archangel') return '<div class="db-archangel"><div class="db-arch-icon">' + (b.icon||'') + '</div><div class="db-arch-content"><div class="db-arch-name">' + escapeHtml(b.name) + '</div><div class="db-arch-meaning">' + escapeHtml(b.meaning||'') + '</div><div class="db-arch-desc">' + escapeHtml(b.body) + '</div></div></div>';
+    if (t === 'prayer')    return '<div class="db-prayer"><div class="db-prayer-label">' + escapeHtml(b.label||'') + '</div><div class="db-prayer-text">' + (b.text||'').split('\n').map(escapeHtml).join('<br>') + '</div></div>';
+    if (t === 'list')      return '<ul class="db-list">' + (b.items||[]).map(function(x){ return '<li>' + renderInline(escapeHtml(x)) + '</li>'; }).join('') + '</ul>';
+    if (t === 'verseList') return '<div class="db-verselist">' + (b.items||[]).map(function(it){ return '<div class="db-verse"><div class="db-verse-cite">' + escapeHtml(it.cite) + '</div><div class="db-verse-text">' + escapeHtml(it.text) + '</div></div>'; }).join('') + '</div>';
+    if (t === 'audioRow')  return '<div class="db-audio" onclick="playMiniPlayer(' + JSON.stringify(b.title||'') + ')"><div class="db-audio-play">▶</div><div class="db-audio-info"><div class="db-audio-title">' + escapeHtml(b.title) + '</div><div class="db-audio-meta">' + escapeHtml(b.meta||'') + '</div></div></div>';
+    if (t === 'h')         return '<h3 class="db-h">' + escapeHtml(b.text) + '</h3>';
+    return '';
+  }
+
+  // ── Journal special renderer (compose + saved entries in localStorage) ──
+  var JOURNAL_PROMPTS_LITE = [
+    'Lord, what do You want from me today?',
+    'What is the one thing you most need from God right now — not want, but need?',
+    'Name three things from today and thank God for each.',
+    'Write a prayer of trust — not because everything is fine, but because He is good.',
+    'Ask the Holy Spirit to guide every word, decision, and glance today.',
+    'Write a prayer for the person you will be hardest on today.',
+    'Where did I find God today? Where did I lose Him?',
+    'What fear is waking up with you today? Write a prayer that gives it to God.',
+    'Write a prayer of surrender: "Not my will but Yours."',
+    'What blessing have you been taking for granted? Write a prayer of renewed gratitude.'
+  ];
+  function _journalKey(){ return 'journal-entries'; }
+  function _loadJournalEntries(){
+    try { return JSON.parse(localStorage.getItem(_journalKey()) || '[]'); } catch(e){ return []; }
+  }
+  function _saveJournalEntries(arr){
+    try { localStorage.setItem(_journalKey(), JSON.stringify(arr)); } catch(e){}
+  }
+  function _todayPromptIndex(){
+    var n = new Date(); var s = new Date(n.getFullYear(),0,1);
+    var doy = Math.floor((n - s) / 86400000);
+    return doy % JOURNAL_PROMPTS_LITE.length;
+  }
+  function renderJournal(d){
+    var intro = (d.blocks||[]).map(renderBlock).join('');
+    var promptIdx = _todayPromptIndex();
+    var prompt = JOURNAL_PROMPTS_LITE[promptIdx];
+    var html = intro;
+    html += '<div class="journal-prompt-card">' +
+      '<div class="journal-prompt-head">' +
+        '<span class="journal-prompt-eyebrow">Today\'s Prayer Starter</span>' +
+        '<button class="journal-prompt-next" onclick="nextJournalPrompt()">Next</button>' +
+      '</div>' +
+      '<div class="journal-prompt-text" id="journalPromptText">' + escapeHtml(prompt) + '</div>' +
+    '</div>';
+    html += '<div class="journal-compose">' +
+      '<div class="journal-compose-label">New Entry</div>' +
+      '<textarea id="journalTextarea" rows="6" placeholder="Write your prayer, intention, or reflection here..."></textarea>' +
+      '<div class="journal-mood-row">' +
+        '<span class="journal-mood-label">How are you feeling?</span>' +
+        '<div class="journal-mood-btns">' +
+          '<button class="journal-mood" data-mood="prayerful" onclick="selectJournalMood(this)">🙏 Prayerful</button>' +
+          '<button class="journal-mood" data-mood="peaceful"  onclick="selectJournalMood(this)">☮️ Peaceful</button>' +
+          '<button class="journal-mood" data-mood="struggling" onclick="selectJournalMood(this)">😣 Struggling</button>' +
+          '<button class="journal-mood" data-mood="grateful"  onclick="selectJournalMood(this)">💛 Grateful</button>' +
+          '<button class="journal-mood" data-mood="onfire"    onclick="selectJournalMood(this)">🔥 On Fire</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="journal-actions">' +
+        '<button class="journal-save" onclick="saveJournalEntry()">Save Entry</button>' +
+      '</div>' +
+    '</div>';
+    html += '<div class="journal-section-label">Your Entries</div>' +
+      '<div id="journalEntries"></div>';
+    return html;
+  }
+  function initJournalUI(){
+    renderJournalEntries();
+  }
+  window.nextJournalPrompt = function(){
+    // Pick a random prompt different from current
+    var el = document.getElementById('journalPromptText');
+    if (!el) return;
+    var current = el.textContent;
+    var next = current;
+    while (next === current && JOURNAL_PROMPTS_LITE.length > 1) {
+      next = JOURNAL_PROMPTS_LITE[Math.floor(Math.random() * JOURNAL_PROMPTS_LITE.length)];
+    }
+    el.style.opacity = '0';
+    setTimeout(function(){ el.textContent = next; el.style.opacity = '1'; }, 140);
+  };
+  window.selectJournalMood = function(btn){
+    document.querySelectorAll('.journal-mood').forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+  };
+  window.saveJournalEntry = function(){
+    var text = (document.getElementById('journalTextarea').value || '').trim();
+    if (!text) { alert('Write something first.'); return; }
+    var moodBtn = document.querySelector('.journal-mood.selected');
+    var mood = moodBtn ? moodBtn.getAttribute('data-mood') : null;
+    var entries = _loadJournalEntries();
+    entries.unshift({
+      id: Date.now(),
+      date: new Date().toISOString(),
+      text: text,
+      mood: mood
+    });
+    _saveJournalEntries(entries);
+    document.getElementById('journalTextarea').value = '';
+    document.querySelectorAll('.journal-mood').forEach(function(b){ b.classList.remove('selected'); });
+    renderJournalEntries();
+  };
+  window.deleteJournalEntry = function(id){
+    if (!confirm('Delete this entry?')) return;
+    var entries = _loadJournalEntries().filter(function(e){ return e.id !== id; });
+    _saveJournalEntries(entries);
+    renderJournalEntries();
+  };
+  function renderJournalEntries(){
+    var container = document.getElementById('journalEntries');
+    if (!container) return;
+    var entries = _loadJournalEntries();
+    if (!entries.length) {
+      container.innerHTML = '<div class="journal-empty">Your journal is empty. Write your first entry above.</div>';
+      return;
+    }
+    var moodIcons = { prayerful:'🙏', peaceful:'☮️', struggling:'😣', grateful:'💛', onfire:'🔥' };
+    container.innerHTML = entries.map(function(e){
+      var d = new Date(e.date);
+      var dateStr = d.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+      var timeStr = d.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' });
+      var mood = e.mood ? '<span class="journal-entry-mood">' + (moodIcons[e.mood]||'') + '</span>' : '';
+      return '<div class="journal-entry">' +
+        '<div class="journal-entry-head">' +
+          '<div class="journal-entry-date">' + dateStr + ' · ' + timeStr + ' ' + mood + '</div>' +
+          '<button class="journal-entry-del" onclick="deleteJournalEntry(' + e.id + ')" aria-label="Delete">×</button>' +
+        '</div>' +
+        '<div class="journal-entry-text">' + escapeHtml(e.text).replace(/\n/g,'<br>') + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // ── Dictionary special renderer (search + A-Z pills + filterable list) ──
+  function renderDictionary(d){
+    var intro = (d.blocks||[]).filter(function(b){ return b.type !== 'subsection'; }).map(renderBlock).join('');
+    var terms = (d.blocks||[]).filter(function(b){ return b.type === 'subsection'; });
+    // Get unique first letters
+    var letters = {};
+    terms.forEach(function(t){ letters[t.title.charAt(0).toUpperCase()] = true; });
+    var letterList = Object.keys(letters).sort();
+
+    var searchHtml = '<div class="dict-search">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>' +
+      '<input id="dict-search-input" type="search" autocomplete="off" placeholder="Search any word…" oninput="filterDictionary()">' +
+      '<button class="dict-clear" id="dict-clear" onclick="clearDictionarySearch()" aria-label="Clear">&times;</button>' +
+      '</div>';
+
+    var pillsHtml = '<div class="dict-pills">' +
+      '<button class="dict-pill active" data-letter="ALL" onclick="filterDictionaryByLetter(this,\'ALL\')">All</button>' +
+      letterList.map(function(L){
+        return '<button class="dict-pill" data-letter="' + L + '" onclick="filterDictionaryByLetter(this,\'' + L + '\')">' + L + '</button>';
+      }).join('') +
+      '</div>';
+
+    var countHtml = '<div class="dict-count" id="dict-count">' + terms.length + ' terms</div>';
+
+    var entriesHtml = '<div class="dict-entries" id="dict-entries">' +
+      terms.map(function(t){
+        var letter = t.title.charAt(0).toUpperCase();
+        var inner = (t.blocks||[]).map(renderBlock).join('');
+        return '<details class="dict-entry" data-letter="' + letter + '" data-title="' + escapeHtml(t.title.toLowerCase()) + '">' +
+          '<summary>' +
+            '<span class="dict-entry-title">' + escapeHtml(t.title) + '</span>' +
+            (t.subtitle ? '<span class="dict-entry-sub">' + escapeHtml(t.subtitle) + '</span>' : '') +
+            '<span class="dict-entry-arrow">+</span>' +
+          '</summary>' +
+          '<div class="dict-entry-body">' + inner + '</div>' +
+        '</details>';
+      }).join('') +
+      '<div class="dict-empty" id="dict-empty" style="display:none;">No terms match. Try a different word.</div>' +
+      '</div>';
+
+    return intro + searchHtml + pillsHtml + countHtml + entriesHtml;
+  }
+
+  function initDictionaryUI(){
+    var input = document.getElementById('dict-search-input');
+    if (input) input.focus();
+  }
+
+  window.filterDictionary = function(){
+    var q = (document.getElementById('dict-search-input').value || '').trim().toLowerCase();
+    var clear = document.getElementById('dict-clear');
+    if (clear) clear.style.display = q ? 'block' : 'none';
+    // If user types, clear the active letter pill
+    if (q) {
+      document.querySelectorAll('.dict-pill').forEach(function(p){ p.classList.remove('active'); });
+      var allBtn = document.querySelector('.dict-pill[data-letter="ALL"]');
+      if (allBtn) allBtn.classList.add('active');
+    }
+    var entries = document.querySelectorAll('.dict-entry');
+    var visible = 0;
+    entries.forEach(function(e){
+      var title = e.dataset.title || '';
+      var bodyText = (e.textContent || '').toLowerCase();
+      var match = !q || title.indexOf(q) >= 0 || bodyText.indexOf(q) >= 0;
+      e.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    var countEl = document.getElementById('dict-count');
+    if (countEl) countEl.textContent = visible + ' term' + (visible === 1 ? '' : 's');
+    var emptyEl = document.getElementById('dict-empty');
+    if (emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  };
+
+  window.clearDictionarySearch = function(){
+    var input = document.getElementById('dict-search-input');
+    if (input) { input.value = ''; input.focus(); }
+    window.filterDictionary();
+  };
+
+  window.filterDictionaryByLetter = function(btn, letter){
+    // Clear search input
+    var input = document.getElementById('dict-search-input');
+    if (input) input.value = '';
+    var clear = document.getElementById('dict-clear');
+    if (clear) clear.style.display = 'none';
+    // Pill state
+    document.querySelectorAll('.dict-pill').forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+    // Filter
+    var entries = document.querySelectorAll('.dict-entry');
+    var visible = 0;
+    entries.forEach(function(e){
+      // Close any open entries when filtering
+      if (e.tagName === 'DETAILS') e.open = false;
+      var match = letter === 'ALL' || e.dataset.letter === letter;
+      e.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    var countEl = document.getElementById('dict-count');
+    if (countEl) countEl.textContent = visible + ' term' + (visible === 1 ? '' : 's');
+    var emptyEl = document.getElementById('dict-empty');
+    if (emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  };
+
+  function openDetail(id){
+    var d = DETAIL[id] || { eyebrow:'BeCath', title:'Coming soon', body:'Content for this section is being prepared.' };
+    document.getElementById('detail-eyebrow').textContent = d.eyebrow || '';
+    document.getElementById('detail-title').textContent = d.title || '';
+    document.getElementById('detail-meta').textContent = d.meta || '';
+
+    var bodyEl = document.getElementById('detail-body');
+    if (d.isDictionary) {
+      bodyEl.innerHTML = renderDictionary(d);
+      setTimeout(initDictionaryUI, 0);
+    } else if (d.isJournal) {
+      bodyEl.innerHTML = renderJournal(d);
+      setTimeout(initJournalUI, 0);
+    } else if (d.blocks && d.blocks.length) {
+      bodyEl.innerHTML = d.blocks.map(renderBlock).join('');
+    } else if (d.body) {
+      bodyEl.innerHTML = d.body.split('\n\n').map(function(p){ return '<p>' + escapeHtml(p) + '</p>'; }).join('');
+    } else {
+      bodyEl.innerHTML = '';
+    }
+
+    // Show/hide audio buttons based on hasAudio flag
+    var btnPrimary = document.querySelector('#page-detail .btn-primary');
+    var btnSecondary = document.querySelector('#page-detail .btn-secondary');
+    if (d.hasAudio === false) {
+      if (btnPrimary) btnPrimary.style.display = 'none';
+      if (btnSecondary) btnSecondary.style.display = 'none';
+    } else {
+      if (btnPrimary) btnPrimary.style.display = '';
+      if (btnSecondary) btnSecondary.style.display = '';
+    }
+
+    var hero = document.getElementById('detail-hero');
+    hero.querySelectorAll('img,.gradient-cover').forEach(function(n){ if(!n.classList.contains('detail-back-icon')) n.remove(); });
+    if (d.img) {
+      var img = document.createElement('img'); img.src = d.img; img.alt = '';
+      hero.insertBefore(img, hero.firstChild);
+    } else {
+      var gc = document.createElement('div'); gc.className = 'gradient-cover ' + (d.gc || 'gc-prayer');
+      gc.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>';
+      hero.insertBefore(gc, hero.firstChild);
+    }
+    goPage('detail');
+  }
+
+  // ── Mini player ──
+  function playMiniPlayer(title){
+    var t = title || document.getElementById('detail-title').textContent;
+    document.getElementById('mp-title').textContent = t;
+    document.getElementById('mini-player').classList.add('show');
+  }
+
+  // ── Pray page daily checklist (localStorage, resets daily) ──
+  function _prayKey(){
+    var d = new Date();
+    return 'pray-' + d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+  }
+  function _loadPrayState(){
+    try { return JSON.parse(localStorage.getItem(_prayKey()) || '{}'); } catch(e){ return {}; }
+  }
+  function _savePrayState(s){
+    try { localStorage.setItem(_prayKey(), JSON.stringify(s)); } catch(e){}
+  }
+  function _renderPrayCount(){
+    var lis = document.querySelectorAll('#prayChecks li');
+    var done = document.querySelectorAll('#prayChecks li.done').length;
+    var total = lis.length;
+    var doneEl = document.getElementById('prayDoneCount');
+    var totalEl = document.getElementById('prayTotalCount');
+    var bar = document.getElementById('prayProgressBar');
+    var sub = document.getElementById('prayChecklistSub');
+    if (doneEl) doneEl.textContent = done;
+    if (totalEl) totalEl.textContent = total;
+    if (bar) bar.style.width = (total ? Math.round(done/total*100) : 0) + '%';
+    if (sub) {
+      if (done === 0) sub.textContent = 'Tap each one as you pray it · resets daily';
+      else if (done === total) sub.textContent = '🎉 You completed your prayer day';
+      else sub.textContent = done + ' of ' + total + ' done · keep going';
+    }
+  }
+  window.togglePrayCheck = function(li){
+    li.classList.toggle('done');
+    var key = li.getAttribute('data-pkey');
+    var state = _loadPrayState();
+    state[key] = li.classList.contains('done');
+    _savePrayState(state);
+    _renderPrayCount();
+  };
+  // Restore checklist state on load
+  document.addEventListener('DOMContentLoaded', function(){
+    var state = _loadPrayState();
+    document.querySelectorAll('#prayChecks li').forEach(function(li){
+      var key = li.getAttribute('data-pkey');
+      if (state[key]) li.classList.add('done');
+    });
+    _renderPrayCount();
+  });
+  function closeMiniPlayer(){
+    document.getElementById('mini-player').classList.remove('show');
+  }
+
+  // ── Onboarding (first-time visitors) ──
+  (function(){
+    var KEY = 'becath_profile';
+    var existing = null;
+    try { existing = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){}
+    if (existing && existing.completed) return;
+
+    var STEPS = [
+      { kind:'intro', title:'Welcome to BeCath', sub:'Catholic faith, made simple. 4 quick questions to make this yours.' },
+      { kind:'text',  field:'name', title:'What should we call you?', sub:'First name is fine.', placeholder:'Your name' },
+      { kind:'choice', field:'stage', title:'Where are you in your faith?', sub:'Pick whatever fits today — you can change this anytime.', options:[
+        { v:'curious',    label:'Curious',           sub:'Just exploring' },
+        { v:'returning',  label:'Coming back',       sub:'Reconnecting after time away' },
+        { v:'practicing', label:'Practicing',        sub:'Active in the faith' },
+        { v:'devout',     label:'Going deeper',      sub:'Want to grow further' }
+      ]},
+      { kind:'multi', field:'needs', title:'What do you most need help with?', sub:'Pick all that apply.', options:[
+        { v:'peace',      label:'Peace & anxiety' },
+        { v:'healing',    label:'Healing' },
+        { v:'family',     label:'Family & relationships' },
+        { v:'forgive',    label:'Forgiveness' },
+        { v:'discern',    label:'Discernment' },
+        { v:'prayer',     label:'A daily prayer rhythm' },
+        { v:'doubt',      label:'Doubts & questions' },
+        { v:'gratitude',  label:'Gratitude' }
+      ]},
+      { kind:'choice', field:'time', title:'When will you pray each day?', sub:'We\'ll gently remind you.', options:[
+        { v:'morning',  label:'Morning',   sub:'6–10 AM' },
+        { v:'midday',   label:'Midday',    sub:'10 AM–2 PM' },
+        { v:'evening',  label:'Evening',   sub:'4–8 PM' },
+        { v:'night',    label:'Night',     sub:'After 8 PM' }
+      ]},
+      { kind:'done', title:'You\'re all set', sub:'Tap below to begin.' }
+    ];
+
+    var state = { name:'', stage:'', needs:[], time:'' };
+    var idx = 0;
+
+    var css = '\
+      .ob-backdrop{position:fixed;inset:0;background:rgba(20,12,4,.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:obFade .3s ease}\
+      @keyframes obFade{from{opacity:0}to{opacity:1}}\
+      .ob-card{background:#FAF6EE;color:#2A1A0E;border-radius:24px;max-width:480px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif}\
+      .ob-progress{height:4px;background:#EFE7D5;border-radius:24px 24px 0 0;overflow:hidden;flex-shrink:0}\
+      .ob-progress-bar{height:100%;background:linear-gradient(90deg,#B8893A,#E8C68B);transition:width .35s ease;width:0}\
+      .ob-body{padding:36px 28px 20px;overflow-y:auto;flex:1}\
+      .ob-eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#B8893A;font-weight:600;margin-bottom:10px}\
+      .ob-title{font-family:Georgia,serif;font-size:1.7rem;font-weight:700;line-height:1.2;margin:0 0 10px}\
+      .ob-sub{color:#5b4938;font-size:.98rem;line-height:1.45;margin:0 0 22px}\
+      .ob-input{width:100%;border:2px solid #E2D6BB;background:#fff;color:#2A1A0E;border-radius:14px;padding:14px 16px;font-size:1.05rem;outline:none;font-family:inherit;-webkit-appearance:none}\
+      .ob-input:focus{border-color:#B8893A}\
+      .ob-options{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}\
+      .ob-opt{border:2px solid #E2D6BB;background:#fff;border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:12px;text-align:left}\
+      .ob-opt:hover{border-color:#B8893A;background:#FFF9EC}\
+      .ob-opt.selected{border-color:#B8893A;background:#FFF1D6}\
+      .ob-opt-label{font-weight:600;font-size:1rem}\
+      .ob-opt-sub{font-size:.85rem;color:#7a6a52;margin-top:2px}\
+      .ob-opt-check{width:22px;height:22px;border-radius:50%;border:2px solid #C9B786;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff}\
+      .ob-opt.selected .ob-opt-check{background:#B8893A;border-color:#B8893A}\
+      .ob-opt-text{flex:1;min-width:0}\
+      .ob-actions{padding:16px 28px 28px;display:flex;gap:10px;flex-shrink:0;border-top:1px solid #EFE7D5}\
+      .ob-btn{flex:1;border:none;border-radius:14px;padding:14px 18px;font-size:1.02rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}\
+      .ob-btn-primary{background:linear-gradient(135deg,#B8893A,#9C7028);color:#fff}\
+      .ob-btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,137,58,.4)}\
+      .ob-btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}\
+      .ob-btn-ghost{background:#EFE7D5;color:#2A1A0E}\
+      .ob-btn-ghost:hover{background:#E2D6BB}\
+      .ob-intro-art{text-align:center;font-size:3rem;margin:8px 0 18px;line-height:1}\
+      .ob-skip{background:none;border:none;color:#9A8060;font-size:.85rem;cursor:pointer;text-align:center;padding:8px;margin-top:12px;width:100%;font-family:inherit;text-decoration:underline}\
+    ';
+    var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+
+    var backdrop = document.createElement('div');
+    backdrop.className = 'ob-backdrop';
+    backdrop.innerHTML = '\
+      <div class="ob-card" role="dialog" aria-modal="true">\
+        <div class="ob-progress"><div class="ob-progress-bar" id="ob-bar"></div></div>\
+        <div class="ob-body" id="ob-body"></div>\
+        <div class="ob-actions" id="ob-actions"></div>\
+      </div>';
+    document.body.appendChild(backdrop);
+
+    function escape(s){ return (s||'').replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+    function render(){
+      var step = STEPS[idx];
+      var bar = document.getElementById('ob-bar');
+      bar.style.width = ((idx+1)/STEPS.length*100) + '%';
+
+      var body = document.getElementById('ob-body');
+      var actions = document.getElementById('ob-actions');
+      var html = '';
+
+      if (step.kind === 'intro') {
+        html = '<div class="ob-intro-art">✝️</div>\
+          <div class="ob-eyebrow">BeCath</div>\
+          <h2 class="ob-title">' + escape(step.title) + '</h2>\
+          <p class="ob-sub">' + escape(step.sub) + '</p>';
+      } else if (step.kind === 'text') {
+        html = '<div class="ob-eyebrow">Step ' + idx + ' of ' + (STEPS.length-2) + '</div>\
+          <h2 class="ob-title">' + escape(step.title) + '</h2>\
+          <p class="ob-sub">' + escape(step.sub) + '</p>\
+          <input type="text" class="ob-input" id="ob-text" placeholder="' + escape(step.placeholder||'') + '" value="' + escape(state[step.field]||'') + '" autocomplete="given-name">';
+      } else if (step.kind === 'choice' || step.kind === 'multi') {
+        var multi = step.kind === 'multi';
+        var current = multi ? (state[step.field]||[]) : state[step.field];
+        var opts = step.options.map(function(o){
+          var sel = multi ? (current.indexOf(o.v) >= 0) : (current === o.v);
+          return '<li class="ob-opt' + (sel?' selected':'') + '" data-v="' + escape(o.v) + '">\
+            <div class="ob-opt-text">\
+              <div class="ob-opt-label">' + escape(o.label) + '</div>' +
+              (o.sub ? '<div class="ob-opt-sub">' + escape(o.sub) + '</div>' : '') +
+            '</div>\
+            <div class="ob-opt-check">' + (sel?'✓':'') + '</div>\
+          </li>';
+        }).join('');
+        html = '<div class="ob-eyebrow">Step ' + idx + ' of ' + (STEPS.length-2) + '</div>\
+          <h2 class="ob-title">' + escape(step.title) + '</h2>\
+          <p class="ob-sub">' + escape(step.sub) + '</p>\
+          <ul class="ob-options" id="ob-options">' + opts + '</ul>';
+      } else if (step.kind === 'done') {
+        var nm = state.name ? (', ' + state.name.split(' ')[0]) : '';
+        html = '<div class="ob-intro-art">\u{1F54A}️</div>\
+          <div class="ob-eyebrow">Ready</div>\
+          <h2 class="ob-title">You\'re all set' + escape(nm) + '</h2>\
+          <p class="ob-sub">' + escape(step.sub) + '</p>';
+      }
+      body.innerHTML = html;
+
+      var canAdvance = true;
+      if (step.kind === 'text')   canAdvance = !!(state[step.field] && state[step.field].trim());
+      if (step.kind === 'choice') canAdvance = !!state[step.field];
+      if (step.kind === 'multi')  canAdvance = (state[step.field]||[]).length > 0;
+
+      var backBtn  = idx > 0 ? '<button class="ob-btn ob-btn-ghost" id="ob-back">Back</button>' : '';
+      var nextLbl  = step.kind === 'done' ? 'Open BeCath' : (step.kind === 'intro' ? 'Get started' : 'Continue');
+      var nextDis  = canAdvance ? '' : ' disabled';
+      var skipBtn  = (step.kind !== 'intro' && step.kind !== 'done') ? '<button class="ob-skip" id="ob-skip">Skip for now</button>' : '';
+      actions.innerHTML = backBtn +
+        '<button class="ob-btn ob-btn-primary" id="ob-next"' + nextDis + '>' + nextLbl + '</button>';
+
+      // Skip link goes inside body
+      if (skipBtn) body.insertAdjacentHTML('beforeend', skipBtn);
+
+      // Bind
+      if (step.kind === 'text') {
+        var inp = document.getElementById('ob-text');
+        inp.focus();
+        inp.addEventListener('input', function(){
+          state[step.field] = inp.value;
+          var btn = document.getElementById('ob-next');
+          if (inp.value.trim()) btn.removeAttribute('disabled'); else btn.setAttribute('disabled','');
+        });
+        inp.addEventListener('keydown', function(e){ if (e.key === 'Enter' && state[step.field]) next(); });
+      }
+      if (step.kind === 'choice' || step.kind === 'multi') {
+        var multi = step.kind === 'multi';
+        document.querySelectorAll('#ob-options .ob-opt').forEach(function(el){
+          el.addEventListener('click', function(){
+            var v = el.dataset.v;
+            if (multi) {
+              var arr = state[step.field] = state[step.field] || [];
+              var i = arr.indexOf(v);
+              if (i >= 0) arr.splice(i,1); else arr.push(v);
+            } else {
+              state[step.field] = v;
+            }
+            render();
+          });
+        });
+      }
+
+      var nb = document.getElementById('ob-next');
+      if (nb) nb.addEventListener('click', next);
+      var bb = document.getElementById('ob-back');
+      if (bb) bb.addEventListener('click', back);
+      var sb = document.getElementById('ob-skip');
+      if (sb) sb.addEventListener('click', function(){ idx++; render(); });
+    }
+    function next(){
+      if (idx < STEPS.length - 1) { idx++; render(); }
+      else { finish(); }
+    }
+    function back(){ if (idx > 0) { idx--; render(); } }
+    function finish(){
+      state.completed = true;
+      state.completedAt = new Date().toISOString();
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+      backdrop.style.transition = 'opacity .3s';
+      backdrop.style.opacity = '0';
+      setTimeout(function(){
+        backdrop.remove();
+        // Update greeting now that we have a name
+        var g = document.getElementById('greet');
+        if (g && state.name) {
+          var firstName = state.name.split(' ')[0];
+          g.textContent = g.textContent + ', ' + firstName;
+        }
+      }, 300);
+    }
+    render();
+  })();
+
+  // ── Greeting + date ──
+  (function(){
+    var h = new Date().getHours();
+    var greet = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
+    var savedName = '';
+    try { savedName = (JSON.parse(localStorage.getItem('becath_profile')||'{}').name || '').trim(); } catch(e){}
+    document.getElementById('greet').textContent = savedName ? (greet + ', ' + savedName) : greet;
+    var d = new Date();
+    var opts = { weekday:'long', month:'long', day:'numeric' };
+    document.getElementById('today-date').textContent = d.toLocaleDateString(undefined, opts);
+  })();
+</script>
+
+</body>
+</html>
