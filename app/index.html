@@ -1302,6 +1302,187 @@ img { display: block; max-width: 100%; }
   color: var(--text-mute);
   font-style: italic;
 }
+
+/* ════════════════════════════════════════════════
+   ▒ Motion: scroll reveals, hover lifts, image zooms
+   Respects prefers-reduced-motion automatically.
+   ════════════════════════════════════════════════ */
+
+/* — Card images zoom + cards lift on hover (devices that support hover) — */
+@media (hover: hover) and (pointer: fine) {
+  .card-sq, .card-wide, .card-row, .featured, .db-day, .db-accordion {
+    transition: transform 0.25s cubic-bezier(.2,.7,.3,1),
+                box-shadow 0.25s cubic-bezier(.2,.7,.3,1),
+                border-color 0.18s ease;
+  }
+  .card-sq:hover, .card-wide:hover {
+    transform: translateY(-3px);
+  }
+  .card-sq:hover .card-sq-cover,
+  .card-wide:hover .card-wide-cover {
+    box-shadow: var(--shadow-lg);
+  }
+  /* image zoom inside the cover frame — frame stays put, picture grows */
+  .card-sq-cover img,
+  .card-wide-cover img,
+  .card-row-thumb img {
+    transition: transform 0.55s cubic-bezier(.2,.7,.3,1);
+    will-change: transform;
+  }
+  .card-sq:hover .card-sq-cover img,
+  .card-wide:hover .card-wide-cover img,
+  .card-row:hover .card-row-thumb img {
+    transform: scale(1.06);
+  }
+  .card-row:hover {
+    transform: translateY(-1px);
+    border-color: var(--gold) !important;
+  }
+  .featured:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 50px rgba(184,137,58,0.28), var(--shadow-lg);
+  }
+  .featured img {
+    transition: transform 0.6s cubic-bezier(.2,.7,.3,1);
+  }
+  .featured:hover img {
+    transform: scale(1.04);
+  }
+  .db-day:hover {
+    transform: translateX(2px);
+    border-color: var(--gold);
+  }
+  .db-day:hover .db-day-arrow {
+    color: var(--gold);
+    transform: translateX(2px);
+  }
+  .db-day-arrow {
+    transition: color 0.18s ease, transform 0.22s cubic-bezier(.2,.7,.3,1);
+  }
+  .tabbar-btn:hover {
+    color: var(--text);
+  }
+}
+
+/* — Tap feedback on touch — */
+.card-sq:active, .card-wide:active, .card-row:active, .featured:active, .db-day:active {
+  transform: scale(0.985);
+}
+
+/* — Featured card subtle ambient breathing (optional, very gentle) — */
+@keyframes featGlow {
+  0%, 100% { box-shadow: 0 14px 40px rgba(184,137,58,0.18), var(--shadow-md); }
+  50%      { box-shadow: 0 18px 50px rgba(184,137,58,0.26), var(--shadow-lg); }
+}
+.featured {
+  animation: featGlow 6s ease-in-out infinite;
+}
+
+/* — Detail page entry animation — */
+@keyframes detailIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.detail-body > * {
+  animation: detailIn 0.4s cubic-bezier(.2,.7,.3,1) backwards;
+}
+.detail-body > *:nth-child(1) { animation-delay: 0.02s; }
+.detail-body > *:nth-child(2) { animation-delay: 0.06s; }
+.detail-body > *:nth-child(3) { animation-delay: 0.10s; }
+.detail-body > *:nth-child(4) { animation-delay: 0.14s; }
+.detail-body > *:nth-child(5) { animation-delay: 0.18s; }
+.detail-body > *:nth-child(6) { animation-delay: 0.22s; }
+
+/* — Accordion open: smooth body reveal — */
+.db-accordion summary {
+  transition: background 0.15s, padding 0.18s;
+}
+.db-accordion[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+.db-accordion-arrow {
+  transition: transform 0.25s cubic-bezier(.2,.7,.3,1), background 0.18s;
+}
+.db-accordion[open] .db-accordion-arrow {
+  transform: rotate(45deg);
+  background: var(--gold);
+  color: #fff;
+}
+
+/* — Scroll-reveal: elements with .reveal fade up when they enter viewport — */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s cubic-bezier(.2,.7,.3,1),
+              transform 0.55s cubic-bezier(.2,.7,.3,1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* — Section heads slide in with a touch of horizontal motion — */
+.section-head.reveal {
+  transform: translateY(14px);
+}
+
+/* — Tab bar: nice press animation — */
+.tabbar-btn {
+  transition: color 0.18s ease, transform 0.12s ease;
+}
+.tabbar-btn:active {
+  transform: translateY(1px) scale(0.95);
+}
+.tabbar-btn.active svg {
+  animation: tabPop 0.35s cubic-bezier(.2,.7,.3,1);
+}
+@keyframes tabPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+/* — Mini player: slide-up entry — */
+.mini-player.show {
+  animation: miniSlide 0.35s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes miniSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* — Greeting: gentle fade-in on load — */
+.topbar-greet {
+  animation: fadeIn 0.7s ease-out 0.1s backwards;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* — Buttons: ripple-ish feedback on click — */
+.btn-primary, .btn-ghost, button.cta, .nav-cta {
+  transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+.btn-primary:active, .btn-ghost:active, button.cta:active {
+  transform: scale(0.97);
+}
+
+/* — Smooth scroll for anchor links — */
+html {
+  scroll-behavior: smooth;
+}
+
+/* — Reduced motion: kill animations for users who ask — */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .featured { animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
 </style>
 </head>
 <body>
@@ -2872,6 +3053,65 @@ img { display: block; max-width: 100%; }
     var d = new Date();
     var opts = { weekday:'long', month:'long', day:'numeric' };
     document.getElementById('today-date').textContent = d.toLocaleDateString(undefined, opts);
+  })();
+
+  // ── Scroll-reveal: fade-up section heads & cards as they enter viewport ──
+  (function(){
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) return;
+
+    function tag(){
+      // Mark targets that should reveal — done lazily so we catch dynamic content (detail pages)
+      var selectors = '.section-head, .h-row, .v-cols, .featured, .quote, .pray-checklist, .list-row, .profile-row, .audio-list-row';
+      document.querySelectorAll(selectors).forEach(function(el){
+        if (!el.classList.contains('reveal') && !el.classList.contains('in')) {
+          el.classList.add('reveal');
+        }
+      });
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    function observeAll(){
+      tag();
+      document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
+    }
+
+    // Initial pass after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', observeAll);
+    } else {
+      observeAll();
+    }
+
+    // Re-scan when the user navigates between pages or opens a detail page
+    var origGoPage = window.goPage;
+    if (typeof origGoPage === 'function') {
+      window.goPage = function(){
+        var r = origGoPage.apply(this, arguments);
+        setTimeout(observeAll, 60);
+        return r;
+      };
+    }
+    var origOpenDetail = window.openDetail;
+    if (typeof origOpenDetail === 'function') {
+      window.openDetail = function(){
+        var r = origOpenDetail.apply(this, arguments);
+        setTimeout(observeAll, 60);
+        return r;
+      };
+    }
+
+    // Also watch for any dynamically-added content via mutation
+    var mo = new MutationObserver(function(){ observeAll(); });
+    mo.observe(document.body, { childList: true, subtree: true });
   })();
 </script>
 
