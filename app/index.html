@@ -848,6 +848,37 @@ img { display: block; max-width: 100%; }
   font-size: 0.78rem; color: var(--text-mute); margin-top: 2px;
 }
 
+/* ═══ Day Links (7-day journey) ═══ */
+.db-daylinks { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.db-day {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, transform 0.08s;
+}
+.db-day:hover { border-color: var(--gold); }
+.db-day:active { transform: scale(0.99); }
+.db-day-num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg-elev);
+  display: grid; place-items: center;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.db-day-info { flex: 1; min-width: 0; }
+.db-day-title { font-size: 0.98rem; font-weight: 600; color: var(--text); }
+.db-day-meta { font-size: 0.8rem; color: var(--text-mute); margin-top: 2px; }
+.db-day-arrow {
+  font-size: 1.4rem; color: var(--text-mute);
+  flex-shrink: 0; line-height: 1;
+}
+
 /* ═══ Journal ═══ */
 .journal-prompt-card {
   margin: 14px 0;
@@ -2140,7 +2171,7 @@ img { display: block; max-width: 100%; }
   </button>
 </nav>
 
-<script src="content.js?v=20260503"></script>
+<script src="content.js?v=20260503-2"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -2288,6 +2319,7 @@ img { display: block; max-width: 100%; }
     if (t === 'list')      return '<ul class="db-list">' + (b.items||[]).map(function(x){ return '<li>' + renderInline(escapeHtml(x)) + '</li>'; }).join('') + '</ul>';
     if (t === 'verseList') return '<div class="db-verselist">' + (b.items||[]).map(function(it){ return '<div class="db-verse"><div class="db-verse-cite">' + escapeHtml(it.cite) + '</div><div class="db-verse-text">' + escapeHtml(it.text) + '</div></div>'; }).join('') + '</div>';
     if (t === 'audioRow')  return '<div class="db-audio" onclick="playMiniPlayer(' + JSON.stringify(b.title||'') + ')"><div class="db-audio-play">▶</div><div class="db-audio-info"><div class="db-audio-title">' + escapeHtml(b.title) + '</div><div class="db-audio-meta">' + escapeHtml(b.meta||'') + '</div></div></div>';
+    if (t === 'dayLinks')  return '<div class="db-daylinks">' + (b.items||[]).map(function(it){ return '<div class="db-day" onclick="openDetail(' + JSON.stringify(it.key) + ')"><div class="db-day-num">' + escapeHtml(it.day||'') + '</div><div class="db-day-info"><div class="db-day-title">' + escapeHtml(it.title) + '</div>' + (it.meta?'<div class="db-day-meta">' + escapeHtml(it.meta) + '</div>':'') + '</div><div class="db-day-arrow">›</div></div>'; }).join('') + '</div>';
     if (t === 'h')         return '<h3 class="db-h">' + escapeHtml(b.text) + '</h3>';
     return '';
   }
@@ -2660,35 +2692,42 @@ img { display: block; max-width: 100%; }
     var idx = 0;
 
     var css = '\
-      .ob-backdrop{position:fixed;inset:0;background:rgba(20,12,4,.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:obFade .3s ease}\
+      .ob-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:obFade .25s ease}\
       @keyframes obFade{from{opacity:0}to{opacity:1}}\
-      .ob-card{background:#FAF6EE;color:#2A1A0E;border-radius:24px;max-width:480px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif}\
-      .ob-progress{height:4px;background:#EFE7D5;border-radius:24px 24px 0 0;overflow:hidden;flex-shrink:0}\
-      .ob-progress-bar{height:100%;background:linear-gradient(90deg,#B8893A,#E8C68B);transition:width .35s ease;width:0}\
-      .ob-body{padding:36px 28px 20px;overflow-y:auto;flex:1}\
-      .ob-eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#B8893A;font-weight:600;margin-bottom:10px}\
-      .ob-title{font-family:Georgia,serif;font-size:1.7rem;font-weight:700;line-height:1.2;margin:0 0 10px}\
-      .ob-sub{color:#5b4938;font-size:.98rem;line-height:1.45;margin:0 0 22px}\
-      .ob-input{width:100%;border:2px solid #E2D6BB;background:#fff;color:#2A1A0E;border-radius:14px;padding:14px 16px;font-size:1.05rem;outline:none;font-family:inherit;-webkit-appearance:none}\
-      .ob-input:focus{border-color:#B8893A}\
-      .ob-options{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}\
-      .ob-opt{border:2px solid #E2D6BB;background:#fff;border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:12px;text-align:left}\
-      .ob-opt:hover{border-color:#B8893A;background:#FFF9EC}\
-      .ob-opt.selected{border-color:#B8893A;background:#FFF1D6}\
-      .ob-opt-label{font-weight:600;font-size:1rem}\
-      .ob-opt-sub{font-size:.85rem;color:#7a6a52;margin-top:2px}\
-      .ob-opt-check{width:22px;height:22px;border-radius:50%;border:2px solid #C9B786;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff}\
-      .ob-opt.selected .ob-opt-check{background:#B8893A;border-color:#B8893A}\
+      @keyframes obSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}\
+      .ob-card{background:#fff;color:#000;border-radius:20px;max-width:460px;width:100%;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(0,0,0,.18),0 1px 0 rgba(0,0,0,.04);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;overflow:hidden;animation:obSlide .3s cubic-bezier(.2,.7,.3,1)}\
+      .ob-progress{height:2px;background:#f0f0f0;flex-shrink:0}\
+      .ob-progress-bar{height:100%;background:#000;transition:width .35s cubic-bezier(.2,.7,.3,1);width:0}\
+      .ob-body{padding:40px 32px 8px;overflow-y:auto;flex:1}\
+      .ob-eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#888;font-weight:500;margin-bottom:14px}\
+      .ob-title{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;font-size:1.6rem;font-weight:600;line-height:1.2;letter-spacing:-.015em;margin:0 0 10px;color:#000}\
+      .ob-sub{color:#666;font-size:.97rem;line-height:1.5;margin:0 0 28px}\
+      .ob-input{width:100%;border:1px solid #e5e5e5;background:#fafafa;color:#000;border-radius:12px;padding:15px 16px;font-size:1.02rem;outline:none;font-family:inherit;-webkit-appearance:none;transition:border-color .15s, background .15s}\
+      .ob-input:focus{border-color:#000;background:#fff}\
+      .ob-input::placeholder{color:#aaa}\
+      .ob-options{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}\
+      .ob-opt{border:1px solid #e5e5e5;background:#fff;border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .12s, background .12s, transform .08s;display:flex;align-items:center;gap:12px;text-align:left}\
+      .ob-opt:hover{border-color:#000}\
+      .ob-opt:active{transform:scale(.99)}\
+      .ob-opt.selected{border-color:#000;background:#000;color:#fff}\
+      .ob-opt-label{font-weight:500;font-size:.98rem;letter-spacing:-.005em}\
+      .ob-opt-sub{font-size:.83rem;color:#999;margin-top:2px}\
+      .ob-opt.selected .ob-opt-sub{color:#aaa}\
+      .ob-opt-check{width:20px;height:20px;border-radius:50%;border:1.5px solid #d0d0d0;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:transparent;font-size:.8rem;transition:all .12s}\
+      .ob-opt.selected .ob-opt-check{background:#fff;border-color:#fff;color:#000;font-weight:700}\
       .ob-opt-text{flex:1;min-width:0}\
-      .ob-actions{padding:16px 28px 28px;display:flex;gap:10px;flex-shrink:0;border-top:1px solid #EFE7D5}\
-      .ob-btn{flex:1;border:none;border-radius:14px;padding:14px 18px;font-size:1.02rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}\
-      .ob-btn-primary{background:linear-gradient(135deg,#B8893A,#9C7028);color:#fff}\
-      .ob-btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,137,58,.4)}\
-      .ob-btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}\
-      .ob-btn-ghost{background:#EFE7D5;color:#2A1A0E}\
-      .ob-btn-ghost:hover{background:#E2D6BB}\
-      .ob-intro-art{text-align:center;font-size:3rem;margin:8px 0 18px;line-height:1}\
-      .ob-skip{background:none;border:none;color:#9A8060;font-size:.85rem;cursor:pointer;text-align:center;padding:8px;margin-top:12px;width:100%;font-family:inherit;text-decoration:underline}\
+      .ob-actions{padding:20px 32px 28px;display:flex;gap:8px;flex-shrink:0}\
+      .ob-btn{flex:1;border:none;border-radius:12px;padding:15px 18px;font-size:1rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;font-family:inherit;transition:opacity .15s, transform .08s, background .15s, color .15s}\
+      .ob-btn:active{transform:scale(.98)}\
+      .ob-btn-primary{background:#000;color:#fff}\
+      .ob-btn-primary:hover{opacity:.85}\
+      .ob-btn-primary:disabled{opacity:.25;cursor:not-allowed;transform:none}\
+      .ob-btn-ghost{background:transparent;color:#666;border:1px solid #e5e5e5}\
+      .ob-btn-ghost:hover{color:#000;border-color:#000}\
+      .ob-intro-art{margin:0 0 24px;line-height:1}\
+      .ob-intro-art svg{width:32px;height:32px;color:#000}\
+      .ob-skip{background:none;border:none;color:#999;font-size:.85rem;cursor:pointer;text-align:center;padding:14px 8px 4px;margin:0;width:100%;font-family:inherit;letter-spacing:-.005em}\
+      .ob-skip:hover{color:#000}\
     ';
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
@@ -2714,7 +2753,7 @@ img { display: block; max-width: 100%; }
       var html = '';
 
       if (step.kind === 'intro') {
-        html = '<div class="ob-intro-art">✝️</div>\
+        html = '<div class="ob-intro-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 3v18M5 9h14"/></svg></div>\
           <div class="ob-eyebrow">BeCath</div>\
           <h2 class="ob-title">' + escape(step.title) + '</h2>\
           <p class="ob-sub">' + escape(step.sub) + '</p>';
@@ -2742,7 +2781,7 @@ img { display: block; max-width: 100%; }
           <ul class="ob-options" id="ob-options">' + opts + '</ul>';
       } else if (step.kind === 'done') {
         var nm = state.name ? (', ' + state.name.split(' ')[0]) : '';
-        html = '<div class="ob-intro-art">\u{1F54A}️</div>\
+        html = '<div class="ob-intro-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>\
           <div class="ob-eyebrow">Ready</div>\
           <h2 class="ob-title">You\'re all set' + escape(nm) + '</h2>\
           <p class="ob-sub">' + escape(step.sub) + '</p>';
