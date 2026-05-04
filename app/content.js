@@ -26,6 +26,7 @@ window.BECATH_CONTENT = {
     eyebrow: 'Angels & Your Guardian',
     title: 'Your Guardian Angel',
     meta: 'Scripture · Catechism · Church Fathers',
+    img: 'img/guardian.jpg',
     gc: 'gc-angels',
     hasAudio: false,
     blocks: [
@@ -71,6 +72,7 @@ window.BECATH_CONTENT = {
     eyebrow: 'Angels',
     title: 'The Three Named Archangels',
     meta: 'Michael · Gabriel · Raphael',
+    img: 'img/archangel.jpg',
     gc: 'gc-angels',
     hasAudio: false,
     blocks: [
@@ -99,6 +101,7 @@ window.BECATH_CONTENT = {
     eyebrow: 'Prayer',
     title: 'Angel of God',
     meta: 'Classic guardian angel prayer · ~1 min',
+    img: 'img/angelofgod.jpg',
     gc: 'gc-prayer',
     blocks: [
       { type:'p', text:'The simplest, most beloved prayer to your guardian angel — taught to children, prayed by saints, recited daily by millions for centuries.' },
@@ -677,135 +680,87 @@ window.BECATH_CONTENT = {
   'apologetics': {
     eyebrow: 'Why Jesus?',
     title: 'Why Jesus?',
-    meta: 'The case for Christ · Reason &amp; evidence',
+    meta: 'The case for Christ · Reason & evidence',
     img: 'img/jesus.jpg',
     hasAudio: false,
     blocks: [
-      { type:'callout', tone:'gold', title:'What is Apologetics?', body:'<em>Apologetics</em> means giving a reasoned defense of the faith. This page makes the logical case — not just "you should believe," but <em>here is why the evidence points here.</em> Faith and reason are not enemies. The Catholic Church has always taught that reason leads to faith.' },
+      { type:'callout', tone:'gold', title:'What is Apologetics?', body:'<em>Apologetics</em> means giving a reasoned defense of the faith — not just "you should believe," but <em>here is why the evidence points here.</em> Faith and reason are not enemies. The Catholic Church has always taught that reason leads to faith.' },
 
-      { type:'sectionLabel', text:'Is Jesus the Son of God or Just a Prophet?' },
-      { type:'callout', tone:'blue', title:'The Lord, Liar, or Lunatic Argument', body:'C.S. Lewis — a former atheist who became one of the greatest Christian thinkers of the 20th century — made this argument famous. It is one of the most important arguments in all of Christian history.' },
-
-      { type:'h', text:'The Starting Point — What Jesus Actually Claimed' },
-      { type:'p', text:'The first thing to establish is what Jesus actually said about Himself. This is not disputed — it is in the historical record:' },
-      { type:'list', items:[
-        '<strong>"I and the Father are one."</strong> (John 10:30) — The Jews immediately picked up stones to kill Him. They understood exactly what He was claiming.',
-        '<strong>"Before Abraham was, I AM."</strong> (John 8:58) — "I AM" is the holy name of God from Exodus. Jesus applied it to Himself. Again, they tried to stone Him.',
-        '<strong>"Anyone who has seen me has seen the Father."</strong> (John 14:9)',
-        '<strong>"I am the way, the truth, and the life. No one comes to the Father except through me."</strong> (John 14:6)',
-        '<strong>"Your sins are forgiven."</strong> (Mark 2:5) — The Pharisees immediately said: "Who can forgive sins but God alone?" They were right. Only God can forgive sins. Jesus claimed to do it.',
-        'At His trial, the High Priest asked: "Are you the Messiah, the Son of the Blessed One?" Jesus answered: <strong>"I am."</strong> (Mark 14:62) This was the statement that led directly to His execution for blasphemy.'
-      ]},
-      { type:'callout', tone:'blue', title:'The key point', body:'Jesus did not leave the option of "good moral teacher" open. He claimed to be God. Either that claim is true — or He was the most dangerous liar in human history, or He was completely insane. There is no comfortable middle ground.' },
-
-      { type:'h', text:'The Trilemma — Lord, Liar, or Lunatic' },
-      { type:'p', text:'Given what Jesus claimed, there are only three logical options. There is no fourth.' },
-
-      { type:'callout', tone:'rose', title:'Option 1: LIAR', body:'Jesus knew He was not God — but claimed to be anyway to gain followers.<br><br><em>Problem:</em> Liars lie for personal gain. Jesus\'s claims led directly to His execution. He had every opportunity to recant and save His life — He never did. At His trial He could have walked away. He chose death rather than deny what He had said. Liars do not die for lies they know are lies.<br><br><em>Problem 2:</em> The moral quality of His teaching is universally acknowledged as extraordinary — the Sermon on the Mount, the Golden Rule, the Beatitudes. It is inconsistent to say the most morally profound teacher in history was simultaneously a pathological liar about His own identity.<br><br><strong>Verdict: Liar is very hard to sustain logically.</strong>' },
-
-      { type:'callout', tone:'rose', title:'Option 2: LUNATIC', body:'Jesus sincerely believed He was God — but was deluded.<br><br><em>Problem:</em> The psychiatric profile of someone who believes they are God is specific and recognizable — grandiosity, incoherence, inability to function in ordinary relationships. Jesus shows none of this. He slept in boats. He wept at funerals. He had deep, stable friendships. He answered complex theological questions with clarity that stunned the most educated men of His day. He showed extraordinary emotional intelligence — with the Samaritan woman, with Peter\'s denial, with Mary Magdalene. This is not the profile of a man suffering from delusions of divinity.<br><br><strong>Verdict: Lunatic is very hard to sustain logically.</strong>' },
-
-      { type:'callout', tone:'sage', title:'Option 3: LORD', body:'Jesus was exactly who He claimed to be.<br><br>This is the only option that explains all the evidence consistently: His teaching, His miracles, His character, His death, and most importantly — His Resurrection. If the Resurrection happened, the question is settled. A man who rises from the dead after predicting He would do so is making a very compelling argument for His claims.' },
-
-      { type:'h', text:'The Jewish Prophets Argument' },
-      { type:'p', text:'A subtle but powerful version of the same logic: Jews believed Jesus was a prophet. But prophets do not lie. If Jesus was a true prophet, everything He said was true. And He claimed to be God. Therefore — if He was a true prophet, He IS God.' },
-      { type:'callout', tone:'blue', title:'The Logical Chain', body:'<strong>Premise 1:</strong> True prophets speak the truth — they speak God\'s word accurately.<br><strong>Premise 2:</strong> Jesus claimed to be God, the Son of God, one with the Father.<br><strong>Premise 3:</strong> If Jesus was a true prophet, his claims were true.<br><strong>Conclusion:</strong> If Jesus was a true prophet, He IS the Son of God.<br><br>The only escape from this conclusion is to say Jesus was a FALSE prophet. But the Old Testament criteria for a false prophet include: their prophecies fail, they lead people away from God, their life does not match their words. Jesus fails none of these tests. His prophecies came true (the destruction of Jerusalem, His own Resurrection). His life was morally consistent with His teaching. He consistently pointed people toward God, not away from Him.' },
-      { type:'p', text:'Islam faces this same problem. The Quran calls Jesus a prophet and says prophets cannot lie. But Jesus said He was the Son of God. Islam\'s solution is to say the Gospel record was corrupted — but there is no historical evidence for this, and the manuscript evidence for the Gospels is the strongest of any ancient text in history.' },
-
-      { type:'h', text:'The Resurrection — The Hinge of Everything' },
-      { type:'p', text:'The Resurrection is the central claim of Christianity. If it is true, everything follows. If it is false, nothing matters. St. Paul said it plainly: <em>"If Christ has not been raised, your faith is futile."</em> (1 Corinthians 15:17)' },
-      { type:'p', text:'<strong>What we know historically — even non-Christian historians agree on these facts:</strong>' },
-      { type:'list', items:[
-        'Jesus died by crucifixion under Pontius Pilate — confirmed by Roman historian Tacitus and Jewish historian Josephus.',
-        'The tomb was empty on the third day — even the enemies of early Christianity did not dispute the empty tomb. Their explanation was theft, not "the tomb was occupied."',
-        'The disciples genuinely believed they had seen Jesus alive after His death.',
-        'Something transformed the disciples from terrified men hiding in a locked room (the day of the crucifixion) into fearless proclaimers willing to die for their testimony — within weeks.',
-        'Paul — who had actively persecuted and killed Christians — was completely transformed by what he described as an encounter with the risen Jesus.',
-        'James — Jesus\'s own brother, who did not believe in Him during His lifetime — became a leader of the early Church and died a martyr for Jesus\'s Resurrection.'
-      ]},
-      { type:'callout', tone:'blue', title:'The historian\'s test', body:'When evaluating a historical claim, the question is: what explanation best accounts for all the known evidence? The Resurrection explains all of it — the empty tomb, the transformation of the disciples, the conversions of Paul and James, the explosion of Christianity in the same city where Jesus died weeks after His death, among people who could easily have checked the tomb. No alternative theory accounts for all of it.' },
-
-      { type:'h', text:'The Prophecy Evidence — 300+ Predictions Fulfilled' },
-      { type:'p', text:'The Old Testament contains over 300 prophecies about the coming Messiah — written centuries before Jesus was born. Jesus fulfilled all of them. The mathematical probability of one person fulfilling even 8 of them by chance is 1 in 10 to the 17th power (a 1 followed by 17 zeros). Fulfilling 300+ makes the chance astronomically impossible by coincidence.' },
-      { type:'verseList', items:[
-        { cite:'Micah 5:2 (700 BC)',     text:'Born in Bethlehem · Fulfilled — Matthew 2:1' },
-        { cite:'Isaiah 7:14 (700 BC)',   text:'Born of a virgin · Fulfilled — Luke 1:26–35' },
-        { cite:'Zechariah 9:9 (500 BC)', text:'Enter Jerusalem on a donkey · Fulfilled — Matthew 21:1–9' },
-        { cite:'Zechariah 11:12 (500 BC)', text:'Betrayed for 30 pieces of silver · Fulfilled — Matthew 26:15' },
-        { cite:'Psalm 22:16 (1000 BC)',  text:'Hands and feet pierced · Fulfilled — John 20:25' },
-        { cite:'Isaiah 53:5 (700 BC)',   text:'Pierced for our transgressions · Fulfilled — John 19:34' },
-        { cite:'Psalm 16:10 (1000 BC)',  text:'Would not see decay in death · Fulfilled — Acts 2:31' },
-        { cite:'Isaiah 53:9 (700 BC)',   text:'Buried with the rich · Fulfilled — Matthew 27:57–60' }
+      { type:'accordion', eyebrow:'The Core Question', title:'Lord, Liar, or Lunatic', subtitle:'What Jesus claimed about Himself', open:true, blocks:[
+        { type:'p', text:'The first thing to establish is what Jesus actually said about Himself. This is not disputed — it is in the historical record:' },
+        { type:'list', items:[
+          '<strong>"I and the Father are one."</strong> (John 10:30) — The Jews immediately picked up stones to kill Him. They understood exactly what He was claiming.',
+          '<strong>"Before Abraham was, I AM."</strong> (John 8:58) — "I AM" is the holy name of God from Exodus. Jesus applied it to Himself.',
+          '<strong>"Anyone who has seen me has seen the Father."</strong> (John 14:9)',
+          '<strong>"I am the way, the truth, and the life."</strong> (John 14:6)',
+          '<strong>"Your sins are forgiven."</strong> (Mark 2:5) — The Pharisees said: "Who can forgive sins but God alone?" Jesus claimed to do it.',
+          'At His trial: "Are you the Messiah?" Jesus answered: <strong>"I am."</strong> (Mark 14:62) This led directly to His execution for blasphemy.'
+        ]},
+        { type:'callout', tone:'blue', title:'The key point', body:'Jesus did not leave the option of "good moral teacher" open. He claimed to be God. Either that claim is true — or He was a liar, or He was insane. There is no comfortable middle ground.' },
+        { type:'callout', tone:'rose', title:'Option 1: LIAR', body:'Jesus knew He was not God but claimed to be anyway. Problem: liars lie for personal gain. His claims led directly to His execution. He had every opportunity to recant and save His life — He never did. Liars do not die for lies they know are lies.<br><br><strong>Verdict: Liar is very hard to sustain logically.</strong>' },
+        { type:'callout', tone:'rose', title:'Option 2: LUNATIC', body:'Jesus believed He was God but was deluded. Problem: the psychiatric profile of someone who believes they are God is recognizable — grandiosity, incoherence. Jesus shows none of this. He wept at funerals, had deep friendships, answered complex questions with stunning clarity. This is not the profile of a man suffering from delusions.<br><br><strong>Verdict: Lunatic is very hard to sustain logically.</strong>' },
+        { type:'callout', tone:'sage', title:'Option 3: LORD', body:'Jesus was exactly who He claimed to be. This is the only option that explains all the evidence consistently: His teaching, His miracles, His character, His death, and — most importantly — His Resurrection.' }
       ]},
 
-      { type:'sectionLabel', text:'Why the Catholic Church?' },
-      { type:'callout', tone:'gold', title:'The next question', body:'Assuming Jesus is who He claimed to be — the next question is: where is His Church today? He promised to build one. He promised the gates of hell would not overcome it. He promised to be with it until the end of the age. If those promises are true — the Church He founded must still exist.' },
-
-      { type:'h', text:'Step 1 — Jesus Founded a Church, Not a Book' },
-      { type:'p', text:'This is the most important starting point. Jesus did not hand anyone a Bible. He did not say "read this book and figure it out." He founded a community — a Church — with specific authority, specific leadership, and specific sacraments. The New Testament was written BY the Church, FOR the Church, decades after Jesus ascended. The Church existed before the Bible. The Bible came from the Church.' },
-      { type:'quote', text:'And I tell you that you are Peter, and on this rock I will build my Church.', cite:'Matthew 16:18 — Jesus said "my Church." One. Singular.' },
-
-      { type:'h', text:'Step 2 — The Four Marks of the True Church' },
-      { type:'p', text:'In the Creed, Catholics profess the Church is "one, holy, catholic, and apostolic." These are the four identifying marks Jesus\'s Church must have:' },
-      { type:'list', items:[
-        '<strong>One</strong> — One faith, one baptism, one Lord (Ephesians 4:5). The true Church is unified in doctrine. The Catholic Church holds the same creed in every nation — unchanged from the Council of Nicaea in 325 AD.',
-        '<strong>Holy</strong> — Produces holiness in its members and traces its holiness back to Christ. The Catholic Church has produced more documented saints, mystics, healers, and moral heroes than any institution in history.',
-        '<strong>Catholic</strong> — "Catholic" means universal. The Church is for all people, all nations, all times. The Catholic Church has been present on every inhabited continent for over a thousand years — the largest and most geographically universal institution in human history.',
-        '<strong>Apostolic</strong> — The Church\'s authority traces back to the apostles in an unbroken line. The Catholic Church can demonstrate through documented historical succession that every bishop alive today was ordained by a bishop who was ordained by a bishop — going back to the apostles, going back to Christ. No other denomination can demonstrate this.'
+      { type:'accordion', eyebrow:'The Hinge', title:'The Resurrection', subtitle:'The evidence every theory must explain', blocks:[
+        { type:'p', text:'St. Paul said it plainly: <em>"If Christ has not been raised, your faith is futile."</em> (1 Cor 15:17). The Resurrection is either the most important event in history — or the most elaborate hoax. The historical facts non-Christian scholars agree on:' },
+        { type:'list', items:[
+          'Jesus died by crucifixion under Pontius Pilate — confirmed by Tacitus and Josephus.',
+          'The tomb was empty on the third day — even His enemies did not dispute this. Their explanation was theft.',
+          'The disciples genuinely believed they had seen Jesus alive after His death.',
+          'Something transformed terrified men hiding in a locked room into fearless proclaimers willing to die — within weeks.',
+          'Paul — who had been killing Christians — was completely transformed by what he described as an encounter with the risen Jesus.',
+          'James — Jesus\'s own brother, who did not believe during His lifetime — became a Church leader and died a martyr for the Resurrection.'
+        ]},
+        { type:'callout', tone:'blue', title:'The historian\'s test', body:'What explanation best accounts for all the known evidence? The Resurrection explains all of it. No alternative theory — stolen body, hallucination, wrong tomb — accounts for everything consistently.' }
       ]},
 
-      { type:'h', text:'Step 3 — The Historical Argument' },
-      { type:'p', text:'The Catholic Church is the oldest continuously operating institution on earth. It predates every nation that currently exists. If you trace any Christian denomination back far enough, you trace it back to the Catholic Church:' },
-      { type:'list', items:[
-        '<strong>33 AD</strong> — Jesus founds the Church. Peter leads it.',
-        '<strong>100 AD</strong> — The word "Catholic" is first used by St. Ignatius of Antioch, a disciple of the Apostle John, to describe the Church.',
-        '<strong>325 AD</strong> — The Council of Nicaea defines the Creed. The Catholic Church defines which books belong in the Bible.',
-        '<strong>1054 AD</strong> — The Great Schism. Eastern Orthodox churches split from Rome over the authority of the Pope. Both trace apostolic succession.',
-        '<strong>1517 AD</strong> — The Protestant Reformation. Martin Luther and others break from the Catholic Church, starting thousands of denominations. Every Protestant church is a branch from the Catholic trunk — however distant.',
-        '<strong>Today</strong> — Over 45,000 Christian denominations exist, each claiming to follow the Bible. The Catholic Church is the only one that existed before the Bible was compiled — and the only one that can trace its leadership back to Peter without interruption.'
-      ]},
-      { type:'callout', tone:'gold', title:'The uncomfortable question for non-Catholic Christianity', body:'If the Bible is the sole authority for the faith — who decided which books were in the Bible? Answer: The Catholic Church at the Council of Carthage (397 AD). Every Christian who reads the Bible is trusting a Catholic decision.' },
-
-      { type:'h', text:'Step 4 — The Eucharist Argument' },
-      { type:'p', text:'In John 6, Jesus said: <em>"Unless you eat the flesh of the Son of Man and drink his blood, you have no life in you."</em> This is the clearest, most repeated teaching in all of John\'s Gospel — Jesus says it six times in different ways. When people walked away because it was too hard to believe, He did not call them back and say "I was speaking metaphorically." He let them go and doubled down.' },
-      { type:'p', text:'The early Church universally understood this literally. St. Ignatius (writing in 107 AD, while some apostles were still alive): <em>"They abstain from the Eucharist and from prayer because they do not confess that the Eucharist is the Flesh of our Savior Jesus Christ."</em> This was written before most of the New Testament was even collected.' },
-      { type:'p', text:'Only the Catholic Church (and the Orthodox) claim to actually offer what Jesus described — His real Body and Blood in the Eucharist. If Jesus meant what He said literally — which the earliest historical evidence strongly suggests He did — then the Eucharist is available only where it has been preserved through valid apostolic succession.' },
-
-      { type:'h', text:'Step 5 — The Authority Problem of "Bible Alone"' },
-      { type:'p', text:'Protestantism\'s core claim is "Scripture alone" (sola scriptura) — the Bible is the only authority. The immediate problem: the Bible itself never claims this. Nowhere in the Bible does it say "the Bible alone is the final authority." The concept of sola scriptura is itself not in the Bible — which makes it self-refuting.' },
-      { type:'p', text:'The second problem: if everyone interprets the Bible individually, you get 45,000+ denominations — all claiming to follow the Bible and all disagreeing on fundamental questions like baptism, Communion, salvation, and church structure. This fragmentation was not what Jesus prayed for the night before He died (<em>"That they may all be one"</em> — John 17:21).' },
-      { type:'p', text:'The Catholic answer: Jesus did not leave a book and say "figure it out." He left a Church with authority to interpret the book — just as the Supreme Court has authority to interpret the Constitution. The text requires an authoritative interpreter or it dissolves into endless contradiction.' },
-
-      { type:'h', text:'Step 6 — The Miracle Evidence' },
-      { type:'p', text:'No other denomination or religion has the documented miracle record the Catholic Church has. The Church investigates miracles rigorously — specifically to weed out fraud and delusion — and still approves hundreds:' },
-      { type:'list', items:[
-        '<strong>Eucharistic miracles</strong> — 12+ scientifically examined, all finding living human cardiac tissue, blood type AB, signs of a person in agony. Across centuries and continents. Identical findings.',
-        '<strong>Lourdes</strong> — 70 miracles officially approved by an international medical bureau of doctors including atheists and non-Catholics. Over 7,000 cases examined, 70 approved after exhaustive scrutiny.',
-        '<strong>Fatima</strong> — The Miracle of the Sun witnessed by 70,000 people including secular journalists and hostile skeptics, reported in newspapers the next day before any religious interpretation was applied.',
-        '<strong>Stigmata</strong> — 300+ documented cases. Padre Pio bore the wounds for 50 years, examined by secular physicians including atheists who found no natural explanation.',
-        '<strong>Incorruptibles</strong> — saints\' bodies that have not decayed centuries after death, without embalming — including St. Bernadette (who looks as she did in 1879).'
+      { type:'accordion', eyebrow:'The Prophecy Case', title:'300+ Predictions Fulfilled', subtitle:'Written centuries before Christ', blocks:[
+        { type:'p', text:'The Old Testament contains over 300 prophecies about the coming Messiah — written centuries before Jesus was born. The mathematical probability of one person fulfilling even 8 by chance is 1 in 10¹⁷. Jesus fulfilled all of them.' },
+        { type:'verseList', items:[
+          { cite:'Micah 5:2 (700 BC)',       text:'Born in Bethlehem · Fulfilled — Matthew 2:1' },
+          { cite:'Isaiah 7:14 (700 BC)',     text:'Born of a virgin · Fulfilled — Luke 1:26–35' },
+          { cite:'Zechariah 9:9 (500 BC)',   text:'Enter Jerusalem on a donkey · Fulfilled — Matthew 21:1–9' },
+          { cite:'Zechariah 11:12 (500 BC)', text:'Betrayed for 30 pieces of silver · Fulfilled — Matthew 26:15' },
+          { cite:'Psalm 22:16 (1000 BC)',    text:'Hands and feet pierced · Fulfilled — John 20:25' },
+          { cite:'Isaiah 53:5 (700 BC)',     text:'Pierced for our transgressions · Fulfilled — John 19:34' },
+          { cite:'Psalm 16:10 (1000 BC)',    text:'Would not see decay in death · Fulfilled — Acts 2:31' },
+          { cite:'Isaiah 53:9 (700 BC)',     text:'Buried with the rich · Fulfilled — Matthew 27:57–60' }
+        ]}
       ]},
 
-      { type:'callout', tone:'sage', title:'The Honest Conclusion', body:'<strong>Here is the logical chain, restated simply:</strong><br><br>1. Jesus existed historically — this is not disputed by serious scholars of any faith.<br>2. Jesus claimed to be God — this is in the historical record and cannot be argued away.<br>3. Jesus either lied, was insane, or was telling the truth. The evidence against lying and insanity is very strong.<br>4. The most reasonable conclusion: Jesus was who He said He was.<br>5. Jesus founded a Church and promised it would last until the end of time.<br>6. The Catholic Church is the only institution that can trace an unbroken connection — in leadership, in sacraments, in doctrine — back to the Church Jesus founded.<br>7. The early Christians who knew the apostles personally understood the Eucharist, Baptism, and Church authority exactly as the Catholic Church teaches today.<br><br><strong>The question is not "which church is perfect?" — none are, because they are all made of imperfect humans. The question is "which church is true?" And truth is determined by evidence — not by comfort, not by familiarity, not by what is easiest to believe.</strong>' },
-
-      { type:'h', text:'What This Does Not Mean' },
-      { type:'list', items:[
-        'That non-Catholics are bad people or going to Hell — the Church explicitly teaches that people of other faiths can be saved through the grace of God working outside the visible Church.',
-        'That there is no truth or goodness in other Christian denominations — the Catholic Church recognizes and honors the elements of truth present in all Christian communities.',
-        'That Catholics are better people than non-Catholics — clearly not, looking at history.',
-        'That if you are seeking the fullness of what Jesus established — the complete deposit of faith, all seven sacraments, the Eucharist as He described it, the authority He gave to the apostles — the Catholic Church is where the evidence points.'
+      { type:'accordion', eyebrow:'Why the Catholic Church?', title:'Jesus Founded a Church, Not a Book', subtitle:'The evidence for apostolic succession', blocks:[
+        { type:'callout', tone:'gold', title:'The next question', body:'If Jesus is who He claimed to be — where is His Church today? He promised to build one. He promised the gates of hell would not overcome it. He promised to be with it until the end of the age.' },
+        { type:'quote', text:'And I tell you that you are Peter, and on this rock I will build my Church.', cite:'Matthew 16:18' },
+        { type:'list', items:[
+          '<strong>One</strong> — One faith, one baptism, one Lord. The Catholic Church holds the same creed in every nation, unchanged from the Council of Nicaea in 325 AD.',
+          '<strong>Holy</strong> — More documented saints, mystics, and healers than any institution in history.',
+          '<strong>Catholic</strong> — Universal. Present on every inhabited continent for over a thousand years.',
+          '<strong>Apostolic</strong> — Every bishop alive today can trace his ordination in an unbroken line back to the apostles, back to Christ. No other denomination can demonstrate this.'
+        ]},
+        { type:'callout', tone:'gold', title:'The uncomfortable question', body:'Who decided which books are in the Bible? Answer: The Catholic Church at the Council of Carthage (397 AD). Every Christian who reads a Bible is trusting a Catholic decision.' }
       ]},
-      { type:'quote', text:'The Church is not a human achievement. She is a gift of God.', cite:'Pope Benedict XVI' },
 
-      { type:'sectionLabel', text:'People Who Reasoned Their Way to Faith' },
-      { type:'p', text:'These are some of the sharpest minds in history who examined the evidence and concluded that Christianity — and specifically Catholicism — is true:' },
-      { type:'list', items:[
-        '<strong>C.S. Lewis</strong> — Oxford professor, former atheist. <em>Mere Christianity</em> is the most accessible logical case for Christianity ever written. His <em>Lord, Liar, or Lunatic</em> argument is in this app.',
-        '<strong>G.K. Chesterton</strong> — Journalist and intellectual who investigated the Catholic Church specifically to disprove it — and ended up converting. His book <em>Orthodoxy</em> is a masterpiece.',
-        '<strong>St. Augustine</strong> — Led a wild life, investigated every philosophy of his age, and concluded: <em>"Our heart is restless until it rests in Thee."</em> His <em>Confessions</em> is still the most widely read autobiography in Western history.',
-        '<strong>Blaise Pascal</strong> — One of the greatest mathematicians and scientists in history. He argued that believing in God is the only rational bet: if God exists and you believe, you gain everything. If He doesn\'t exist and you believe, you lose nothing. The stakes are infinite — the rational choice is faith.',
-        '<strong>Lee Strobel</strong> — Investigative journalist and atheist who set out to disprove the Resurrection using journalistic methods. Interviewed leading historians, archaeologists, and scientists. His conclusion, documented in <em>The Case for Christ</em>: the evidence for the Resurrection is overwhelming.',
-        '<strong>Scott Hahn</strong> — Presbyterian minister and theologian who converted to Catholicism after studying the early Church Fathers and concluding they were unambiguously Catholic in their theology. <em>Rome Sweet Home</em> is his story.'
+      { type:'accordion', eyebrow:'The Miracle Record', title:'Evidence No Other Church Has', subtitle:'Scientifically examined, officially approved', blocks:[
+        { type:'list', items:[
+          '<strong>Eucharistic miracles</strong> — 12+ cases examined finding living human cardiac tissue, blood type AB, signs of agony. Across centuries and continents. Identical findings.',
+          '<strong>Lourdes</strong> — 70 miracles officially approved by an international medical bureau including atheist doctors. 7,000+ cases examined.',
+          '<strong>Fatima</strong> — The Miracle of the Sun witnessed by 70,000 people including secular journalists and skeptics, reported in newspapers the next day.',
+          '<strong>Stigmata</strong> — 300+ documented cases. Padre Pio bore the wounds for 50 years, examined by secular physicians.',
+          '<strong>Incorruptibles</strong> — Saints\' bodies undecayed centuries after death, without embalming. St. Bernadette looks as she did in 1879.'
+        ]},
+        { type:'callout', tone:'sage', title:'The Honest Conclusion', body:'1. Jesus existed — not disputed by serious historians of any faith.<br>2. Jesus claimed to be God — it is in the historical record.<br>3. The evidence against lying and insanity is very strong.<br>4. The most reasonable conclusion: Jesus was who He said He was.<br>5. He founded a Church that would last until the end of time.<br>6. Only the Catholic Church traces an unbroken connection — in leadership, sacraments, and doctrine — back to that Church.<br><br><strong>The question is not "which church is perfect?" The question is "which church is true?"</strong>' }
+      ]},
+
+      { type:'accordion', eyebrow:'Converts', title:'People Who Reasoned Their Way to Faith', subtitle:'Skeptics, atheists, and intellectuals', blocks:[
+        { type:'list', items:[
+          '<strong>C.S. Lewis</strong> — Oxford professor, former atheist. <em>Mere Christianity</em> is the most accessible logical case for Christianity ever written.',
+          '<strong>G.K. Chesterton</strong> — Journalist who investigated the Catholic Church to disprove it — and ended up converting. His book <em>Orthodoxy</em> is a masterpiece.',
+          '<strong>St. Augustine</strong> — Investigated every philosophy of his age and concluded: <em>"Our heart is restless until it rests in Thee."</em>',
+          '<strong>Blaise Pascal</strong> — One of the greatest mathematicians in history. Argued that believing in God is the only rational bet: if God exists and you believe, you gain everything.',
+          '<strong>Lee Strobel</strong> — Atheist journalist who set out to disprove the Resurrection. His conclusion, documented in <em>The Case for Christ</em>: the evidence is overwhelming.',
+          '<strong>Scott Hahn</strong> — Presbyterian minister who converted after studying the early Church Fathers and concluding they were unambiguously Catholic.'
+        ]}
       ]}
     ]
   },
@@ -1345,6 +1300,80 @@ window.BECATH_CONTENT = {
       ]},
       { type:'callout', tone:'gold', title:'The obligation', body:'Catholics are obligated to attend Mass every Sunday and Holy Day of Obligation. Not because God needs the attendance — but because <em>you</em> need what Mass provides. Missing Mass without serious reason is a mortal sin — not because God is punitive but because it signals that something has become more important to you than God Himself. That is the real issue.' }
       ]}
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // EUCHARISTIC MIRACLES — standalone page
+  // ────────────────────────────────────────────────────────
+  'miracle-eucharist': {
+    eyebrow: 'Miracles',
+    title: 'Eucharistic Miracles',
+    meta: '12 documented · Scientifically examined',
+    img: 'img/eucharist-miracle.jpg',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'The central mystery of Catholic faith', body:'Not a symbol. Not a memorial. Catholics believe the Eucharist is the literal Body, Blood, Soul, and Divinity of Jesus Christ — present at every Mass worldwide, every single day.' },
+
+      { type:'sectionLabel', text:'— 12 Documented Eucharistic Miracles —' },
+
+      { type:'accordion', eyebrow:'1', title:'Lanciano, Italy', subtitle:'750 AD · The first scientifically examined miracle', open:true, blocks:[
+        { type:'p', text:'A monk doubting the Real Presence watched the host transform into flesh and the wine into blood at the moment of consecration. The blood coagulated into five pellets — each weighing the same as all five together, a mathematical impossibility.' },
+        { type:'callout', tone:'gold', title:'Scientific Analysis — 1970', body:'Human cardiac tissue (myocardium — heart muscle). Blood type AB. No preservatives. No decay after 1,250 years. Tissue shows signs of traumatic death. Both flesh and blood from the same person.' },
+        { type:'p', text:'Still exists — Church of San Francesco, Lanciano, Italy. You can visit it.' }
+      ]},
+
+      { type:'accordion', eyebrow:'2', title:'Bolsena-Orvieto, Italy', subtitle:'1263 AD · Caused the Feast of Corpus Christi', blocks:[
+        { type:'p', text:'A priest doubting the Real Presence watched the host bleed profusely onto the altar linen during Mass. He ran immediately to Pope Urban IV who was staying nearby. This miracle directly caused Pope Urban IV to institute the Feast of Corpus Christi for the entire Church in 1264.' },
+        { type:'p', text:'The blood-stained linen is on display in the Cathedral of Orvieto, Italy.' }
+      ]},
+
+      { type:'accordion', eyebrow:'3', title:'Santarém, Portugal', subtitle:'1247 AD · Continues bleeding to this day', blocks:[
+        { type:'p', text:'A woman tried to steal a consecrated host to give to a sorceress. The host began bleeding in her hands in the street. She hid it at home — that night her room was filled with brilliant light emanating from the cloth. She confessed and returned it to the Church. The host has continued bleeding periodically throughout the centuries, witnessed by thousands.' }
+      ]},
+
+      { type:'accordion', eyebrow:'4', title:'Amsterdam, Netherlands', subtitle:'1345 AD · Survived a fire intact', blocks:[
+        { type:'p', text:'A dying man vomited up his Communion. Per the priest\'s instructions, the family cast it into the fireplace. The next morning the host was found sitting in the flames — completely intact and unharmed. It was retrieved and became the basis for Amsterdam\'s greatest pilgrimage. The annual Silent Procession still takes place every March.' }
+      ]},
+
+      { type:'accordion', eyebrow:'5', title:'Siena, Italy — Incorrupt Hosts', subtitle:'1730 AD · Hosts that never decayed', blocks:[
+        { type:'p', text:'Robbers stole over 300 consecrated hosts. Two days later they were found dirty and cobwebbed in another church. Priests set them aside to deteriorate naturally. Decades passed. Then a century. Then almost three centuries. The hosts never decayed. They appear fresh to this day.' },
+        { type:'callout', tone:'gold', title:'Testing', body:'Scientists have confirmed no signs of organic decomposition despite nearly 300 years. Normal bread disintegrates within months. Still exists — Basilica of St. Francis, Siena, Italy.' }
+      ]},
+
+      { type:'accordion', eyebrow:'6', title:'Cascia, Italy — The Bleeding Breviary', subtitle:'14th Century', blocks:[
+        { type:'p', text:'A priest was reading his breviary when a host he had reserved slipped and fell into the book\'s pages. When he retrieved it, blood had soaked into the pages in the exact shape of the host. The breviary is preserved to this day in the Basilica of St. Rita, Cascia, Italy — the blood stain visible after seven centuries.' }
+      ]},
+
+      { type:'accordion', eyebrow:'7', title:'Rimini, Italy — The Mule\'s Adoration', subtitle:'1227 AD · St. Anthony\'s miracle', blocks:[
+        { type:'p', text:'St. Anthony of Padua was debating a heretic who denied the Real Presence. The heretic said he would believe if his mule — starved for three days — would adore the Eucharist rather than eat a bucket of grain placed before it. St. Anthony brought the Blessed Sacrament. The mule ignored the grain, knelt, and bowed its head before the host. The heretic converted.' }
+      ]},
+
+      { type:'accordion', eyebrow:'8', title:'Buenos Aires, Argentina', subtitle:'1992–1996 · Investigated by Cardinal Bergoglio', blocks:[
+        { type:'p', text:'Three incidents over four years at the same parish. Discarded hosts placed in water to dissolve instead transformed into a reddish substance. Overseen by Cardinal Jorge Mario Bergoglio — later Pope Francis — who personally authorized the scientific analysis.' },
+        { type:'callout', tone:'gold', title:'Scientific Analysis', body:'Dr. Ricardo Castañón Gómez: human cardiac tissue (left ventricle), blood type AB, white blood cells actively functioning — tissue was still alive. Scientists could not obtain a DNA profile despite living tissue — described as scientifically inexplicable. Results matched Lanciano (750 AD).' }
+      ]},
+
+      { type:'accordion', eyebrow:'9', title:'Chirattakonam, India', subtitle:'2001', blocks:[
+        { type:'p', text:'During Mass, a host began to emit a reddish fluid visible to the priest and multiple witnesses. The event was documented and the host preserved. Part of a growing pattern of Eucharistic miracles occurring in the modern era across multiple continents — each independently examined.' }
+      ]},
+
+      { type:'accordion', eyebrow:'10', title:'Tixtla, Mexico', subtitle:'2006 · One of the most thoroughly investigated miracles in history', blocks:[
+        { type:'p', text:'During Communion, a religious sister noticed the host she held began emitting a reddish substance. Two priests witnessed it. The host was secured immediately and examined over three years by experts from four continents.' },
+        { type:'callout', tone:'gold', title:'Scientific Findings', body:'Human blood confirmed (hemoglobin), blood type AB (matching Lanciano and Buenos Aires). Living cardiac muscle — left ventricular myocardium. White blood cells were actively functioning. Re-examined years later — still shows signs of life. No DNA profile obtainable despite tissue being alive — described as scientifically baffling. Bishop declared it a Eucharistic miracle October 12, 2013 with 19 appendices of lab reports.' }
+      ]},
+
+      { type:'accordion', eyebrow:'11', title:'Sokółka, Poland', subtitle:'2008 · Bread and flesh fused at the molecular level', blocks:[
+        { type:'p', text:'A host dropped during Mass was placed in water to dissolve. One week later the sacristan opened the safe and found red stains on the host. It was kept in the tabernacle for three years before analysis.' },
+        { type:'callout', tone:'gold', title:'Scientific Analysis', body:'Medical professors at University of Białystok: human cardiac muscle "as if taken from the heart of a living person in agony." Electron microscopy revealed the bread molecules and cardiac tissue were fused at the microscopic level — down to the myofibril filaments. This is scientifically impossible by any known natural process. Results matched Lanciano, Buenos Aires, and Tixtla.' }
+      ]},
+
+      { type:'accordion', eyebrow:'12', title:'Legnica, Poland', subtitle:'2013 · Vatican-recognized', blocks:[
+        { type:'p', text:'On Christmas Day 2013, a host fell during Communion and was placed in water to dissolve. Instead, red stains formed. Independent laboratories from multiple institutions were commissioned.' },
+        { type:'callout', tone:'gold', title:'Vatican Recognition', body:'Forensic Medicine in Szczecin: "cross-striated muscle fragments most similar to heart muscle with alterations typical of agony." Human DNA confirmed. Results presented to the Vatican\'s Congregation for the Doctrine of the Faith, which recognized the supernatural nature of the event — one of the most recently Vatican-acknowledged miracles.' }
+      ]},
+
+      { type:'callout', tone:'gold', title:'The Pattern', body:'Across Lanciano (750 AD), Buenos Aires (1992–96), Tixtla (2006), Sokółka (2008), and Legnica (2013) — separated by centuries and continents — scientists independently found: human cardiac tissue, left ventricular myocardium, blood type AB, signs of trauma and agony, living cells. <strong>Blood type AB is most common in the Middle East — the region of Jesus\'s earthly life.</strong>' }
     ]
   },
 
