@@ -1243,15 +1243,70 @@ img { display: block; max-width: 100%; }
   border-radius: 50%;
   background: var(--bg-soft);
   color: var(--text-mute);
-  font-size: 1.2rem; font-weight: 600;
-  line-height: 1;
-  transition: transform 0.22s, background 0.15s, color 0.15s;
+  transition: transform 0.22s cubic-bezier(.4,0,.2,1), background 0.15s, color 0.15s;
   flex-shrink: 0;
 }
+.db-accordion-arrow svg {
+  width: 15px; height: 15px;
+  stroke: currentColor; fill: none; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 .db-accordion[open] .db-accordion-arrow {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
   background: var(--gold-soft);
   color: var(--gold);
+}
+
+/* ═══ Daily Rhythm tap card (Pray page) ═══ */
+.rhythm-card {
+  display: flex; gap: 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.18s, border-color 0.18s, transform 0.15s;
+  /* SG top stripe */
+  border-top: 3px solid transparent;
+  background-image: linear-gradient(var(--bg-elev), var(--bg-elev)),
+    linear-gradient(90deg, #C84040 0%, #D08010 16%, #C8960A 32%, #2A8A3A 48%, #1A8080 64%, #3060C0 80%, #7040B8 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.rhythm-card:active { transform: scale(0.985); box-shadow: 0 2px 14px rgba(160,120,32,0.12); }
+.rhythm-card-img {
+  width: 110px; flex-shrink: 0;
+}
+.rhythm-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.rhythm-card-body {
+  flex: 1; padding: 14px 14px 14px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.rhythm-card-eyebrow {
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+}
+.rhythm-card-title {
+  font-family: var(--ff-display); font-size: 0.92rem; font-weight: 700;
+  color: var(--text); line-height: 1.25; letter-spacing: 0.01em;
+}
+.rhythm-card-desc {
+  font-family: var(--ff-serif); font-size: 0.82rem; font-style: italic;
+  color: var(--text-mute); line-height: 1.4; margin-top: 2px;
+}
+.rhythm-card-cta {
+  display: flex; align-items: center; gap: 4px;
+  margin-top: 8px;
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+}
+.rhythm-card-cta svg {
+  width: 13px; height: 13px;
+  stroke: var(--gold); fill: none; stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
 }
 .db-accordion-body {
   padding: 4px 18px 18px;
@@ -1619,9 +1674,9 @@ img { display: block; max-width: 100%; }
   transition: transform 0.25s cubic-bezier(.2,.7,.3,1), background 0.18s;
 }
 .db-accordion[open] .db-accordion-arrow {
-  transform: rotate(45deg);
-  background: var(--gold);
-  color: #fff;
+  transform: rotate(180deg);
+  background: var(--gold-soft);
+  color: var(--gold);
 }
 
 /* — Scroll-reveal: elements with .reveal fade up when they enter viewport — */
@@ -3022,11 +3077,18 @@ html.app-font-xl  { font-size: 20px; }
 
     <!-- Daily Rhythm card -->
     <div class="section-head"><div><div class="section-title">A Catholic Daily Rhythm</div><div class="section-sub">A complete prayer day · ~45–60 min</div></div></div>
-    <div style="padding:0 18px 6px;">
-      <div class="card-wide" onclick="openDetail('daily-rhythm')" style="width:100%;max-width:none;">
-        <div class="card-wide-cover" style="width:100%;height:160px;"><img src="img/daily.jpg" alt=""></div>
-        <div class="card-wide-title">A Catholic Daily Rhythm</div>
-        <div class="card-wide-meta">Wake to bedtime · prayers + reflections</div>
+    <div style="padding:0 18px 10px;">
+      <div class="rhythm-card" onclick="openDetail('daily-rhythm')">
+        <div class="rhythm-card-img"><img src="img/daily.jpg" alt=""></div>
+        <div class="rhythm-card-body">
+          <span class="rhythm-card-eyebrow">Full Guide</span>
+          <div class="rhythm-card-title">A Catholic Daily Rhythm</div>
+          <div class="rhythm-card-desc">Wake to bedtime — every prayer, reading &amp; reflection in order.</div>
+          <div class="rhythm-card-cta">
+            <span>Read the full guide</span>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -3715,7 +3777,7 @@ html.app-font-xl  { font-size: 20px; }
     'rosary-sorrowful':   { eyebrow:'Rosary', title:'Sorrowful Mysteries', meta:'Tue · Fri · ~18 min', body:'Agony in the Garden, Scourging, Crowning with Thorns, Carrying the Cross, Crucifixion. Five mysteries of the Passion.' },
     'rosary-glorious':    { eyebrow:'Rosary', title:'Glorious Mysteries', meta:'Wed · Sun · ~18 min', body:'Resurrection, Ascension, Descent of the Holy Spirit, Assumption, Coronation of Mary. Five mysteries of triumph.' },
     'rosary-luminous':    { eyebrow:'Rosary', title:'Luminous Mysteries', meta:'Thu · ~18 min', body:'Baptism in the Jordan, Wedding at Cana, Proclamation of the Kingdom, Transfiguration, Institution of the Eucharist. Five mysteries of light.' },
-    'hail-mary':          { eyebrow:'Prayer', title:'The Hail Mary', meta:'Origins &amp; meaning', img:'img/mary.jpg', body:'The first half is Scripture itself — Gabriel\'s greeting (Luke 1:28) and Elizabeth\'s exclamation (Luke 1:42). The second half — "Holy Mary, Mother of God…" — was added by the Church to ask Mary\'s intercession.' },
+    'hail-mary':          { eyebrow:'Prayer', title:'The Hail Mary', meta:'Origins & meaning', img:'img/mary.jpg', body:'The first half is Scripture itself — Gabriel\'s greeting (Luke 1:28) and Elizabeth\'s exclamation (Luke 1:42). The second half — "Holy Mary, Mother of God…" — was added by the Church to ask Mary\'s intercession.' },
 
     'saint-therese':      { eyebrow:'Saint', title:'St. Thérèse of Lisieux', meta:'1873–1897 · The Little Way', body:'A French Carmelite nun who died at 24. Her "little way" — doing small things with great love — has shaped modern spirituality. Doctor of the Church.' },
     'saint-francis':      { eyebrow:'Saint', title:'St. Francis of Assisi', meta:'1181–1226', body:'Son of a wealthy merchant who renounced everything to serve the poor. Founded the Franciscan order. Received the stigmata. Patron of animals, ecology, Italy.' },
@@ -3732,7 +3794,7 @@ html.app-font-xl  { font-size: 20px; }
     'sleep-rosary':       { eyebrow:'Sleep', title:'Sleep Rosary', meta:'Gentle pace · ~25 min', body:'A slow, ambient version of the Rosary designed to help you fall asleep in prayer.' },
     'psalm-91':           { eyebrow:'Sleep', title:'Psalm 91', meta:'~4 min', body:'"He who dwells in the shelter of the Most High, who abides in the shadow of the Almighty…" The Psalm of God\'s protection.' },
 
-    'eucharist':          { eyebrow:'Sacrament', title:'The Eucharist', meta:'Source &amp; summit', body:'The Real Presence of Christ — body, blood, soul, and divinity — under the appearances of bread and wine. The center of Catholic worship.' },
+    'eucharist':          { eyebrow:'Sacrament', title:'The Eucharist', meta:'Source & summit', body:'The Real Presence of Christ — body, blood, soul, and divinity — under the appearances of bread and wine. The center of Catholic worship.' },
     'baptism':            { eyebrow:'Sacrament', title:'Baptism', meta:'New birth', body:'Washes away original sin. Makes us children of God and members of the Church. The gateway to all the other sacraments.' },
     'confession':         { eyebrow:'Sacrament', title:'Confession', meta:'Reconciliation', body:'The sacrament of mercy. Christ Himself, through the priest, forgives sins. "Whose sins you forgive are forgiven." (John 20:23)' },
     'confirmation':       { eyebrow:'Sacrament', title:'Confirmation', meta:'Sealed in the Spirit', body:'The sacrament that completes baptism. Strengthens us with the gifts of the Holy Spirit and makes us soldiers of Christ.' },
@@ -3778,7 +3840,7 @@ html.app-font-xl  { font-size: 20px; }
           (b.eyebrow ? '<span class="db-accordion-eyebrow">' + escapeHtml(b.eyebrow) + '</span>' : '') +
           '<span class="db-accordion-title">' + escapeHtml(b.title||'') + '</span>' +
           (b.subtitle ? '<span class="db-accordion-sub">' + escapeHtml(b.subtitle) + '</span>' : '') +
-          '<span class="db-accordion-arrow">+</span>' +
+          '<span class="db-accordion-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>' +
         '</summary>' +
         '<div class="db-accordion-body">' + inner2 + '</div>' +
       '</details>';
