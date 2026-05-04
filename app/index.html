@@ -8,7 +8,7 @@
 <title>BeCath — Catholic Daily</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────────
    BeCath v3 — Adaptive Light/Dark, Hallow-style
@@ -1668,6 +1668,244 @@ html {
 }
 .ob2-summary-reset:hover { background: #EDE8DF; }
 
+/* ═══════════════════════════════════════
+   MASS READINGS PAGE — scoped styles
+   ═══════════════════════════════════════ */
+#page-mass-readings {
+  padding: 0 0 110px;
+  --mr-bg2: #F2F0EB;
+  --mr-bg3: #EAE6DE;
+  --mr-white: var(--bg-elev);
+  --mr-ink: var(--text);
+  --mr-ink-mid: var(--text-soft);
+  --mr-ink-muted: var(--text-mute);
+  --mr-gold: var(--gold);
+  --mr-gold-light: rgba(184,137,58,0.1);
+  --mr-gold-border: rgba(184,137,58,0.28);
+  --mr-border: var(--line);
+  --mr-border-strong: var(--line);
+  --mr-shadow: rgba(44,36,22,0.07);
+  --mr-shadow-md: rgba(44,36,22,0.12);
+  --mr-sg-red: #C84040;
+  --mr-sg-amber: #D08010;
+  --mr-sg-gold: #C8960A;
+  --mr-sg-green: #2A8A3A;
+  --mr-sg-teal: #1A8080;
+  --mr-sg-blue: #3060C0;
+  --mr-sg-violet: #7040B8;
+  --mr-reading-size: 19px;
+  --mr-reading-lh: 1.85;
+  font-family: 'Lato', var(--ff);
+}
+#page-mass-readings.mr-font-sm { --mr-reading-size:16px; --mr-reading-lh:1.75; }
+#page-mass-readings.mr-font-md { --mr-reading-size:19px; --mr-reading-lh:1.85; }
+#page-mass-readings.mr-font-lg { --mr-reading-size:22px; --mr-reading-lh:1.9; }
+#page-mass-readings.mr-font-xl { --mr-reading-size:25px; --mr-reading-lh:1.95; }
+
+/* Sub-header */
+.mr-topbar {
+  background: var(--mr-white);
+  border-bottom: 1px solid var(--mr-border);
+  padding: 16px 20px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px);
+}
+.mr-topbar-left { display: flex; align-items: center; gap: 10px; }
+.mr-back-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--mr-border-strong);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.mr-back-btn:hover { background: var(--mr-bg3); }
+.mr-topbar-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--mr-ink);
+}
+.mr-topbar-date { font-size: 11px; color: var(--mr-ink-muted); margin-top: 1px; }
+.mr-font-size-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 99px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--mr-border-strong);
+  cursor: pointer; transition: all 0.2s;
+}
+.mr-font-size-btn:hover { background: var(--mr-bg3); }
+.mr-font-size-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; color: var(--mr-ink-muted); letter-spacing: 0.1em;
+}
+
+/* SG stripe */
+.mr-sg-stripe {
+  height: 5px;
+  background: linear-gradient(90deg,
+    #C84040 0%,#C84040 8%,#D08010 8%,#D08010 18%,#C8960A 18%,#C8960A 28%,
+    #2A8A3A 28%,#2A8A3A 38%,#1A8080 38%,#1A8080 48%,#3060C0 48%,#3060C0 62%,
+    #7040B8 62%,#7040B8 74%,#C84040 74%,#C84040 82%,#C8960A 82%,#C8960A 91%,
+    #3060C0 91%,#3060C0 100%);
+  position: relative;
+}
+.mr-sg-stripe::after {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent calc(10% - 1px), rgba(255,255,255,0.35) calc(10% - 1px), rgba(255,255,255,0.35) 10%);
+}
+
+/* Date banner */
+.mr-date-banner { padding: 20px 20px 0; display:flex; align-items:center; justify-content:space-between; }
+.mr-date-pill {
+  display:flex; align-items:center; gap:8px; padding:8px 16px;
+  background: var(--mr-white); border:2px solid var(--mr-border-strong);
+  border-radius:99px; cursor:pointer; transition:all 0.2s;
+}
+.mr-date-pill:hover { border-color: var(--mr-gold-border); }
+.mr-date-text { font-family:'Cinzel',serif; font-size:13px; font-weight:600; color:var(--mr-ink); letter-spacing:0.04em; }
+.mr-liturgy-badge {
+  padding:6px 14px; background:var(--mr-gold-light); border:1.5px solid var(--mr-gold-border);
+  border-radius:99px; font-family:'Cinzel',serif; font-size:9px; font-weight:600;
+  letter-spacing:0.18em; color:var(--mr-gold); text-transform:uppercase;
+}
+.mr-sg-divider {
+  height:3px; margin:24px 20px 0;
+  background:linear-gradient(90deg,#C84040,#D08010,#C8960A,#2A8A3A,#1A8080,#3060C0,#7040B8);
+  border-radius:99px; opacity:0.55;
+}
+
+/* Tabs */
+.mr-reading-tabs {
+  display:flex; gap:6px; padding:16px 20px 0;
+  overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.mr-reading-tabs::-webkit-scrollbar { display:none; }
+.mr-rtab {
+  flex-shrink:0; padding:8px 16px; border-radius:99px;
+  font-family:'Cinzel',serif; font-size:10px; font-weight:500; letter-spacing:0.1em;
+  color:var(--mr-ink-muted); background:var(--mr-white);
+  border:1.5px solid var(--mr-border-strong); cursor:pointer; transition:all 0.22s; white-space:nowrap;
+}
+.mr-rtab:hover { border-color:var(--mr-gold-border); color:var(--mr-gold); }
+.mr-rtab.active { background:var(--mr-gold); border-color:var(--mr-gold); color:white; box-shadow:0 3px 10px rgba(160,120,32,0.25); }
+
+/* Panels */
+.mr-reading-panels { padding:20px 20px 0; }
+.mr-reading-panel { display:none; }
+.mr-reading-panel.active { display:block; animation:fadeUp 0.4s ease both; }
+
+/* Reading card */
+.mr-reading-card {
+  background:var(--mr-white); border:2px solid var(--mr-border-strong);
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 2px 12px var(--mr-shadow); margin-bottom:16px; transition:box-shadow 0.2s;
+}
+.mr-reading-card:hover { box-shadow:0 4px 20px var(--mr-shadow-md); }
+.mr-reading-card-header {
+  padding:18px 22px 14px; border-bottom:1.5px solid var(--mr-border);
+  background:var(--bg-soft); display:flex; align-items:flex-start;
+  justify-content:space-between; gap:12px;
+}
+.mr-reading-label {
+  font-family:'Cinzel',serif; font-size:9px; font-weight:700; letter-spacing:0.28em;
+  color:var(--mr-gold); text-transform:uppercase; margin-bottom:5px;
+  display:flex; align-items:center; gap:8px;
+}
+.mr-reading-label::before { content:''; display:block; width:16px; height:2px; background:var(--mr-gold); border-radius:99px; }
+.mr-reading-title { font-family:'Cormorant Garamond',var(--ff-serif); font-size:22px; font-weight:500; color:var(--mr-ink); line-height:1.2; }
+.mr-reading-ref { font-family:'Cormorant Garamond',var(--ff-serif); font-size:15px; font-style:italic; color:var(--mr-ink-muted); margin-top:4px; }
+.mr-audio-play-btn {
+  width:42px; height:42px; border-radius:50%; background:var(--mr-gold); border:none;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; flex-shrink:0; margin-top:2px;
+  box-shadow:0 3px 10px rgba(160,120,32,0.3); transition:all 0.2s;
+}
+.mr-audio-play-btn:hover { transform:scale(1.06); }
+.mr-reading-text-wrap { padding:22px 22px 20px; }
+.mr-reading-text {
+  font-family:'Cormorant Garamond',var(--ff-serif);
+  font-size:var(--mr-reading-size); line-height:var(--mr-reading-lh);
+  color:var(--mr-ink); font-weight:400; letter-spacing:0.008em;
+}
+.mr-reading-text p { margin-bottom:1.2em; }
+.mr-reading-text p:last-child { margin-bottom:0; }
+.mr-reading-text p:first-child::first-letter {
+  font-family:'Cinzel',serif; font-size:3.2em; font-weight:700;
+  float:left; line-height:0.75; margin-right:6px; margin-top:6px;
+  background:linear-gradient(135deg,#C84040,#C8960A);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+/* Psalm */
+.mr-psalm-block {
+  background:var(--bg); border:2px solid var(--mr-border-strong);
+  border-radius:20px; overflow:hidden; margin-bottom:16px; box-shadow:0 2px 12px var(--mr-shadow);
+}
+.mr-psalm-header { padding:16px 22px 12px; background:var(--bg-soft); border-bottom:1.5px solid var(--mr-border); }
+.mr-psalm-response-label {
+  font-family:'Cinzel',serif; font-size:8px; font-weight:700; letter-spacing:0.28em;
+  color:#3060C0; text-transform:uppercase; margin-bottom:4px;
+  display:flex; align-items:center; gap:8px;
+}
+.mr-psalm-response-label::before { content:''; display:block; width:16px; height:2px; background:#3060C0; border-radius:99px; }
+.mr-psalm-response-text { font-family:'Cormorant Garamond',var(--ff-serif); font-size:18px; font-style:italic; font-weight:500; color:#3060C0; line-height:1.4; }
+.mr-psalm-verses { padding:20px 22px; }
+.mr-psalm-verse { margin-bottom:20px; }
+.mr-psalm-verse:last-child { margin-bottom:0; }
+.mr-verse-num { font-family:'Cinzel',serif; font-size:8px; font-weight:700; letter-spacing:0.2em; color:var(--mr-ink-muted); text-transform:uppercase; margin-bottom:6px; }
+.mr-verse-text { font-family:'Cormorant Garamond',var(--ff-serif); font-size:var(--mr-reading-size); line-height:var(--mr-reading-lh); color:var(--mr-ink); }
+.mr-psalm-refrain {
+  padding:14px 18px; background:rgba(48,96,192,0.06); border:1.5px solid rgba(48,96,192,0.15);
+  border-radius:12px; margin:14px 0; font-family:'Cormorant Garamond',var(--ff-serif);
+  font-size:16px; font-style:italic; color:#3060C0; line-height:1.5; text-align:center;
+}
+
+/* Acclamation */
+.mr-acclamation-block {
+  background:var(--mr-white); border:2px solid var(--mr-border-strong);
+  border-radius:20px; padding:20px 22px; margin-bottom:16px;
+  text-align:center; box-shadow:0 2px 12px var(--mr-shadow);
+}
+.mr-acc-label { font-family:'Cinzel',serif; font-size:9px; font-weight:700; letter-spacing:0.28em; color:#C8960A; text-transform:uppercase; margin-bottom:10px; }
+.mr-acc-alleluia {
+  font-family:'Cinzel',serif; font-size:28px; font-weight:700; letter-spacing:0.08em;
+  background:linear-gradient(135deg,#D08010,#C8960A);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px;
+}
+.mr-acc-verse { font-family:'Cormorant Garamond',var(--ff-serif); font-size:17px; font-style:italic; color:var(--text-soft); line-height:1.6; }
+
+/* Reflection CTA */
+.mr-reflection-cta {
+  background:linear-gradient(135deg,rgba(184,137,58,0.08),rgba(48,96,192,0.06));
+  border:2px solid var(--mr-gold-border); border-radius:20px; padding:22px;
+  margin-bottom:16px; display:flex; align-items:center; gap:16px;
+  cursor:pointer; transition:all 0.25s;
+}
+.mr-reflection-cta:hover { box-shadow:0 4px 16px rgba(184,137,58,0.15); transform:translateY(-1px); }
+.mr-ref-icon {
+  width:48px; height:48px; border-radius:13px;
+  background:var(--mr-gold-light); border:1.5px solid var(--mr-gold-border);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.mr-ref-label { font-family:'Cinzel',serif; font-size:9px; font-weight:700; letter-spacing:0.2em; color:var(--mr-gold); text-transform:uppercase; margin-bottom:4px; }
+.mr-ref-title { font-family:'Cormorant Garamond',var(--ff-serif); font-size:18px; font-weight:500; color:var(--mr-ink); margin-bottom:2px; }
+.mr-ref-desc { font-size:12px; color:var(--mr-ink-muted); line-height:1.4; }
+
+/* Font controls — shown/hidden via JS based on active page */
+.mr-font-controls {
+  position:fixed; bottom:80px; right:16px; z-index:200;
+  display:none; flex-direction:column; gap:6px;
+  opacity:0; pointer-events:none; transition:all 0.3s;
+}
+.mr-font-controls.open { opacity:1; pointer-events:auto; }
+.mr-fc-btn {
+  width:40px; height:40px; border-radius:50%;
+  background:var(--bg-elev); border:2px solid var(--mr-border-strong);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-family:'Cinzel',serif; font-weight:700;
+  font-size:14px; color:var(--mr-ink); box-shadow:0 2px 10px var(--mr-shadow-md); transition:all 0.2s;
+}
+.mr-fc-btn:hover { background:var(--mr-gold); color:white; border-color:var(--mr-gold); }
 
 </style>
 </head>
@@ -1902,7 +2140,7 @@ html {
         <div class="card-sq-title">Saint of the Day</div>
         <div class="card-sq-meta" id="today-saint-name">Today's saint</div>
       </div>
-      <div class="card-sq" onclick="window.location.href='/app/mass-readings.html'">
+      <div class="card-sq" onclick="goPage('mass-readings')">
         <div class="card-sq-cover">
           <img src="img/masseuchjesus.jpg" alt="">
         </div>
@@ -2650,6 +2888,195 @@ html {
   </section>
 
   <!-- ═══════════════ DETAIL ═══════════════ -->
+  <!-- ═══ MASS READINGS PAGE ═══ -->
+  <section class="page mr-font-md" id="page-mass-readings">
+
+    <!-- SG stripe -->
+    <div class="mr-sg-stripe"></div>
+
+    <!-- Sub-header -->
+    <div class="mr-topbar">
+      <div class="mr-topbar-left">
+        <div class="mr-back-btn" onclick="goBack()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </div>
+        <div>
+          <div class="mr-topbar-title">Mass Readings</div>
+          <div class="mr-topbar-date" id="mr-topbar-date"></div>
+        </div>
+      </div>
+      <div class="mr-font-size-btn" onclick="mrToggleFontControls()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span class="mr-font-size-label">Aa</span>
+      </div>
+    </div>
+
+    <!-- Date banner -->
+    <div class="mr-date-banner">
+      <div class="mr-date-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="mr-date-text" id="mr-date-text">Today</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="mr-liturgy-badge">Ordinary Time</div>
+    </div>
+
+    <div class="mr-sg-divider"></div>
+
+    <!-- Tabs -->
+    <div class="mr-reading-tabs">
+      <div class="mr-rtab active" onclick="mrSwitchTab('reading1', this)">Reading I</div>
+      <div class="mr-rtab" onclick="mrSwitchTab('psalm', this)">Psalm</div>
+      <div class="mr-rtab" onclick="mrSwitchTab('gospel', this)">Gospel</div>
+      <div class="mr-rtab" onclick="mrSwitchTab('acclamation', this)">Alleluia</div>
+    </div>
+
+    <!-- Reading panels -->
+    <div class="mr-reading-panels">
+
+      <!-- Reading I -->
+      <div class="mr-reading-panel active" id="mr-panel-reading1">
+        <div class="mr-reading-card">
+          <div class="mr-reading-card-header">
+            <div>
+              <div class="mr-reading-label">Reading I</div>
+              <div class="mr-reading-title">Acts of the Apostles</div>
+              <div class="mr-reading-ref">Acts 14:5–18</div>
+            </div>
+            <button class="mr-audio-play-btn" title="Listen to reading">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="mr-reading-text-wrap">
+            <div class="mr-reading-text">
+              <p>There was an attempt in Iconium by both the Gentiles and the Jews, together with their leaders, to attack and stone Paul and Barnabas. They realized it, and fled to the Lycaonian cities of Lystra and Derbe and to the surrounding countryside, where they continued to proclaim the Good News.</p>
+              <p>At Lystra there was a crippled man, lame from birth, who had never walked. He listened to Paul speaking, who looked intently at him, saw that he had the faith to be healed, and called out in a loud voice, "Stand up straight on your feet." He jumped up and began to walk about.</p>
+              <p>When the crowds saw what Paul had done, they cried out in Lycaonian, "The gods have come down to us in human form." They called Barnabas "Zeus" and Paul "Hermes," because he was the chief speaker. And the priest of Zeus, whose temple was at the entrance to the city, brought oxen and garlands to the gates, for he together with the people intended to offer sacrifice.</p>
+              <p>The Apostles Barnabas and Paul tore their garments when they heard this and rushed out into the crowd, shouting, "Men, why are you doing this? We are of the same nature as you, human beings. We proclaim to you good news that you should turn from these idols to the living God, who made heaven and earth and sea and all that is in them."</p>
+            </div>
+          </div>
+        </div>
+        <div class="mr-reflection-cta">
+          <div class="mr-ref-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="mr-ref-label">Reflection</div>
+            <div class="mr-ref-title">What This Reading Means</div>
+            <div class="mr-ref-desc">A 3-minute reflection on today's first reading</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Psalm -->
+      <div class="mr-reading-panel" id="mr-panel-psalm">
+        <div class="mr-psalm-block">
+          <div class="mr-psalm-header">
+            <div class="mr-psalm-response-label">Responsorial Psalm</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);margin-top:3px;">Psalm 115</div>
+            <div class="mr-psalm-response-text" style="margin-top:8px;">"Not to us, O Lord, but to your name give the glory."</div>
+          </div>
+          <div class="mr-psalm-verses">
+            <div class="mr-psalm-refrain">Not to us, O Lord, but to your name give glory, because of your mercy and faithfulness.</div>
+            <div class="mr-psalm-verse">
+              <div class="mr-verse-num">Verse 1</div>
+              <div class="mr-verse-text">Not to us, O Lord, not to us but to your name give glory, because of your mercy and your faithfulness.</div>
+            </div>
+            <div class="mr-psalm-refrain">Not to us, O Lord, but to your name give the glory.</div>
+            <div class="mr-psalm-verse">
+              <div class="mr-verse-num">Verse 2</div>
+              <div class="mr-verse-text">Why should the nations say, "Where is their God?" Our God is in heaven; whatever he wills, he does. Their idols are silver and gold, the handiwork of men.</div>
+            </div>
+            <div class="mr-psalm-refrain">Not to us, O Lord, but to your name give the glory.</div>
+            <div class="mr-psalm-verse">
+              <div class="mr-verse-num">Verse 3</div>
+              <div class="mr-verse-text">Those who make them shall be like them, all who trust in them. The house of Israel trusts in the Lord; he is their help and their shield.</div>
+            </div>
+            <div class="mr-psalm-refrain">Not to us, O Lord, but to your name give the glory.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gospel -->
+      <div class="mr-reading-panel" id="mr-panel-gospel">
+        <div class="mr-reading-card">
+          <div class="mr-reading-card-header">
+            <div>
+              <div class="mr-reading-label" style="color:#C84040;">
+                <span style="width:16px;height:2px;background:#C84040;border-radius:99px;display:block;"></span>
+                Holy Gospel
+              </div>
+              <div class="mr-reading-title">According to John</div>
+              <div class="mr-reading-ref">John 14:21–26</div>
+            </div>
+            <button class="mr-audio-play-btn" style="background:#C84040;box-shadow:0 3px 10px rgba(200,64,64,0.3);" title="Listen to Gospel">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="mr-reading-text-wrap">
+            <div class="mr-reading-text">
+              <p>Jesus said to his disciples: "Whoever has my commandments and observes them is the one who loves me. And whoever loves me will be loved by my Father, and I will love him and reveal myself to him."</p>
+              <p>Judas, not the Iscariot, said to him, "Master, then what happened that you will reveal yourself to us and not to the world?" Jesus answered and said to him, "Whoever loves me will keep my word, and my Father will love him, and we will come to him and make our dwelling with him.</p>
+              <p>Whoever does not love me does not keep my words; yet the word you hear is not mine but that of the Father who sent me. I have told you this while I am with you. The Advocate, the Holy Spirit whom the Father will send in my name, will teach you everything and remind you of all that I told you."</p>
+            </div>
+          </div>
+        </div>
+        <div class="mr-reflection-cta" style="border-color:rgba(200,64,64,0.25);background:linear-gradient(135deg,rgba(200,64,64,0.06),rgba(200,64,64,0.03));">
+          <div class="mr-ref-icon" style="background:rgba(200,64,64,0.08);border-color:rgba(200,64,64,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C84040" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div>
+            <div class="mr-ref-label" style="color:#C84040;">Gospel Reflection</div>
+            <div class="mr-ref-title">The Holy Spirit as Advocate</div>
+            <div class="mr-ref-desc">A 5-minute guided reflection on today's Gospel</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C84040" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Alleluia -->
+      <div class="mr-reading-panel" id="mr-panel-acclamation">
+        <div class="mr-acclamation-block">
+          <div class="mr-acc-label">Gospel Acclamation</div>
+          <div class="mr-acc-alleluia">Alleluia</div>
+          <div class="mr-acc-verse">"I am the way and the truth and the life, says the Lord; no one comes to the Father except through me."</div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--text-mute);margin-top:10px;letter-spacing:0.1em;">John 14:6</div>
+        </div>
+        <div class="mr-reading-card">
+          <div class="mr-reading-card-header">
+            <div>
+              <div class="mr-reading-label" style="color:#C8960A;">
+                <span style="width:16px;height:2px;background:#C8960A;border-radius:99px;display:block;"></span>
+                Second Reading
+              </div>
+              <div class="mr-reading-title">Letter to the Hebrews</div>
+              <div class="mr-reading-ref">Hebrews 11:1–2, 8–19</div>
+            </div>
+            <button class="mr-audio-play-btn" style="background:#C8960A;" title="Listen">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="mr-reading-text-wrap">
+            <div class="mr-reading-text">
+              <p>Brothers and sisters: Faith is the realization of what is hoped for and evidence of things not seen. Because of it the ancients were well attested. By faith Abraham obeyed when he was called to go out to a place that he was to receive as an inheritance; he went out, not knowing where he was to go.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /mr-reading-panels -->
+
+    <!-- Font size controls (shown only when this page is active) -->
+    <div class="mr-font-controls" id="mrFontControls">
+      <div class="mr-fc-btn" onclick="mrSetFont('xl')">XL</div>
+      <div class="mr-fc-btn" onclick="mrSetFont('lg')">L</div>
+      <div class="mr-fc-btn" onclick="mrSetFont('md')">M</div>
+      <div class="mr-fc-btn" onclick="mrSetFont('sm')">S</div>
+    </div>
+
+  </section><!-- /page-mass-readings -->
+
   <section class="page" id="page-detail">
     <div class="detail-hero" id="detail-hero">
       <button class="detail-back" onclick="goBack()" aria-label="Back">
@@ -3578,6 +4005,94 @@ html {
     ob2Init();
   }
 
+})();
+
+// ── Mass Readings page JS ──
+(function() {
+  // Set date in topbar and date pill
+  function mrSetDate() {
+    var d = new Date();
+    var short = d.toLocaleDateString('en-US', { month:'long', day:'numeric' });
+    var long  = d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+    var topbarDate = document.getElementById('mr-topbar-date');
+    var dateText   = document.getElementById('mr-date-text');
+    if (topbarDate) topbarDate.textContent = long;
+    if (dateText)   dateText.textContent   = short;
+  }
+  mrSetDate();
+
+  // Tab switching
+  window.mrSwitchTab = function(panel, tabEl) {
+    document.querySelectorAll('.mr-reading-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.mr-rtab').forEach(function(t) { t.classList.remove('active'); });
+    var el = document.getElementById('mr-panel-' + panel);
+    if (el) el.classList.add('active');
+    if (tabEl) tabEl.classList.add('active');
+  };
+
+  // Font size controls
+  var mrFontOpen = false;
+  window.mrToggleFontControls = function() {
+    mrFontOpen = !mrFontOpen;
+    var fc = document.getElementById('mrFontControls');
+    if (fc) fc.classList.toggle('open', mrFontOpen);
+  };
+  window.mrSetFont = function(size) {
+    var pg = document.getElementById('page-mass-readings');
+    if (pg) pg.className = pg.className.replace(/mr-font-\w+/g, '').trim() + ' mr-font-' + size;
+    mrFontOpen = false;
+    var fc = document.getElementById('mrFontControls');
+    if (fc) fc.classList.remove('open');
+    try { localStorage.setItem('becath_mr_font', size); } catch(e) {}
+  };
+
+  // Restore saved font size
+  try {
+    var saved = localStorage.getItem('becath_mr_font');
+    if (saved) mrSetFont(saved);
+  } catch(e) {}
+
+  // Show/hide font controls based on active page, and patch goPage
+  function mrUpdateFontControlsVisibility(pageName) {
+    var fc = document.getElementById('mrFontControls');
+    if (!fc) return;
+    fc.style.display = (pageName === 'mass-readings') ? 'flex' : 'none';
+    if (pageName !== 'mass-readings') { mrFontOpen = false; fc.classList.remove('open'); }
+  }
+  var _origGoPage = window.goPage;
+  if (typeof _origGoPage === 'function') {
+    window.goPage = function(name, opts) {
+      _origGoPage(name, opts);
+      mrUpdateFontControlsVisibility(name);
+    };
+  }
+
+  // Audio button toggle
+  document.querySelectorAll('.mr-audio-play-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var isPlaying = this.dataset.playing === '1';
+      document.querySelectorAll('.mr-audio-play-btn').forEach(function(b) {
+        b.dataset.playing = '0';
+        b.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+      });
+      if (!isPlaying) {
+        this.dataset.playing = '1';
+        this.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+      }
+    });
+  });
+
+  // Close font controls on outside tap
+  document.addEventListener('click', function(e) {
+    if (mrFontOpen && !e.target.closest('.mr-font-size-btn') && !e.target.closest('.mr-font-controls')) {
+      mrFontOpen = false;
+      var fc = document.getElementById('mrFontControls');
+      if (fc) fc.classList.remove('open');
+    }
+  });
+
+  // Hide font controls initially
+  mrUpdateFontControlsVisibility('home');
 })();
 </script>
 
