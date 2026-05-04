@@ -1483,6 +1483,192 @@ html {
   .reveal { opacity: 1; transform: none; }
 }
 
+/* ═══════════════════════════════════════════════
+   BECATH ONBOARDING FLOW v2 — Start Here
+   ═══════════════════════════════════════════════ */
+
+/* ── Onboarding v2 wrapper ── */
+#becath-onboarding-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #F5F2ED;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.4s ease;
+}
+#becath-onboarding-wrap.ob2-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── ob2 screens ── */
+.ob2-screen { display: none; }
+.ob2-screen.ob2-active { display: block; animation: ob2-slideIn 0.4s cubic-bezier(.4,0,.2,1) both; }
+@keyframes ob2-slideIn { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+@keyframes ob2-fadeDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+@keyframes ob2-fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+.ob2-progress-wrap { padding: 20px 20px 0; display: flex; align-items: center; gap: 12px; }
+.ob2-prog-dots { display: flex; gap: 6px; }
+.ob2-prog-dot { width: 6px; height: 6px; border-radius: 50%; background: #EDE8DF; border: 1px solid rgba(0,0,0,0.09); transition: all 0.3s; }
+.ob2-dot-done { background: #A07820; border-color: #A07820; }
+.ob2-dot-active { background: #C49A28; border-color: #C49A28; width: 18px; border-radius: 99px; }
+.ob2-prog-label { font-family: 'Lato', sans-serif; font-size: 10px; color: #9A8E78; letter-spacing: 0.08em; }
+
+.ob2-q-header { padding: 20px 20px 8px; }
+.ob2-q-step {
+  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 500; letter-spacing: 0.24em;
+  color: #A07820; text-transform: uppercase; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ob2-q-step::before { content: ''; display: block; width: 20px; height: 1px; background: #A07820; opacity: 0.5; }
+.ob2-q-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; line-height: 1.2; color: #1C1610; margin-bottom: 6px; }
+.ob2-q-title em { font-style: italic; color: #A07820; }
+.ob2-q-sub { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 300; color: #9A8E78; line-height: 1.5; }
+
+.ob2-glass-divider {
+  height: 4px; margin: 20px 20px 0;
+  background: linear-gradient(90deg, rgba(200,64,64,0.3), rgba(200,150,10,0.4), rgba(64,128,200,0.3), rgba(64,168,64,0.3), rgba(160,80,200,0.3));
+  border-radius: 99px;
+}
+
+.ob2-options { padding: 16px 16px 0; display: flex; flex-direction: column; gap: 10px; }
+.ob2-option {
+  background: #FFFFFF; border: 1.5px solid rgba(0,0,0,0.07); border-radius: 16px;
+  padding: 16px 18px; cursor: pointer; transition: all 0.22s ease;
+  display: flex; align-items: center; gap: 14px; position: relative; overflow: hidden;
+}
+.ob2-option::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: transparent; transition: background 0.25s; border-radius: 0 2px 2px 0;
+}
+.ob2-option:hover { border-color: rgba(160,120,32,0.2); box-shadow: 0 2px 12px rgba(44,36,22,0.08); transform: translateY(-1px); }
+.ob2-option:hover::before { background: #A07820; }
+.ob2-option:active { transform: scale(0.99); }
+.ob2-option.selected { border-color: #C49A28; background: #FDFAF4; box-shadow: 0 4px 16px rgba(160,120,32,0.15); }
+.ob2-option.selected::before { background: #C49A28; }
+
+.ob2-opt-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+.ob2-c-red    { background: rgba(122,24,24,0.08); }
+.ob2-c-gold   { background: rgba(160,120,32,0.1); }
+.ob2-c-blue   { background: rgba(26,58,107,0.08); }
+.ob2-c-teal   { background: rgba(26,90,90,0.08); }
+.ob2-c-violet { background: rgba(80,40,120,0.08); }
+
+.ob2-opt-text { flex: 1; }
+.ob2-opt-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #1C1610; margin-bottom: 2px; line-height: 1.2; }
+.ob2-opt-desc  { font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 300; color: #9A8E78; line-height: 1.4; }
+.ob2-opt-check {
+  width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.09);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s;
+}
+.ob2-option.selected .ob2-opt-check { background: #A07820; border-color: #A07820; }
+
+.ob2-back-row { padding: 12px 20px 0; }
+.ob2-back-btn {
+  display: flex; align-items: center; gap: 6px; font-family: 'Lato', sans-serif;
+  font-size: 12px; color: #9A8E78; cursor: pointer; background: none; border: none; padding: 6px 0; transition: color 0.2s;
+}
+.ob2-back-btn:hover { color: #A07820; }
+
+/* ── Result screen ── */
+.ob2-result-screen { padding: 0 16px 16px; }
+.ob2-result-header { text-align: center; padding: 24px 16px 16px; }
+.ob2-result-cross { font-size: 32px; margin-bottom: 12px; animation: ob2-fadeDown 0.6s ease both; }
+.ob2-result-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: #1C1610; margin-bottom: 6px; line-height: 1.2; animation: ob2-fadeDown 0.6s ease 0.1s both; }
+.ob2-result-sub { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 300; color: #9A8E78; line-height: 1.6; max-width: 280px; margin: 0 auto; animation: ob2-fadeDown 0.6s ease 0.15s both; }
+.ob2-result-path { background: #FFFFFF; border: 1px solid rgba(160,120,32,0.2); border-radius: 18px; padding: 18px; margin-bottom: 10px; animation: ob2-fadeUp 0.5s ease both; }
+.ob2-result-path-label {
+  font-family: 'Cinzel', serif; font-size: 8px; font-weight: 600; letter-spacing: 0.22em;
+  color: #A07820; text-transform: uppercase; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ob2-result-path-label::after { content: ''; flex: 1; height: 1px; background: rgba(160,120,32,0.2); }
+.ob2-result-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  background: #F5F2ED; border-radius: 12px; margin-bottom: 8px;
+  cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
+}
+.ob2-result-item:last-child { margin-bottom: 0; }
+.ob2-result-item:hover { border-color: rgba(160,120,32,0.2); background: #FDFAF4; transform: translateX(3px); }
+.ob2-result-item-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; background: #EDE8DF; }
+.ob2-result-item-text { flex: 1; }
+.ob2-result-item-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: #1C1610; margin-bottom: 1px; }
+.ob2-result-item-desc { font-family: 'Lato', sans-serif; font-size: 11px; color: #9A8E78; }
+.ob2-result-item-badge {
+  font-family: 'Lato', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 3px 8px; border-radius: 99px; color: #A07820;
+  background: rgba(160,120,32,0.1); border: 1px solid rgba(160,120,32,0.2);
+  text-transform: uppercase; flex-shrink: 0;
+}
+.ob2-result-item-badge.free  { color: #2A7A2A; background: rgba(42,122,42,0.08); border-color: rgba(42,122,42,0.2); }
+.ob2-result-item-badge.audio { color: #7A1818; background: rgba(122,24,24,0.08); border-color: rgba(122,24,24,0.15); }
+
+.ob2-start-btn {
+  width: 100%; padding: 16px; background: #A07820; border: none; border-radius: 99px;
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+  color: white; text-transform: uppercase; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 18px rgba(160,120,32,0.22); transition: all 0.25s;
+  margin-top: 16px; animation: ob2-fadeUp 0.5s ease 0.4s both;
+}
+.ob2-start-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(160,120,32,0.28); }
+.ob2-restart-btn {
+  width: 100%; padding: 12px; background: none; border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 12px; color: #9A8E78;
+  cursor: pointer; margin-top: 10px; transition: all 0.2s; animation: ob2-fadeUp 0.5s ease 0.5s both;
+}
+.ob2-restart-btn:hover { background: #EDE8DF; }
+
+/* ── Continue bar (fixed at bottom of wrap) ── */
+.ob2-bottom-bar {
+  padding: 16px 16px 24px; background: rgba(245,242,237,0.96);
+  border-top: 1px solid rgba(0,0,0,0.07); backdrop-filter: blur(12px);
+}
+.ob2-continue-btn {
+  width: 100%; padding: 15px; background: #1C1610; border: none; border-radius: 99px;
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+  color: white; text-transform: uppercase; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all 0.25s; opacity: 0.35; pointer-events: none;
+}
+.ob2-continue-btn.ready { opacity: 1; pointer-events: auto; background: #A07820; box-shadow: 0 4px 16px rgba(160,120,32,0.22); }
+.ob2-continue-btn.ready:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(160,120,32,0.3); }
+
+/* ── Summary card (post-completion) ── */
+.ob2-summary-card {
+  margin: 16px; background: #FFFFFF; border: 1.5px solid rgba(160,120,32,0.22);
+  border-radius: 18px; padding: 16px; position: relative; overflow: hidden;
+  animation: ob2-fadeUp 0.5s ease both;
+}
+.ob2-summary-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, #C84040, #D08010, #C8960A, #2A8A3A, #1A8080, #3060C0, #7040B8);
+}
+.ob2-summary-label { font-family: 'Cinzel', serif; font-size: 8px; font-weight: 600; letter-spacing: 0.24em; color: #A07820; text-transform: uppercase; margin: 6px 0 8px; }
+.ob2-summary-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: #1C1610; margin-bottom: 12px; line-height: 1.3; }
+.ob2-summary-items { display: flex; flex-direction: column; gap: 7px; }
+.ob2-summary-item {
+  display: flex; align-items: center; gap: 10px; padding: 9px 11px;
+  background: #F5F2ED; border-radius: 10px; cursor: pointer;
+  transition: all 0.2s; border: 1px solid transparent;
+}
+.ob2-summary-item:hover { border-color: rgba(160,120,32,0.22); background: #FDFAF4; }
+.ob2-summary-icon { font-size: 17px; }
+.ob2-summary-item-title { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 500; color: #1C1610; }
+.ob2-summary-item-desc { font-family: 'Lato', sans-serif; font-size: 10px; color: #9A8E78; }
+.ob2-summary-reset {
+  width: 100%; margin-top: 12px; padding: 10px; background: none;
+  border: 1px solid rgba(0,0,0,0.09); border-radius: 99px;
+  font-family: 'Lato', sans-serif; font-size: 11px; color: #9A8E78;
+  cursor: pointer; transition: all 0.2s;
+}
+.ob2-summary-reset:hover { background: #EDE8DF; }
+
+
 </style>
 </head>
 <body>
@@ -1520,6 +1706,175 @@ html {
         <div class="featured-desc">A 7-day journey through the proof of Christ — the historical, scientific, and personal evidence for the faith.</div>
       </div>
     </div>
+
+    <!-- ═══ START HERE: Onboarding Flow (2nd on scroll) ═══ -->
+    <div id="becath-onboarding-wrap">
+
+      <!-- ─── SCREEN 1 ─── -->
+      <div class="ob2-screen ob2-active" id="ob2-screen-1">
+        <div class="ob2-progress-wrap">
+          <div class="ob2-prog-dots">
+            <div class="ob2-prog-dot ob2-dot-active" id="ob2-dot-1"></div>
+            <div class="ob2-prog-dot" id="ob2-dot-2"></div>
+            <div class="ob2-prog-dot" id="ob2-dot-3"></div>
+          </div>
+          <div class="ob2-prog-label">Step 1 of 3</div>
+        </div>
+        <div class="ob2-q-header">
+          <div class="ob2-q-step">Your Journey</div>
+          <div class="ob2-q-title">Where are you <em>right now?</em></div>
+          <div class="ob2-q-sub">No right answer. Just helps us show you what matters most.</div>
+        </div>
+        <div class="ob2-glass-divider"></div>
+        <div class="ob2-options" id="ob2-opts-1">
+          <div class="ob2-option" onclick="ob2Select(1,'lapsed',this)">
+            <div class="ob2-opt-icon ob2-c-red">🕯️</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I was raised Catholic</div><div class="ob2-opt-desc">Drifted away and now wondering if I should come back</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(1,'curious',this)">
+            <div class="ob2-opt-icon ob2-c-gold">🔍</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I'm genuinely curious</div><div class="ob2-opt-desc">Exploring Christianity and have real questions</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(1,'practicing',this)">
+            <div class="ob2-opt-icon ob2-c-blue">✝️</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I'm already practicing</div><div class="ob2-opt-desc">Catholic and want to go deeper in prayer and understanding</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(1,'loved-one',this)">
+            <div class="ob2-opt-icon ob2-c-teal">💛</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">Someone I love is Catholic</div><div class="ob2-opt-desc">Trying to understand their faith better</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SCREEN 2 ─── -->
+      <div class="ob2-screen" id="ob2-screen-2">
+        <div class="ob2-progress-wrap">
+          <div class="ob2-prog-dots">
+            <div class="ob2-prog-dot ob2-dot-done"></div>
+            <div class="ob2-prog-dot ob2-dot-active"></div>
+            <div class="ob2-prog-dot"></div>
+          </div>
+          <div class="ob2-prog-label">Step 2 of 3</div>
+        </div>
+        <div class="ob2-back-row">
+          <button class="ob2-back-btn" onclick="ob2GoBack(1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </button>
+        </div>
+        <div class="ob2-q-header">
+          <div class="ob2-q-step">Your Questions</div>
+          <div class="ob2-q-title">What's most <em>on your mind?</em></div>
+          <div class="ob2-q-sub">Pick the one that feels closest to where you are today.</div>
+        </div>
+        <div class="ob2-glass-divider"></div>
+        <div class="ob2-options" id="ob2-opts-2">
+          <div class="ob2-option" onclick="ob2Select(2,'proof',this)">
+            <div class="ob2-opt-icon ob2-c-red">🧠</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">Is any of this actually real?</div><div class="ob2-opt-desc">I need evidence before I can believe</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(2,'understand',this)">
+            <div class="ob2-opt-icon ob2-c-gold">📖</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I don't understand what Catholics believe</div><div class="ob2-opt-desc">Mary, angels, saints, the Mass — it's confusing</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(2,'pray',this)">
+            <div class="ob2-opt-icon ob2-c-blue">🙏</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I want to pray but don't know how</div><div class="ob2-opt-desc">Looking for a place to start or start over</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(2,'closer',this)">
+            <div class="ob2-opt-icon ob2-c-teal">✨</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I want to feel closer to God</div><div class="ob2-opt-desc">Something is missing and I think this might help</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(2,'deepen',this)">
+            <div class="ob2-opt-icon ob2-c-violet">🕊️</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I want to deepen an existing faith life</div><div class="ob2-opt-desc">Already believe, looking for richer prayer and knowledge</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SCREEN 3 ─── -->
+      <div class="ob2-screen" id="ob2-screen-3">
+        <div class="ob2-progress-wrap">
+          <div class="ob2-prog-dots">
+            <div class="ob2-prog-dot ob2-dot-done"></div>
+            <div class="ob2-prog-dot ob2-dot-done"></div>
+            <div class="ob2-prog-dot ob2-dot-active"></div>
+          </div>
+          <div class="ob2-prog-label">Step 3 of 3</div>
+        </div>
+        <div class="ob2-back-row">
+          <button class="ob2-back-btn" onclick="ob2GoBack(2)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </button>
+        </div>
+        <div class="ob2-q-header">
+          <div class="ob2-q-step">Your Time</div>
+          <div class="ob2-q-title">How much time <em>do you have?</em></div>
+          <div class="ob2-q-sub">We'll show you the right length sessions for your day.</div>
+        </div>
+        <div class="ob2-glass-divider"></div>
+        <div class="ob2-options" id="ob2-opts-3">
+          <div class="ob2-option" onclick="ob2Select(3,'quick',this)">
+            <div class="ob2-opt-icon ob2-c-gold">⚡</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">Just a few minutes</div><div class="ob2-opt-desc">A quick prayer, a saint, a single thought to carry</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(3,'medium',this)">
+            <div class="ob2-opt-icon ob2-c-blue">☕</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">About 10–20 minutes</div><div class="ob2-opt-desc">A proper reading, an audio prayer, something to sit with</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+          <div class="ob2-option" onclick="ob2Select(3,'deep',this)">
+            <div class="ob2-opt-icon ob2-c-red">🕯️</div>
+            <div class="ob2-opt-text"><div class="ob2-opt-title">I want to go deep</div><div class="ob2-opt-desc">A full devotion, a long reading, an immersive experience</div></div>
+            <div class="ob2-opt-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RESULT SCREEN ─── -->
+      <div class="ob2-screen" id="ob2-screen-result">
+        <div class="ob2-result-screen">
+          <div class="ob2-result-header">
+            <div class="ob2-result-cross">✝</div>
+            <div class="ob2-result-title" id="ob2-result-title">Your path is ready.</div>
+            <div class="ob2-result-sub" id="ob2-result-sub">Based on where you are, here's where we suggest you begin.</div>
+          </div>
+          <div class="ob2-result-path" style="animation-delay:0.2s">
+            <div class="ob2-result-path-label">Start Here</div>
+            <div id="ob2-result-primary"></div>
+          </div>
+          <div class="ob2-result-path" style="animation-delay:0.3s">
+            <div class="ob2-result-path-label">Also For You</div>
+            <div id="ob2-result-secondary"></div>
+          </div>
+          <button class="ob2-start-btn" onclick="ob2Complete()">
+            Begin Your Journey
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="ob2-restart-btn" onclick="ob2Restart()">Start over</button>
+        </div>
+      </div>
+
+      <!-- ─── CONTINUE BAR (screens 1–3) ─── -->
+      <div class="ob2-bottom-bar" id="ob2-bottomBar">
+        <button class="ob2-continue-btn" id="ob2-continueBtn" onclick="ob2Next()">
+          Continue
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+    </div><!-- /becath-onboarding-wrap -->
 
     <!-- Continue (hidden if empty) -->
     <div id="continue-section" style="display:none;">
@@ -2834,213 +3189,16 @@ html {
     document.getElementById('mini-player').classList.remove('show');
   }
 
-  // ── Onboarding (first-time visitors) ──
+  // ── Old onboarding modal removed — replaced by inline ob2 flow ──
   (function(){
-    var KEY = 'becath_profile';
-    var existing = null;
-    try { existing = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){}
-    if (existing && existing.completed) return;
-
-    var STEPS = [
-      { kind:'intro', title:'Welcome to BeCath', sub:'Catholic faith, made simple. 4 quick questions to make this yours.' },
-      { kind:'text',  field:'name', title:'What should we call you?', sub:'First name is fine.', placeholder:'Your name' },
-      { kind:'choice', field:'stage', title:'Where are you in your faith?', sub:'Pick whatever fits today — you can change this anytime.', options:[
-        { v:'curious',    label:'Curious',           sub:'Just exploring' },
-        { v:'returning',  label:'Coming back',       sub:'Reconnecting after time away' },
-        { v:'practicing', label:'Practicing',        sub:'Active in the faith' },
-        { v:'devout',     label:'Going deeper',      sub:'Want to grow further' }
-      ]},
-      { kind:'multi', field:'needs', title:'What do you most need help with?', sub:'Pick all that apply.', options:[
-        { v:'peace',      label:'Peace & anxiety' },
-        { v:'healing',    label:'Healing' },
-        { v:'family',     label:'Family & relationships' },
-        { v:'forgive',    label:'Forgiveness' },
-        { v:'discern',    label:'Discernment' },
-        { v:'prayer',     label:'A daily prayer rhythm' },
-        { v:'doubt',      label:'Doubts & questions' },
-        { v:'gratitude',  label:'Gratitude' }
-      ]},
-      { kind:'choice', field:'time', title:'When will you pray each day?', sub:'We\'ll gently remind you.', options:[
-        { v:'morning',  label:'Morning',   sub:'6–10 AM' },
-        { v:'midday',   label:'Midday',    sub:'10 AM–2 PM' },
-        { v:'evening',  label:'Evening',   sub:'4–8 PM' },
-        { v:'night',    label:'Night',     sub:'After 8 PM' }
-      ]},
-      { kind:'done', title:'You\'re all set', sub:'Tap below to begin.' }
-    ];
-
-    var state = { name:'', stage:'', needs:[], time:'' };
-    var idx = 0;
-
-    var css = '\
-      .ob-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:obFade .25s ease}\
-      @keyframes obFade{from{opacity:0}to{opacity:1}}\
-      @keyframes obSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}\
-      .ob-card{background:#fff;color:#000;border-radius:20px;max-width:460px;width:100%;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(0,0,0,.18),0 1px 0 rgba(0,0,0,.04);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;overflow:hidden;animation:obSlide .3s cubic-bezier(.2,.7,.3,1)}\
-      .ob-progress{height:2px;background:#f0f0f0;flex-shrink:0}\
-      .ob-progress-bar{height:100%;background:#000;transition:width .35s cubic-bezier(.2,.7,.3,1);width:0}\
-      .ob-body{padding:40px 32px 8px;overflow-y:auto;flex:1}\
-      .ob-eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#888;font-weight:500;margin-bottom:14px}\
-      .ob-title{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;font-size:1.6rem;font-weight:600;line-height:1.2;letter-spacing:-.015em;margin:0 0 10px;color:#000}\
-      .ob-sub{color:#666;font-size:.97rem;line-height:1.5;margin:0 0 28px}\
-      .ob-input{width:100%;border:1px solid #e5e5e5;background:#fafafa;color:#000;border-radius:12px;padding:15px 16px;font-size:1.02rem;outline:none;font-family:inherit;-webkit-appearance:none;transition:border-color .15s, background .15s}\
-      .ob-input:focus{border-color:#000;background:#fff}\
-      .ob-input::placeholder{color:#aaa}\
-      .ob-options{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}\
-      .ob-opt{border:1px solid #e5e5e5;background:#fff;border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .12s, background .12s, transform .08s;display:flex;align-items:center;gap:12px;text-align:left}\
-      .ob-opt:hover{border-color:#000}\
-      .ob-opt:active{transform:scale(.99)}\
-      .ob-opt.selected{border-color:#000;background:#000;color:#fff}\
-      .ob-opt-label{font-weight:500;font-size:.98rem;letter-spacing:-.005em}\
-      .ob-opt-sub{font-size:.83rem;color:#999;margin-top:2px}\
-      .ob-opt.selected .ob-opt-sub{color:#aaa}\
-      .ob-opt-check{width:20px;height:20px;border-radius:50%;border:1.5px solid #d0d0d0;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:transparent;font-size:.8rem;transition:all .12s}\
-      .ob-opt.selected .ob-opt-check{background:#fff;border-color:#fff;color:#000;font-weight:700}\
-      .ob-opt-text{flex:1;min-width:0}\
-      .ob-actions{padding:20px 32px 28px;display:flex;gap:8px;flex-shrink:0}\
-      .ob-btn{flex:1;border:none;border-radius:12px;padding:15px 18px;font-size:1rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;font-family:inherit;transition:opacity .15s, transform .08s, background .15s, color .15s}\
-      .ob-btn:active{transform:scale(.98)}\
-      .ob-btn-primary{background:#000;color:#fff}\
-      .ob-btn-primary:hover{opacity:.85}\
-      .ob-btn-primary:disabled{opacity:.25;cursor:not-allowed;transform:none}\
-      .ob-btn-ghost{background:transparent;color:#666;border:1px solid #e5e5e5}\
-      .ob-btn-ghost:hover{color:#000;border-color:#000}\
-      .ob-intro-art{margin:0 0 24px;line-height:1}\
-      .ob-intro-art svg{width:32px;height:32px;color:#000}\
-      .ob-skip{background:none;border:none;color:#999;font-size:.85rem;cursor:pointer;text-align:center;padding:14px 8px 4px;margin:0;width:100%;font-family:inherit;letter-spacing:-.005em}\
-      .ob-skip:hover{color:#000}\
-    ';
-    var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
-
-    var backdrop = document.createElement('div');
-    backdrop.className = 'ob-backdrop';
-    backdrop.innerHTML = '\
-      <div class="ob-card" role="dialog" aria-modal="true">\
-        <div class="ob-progress"><div class="ob-progress-bar" id="ob-bar"></div></div>\
-        <div class="ob-body" id="ob-body"></div>\
-        <div class="ob-actions" id="ob-actions"></div>\
-      </div>';
-    document.body.appendChild(backdrop);
-
-    function escape(s){ return (s||'').replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
-
-    function render(){
-      var step = STEPS[idx];
-      var bar = document.getElementById('ob-bar');
-      bar.style.width = ((idx+1)/STEPS.length*100) + '%';
-
-      var body = document.getElementById('ob-body');
-      var actions = document.getElementById('ob-actions');
-      var html = '';
-
-      if (step.kind === 'intro') {
-        html = '<div class="ob-intro-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 3v18M5 9h14"/></svg></div>\
-          <div class="ob-eyebrow">BeCath</div>\
-          <h2 class="ob-title">' + escape(step.title) + '</h2>\
-          <p class="ob-sub">' + escape(step.sub) + '</p>';
-      } else if (step.kind === 'text') {
-        html = '<div class="ob-eyebrow">Step ' + idx + ' of ' + (STEPS.length-2) + '</div>\
-          <h2 class="ob-title">' + escape(step.title) + '</h2>\
-          <p class="ob-sub">' + escape(step.sub) + '</p>\
-          <input type="text" class="ob-input" id="ob-text" placeholder="' + escape(step.placeholder||'') + '" value="' + escape(state[step.field]||'') + '" autocomplete="given-name">';
-      } else if (step.kind === 'choice' || step.kind === 'multi') {
-        var multi = step.kind === 'multi';
-        var current = multi ? (state[step.field]||[]) : state[step.field];
-        var opts = step.options.map(function(o){
-          var sel = multi ? (current.indexOf(o.v) >= 0) : (current === o.v);
-          return '<li class="ob-opt' + (sel?' selected':'') + '" data-v="' + escape(o.v) + '">\
-            <div class="ob-opt-text">\
-              <div class="ob-opt-label">' + escape(o.label) + '</div>' +
-              (o.sub ? '<div class="ob-opt-sub">' + escape(o.sub) + '</div>' : '') +
-            '</div>\
-            <div class="ob-opt-check">' + (sel?'✓':'') + '</div>\
-          </li>';
-        }).join('');
-        html = '<div class="ob-eyebrow">Step ' + idx + ' of ' + (STEPS.length-2) + '</div>\
-          <h2 class="ob-title">' + escape(step.title) + '</h2>\
-          <p class="ob-sub">' + escape(step.sub) + '</p>\
-          <ul class="ob-options" id="ob-options">' + opts + '</ul>';
-      } else if (step.kind === 'done') {
-        var nm = state.name ? (', ' + state.name.split(' ')[0]) : '';
-        html = '<div class="ob-intro-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>\
-          <div class="ob-eyebrow">Ready</div>\
-          <h2 class="ob-title">You\'re all set' + escape(nm) + '</h2>\
-          <p class="ob-sub">' + escape(step.sub) + '</p>';
+    // Mark old profile key as completed so it never re-fires if cached
+    try {
+      var old = JSON.parse(localStorage.getItem('becath_profile') || 'null');
+      if (!old || !old.completed) {
+        localStorage.setItem('becath_profile', JSON.stringify({ completed: true }));
       }
-      body.innerHTML = html;
-
-      var canAdvance = true;
-      if (step.kind === 'text')   canAdvance = !!(state[step.field] && state[step.field].trim());
-      if (step.kind === 'choice') canAdvance = !!state[step.field];
-      if (step.kind === 'multi')  canAdvance = (state[step.field]||[]).length > 0;
-
-      var backBtn  = idx > 0 ? '<button class="ob-btn ob-btn-ghost" id="ob-back">Back</button>' : '';
-      var nextLbl  = step.kind === 'done' ? 'Open BeCath' : (step.kind === 'intro' ? 'Get started' : 'Continue');
-      var nextDis  = canAdvance ? '' : ' disabled';
-      var skipBtn  = (step.kind !== 'intro' && step.kind !== 'done') ? '<button class="ob-skip" id="ob-skip">Skip for now</button>' : '';
-      actions.innerHTML = backBtn +
-        '<button class="ob-btn ob-btn-primary" id="ob-next"' + nextDis + '>' + nextLbl + '</button>';
-
-      // Skip link goes inside body
-      if (skipBtn) body.insertAdjacentHTML('beforeend', skipBtn);
-
-      // Bind
-      if (step.kind === 'text') {
-        var inp = document.getElementById('ob-text');
-        inp.focus();
-        inp.addEventListener('input', function(){
-          state[step.field] = inp.value;
-          var btn = document.getElementById('ob-next');
-          if (inp.value.trim()) btn.removeAttribute('disabled'); else btn.setAttribute('disabled','');
-        });
-        inp.addEventListener('keydown', function(e){ if (e.key === 'Enter' && state[step.field]) next(); });
-      }
-      if (step.kind === 'choice' || step.kind === 'multi') {
-        var multi = step.kind === 'multi';
-        document.querySelectorAll('#ob-options .ob-opt').forEach(function(el){
-          el.addEventListener('click', function(){
-            var v = el.dataset.v;
-            if (multi) {
-              var arr = state[step.field] = state[step.field] || [];
-              var i = arr.indexOf(v);
-              if (i >= 0) arr.splice(i,1); else arr.push(v);
-            } else {
-              state[step.field] = v;
-            }
-            render();
-          });
-        });
-      }
-
-      var nb = document.getElementById('ob-next');
-      if (nb) nb.addEventListener('click', next);
-      var bb = document.getElementById('ob-back');
-      if (bb) bb.addEventListener('click', back);
-      var sb = document.getElementById('ob-skip');
-      if (sb) sb.addEventListener('click', function(){ idx++; render(); });
-    }
-    function next(){
-      if (idx < STEPS.length - 1) { idx++; render(); }
-      else { finish(); }
-    }
-    function back(){ if (idx > 0) { idx--; render(); } }
-    function finish(){
-      state.completed = true;
-      state.completedAt = new Date().toISOString();
-      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
-      backdrop.style.transition = 'opacity .3s';
-      backdrop.style.opacity = '0';
-      setTimeout(function(){
-        backdrop.remove();
-        // Update greeting now that we have a name
-        var g = document.getElementById('greet');
-        if (g && state.name) {
-          var firstName = state.name.split(' ')[0];
-          g.textContent = g.textContent + ', ' + firstName;
-        }
-      }, 300);
-    }
-    render();
+    } catch(e){}
+    return;
   })();
 
   // ── Greeting + date ──
@@ -3048,11 +3206,89 @@ html {
     var h = new Date().getHours();
     var greet = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
     var savedName = '';
-    try { savedName = (JSON.parse(localStorage.getItem('becath_profile')||'{}').name || '').trim(); } catch(e){}
+    try {
+      var ob2d = JSON.parse(localStorage.getItem('becath_onboarding_data') || 'null');
+      if (ob2d && ob2d.q1) savedName = ob2d.q1.trim();
+      // fallback: old profile key
+      if (!savedName) savedName = (JSON.parse(localStorage.getItem('becath_profile')||'{}').name || '').trim();
+    } catch(e){}
     document.getElementById('greet').textContent = savedName ? (greet + ', ' + savedName) : greet;
     var d = new Date();
     var opts = { weekday:'long', month:'long', day:'numeric' };
     document.getElementById('today-date').textContent = d.toLocaleDateString(undefined, opts);
+  })();
+
+  // ── Onboarding state → Me page "Your Path" row ──
+  (function() {
+    try {
+      var done = localStorage.getItem('becath_onboarding_complete') === 'true';
+      var mePage = document.getElementById('page-me');
+      if (!mePage) return;
+
+      var pathMap = {
+        proof:      'Evidence & Proof',
+        understand: 'Understanding the Faith',
+        pray:       'Prayer & Devotion',
+        closer:     'Drawing Closer to God',
+        deepen:     'Deepening Your Faith'
+      };
+      var q1Labels = {
+        lapsed: 'Returning Catholic',
+        curious: 'Curious Seeker',
+        practicing: 'Practicing Catholic',
+        'loved-one': 'Supporting a Loved One'
+      };
+
+      if (done) {
+        var data = {};
+        try { data = JSON.parse(localStorage.getItem('becath_onboarding_data') || '{}'); } catch(e){}
+        var pathName = pathMap[data.q2] || 'Your Path';
+        var audience = q1Labels[data.q1] || '';
+
+        // Insert "Your Path" row at top of Me page list
+        var firstRow = mePage.querySelector('.profile-row');
+        if (firstRow) {
+          var pathRow = document.createElement('div');
+          pathRow.className = 'profile-row';
+          pathRow.style.cssText = 'border-left:3px solid #A07820;background:linear-gradient(90deg,rgba(160,120,32,0.06),transparent);';
+          pathRow.innerHTML =
+            '<div>' +
+              '<div class="profile-row-label" style="color:#A07820;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-bottom:2px;">Your Path</div>' +
+              '<div style="font-size:0.95rem;color:var(--text);font-weight:600;">' + pathName + '</div>' +
+              (audience ? '<div style="font-size:0.78rem;color:var(--text-mute);margin-top:1px;">' + audience + '</div>' : '') +
+            '</div>' +
+            '<button onclick="if(confirm(\'Reset your path and retake the Start Here questions?\')){'
+              + 'localStorage.removeItem(\'becath_onboarding_complete\');'
+              + 'localStorage.removeItem(\'becath_onboarding_data\');'
+              + 'location.reload();}" '
+              + 'style="font-size:0.72rem;color:var(--text-mute);background:none;border:1px solid var(--line);border-radius:99px;padding:4px 10px;cursor:pointer;">Reset</button>';
+          firstRow.parentNode.insertBefore(pathRow, firstRow);
+        }
+      } else {
+        // Not completed — add a "Start Here" nudge row
+        var firstRow2 = mePage.querySelector('.profile-row');
+        if (firstRow2) {
+          var nudgeRow = document.createElement('div');
+          nudgeRow.className = 'profile-row';
+          nudgeRow.style.cssText = 'cursor:pointer;';
+          nudgeRow.onclick = function() {
+            if (typeof goPage === 'function') goPage('home');
+            setTimeout(function() {
+              var wrap = document.getElementById('becath-onboarding-wrap');
+              if (wrap) wrap.scrollIntoView({ behavior:'smooth', block:'start' });
+            }, 200);
+          };
+          nudgeRow.innerHTML =
+            '<div>' +
+              '<div class="profile-row-label" style="color:#A07820;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-bottom:2px;">Start Here</div>' +
+              '<div style="font-size:0.95rem;color:var(--text);">Find your path →</div>' +
+              '<div style="font-size:0.78rem;color:var(--text-mute);margin-top:1px;">3 quick questions</div>' +
+            '</div>' +
+            '<div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>';
+          firstRow2.parentNode.insertBefore(nudgeRow, firstRow2);
+        }
+      }
+    } catch(e) {}
   })();
 
   // ── Scroll-reveal: fade-up section heads & cards as they enter viewport ──
@@ -3113,6 +3349,236 @@ html {
     var mo = new MutationObserver(function(){ observeAll(); });
     mo.observe(document.body, { childList: true, subtree: true });
   })();
+
+/* ═══════════════════════════════════════════════
+   BECATH ONBOARDING FLOW v2 — JavaScript
+   ═══════════════════════════════════════════════ */
+(function() {
+  'use strict';
+
+  var OB_KEY      = 'becath_onboarding_complete';
+  var OB_DATA_KEY = 'becath_onboarding_data';
+
+  var ob2Answers = {};
+  var ob2CurrentScreen = 1;
+
+  // ── Content map (Q2 drives routing) ──
+  var ob2ContentMap = {
+    proof: {
+      title: "The skeptic's path awaits you.",
+      sub: "You need answers before you can believe. That's honesty. Let's start there.",
+      primary: [
+        { icon:'🔬', title:'Did Jesus Really Live?', desc:'Historical evidence · 12 min', badge:'FREE', cls:'free' },
+        { icon:'⭐', title:'The Shroud of Turin', desc:'Image science · undeniable', badge:'FREE', cls:'free' }
+      ],
+      secondary: [
+        { icon:'🩸', title:'Eucharistic Miracles', desc:'Documented, investigated', badge:'FREE', cls:'free' },
+        { icon:'📖', title:'Why Catholic?', desc:'7-day journey · historical case', badge:'SERIES', cls:'' }
+      ]
+    },
+    understand: {
+      title: "The answers you never got.",
+      sub: "The faith was never explained clearly to you. That changes now.",
+      primary: [
+        { icon:'😇', title:'Your Guardian Angel', desc:'Who they are, what they do', badge:'FREE', cls:'free' },
+        { icon:'👑', title:'Why Is Mary Special?', desc:'The four dogmas explained simply', badge:'FREE', cls:'free' }
+      ],
+      secondary: [
+        { icon:'✝️', title:'The Seven Sacraments', desc:'Channels of divine life', badge:'FREE', cls:'free' },
+        { icon:'🏛️', title:'The Prophets', desc:'Voices across the ages', badge:'FREE', cls:'free' }
+      ]
+    },
+    pray: {
+      title: "Prayer starts simply.",
+      sub: "You don't need to know everything. You just need to begin. Here's where.",
+      primary: [
+        { icon:'☀️', title:'Morning Offering', desc:'Start your day · ~2 min', badge:'AUDIO', cls:'audio' },
+        { icon:'📿', title:'The Rosary — Joyful Mysteries', desc:'Guided audio · ~18 min', badge:'AUDIO', cls:'audio' }
+      ],
+      secondary: [
+        { icon:'🕊️', title:'Divine Mercy Chaplet', desc:'Audio · ~12 min', badge:'AUDIO', cls:'audio' },
+        { icon:'🌙', title:'Night Prayer', desc:'Compline · ~12 min', badge:'AUDIO', cls:'audio' }
+      ]
+    },
+    closer: {
+      title: "Something is calling you.",
+      sub: "That feeling isn't random. Here's content that meets you exactly where you are.",
+      primary: [
+        { icon:'✝️', title:'Stations of the Cross', desc:'14 stations · guided reading', badge:'FREE', cls:'free' },
+        { icon:'😇', title:'Your Guardian Angel', desc:"You've had one since birth", badge:'FREE', cls:'free' }
+      ],
+      secondary: [
+        { icon:'☀️', title:'Morning Offering', desc:'Audio · ~2 min', badge:'AUDIO', cls:'audio' },
+        { icon:'📿', title:'Sleep Rosary', desc:'Gentle · ~25 min', badge:'AUDIO', cls:'audio' }
+      ]
+    },
+    deepen: {
+      title: "Go deeper with the faith.",
+      sub: "You believe. Now let's build on that with richer prayer and deeper understanding.",
+      primary: [
+        { icon:'📖', title:'Book of Revelation', desc:"Christ's victory revealed", badge:'FREE', cls:'free' },
+        { icon:'🏛️', title:'Mary & Her Apparitions', desc:'15 visits across 2,000 years', badge:'FREE', cls:'free' }
+      ],
+      secondary: [
+        { icon:'📿', title:'Sorrowful Mysteries', desc:'Rosary · Tue & Fri · ~18 min', badge:'AUDIO', cls:'audio' },
+        { icon:'🌙', title:'Stations of the Cross', desc:'14 stations · Fridays & Lent', badge:'FREE', cls:'free' }
+      ]
+    }
+  };
+
+  // ── Init: gate the home page until onboarding is done ──
+  function ob2Init() {
+    var wrap = document.getElementById('becath-onboarding-wrap');
+    if (!wrap) return;
+    var completed = localStorage.getItem(OB_KEY) === 'true';
+    if (completed) {
+      // Already done — hide overlay immediately so home page shows
+      wrap.style.display = 'none';
+    }
+    // else: overlay stays visible (position:fixed covers everything)
+  }
+
+  // ── Show post-completion summary card ──
+  function ob2ShowSummary(wrap, data) {
+    var interest = data.q2 || 'pray';
+    var content = ob2ContentMap[interest] || ob2ContentMap.pray;
+    var top2 = [content.primary[0], content.primary[1]];
+    var html = '<div class="ob2-summary-card"><div class="ob2-summary-stripe"></div>' +
+      '<div class="ob2-summary-label">Your Path</div>' +
+      '<div class="ob2-summary-title">' + content.title + '</div>' +
+      '<div class="ob2-summary-items">';
+    top2.forEach(function(item) {
+      html += '<div class="ob2-summary-item">' +
+        '<div class="ob2-summary-icon">' + item.icon + '</div>' +
+        '<div class="ob2-summary-text">' +
+          '<div class="ob2-summary-item-title">' + item.title + '</div>' +
+          '<div class="ob2-summary-item-desc">' + item.desc + '</div>' +
+        '</div></div>';
+    });
+    html += '</div>' +
+      '<button class="ob2-summary-reset" onclick="ob2ResetPath()">Retake · Start over</button>' +
+      '</div>';
+    wrap.innerHTML = html;
+  }
+
+  // ── Select an option ──
+  window.ob2Select = function(screen, value, el) {
+    var opts = document.querySelectorAll('#ob2-opts-' + screen + ' .ob2-option');
+    opts.forEach(function(o) { o.classList.remove('selected'); });
+    el.classList.add('selected');
+    ob2Answers[screen] = value;
+    var btn = document.getElementById('ob2-continueBtn');
+    if (btn) btn.classList.add('ready');
+  };
+
+  // ── Continue ──
+  window.ob2Next = function() {
+    if (!ob2Answers[ob2CurrentScreen]) return;
+    if (ob2CurrentScreen < 3) {
+      ob2GoToScreen(ob2CurrentScreen + 1);
+    } else {
+      ob2ShowResult();
+    }
+  };
+
+  // ── Back ──
+  window.ob2GoBack = function(toScreen) { ob2GoToScreen(toScreen); };
+
+  // ── Navigate screens ──
+  function ob2GoToScreen(n) {
+    var curr = document.getElementById('ob2-screen-' + ob2CurrentScreen);
+    if (curr) curr.classList.remove('ob2-active');
+    ob2CurrentScreen = n;
+    var next = document.getElementById('ob2-screen-' + n);
+    if (next) next.classList.add('ob2-active');
+    var btn = document.getElementById('ob2-continueBtn');
+    if (btn) {
+      if (ob2Answers[n]) btn.classList.add('ready');
+      else btn.classList.remove('ready');
+    }
+  }
+
+  // ── Show result screen ──
+  function ob2ShowResult() {
+    var curr = document.getElementById('ob2-screen-' + ob2CurrentScreen);
+    if (curr) curr.classList.remove('ob2-active');
+
+    var interest = ob2Answers[2] || 'pray';
+    var content = ob2ContentMap[interest] || ob2ContentMap.pray;
+
+    document.getElementById('ob2-result-title').textContent = content.title;
+    document.getElementById('ob2-result-sub').textContent   = content.sub;
+
+    function buildItems(items, startDelay) {
+      return items.map(function(item, i) {
+        return '<div class="ob2-result-item" style="animation:ob2-fadeUp 0.4s ease ' + (startDelay + i * 0.1) + 's both;">' +
+          '<div class="ob2-result-item-icon">' + item.icon + '</div>' +
+          '<div class="ob2-result-item-text">' +
+            '<div class="ob2-result-item-title">' + item.title + '</div>' +
+            '<div class="ob2-result-item-desc">' + item.desc + '</div>' +
+          '</div>' +
+          '<div class="ob2-result-item-badge ' + item.cls + '">' + item.badge + '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    document.getElementById('ob2-result-primary').innerHTML   = buildItems(content.primary, 0.2);
+    document.getElementById('ob2-result-secondary').innerHTML = buildItems(content.secondary, 0.35);
+
+    var resultScreen = document.getElementById('ob2-screen-result');
+    if (resultScreen) resultScreen.classList.add('ob2-active');
+
+    var bottomBar = document.getElementById('ob2-bottomBar');
+    if (bottomBar) bottomBar.style.display = 'none';
+
+    ob2CurrentScreen = 'result';
+  }
+
+  // ── Complete: save + dismiss overlay to reveal home page ──
+  window.ob2Complete = function() {
+    localStorage.setItem(OB_KEY, 'true');
+    localStorage.setItem(OB_DATA_KEY, JSON.stringify({
+      q1: ob2Answers[1], q2: ob2Answers[2], q3: ob2Answers[3]
+    }));
+    var wrap = document.getElementById('becath-onboarding-wrap');
+    if (wrap) {
+      wrap.classList.add('ob2-hidden');
+      setTimeout(function() { wrap.style.display = 'none'; }, 420);
+    }
+  };
+
+  // ── Restart ──
+  window.ob2Restart = function() {
+    ob2Answers = {};
+    ob2CurrentScreen = 1;
+    localStorage.removeItem(OB_KEY);
+    localStorage.removeItem(OB_DATA_KEY);
+    document.querySelectorAll('.ob2-screen').forEach(function(s) { s.classList.remove('ob2-active'); });
+    document.querySelectorAll('.ob2-option').forEach(function(o) { o.classList.remove('selected'); });
+    var s1 = document.getElementById('ob2-screen-1');
+    if (s1) s1.classList.add('ob2-active');
+    var bottomBar = document.getElementById('ob2-bottomBar');
+    if (bottomBar) bottomBar.style.display = '';
+    var btn = document.getElementById('ob2-continueBtn');
+    if (btn) btn.classList.remove('ready');
+  };
+
+  // ── Reset path (from Me page row) ──
+  window.ob2ResetPath = function() {
+    if (!confirm('Reset your path and retake the Start Here questions?')) return;
+    localStorage.removeItem(OB_KEY);
+    localStorage.removeItem(OB_DATA_KEY);
+    location.reload();
+  };
+
+  // Run init on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ob2Init);
+  } else {
+    ob2Init();
+  }
+
+})();
 </script>
 
 </body>

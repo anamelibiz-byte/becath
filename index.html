@@ -17,6 +17,9 @@
 <meta name="twitter:title" content="BeCath — Catholic faith, made simple">
 <meta name="twitter:description" content="Daily prayers, the saints, Mass readings, and the case for Christ. In your pocket. Free.">
 <meta name="twitter:image" content="https://becath.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="/app/img/logo.jpg">
 <link rel="apple-touch-icon" href="/app/img/logo.jpg">
 <style>
@@ -454,8 +457,43 @@
   </div>
 </section>
 
+<!-- ───── RETURNING USER BANNER (shown if onboarding complete) ───── -->
+<section id="returning-section" style="display:none; background:#fff; border-top:1px solid #EFE7D5; padding:56px 22px;">
+  <div class="container" style="max-width:640px; margin:0 auto; text-align:center;">
+    <div style="
+      background: linear-gradient(180deg,#FAFAF8,#fff);
+      border: 1.5px solid rgba(160,120,32,0.22);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    ">
+      <!-- Stained glass stripe -->
+      <div style="
+        position:absolute; top:0; left:0; right:0; height:4px;
+        background: linear-gradient(90deg,#C84040,#D08010,#C8960A,#2A8A3A,#1A8080,#3060C0,#7040B8);
+      "></div>
+      <div style="
+        font-family:'Cinzel',Georgia,serif;
+        font-size:9px; font-weight:700; letter-spacing:0.28em;
+        color:#A07820; text-transform:uppercase; margin-bottom:10px; margin-top:4px;
+      ">Welcome back</div>
+      <div id="returning-title" style="
+        font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:26px; font-weight:400; color:#1A1410;
+        line-height:1.25; margin-bottom:8px;
+      ">Your path is ready.</div>
+      <div id="returning-sub" style="
+        font-size:14px; color:#9A8E78; margin-bottom:24px; line-height:1.6;
+      ">Continue where you left off.</div>
+      <div id="returning-items" style="display:flex; flex-direction:column; gap:8px; margin-bottom:24px; text-align:left;"></div>
+      <a class="btn btn-primary" href="/app/" style="display:inline-flex;">Continue Your Journey →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ───── FINAL CTA ───── -->
-<section class="final">
+<section class="final" id="final-cta">
   <div class="container">
     <div class="section-eyebrow">Ready?</div>
     <h2>Open BeCath now.</h2>
@@ -477,6 +515,56 @@
 </footer>
 
 <script>
+  /* ── Onboarding-aware personalisation ── */
+  (function() {
+    var OB_KEY = 'becath_onboarding_complete';
+    var OB_DATA_KEY = 'becath_onboarding_data';
+
+    var contentMap = {
+      proof:      { title:"The skeptic's path awaits.", sub:"You asked for evidence. Here's where to go next.", items:[{icon:'🔬',t:'Did Jesus Really Live?',d:'Historical evidence · 12 min'},{icon:'⭐',t:'The Shroud of Turin',d:'Image science · undeniable'}] },
+      understand: { title:"The answers you never got.", sub:"The faith explained simply, finally.", items:[{icon:'😇',t:'Your Guardian Angel',d:'Who they are, what they do'},{icon:'👑',t:'Why Is Mary Special?',d:'The four dogmas, explained'}] },
+      pray:       { title:"Your prayer path is ready.", sub:"Begin with these. You don't need anything else.", items:[{icon:'☀️',t:'Morning Offering',d:'Audio · ~2 min'},{icon:'📿',t:'The Rosary',d:'Guided · ~18 min'}] },
+      closer:     { title:"Something is calling you.", sub:"You're on the right path. Keep walking.", items:[{icon:'✝️',t:'Stations of the Cross',d:'14 stations · guided'},{icon:'😇',t:'Your Guardian Angel',d:"You've had one since birth"}] },
+      deepen:     { title:"Go deeper with the faith.", sub:"You believe. Now build on that foundation.", items:[{icon:'📖',t:'Book of Revelation',d:"Christ's victory revealed"},{icon:'🏛️',t:'Mary & Her Apparitions',d:'15 visits across 2,000 years'}] }
+    };
+
+    try {
+      var done = localStorage.getItem(OB_KEY) === 'true';
+      if (!done) return;
+
+      var data = JSON.parse(localStorage.getItem(OB_DATA_KEY) || '{}');
+      var interest = data.q2 || 'pray';
+      var content = contentMap[interest] || contentMap.pray;
+
+      // Personalise hero eyebrow
+      var eyebrow = document.querySelector('.hero-eyebrow');
+      var q1Map = { lapsed:'Welcome back', curious:'For the curious', practicing:'For the faithful', 'loved-one':'For those who care' };
+      if (eyebrow && data.q1 && q1Map[data.q1]) {
+        eyebrow.textContent = q1Map[data.q1] + ' · BeCath';
+      }
+
+      // Show returning section
+      var section = document.getElementById('returning-section');
+      var titleEl = document.getElementById('returning-title');
+      var subEl   = document.getElementById('returning-sub');
+      var itemsEl = document.getElementById('returning-items');
+      var finalEl = document.getElementById('final-cta');
+      if (!section) return;
+
+      titleEl.textContent = content.title;
+      subEl.textContent   = content.sub;
+      itemsEl.innerHTML   = content.items.map(function(item) {
+        return '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#FAFAF8;border-radius:12px;border:1px solid rgba(160,120,32,0.15);">' +
+          '<span style="font-size:20px;">' + item.icon + '</span>' +
+          '<div><div style="font-family:\'Cormorant Garamond\',Georgia,serif;font-size:16px;font-weight:500;color:#1A1410;">' + item.t + '</div>' +
+          '<div style="font-size:11px;color:#9A8E78;">' + item.d + '</div></div></div>';
+      }).join('');
+
+      section.style.display = 'block';
+      if (finalEl) finalEl.style.display = 'none'; // swap final CTA for returning card
+    } catch(e){}
+  })();
+
   // Intercept the signup form so the user stays on the page (Netlify still records it)
   (function(){
     var form = document.getElementById('signupForm');

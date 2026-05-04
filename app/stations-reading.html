@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FAFAF8">
+<title>BeCath — Stations of the Cross</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─── Brand Bible Variables ───────────────────────── */
+:root {
+  --bg:           #FAFAF8;
+  --bg2:          #F2F0EB;
+  --white:        #FFFFFF;
+  --ink:          #1A1410;
+  --ink-mid:      #4A3C28;
+  --ink-muted:    #9A8E78;
+  --gold:         #A07820;
+  --gold-bright:  #C49A28;
+  --gold-light:   rgba(160,120,32,0.10);
+  --gold-border:  rgba(160,120,32,0.22);
+  --border:       rgba(0,0,0,0.09);
+  --border-strong:rgba(0,0,0,0.14);
+  --shadow:       rgba(44,36,22,0.08);
+  --shadow-md:    rgba(44,36,22,0.14);
+  --crimson:      #8B1A1A;
+  --crimson-light:rgba(139,26,26,0.08);
+  /* Stained glass */
+  --sg-red:    #C84040;
+  --sg-amber:  #D08010;
+  --sg-gold:   #C8960A;
+  --sg-green:  #2A8A3A;
+  --sg-teal:   #1A8080;
+  --sg-blue:   #3060C0;
+  --sg-violet: #7040B8;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── TOP BAR (sticky, brand style) ──────────────── */
+.top-bar {
+  position: sticky;
+  top: 0; z-index: 50;
+  background: rgba(250,250,248,0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  /* Stained glass stripe at very top */
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(90deg,
+    var(--sg-red),   var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal),  var(--sg-blue), var(--sg-violet)
+  ) 1;
+}
+
+.top-bar-center { flex: 1; text-align: center; }
+
+.top-bar-title {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+.top-bar-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px; font-weight: 400;
+  color: var(--ink-muted); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-top: 2px;
+}
+
+.btn-back {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50px;
+  background: var(--bg2); border: 1px solid var(--border);
+  cursor: pointer; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none; color: var(--ink-mid);
+}
+.btn-back:hover { background: var(--gold-light); border-color: var(--gold-border); }
+.btn-back svg { width: 16px; height: 16px; }
+
+.btn-audio {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gold); border: none;
+  cursor: pointer; flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(160,120,32,0.28);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-audio.active {
+  background: var(--crimson);
+  box-shadow: 0 2px 10px rgba(139,26,26,0.28);
+}
+.btn-audio svg { width: 18px; height: 18px; color: white; }
+
+/* ─── HERO IMAGE ──────────────────────────────────── */
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  max-height: 260px;
+}
+.hero-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  display: block;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10,7,3,0.10) 0%,
+    rgba(10,7,3,0.55) 60%,
+    rgba(10,7,3,0.82) 100%
+  );
+}
+.hero-content {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 20px 20px 18px;
+  color: #fff;
+}
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 6px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 400; line-height: 1.15;
+  color: #fff; margin-bottom: 6px;
+}
+.hero-badges {
+  display: flex; gap: 7px; flex-wrap: wrap;
+}
+.hero-badge {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 99px;
+}
+.hero-badge.gold {
+  background: rgba(196,154,40,0.28);
+  border: 1px solid rgba(196,154,40,0.55);
+  color: #E8C860;
+}
+.hero-badge.white {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.88);
+}
+
+/* ─── STAINED GLASS STRIPE DIVIDER ───────────────── */
+.sg-stripe {
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--sg-red), var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal), var(--sg-blue), var(--sg-violet)
+  );
+}
+
+/* ─── PROGRESS BAR ────────────────────────────────── */
+.progress-wrap {
+  padding: 14px 18px 12px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.progress-labels {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.progress-label-left {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-muted);
+}
+.progress-label-right {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold);
+}
+.progress-dots {
+  display: flex; gap: 5px; align-items: center; justify-content: center;
+}
+.dot {
+  height: 6px; border-radius: 99px;
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  flex: 1;
+}
+.dot-done   { background: rgba(160,120,32,0.5); }
+.dot-active {
+  flex: 2.5;
+  background: var(--gold-bright);
+  box-shadow: 0 0 8px rgba(196,154,40,0.55);
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+.dot-locked { background: var(--bg2); }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* ── Stained glass progress bar (full width fill) ── */
+.sg-progress-track {
+  height: 5px; border-radius: 99px;
+  background: var(--bg2); overflow: hidden;
+  margin-bottom: 10px;
+}
+.sg-progress-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg,
+    var(--sg-violet), var(--sg-blue), var(--sg-teal),
+    var(--sg-green), var(--sg-gold), var(--sg-amber), var(--sg-red)
+  );
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── PAGE CONTENT ────────────────────────────────── */
+.page-content {
+  padding: 16px 16px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ─── STATION CARD ────────────────────────────────── */
+.station-card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  transition: opacity 0.4s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  animation: fadeUp 0.5s ease both;
+  position: relative;
+}
+.station-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--card-stripe, transparent);
+  transition: opacity 0.3s;
+  border-radius: 0 3px 3px 0;
+}
+.station-card.state-done            { opacity: 0.55; }
+.station-card.state-done::before    { opacity: 0.5; }
+.station-card.state-active::before  { opacity: 1; }
+.station-card.state-locked          { opacity: 0.32; border-color: var(--border); pointer-events: none; }
+.station-card.state-locked::before  { display: none; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── STATION HEADER ──────────────────────────────── */
+.station-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; cursor: pointer; user-select: none; gap: 12px;
+}
+.station-header-left { flex: 1; min-width: 0; }
+
+.station-num-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 3px;
+  display: flex; align-items: center; gap: 6px;
+}
+.pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--crimson); flex-shrink: 0;
+  animation: pulse-anim 1.6s infinite;
+}
+@keyframes pulse-anim {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.5; transform:scale(1.3); }
+}
+
+.station-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 500; color: var(--ink);
+  line-height: 1.25;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.station-scripture-ref {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 13px; color: var(--ink-muted); margin-top: 2px;
+}
+
+.toggle-btn {
+  width: 34px; height: 34px; border-radius: 50%; border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.toggle-btn.collapsed { background: var(--bg2); }
+.toggle-btn.expanded  { background: var(--gold); box-shadow: 0 2px 8px rgba(160,120,32,0.28); }
+.toggle-btn.done-state { background: var(--bg2); }
+.toggle-btn svg { width: 16px; height: 16px; transition: color 0.2s; }
+.toggle-btn.collapsed  svg { color: var(--ink-mid); }
+.toggle-btn.expanded   svg { color: white; }
+.toggle-btn.done-state svg { color: var(--gold); }
+
+/* ─── STATION BODY ────────────────────────────────── */
+.station-body {
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+  max-height: 0; opacity: 0;
+}
+.station-body.open { max-height: 1400px; opacity: 1; }
+
+.station-body-inner {
+  padding: 0 16px 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── SCRIPTURE BLOCK ─────────────────────────────── */
+.scripture-block {
+  position: relative;
+  background: var(--bg2);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 16px 16px 20px;
+  margin: 16px 0; overflow: hidden;
+}
+.scripture-quote-watermark {
+  position: absolute; top: -10px; left: 6px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; color: var(--gold); opacity: 0.12;
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.scripture-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 17px; line-height: 1.75;
+  color: var(--ink); position: relative; z-index: 1;
+}
+.scripture-ref {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  margin-top: 10px; position: relative; z-index: 1;
+}
+
+/* ─── REFLECTION ──────────────────────────────────── */
+.reflection-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; line-height: 1.85; color: var(--ink-mid);
+  padding: 4px 0 16px;
+}
+
+/* ─── PRAYER BLOCK ────────────────────────────────── */
+.prayer-block {
+  background: rgba(160,120,32,0.06);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  padding: 16px; margin-bottom: 18px;
+}
+.prayer-label-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.prayer-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); white-space: nowrap;
+}
+.prayer-rule { flex: 1; height: 1px; background: var(--gold-border); }
+.prayer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 17px; line-height: 1.8;
+  color: var(--ink-mid);
+}
+
+/* ─── ACTION ROW ──────────────────────────────────── */
+.action-row { display: flex; gap: 10px; align-items: center; }
+
+.btn-continue {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--gold); color: white;
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; border: none; border-radius: 99px;
+  padding: 13px 20px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(160,120,32,0.28);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+.btn-continue:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(160,120,32,0.36); }
+.btn-continue:active { transform: translateY(0); }
+.btn-continue svg { width: 16px; height: 16px; }
+
+.btn-bookmark {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-bookmark.marked {
+  background: var(--crimson-light); border-color: var(--crimson);
+}
+.btn-bookmark svg { width: 18px; height: 18px; }
+.btn-bookmark .bm-icon { color: var(--ink-mid); }
+.btn-bookmark.marked .bm-icon { color: var(--crimson); }
+
+/* ─── ORIGINAL FOOTER ─────────────────────────────── */
+.app-footer {
+  text-align: center;
+  margin: 8px 20px 0;
+  padding: 20px 0 10px;
+  border-top: 1px solid var(--gold-border);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 2;
+  letter-spacing: 0.03em;
+}
+
+/* ─── BOTTOM NAV ──────────────────────────────────── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(250,250,248,0.96);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-around; align-items: center;
+  padding: 8px 0 env(safe-area-inset-bottom, 8px);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 6px 16px; cursor: pointer; position: relative; text-decoration: none;
+}
+.nav-item svg { width: 22px; height: 22px; color: var(--ink-muted); transition: color 0.2s; }
+.nav-item span {
+  font-family: 'Lato', sans-serif; font-size: 10px; font-weight: 400;
+  color: var(--ink-muted); transition: color 0.2s;
+}
+.nav-item.active svg  { color: var(--gold); }
+.nav-item.active span { color: var(--gold); font-weight: 700; }
+.nav-item.active::after {
+  content: ''; position: absolute; bottom: 2px; left: 50%;
+  transform: translateX(-50%); width: 4px; height: 4px;
+  border-radius: 50%; background: var(--gold);
+}
+
+/* ─── Staggered card entrance ─────────────────────── */
+.station-card:nth-child(1) { animation-delay: 0.04s; }
+.station-card:nth-child(2) { animation-delay: 0.10s; }
+.station-card:nth-child(3) { animation-delay: 0.16s; }
+.station-card:nth-child(4) { animation-delay: 0.22s; }
+.station-card:nth-child(5) { animation-delay: 0.28s; }
+.station-card:nth-child(6) { animation-delay: 0.34s; }
+.station-card:nth-child(7) { animation-delay: 0.40s; }
+
+</style>
+</head>
+<body>
+
+<!-- ─── TOP BAR ──────────────────────────────────────────── -->
+<header class="top-bar" role="banner">
+  <a href="index.html" class="btn-back" aria-label="Go back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <div class="top-bar-center">
+    <div class="top-bar-title">Stations of the Cross</div>
+    <div class="top-bar-subtitle" id="topBarSubtitle">Good Friday · Lent</div>
+  </div>
+  <button class="btn-audio" id="audioBtn" aria-label="Toggle audio" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+  </button>
+</header>
+
+<!-- ─── HERO IMAGE ───────────────────────────────────────── -->
+<div class="hero-wrap" role="img" aria-label="Stations of the Cross">
+  <img src="img/stations.jpg" alt="Stations of the Cross">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Devotion of the Passion</div>
+    <div class="hero-title">Stations of the Cross</div>
+    <div class="hero-badges">
+      <span class="hero-badge gold">14 Stations</span>
+      <span class="hero-badge white">~20 min</span>
+      <span class="hero-badge white">Fridays &amp; Lent</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── STAINED GLASS STRIPE ─────────────────────────────── -->
+<div class="sg-stripe" aria-hidden="true"></div>
+
+<!-- ─── PROGRESS BAR ─────────────────────────────────────── -->
+<div class="progress-wrap" role="region" aria-label="Progress">
+  <div class="progress-labels">
+    <span class="progress-label-left">Your Progress</span>
+    <span class="progress-label-right" id="stationLabel">Station I of XIV</span>
+  </div>
+  <div class="sg-progress-track" aria-hidden="true">
+    <div class="sg-progress-fill" id="sgProgressFill" style="width:0%"></div>
+  </div>
+  <div class="progress-dots" id="progressDots"
+       role="progressbar" aria-valuemin="1" aria-valuemax="14" aria-valuenow="1"
+       aria-label="Station progress">
+    <!-- dots injected by JS -->
+  </div>
+</div>
+
+<!-- ─── STATION CARDS ─────────────────────────────────────── -->
+<main class="page-content" id="stationsContainer" role="main">
+  <!-- injected by JS -->
+</main>
+
+<!-- ─── ORIGINAL FOOTER ───────────────────────────────────── -->
+<footer class="app-footer">
+  ✝ &nbsp; Consistency over perfection &nbsp;·&nbsp; 🌹 Through Mary, to Jesus &nbsp;·&nbsp; ✨ With the Saints
+</footer>
+
+<!-- ─── BOTTOM NAV ────────────────────────────────────────── -->
+<nav class="bottom-nav" role="navigation" aria-label="App navigation">
+  <a href="index.html" class="nav-item" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="#" class="nav-item" aria-label="Pray">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <span>Pray</span>
+  </a>
+  <a href="#" class="nav-item active" aria-label="Learn" aria-current="page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Learn</span>
+  </a>
+  <a href="#" class="nav-item" aria-label="Miracles">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Miracles</span>
+  </a>
+  <a href="#" class="nav-item" aria-label="Me">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    <span>Me</span>
+  </a>
+</nav>
+
+<script>
+/* ─── DATA ─────────────────────────────────────────── */
+const STATIONS = [
+  {
+    num: 1, roman: 'I', title: 'Jesus Is Condemned to Death',
+    ref: 'Matthew 27:24–26',
+    scripture: 'When Pilate saw that he was accomplishing nothing, but rather that a riot was starting, he took water and washed his hands in front of the crowd, saying, "I am innocent of this Man\'s blood; see to that yourselves."',
+    reflection: 'Pilate knew Jesus was innocent, yet chose the crowd\'s approval over justice. How often do we silence truth to preserve our comfort? In this station, we are invited to examine the moments we have looked away from injustice — times we washed our hands of responsibility when courage was needed.',
+    prayer: 'Lord Jesus, condemned unjustly by human cowardice, grant us the courage to stand for truth even when it costs us. May we never trade Your justice for the approval of the crowd. Amen.'
+  },
+  {
+    num: 2, roman: 'II', title: 'Jesus Takes Up His Cross',
+    ref: 'John 19:17',
+    scripture: 'He went out, bearing His own cross, to the place called the Place of a Skull, which is called in Hebrew, Golgotha.',
+    reflection: 'Jesus receives the cross not as a victim, but as the willing Lamb. He embraces what He could have refused. Every cross we carry — grief, illness, loneliness — is held in His hands first. We are never the first to bear it.',
+    prayer: 'Jesus, You took up Your cross willingly for love of me. Help me to embrace my own crosses with the same surrender, trusting that what I carry has already been redeemed by You. Amen.'
+  },
+  {
+    num: 3, roman: 'III', title: 'Jesus Falls the First Time',
+    ref: 'Isaiah 53:6',
+    scripture: 'All we like sheep have gone astray; we have turned every one to his own way; and the Lord hath laid on him the iniquity of us all.',
+    reflection: 'He falls — not from weakness of will, but under the crushing weight of all our sin. The eternal Son of God presses His face into the dust of the earth He made. In this fall, He reaches down to lift every soul that has ever fallen. Your failures are not too many for His mercy.',
+    prayer: 'Lord, You fell beneath the weight of my sins. Yet You rose and continued. Forgive me for the times I have fallen and despaired. Strengthen me to rise again, leaning on Your mercy. Amen.'
+  },
+  {
+    num: 4, roman: 'IV', title: 'Jesus Meets His Mother',
+    ref: 'Luke 2:35',
+    scripture: 'A sword will pierce through your own soul also, so that thoughts from many hearts may be revealed.',
+    reflection: 'Mary had been told a sword would pierce her heart. Now she stands at the edge of the road and watches it enter. Their eyes meet — Son and Mother — in a moment of love so pure it pierces time itself. Simeon\'s prophecy becomes flesh and anguish.',
+    prayer: 'Mary, Our Lady of Sorrows, you walked this road with Jesus and carried His cross in your heart. Accompany us in our sufferings as you accompanied Him. Intercede for us, Mother. Amen.'
+  },
+  {
+    num: 5, roman: 'V', title: 'Simon of Cyrene Helps Jesus',
+    ref: 'Mark 15:21',
+    scripture: 'They compelled a passerby, Simon of Cyrene, who was coming in from the country, to carry His cross.',
+    reflection: 'Simon did not volunteer. He was pulled from the crowd, compelled by soldiers. Yet in that compulsion, he became part of the story of salvation. We, too, are often called into service unexpectedly — through interruptions, inconveniences, sudden needs. Every act of reluctant mercy can become holy.',
+    prayer: 'Lord, make me a Simon for someone who is overwhelmed today. Help me to see Your cross in the burdens of those around me, and give me the grace to reach out — even when I wasn\'t planning to. Amen.'
+  },
+  {
+    num: 6, roman: 'VI', title: 'Veronica Wipes the Face of Jesus',
+    ref: 'Isaiah 53:3',
+    scripture: 'He was despised and rejected by men; a man of sorrows, and acquainted with grief.',
+    reflection: 'No Gospel records Veronica\'s name. She appears only in tradition — a woman who stepped through the mob with a cloth. One small gesture of tenderness in a road of cruelty. She could not stop the crucifixion, but she could wipe His face. Tradition holds His image remained on the cloth.',
+    prayer: 'Jesus, You are found in the face of every suffering person. Give us Veronica\'s courage — to step forward with tenderness where others step back with fear. May we wipe Your face in our neighbors. Amen.'
+  },
+  {
+    num: 7, roman: 'VII', title: 'Jesus Falls the Second Time',
+    ref: 'Lamentations 3:1–2',
+    scripture: 'I am the man who has seen affliction under the rod of His wrath; He has driven me and brought me into darkness without any light.',
+    reflection: 'He falls again. The road to Calvary was paved with falls. And yet He rose each time. This second fall speaks to those who have fallen twice — who have returned to old sins, old wounds, old griefs — and believe this time mercy cannot reach them. It can. He rose again.',
+    prayer: 'Merciful Lord, You fell a second time and still rose. Help those of us who have fallen again to believe that Your mercy is deeper than any failure. Lift us once more from the ground. Amen.'
+  }
+];
+
+const TOTAL = 14;
+const STORAGE_KEY = 'becath_stations_progress';
+const STORAGE_BM  = 'becath_stations_bookmarks';
+
+/* ─── RESTORE PERSISTED STATE ──────────────────── */
+let activeStation = 1;
+let bookmarks = new Set();
+(function restoreState() {
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      var n = parseInt(saved, 10);
+      if (n >= 1 && n <= TOTAL) activeStation = n;
+    }
+    var bm = JSON.parse(localStorage.getItem(STORAGE_BM) || '[]');
+    bm.forEach(function(n){ bookmarks.add(n); });
+  } catch(e){}
+
+  // Personalise subtitle from onboarding data
+  try {
+    var obData = JSON.parse(localStorage.getItem('becath_onboarding_data') || '{}');
+    var q1Map = {
+      'lapsed':    'Returner',
+      'curious':   'Seeker',
+      'practicing':'Faithful',
+      'loved-one': 'Supporter'
+    };
+    var audience = obData.q1 ? q1Map[obData.q1] : null;
+    if (audience) {
+      var subtitle = document.getElementById('topBarSubtitle');
+      if (subtitle) subtitle.textContent = 'Good Friday · Lent · For the ' + audience;
+    }
+  } catch(e){}
+})();
+
+/* ─── SAVE HELPERS ──────────────────────────────── */
+function saveProgress() {
+  try { localStorage.setItem(STORAGE_KEY, String(activeStation)); } catch(e){}
+}
+function saveBookmarks() {
+  try { localStorage.setItem(STORAGE_BM, JSON.stringify(Array.from(bookmarks))); } catch(e){}
+}
+
+/* ─── STATE HELPERS ─────────────────────────────── */
+function getState(num) {
+  if (num < activeStation) return 'done';
+  if (num === activeStation) return 'active';
+  return 'locked';
+}
+
+/* ─── ICONS ─────────────────────────────────────── */
+const ICON_CHECK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+const ICON_LOCK  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+const ICON_DOWN  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
+const ICON_UP    = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>`;
+const ICON_ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+const ICON_BM_OFF = `<svg class="bm-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+const ICON_BM_ON  = `<svg class="bm-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+
+/* ─── RENDER PROGRESS DOTS ──────────────────────── */
+// Stained glass color sequence mapped across 14 stations
+const SG_COLORS = [
+  '#C84040','#D08010','#C8960A','#2A8A3A','#1A8080','#3060C0','#7040B8',
+  '#C84040','#D08010','#C8960A','#2A8A3A','#1A8080','#3060C0','#7040B8'
+];
+
+function renderProgress() {
+  const container = document.getElementById('progressDots');
+  const label     = document.getElementById('stationLabel');
+  const fillBar   = document.getElementById('sgProgressFill');
+  let html = '';
+
+  for (let i = 1; i <= TOTAL; i++) {
+    const s     = getState(i);
+    const color = SG_COLORS[i - 1];
+    if (s === 'done') {
+      html += `<div class="dot dot-done" style="background:${color};opacity:0.6;" title="Station ${i} complete"></div>`;
+    } else if (s === 'active') {
+      html += `<div class="dot dot-active" style="background:${color};box-shadow:0 0 8px ${color}88;" title="Station ${i} — active"></div>`;
+    } else {
+      html += `<div class="dot dot-locked" title="Station ${i}"></div>`;
+    }
+  }
+
+  container.innerHTML = html;
+
+  // Update gradient fill bar — percent = completed stations / TOTAL
+  const completedCount = Math.max(0, activeStation - 1);
+  const pct = Math.round((completedCount / TOTAL) * 100);
+  if (fillBar) fillBar.style.width = pct + '%';
+
+  const activeData = STATIONS.find(s => s.num === activeStation);
+  label.textContent = activeData ? `Station ${activeData.roman} of XIV` : `Station ${activeStation} of XIV`;
+  container.setAttribute('aria-valuenow', activeStation);
+}
+
+/* ─── BUILD CARD HTML ───────────────────────────── */
+function buildCard(s) {
+  const state    = getState(s.num);
+  const isActive = state === 'active';
+  const isDone   = state === 'done';
+  const isLocked = state === 'locked';
+  const color    = SG_COLORS[s.num - 1];
+
+  // Stripe + active glow use the station's stained glass color
+  const activeStyle = isActive
+    ? `border-color:${color};box-shadow:0 0 0 3px ${color}22,0 4px 20px ${color}30;`
+    : '';
+  const stripeStyle = !isLocked ? `--card-stripe:${color};` : '';
+  const cardStyle   = stripeStyle + activeStyle;
+
+  const toggleIcon  = isDone ? ICON_CHECK : isLocked ? ICON_LOCK : isActive ? ICON_UP : ICON_DOWN;
+  const toggleClass = isDone ? 'done-state' : isActive ? 'expanded' : 'collapsed';
+  const toggleLabel = isDone ? 'Completed' : isLocked ? 'Locked' : isActive ? 'Collapse station' : 'Expand station';
+
+  const numLabel = `STATION ${s.roman}` + (isActive ? ` <span class="pulse-dot" aria-label="Active"></span> · Active` : '');
+
+  const nextStation = STATIONS.find(st => st.num === s.num + 1);
+  const nextLabel   = nextStation ? `Continue to Station ${nextStation.roman} →` : 'Journey Complete ✦';
+
+  return `
+<article class="station-card state-${state}" id="card-${s.num}" data-num="${s.num}" style="${cardStyle}" aria-label="Station ${s.roman}: ${s.title}">
+  <div class="station-header" role="button" tabindex="${isLocked ? '-1' : '0'}"
+       aria-expanded="${isActive ? 'true' : 'false'}" aria-controls="body-${s.num}"
+       onclick="toggleCard(${s.num})"
+       onkeydown="if(event.key==='Enter'||event.key===' ')toggleCard(${s.num})">
+    <div class="station-header-left">
+      <div class="station-num-label">${numLabel}</div>
+      <div class="station-title">${s.title}</div>
+      <div class="station-scripture-ref">${s.ref}</div>
+    </div>
+    <button class="toggle-btn ${toggleClass}" aria-label="${toggleLabel}" tabindex="-1">
+      ${toggleIcon}
+    </button>
+  </div>
+
+  <div class="station-body ${isActive ? 'open' : ''}" id="body-${s.num}">
+    <div class="station-body-inner">
+
+      <div class="scripture-block">
+        <span class="scripture-quote-watermark" aria-hidden="true">&ldquo;</span>
+        <p class="scripture-text">${s.scripture}</p>
+        <span class="scripture-ref">${s.ref}</span>
+      </div>
+
+      <p class="reflection-text">${s.reflection}</p>
+
+      <div class="prayer-block">
+        <div class="prayer-label-row">
+          <span class="prayer-label">Prayer</span>
+          <div class="prayer-rule" aria-hidden="true"></div>
+        </div>
+        <p class="prayer-text">${s.prayer}</p>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-continue" onclick="continueStation(${s.num})" aria-label="${nextLabel}">
+          ${ICON_ARROW}
+          <span>${nextLabel}</span>
+        </button>
+        <button class="btn-bookmark ${bookmarks.has(s.num) ? 'marked' : ''}"
+                id="bm-${s.num}"
+                onclick="toggleBookmark(${s.num})"
+                aria-label="Bookmark this station"
+                aria-pressed="${bookmarks.has(s.num)}">
+          ${bookmarks.has(s.num) ? ICON_BM_ON : ICON_BM_OFF}
+        </button>
+      </div>
+
+    </div>
+  </div>
+</article>`;
+}
+
+/* ─── RENDER ALL CARDS ──────────────────────────── */
+function renderCards() {
+  document.getElementById('stationsContainer').innerHTML = STATIONS.map(buildCard).join('');
+}
+
+/* ─── TOGGLE CARD ───────────────────────────────── */
+function toggleCard(num) {
+  const state = getState(num);
+  if (state === 'locked') return;
+
+  const body      = document.getElementById(`body-${num}`);
+  const card      = document.getElementById(`card-${num}`);
+  const header    = card.querySelector('.station-header');
+  const toggleBtn = card.querySelector('.toggle-btn');
+  const isOpen    = body.classList.contains('open');
+
+  if (isOpen) {
+    body.classList.remove('open');
+    if (state === 'done') {
+      toggleBtn.className = 'toggle-btn done-state';
+      toggleBtn.innerHTML = ICON_CHECK;
+    } else {
+      toggleBtn.classList.replace('expanded', 'collapsed');
+      toggleBtn.innerHTML = ICON_DOWN;
+    }
+    header.setAttribute('aria-expanded', 'false');
+  } else {
+    body.classList.add('open');
+    toggleBtn.classList.replace('collapsed', 'expanded');
+    toggleBtn.classList.replace('done-state', 'expanded');
+    toggleBtn.innerHTML = ICON_UP;
+    header.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/* ─── CONTINUE ──────────────────────────────────── */
+function continueStation(num) {
+  const card      = document.getElementById(`card-${num}`);
+  const body      = document.getElementById(`body-${num}`);
+  const toggleBtn = card.querySelector('.toggle-btn');
+  const numLabel  = card.querySelector('.station-num-label');
+  const stationData = STATIONS.find(s => s.num === num);
+
+  card.className   = 'station-card state-done';
+  body.classList.remove('open');
+  toggleBtn.className = 'toggle-btn done-state';
+  toggleBtn.innerHTML = ICON_CHECK;
+  toggleBtn.setAttribute('aria-label', 'Completed');
+  numLabel.innerHTML = `STATION ${stationData.roman}`;
+  const pulse = card.querySelector('.pulse-dot');
+  if (pulse) pulse.remove();
+
+  activeStation = num + 1;
+  saveProgress();
+  renderProgress();
+
+  setTimeout(() => {
+    const nextCard = document.getElementById(`card-${activeStation}`);
+    if (nextCard) {
+      renderCards();
+      renderProgress();
+      setTimeout(() => {
+        const newActive = document.getElementById(`card-${activeStation}`);
+        if (newActive) newActive.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    } else {
+      renderCards();
+      renderProgress();
+    }
+  }, 350);
+}
+
+/* ─── BOOKMARK ──────────────────────────────────── */
+function toggleBookmark(num) {
+  const btn = document.getElementById(`bm-${num}`);
+  if (bookmarks.has(num)) {
+    bookmarks.delete(num);
+    btn.classList.remove('marked');
+    btn.innerHTML = ICON_BM_OFF;
+    btn.setAttribute('aria-pressed', 'false');
+  } else {
+    bookmarks.add(num);
+    btn.classList.add('marked');
+    btn.innerHTML = ICON_BM_ON;
+    btn.setAttribute('aria-pressed', 'true');
+  }
+  saveBookmarks();
+}
+
+/* ─── AUDIO TOGGLE ──────────────────────────────── */
+document.getElementById('audioBtn').addEventListener('click', function() {
+  this.classList.toggle('active');
+  const isOn = this.classList.contains('active');
+  this.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+  this.setAttribute('aria-label', isOn ? 'Audio playing — tap to stop' : 'Toggle audio');
+});
+
+/* ─── INIT ──────────────────────────────────────── */
+renderProgress();
+renderCards();
+
+setTimeout(() => {
+  const active = document.getElementById(`card-${activeStation}`);
+  if (active) active.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, 400);
+</script>
+</body>
+</html>
