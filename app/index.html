@@ -14,62 +14,71 @@
    BeCath v3 — Adaptive Light/Dark, Hallow-style
    ───────────────────────────────────────────── */
 :root {
-  /* Light theme (default) */
-  --bg: #FBFAF7;
+  /* Light theme — BeCath Brand Bible */
+  --bg: #FAFAF8;
   --bg-elev: #FFFFFF;
-  --bg-soft: #F4F1EA;
-  --text: #0E0F14;
-  --text-soft: #3A3D45;
-  --text-mute: #6B6F7A;
-  --line: #D5D0C2;
-  --gold: #B8893A;
-  --gold-soft: #E8D9B8;
+  --bg-soft: #F2F0EB;
+  --text: #1A1410;
+  --text-soft: #3D3830;
+  --text-mute: #7A7060;
+  --line: #D8D2C4;
+  --gold: #A07820;
+  --gold-soft: #EDE3C8;
   --navy: #1A2240;
-  --accent: #B8893A;
-  --shadow-sm: 0 1px 2px rgba(20,20,40,0.04), 0 1px 1px rgba(20,20,40,0.03);
-  --shadow-md: 0 4px 14px rgba(20,20,40,0.06), 0 2px 4px rgba(20,20,40,0.04);
-  --shadow-lg: 0 12px 30px rgba(20,20,40,0.08);
+  --accent: #A07820;
+  /* Stained glass palette */
+  --sg-red: #C84040;
+  --sg-amber: #D08010;
+  --sg-gold: #C8960A;
+  --sg-green: #2A8A3A;
+  --sg-teal: #1A8080;
+  --sg-blue: #3060C0;
+  --sg-violet: #7040B8;
+  --shadow-sm: 0 1px 2px rgba(26,20,16,0.05), 0 1px 1px rgba(26,20,16,0.03);
+  --shadow-md: 0 4px 14px rgba(26,20,16,0.07), 0 2px 4px rgba(26,20,16,0.05);
+  --shadow-lg: 0 12px 30px rgba(26,20,16,0.10);
   --radius: 18px;
   --radius-sm: 12px;
   --radius-lg: 24px;
-  --ff: 'Inter', -apple-system, system-ui, sans-serif;
+  --ff: 'Lato', -apple-system, system-ui, sans-serif;
+  --ff-display: 'Cinzel', Georgia, serif;
   --ff-serif: 'Cormorant Garamond', Georgia, serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0B1020;
-    --bg-elev: #141A2E;
-    --bg-soft: #1B2238;
-    --text: #F5F3EE;
-    --text-soft: #B7BBC8;
-    --text-mute: #7B8198;
-    --line: #232A40;
-    --gold: #D9A94C;
-    --gold-soft: #3A2E15;
-    --navy: #0B1020;
+    --bg: #0E0C0A;
+    --bg-elev: #1A1612;
+    --bg-soft: #241F1A;
+    --text: #F5F2EC;
+    --text-soft: #C8BFB0;
+    --text-mute: #8A7E70;
+    --line: #2E2820;
+    --gold: #C89A30;
+    --gold-soft: #3A2E10;
+    --navy: #0E0C0A;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-    --shadow-md: 0 6px 20px rgba(0,0,0,0.45);
-    --shadow-lg: 0 14px 40px rgba(0,0,0,0.55);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.50);
+    --shadow-lg: 0 14px 40px rgba(0,0,0,0.60);
   }
 }
 /* Manual override classes */
 html.theme-light { color-scheme: light; }
 html.theme-dark  { color-scheme: dark; }
 html.theme-dark {
-  --bg: #0B1020; --bg-elev: #141A2E; --bg-soft: #1B2238;
-  --text: #F5F3EE; --text-soft: #B7BBC8; --text-mute: #7B8198;
-  --line: #232A40; --gold: #D9A94C; --gold-soft: #3A2E15;
+  --bg: #0E0C0A; --bg-elev: #1A1612; --bg-soft: #241F1A;
+  --text: #F5F2EC; --text-soft: #C8BFB0; --text-mute: #8A7E70;
+  --line: #2E2820; --gold: #C89A30; --gold-soft: #3A2E10;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md: 0 6px 20px rgba(0,0,0,0.45);
-  --shadow-lg: 0 14px 40px rgba(0,0,0,0.55);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.50);
+  --shadow-lg: 0 14px 40px rgba(0,0,0,0.60);
 }
 html.theme-light {
-  --bg: #FBFAF7; --bg-elev: #FFFFFF; --bg-soft: #F4F1EA;
-  --text: #0E0F14; --text-soft: #3A3D45; --text-mute: #6B6F7A;
-  --line: #D5D0C2; --gold: #B8893A; --gold-soft: #E8D9B8;
-  --shadow-sm: 0 1px 2px rgba(20,20,40,0.04), 0 1px 1px rgba(20,20,40,0.03);
-  --shadow-md: 0 4px 14px rgba(20,20,40,0.06), 0 2px 4px rgba(20,20,40,0.04);
-  --shadow-lg: 0 12px 30px rgba(20,20,40,0.08);
+  --bg: #FAFAF8; --bg-elev: #FFFFFF; --bg-soft: #F2F0EB;
+  --text: #1A1410; --text-soft: #3D3830; --text-mute: #7A7060;
+  --line: #D8D2C4; --gold: #A07820; --gold-soft: #EDE3C8;
+  --shadow-sm: 0 1px 2px rgba(26,20,16,0.05), 0 1px 1px rgba(26,20,16,0.03);
+  --shadow-md: 0 4px 14px rgba(26,20,16,0.07), 0 2px 4px rgba(26,20,16,0.05);
+  --shadow-lg: 0 12px 30px rgba(26,20,16,0.10);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -84,6 +93,23 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 button { font-family: inherit; }
+
+/* ── Global SG stripe (stained-glass rainbow) ── */
+.sg-stripe {
+  height: 4px;
+  background: linear-gradient(90deg,
+    #C84040 0%,#C84040 14%,#D08010 14%,#D08010 28%,#C8960A 28%,#C8960A 42%,
+    #2A8A3A 42%,#2A8A3A 56%,#1A8080 56%,#1A8080 70%,#3060C0 70%,#3060C0 85%,
+    #7040B8 85%,#7040B8 100%);
+  flex-shrink: 0;
+}
+.sg-stripe-sm {
+  height: 3px;
+  background: linear-gradient(90deg,
+    #C84040 0%,#D08010 14%,#C8960A 28%,#2A8A3A 42%,#1A8080 56%,#3060C0 71%,#7040B8 85%,#C84040 100%);
+  border-radius: 99px;
+  opacity: 0.6;
+}
 img { display: block; max-width: 100%; }
 
 /* ── App shell ── */
@@ -106,8 +132,8 @@ img { display: block; max-width: 100%; }
   padding-top: calc(env(safe-area-inset-top) + 12px);
 }
 .topbar-greet {
-  font-size: 0.72rem; color: var(--text-mute); font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
+  font-family: var(--ff-display); font-size: 0.62rem; color: var(--gold);
+  font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
 }
 .topbar-name {
   font-family: var(--ff-serif); font-size: 1.45rem; font-weight: 600;
@@ -135,21 +161,38 @@ img { display: block; max-width: 100%; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Page-level SG stripe at top of each non-home page ── */
+.page:not(#page-home):not(#page-mass-readings) > .section-head:first-child {
+  padding-top: 18px;
+  position: relative;
+}
+.page:not(#page-home):not(#page-mass-readings) > .section-head:first-child::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, #C84040, #D08010, #C8960A, #2A8A3A, #1A8080, #3060C0, #7040B8);
+  border-radius: 99px;
+  opacity: 0.55;
+  margin-bottom: 16px;
+  width: 60px;
+}
+
 /* ── Section headers ── */
 .section-head {
   display: flex; align-items: baseline; justify-content: space-between;
   padding: 24px 18px 12px;
 }
 .section-title {
-  font-family: var(--ff-serif); font-size: 1.4rem; font-weight: 600;
-  color: var(--text); letter-spacing: -0.01em;
+  font-family: var(--ff-display); font-size: 1.1rem; font-weight: 600;
+  color: var(--text); letter-spacing: 0.04em; text-transform: uppercase;
 }
 .section-sub {
-  font-size: 0.78rem; color: var(--text-mute); font-weight: 500;
-  margin-top: 2px;
+  font-family: var(--ff-serif); font-size: 0.88rem; color: var(--text-mute);
+  font-weight: 400; margin-top: 3px; font-style: italic;
 }
 .section-link {
-  font-size: 0.78rem; color: var(--gold); font-weight: 600;
+  font-family: var(--ff-display); font-size: 0.65rem; color: var(--gold);
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   background: none; border: none; cursor: pointer;
 }
 
@@ -163,6 +206,12 @@ img { display: block; max-width: 100%; }
   cursor: pointer;
   box-shadow: var(--shadow-md);
   transition: transform 0.2s;
+  /* SG stripe at top of featured card */
+  border-top: 3px solid transparent;
+  background-image: linear-gradient(var(--bg), var(--bg)),
+    linear-gradient(90deg, #C84040 0%, #D08010 14%, #C8960A 28%, #2A8A3A 42%, #1A8080 56%, #3060C0 71%, #7040B8 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 .featured:active { transform: scale(0.99); }
 .featured-img {
@@ -185,17 +234,17 @@ img { display: block; max-width: 100%; }
 }
 .featured-eyebrow {
   display: inline-block;
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
-  text-transform: uppercase; color: #FFD98A;
-  background: rgba(184,137,58,0.22);
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #FFD98A;
+  background: rgba(160,120,32,0.22);
   border: 1px solid rgba(255,217,138,0.4);
   padding: 4px 10px; border-radius: 100px;
   margin-bottom: 10px;
   backdrop-filter: blur(6px);
 }
 .featured-title {
-  font-family: var(--ff-serif); font-size: 1.75rem; font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 6px;
+  font-family: var(--ff-display); font-size: 1.45rem; font-weight: 700;
+  line-height: 1.2; letter-spacing: 0.02em; margin-bottom: 6px;
 }
 .featured-desc {
   font-size: 0.85rem; opacity: 0.92; line-height: 1.45; max-width: 90%;
@@ -297,15 +346,15 @@ img { display: block; max-width: 100%; }
 }
 .card-sq-title {
   margin-top: 10px;
-  font-size: 0.92rem; font-weight: 600;
+  font-family: var(--ff-serif); font-size: 1rem; font-weight: 600;
   color: var(--text);
   line-height: 1.3;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .card-sq-meta {
   margin-top: 2px;
-  font-size: 0.74rem; color: var(--text-mute);
-  font-weight: 500;
+  font-family: var(--ff); font-size: 0.72rem; color: var(--text-mute);
+  font-weight: 400;
 }
 
 /* ── Wide card (collection) ── */
@@ -332,11 +381,12 @@ img { display: block; max-width: 100%; }
 }
 .card-wide-title {
   margin-top: 10px;
-  font-size: 1rem; font-weight: 600; color: var(--text);
-  line-height: 1.3;
+  font-family: var(--ff-serif); font-size: 1.05rem; font-weight: 600;
+  color: var(--text); line-height: 1.3;
 }
 .card-wide-meta {
-  margin-top: 2px; font-size: 0.78rem; color: var(--text-mute);
+  margin-top: 2px;
+  font-family: var(--ff); font-size: 0.74rem; color: var(--text-mute);
 }
 
 /* ── Gradient cover variants (used when no img) ── */
@@ -383,11 +433,11 @@ img { display: block; max-width: 100%; }
 .list-thumb svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .list-body { flex: 1; min-width: 0; }
 .list-title {
-  font-size: 0.95rem; font-weight: 600; color: var(--text);
-  line-height: 1.3;
+  font-family: var(--ff-serif); font-size: 1rem; font-weight: 600;
+  color: var(--text); line-height: 1.3;
 }
 .list-meta {
-  font-size: 0.78rem; color: var(--text-mute); margin-top: 2px;
+  font-family: var(--ff); font-size: 0.74rem; color: var(--text-mute); margin-top: 2px;
 }
 .list-arrow {
   color: var(--text-mute); flex-shrink: 0;
@@ -416,7 +466,8 @@ img { display: block; max-width: 100%; }
 .nav-tab.active { color: var(--gold); }
 .nav-tab svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 .nav-tab span {
-  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.02em;
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
 }
 
 /* ── Search (overlay/inline) ── */
@@ -508,13 +559,13 @@ img { display: block; max-width: 100%; }
 .detail-back svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; }
 .detail-content { padding: 22px 18px 0; }
 .detail-eyebrow {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
   margin-bottom: 8px;
 }
 .detail-title {
-  font-family: var(--ff-serif); font-size: 1.85rem; font-weight: 700;
-  color: var(--text); line-height: 1.15; letter-spacing: -0.015em;
+  font-family: var(--ff-serif); font-size: 1.9rem; font-weight: 700;
+  color: var(--text); line-height: 1.15; letter-spacing: -0.01em;
   margin-bottom: 10px;
 }
 .detail-meta {
@@ -523,22 +574,26 @@ img { display: block; max-width: 100%; }
 }
 .btn-primary {
   width: 100%;
-  background: var(--text); color: var(--bg-elev);
-  border: none; border-radius: 14px;
+  background: var(--gold); color: #FFFFFF;
+  border: none; border-radius: 99px;
   padding: 16px;
-  font-size: 1rem; font-weight: 700;
+  font-family: var(--ff-display); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: transform 0.12s;
+  transition: transform 0.12s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(160,120,32,0.22);
 }
 .btn-primary:active { transform: scale(0.985); }
+.btn-primary:hover { box-shadow: 0 6px 20px rgba(160,120,32,0.30); transform: translateY(-1px); }
 .btn-primary svg { width: 18px; height: 18px; fill: currentColor; }
 .btn-secondary {
   width: 100%;
   background: var(--bg-soft); color: var(--text);
-  border: none; border-radius: 14px;
+  border: 1.5px solid var(--line); border-radius: 99px;
   padding: 14px;
-  font-size: 0.95rem; font-weight: 600;
+  font-family: var(--ff-display); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
   cursor: pointer; margin-top: 10px;
 }
 
@@ -570,19 +625,26 @@ img { display: block; max-width: 100%; }
 /* ── Quote / large pull text ── */
 .quote {
   margin: 18px;
-  padding: 22px;
+  padding: 24px 22px 22px;
   background: var(--bg-soft);
   border-radius: var(--radius);
   border-left: 3px solid var(--gold);
+  position: relative; overflow: hidden;
+}
+.quote::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #C84040, #D08010, #C8960A, #2A8A3A, #1A8080, #3060C0, #7040B8);
+  opacity: 0.55;
 }
 .quote-text {
-  font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic;
-  color: var(--text); line-height: 1.5;
+  font-family: var(--ff-serif); font-size: 1.2rem; font-style: italic;
+  color: var(--text); line-height: 1.55;
 }
 .quote-cite {
-  margin-top: 10px;
-  font-size: 0.78rem; font-weight: 600; color: var(--gold);
-  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-top: 12px;
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
+  color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em;
 }
 
 /* ── Pill chip row ── */
@@ -593,15 +655,16 @@ img { display: block; max-width: 100%; }
 .chip {
   background: var(--bg-soft);
   color: var(--text-soft);
-  border: 1px solid transparent;
+  border: 1.5px solid var(--line);
   padding: 7px 13px;
   border-radius: 100px;
-  font-size: 0.78rem; font-weight: 600;
+  font-family: var(--ff-display); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
   cursor: pointer;
   transition: all 0.15s;
 }
 .chip.active {
-  background: var(--text); color: var(--bg-elev);
+  background: var(--gold); color: #fff; border-color: var(--gold);
 }
 
 /* ── Theme toggle in profile ── */
@@ -610,7 +673,7 @@ img { display: block; max-width: 100%; }
   padding: 16px 18px;
   border-bottom: 1px solid var(--line);
 }
-.profile-row-label { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+.profile-row-label { font-family: var(--ff-serif); font-size: 1rem; color: var(--text); font-weight: 500; }
 .theme-segment {
   display: flex; gap: 4px;
   background: var(--bg-soft);
@@ -620,7 +683,8 @@ img { display: block; max-width: 100%; }
 .theme-segment button {
   background: none; border: none; cursor: pointer;
   padding: 6px 12px;
-  font-size: 0.78rem; font-weight: 600;
+  font-family: var(--ff-display); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text-mute);
   border-radius: 100px;
 }
@@ -639,8 +703,8 @@ img { display: block; max-width: 100%; }
   margin: 26px 0 10px;
 }
 .db-section-label {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
   margin: 28px 0 12px;
 }
 .db-quote {
@@ -1027,12 +1091,12 @@ img { display: block; max-width: 100%; }
   margin-bottom: 10px;
 }
 .pray-checklist-title {
-  font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 700;
-  color: var(--text);
+  font-family: var(--ff-display); font-size: 0.88rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text);
 }
 .pray-checklist-sub {
-  font-size: 0.74rem; color: var(--text-mute);
-  margin-top: 2px;
+  font-family: var(--ff-serif); font-size: 0.82rem; color: var(--text-mute);
+  font-style: italic; margin-top: 2px;
 }
 .pray-checklist-count {
   font-family: var(--ff-serif); font-size: 1.5rem; font-weight: 700;
@@ -1912,6 +1976,9 @@ html {
 <body>
 
 <div class="app">
+
+  <!-- Stained glass stripe — always at top of app -->
+  <div class="sg-stripe"></div>
 
   <!-- ═══════════════ TOP BAR ═══════════════ -->
   <header class="topbar" id="topbar">
