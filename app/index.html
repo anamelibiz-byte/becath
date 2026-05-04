@@ -1324,7 +1324,8 @@ img { display: block; max-width: 100%; }
 }
 .dict-pill:hover { background: var(--bg-elev); }
 .dict-pill.active {
-  background: var(--text); color: var(--bg-elev);
+  background: var(--gold); color: #fff;
+  border-color: var(--gold);
 }
 
 .dict-count {
@@ -1340,11 +1341,21 @@ img { display: block; max-width: 100%; }
   border-radius: 14px;
   margin-bottom: 8px;
   overflow: hidden;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  position: relative;
 }
 .dict-entry[open] {
   border-color: var(--gold-soft);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 12px rgba(160,120,32,0.10);
+}
+/* SG accent bar on left edge when open */
+.dict-entry[open]::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg,
+    #C84040 0%,#D08010 16%,#C8960A 32%,
+    #2A8A3A 48%,#1A8080 64%,#3060C0 80%,#7040B8 100%);
+  border-radius: 14px 0 0 14px;
 }
 .dict-entry summary {
   display: flex; align-items: center; gap: 12px;
@@ -1366,18 +1377,22 @@ img { display: block; max-width: 100%; }
   background: var(--gold-soft); padding: 3px 8px; border-radius: 100px;
 }
 .dict-entry-arrow {
-  width: 24px; height: 24px;
+  width: 28px; height: 28px;
   display: grid; place-items: center;
   border-radius: 50%;
   background: var(--bg-soft);
   color: var(--text-mute);
-  font-size: 1.15rem; font-weight: 600;
-  line-height: 1;
-  transition: transform 0.2s, background 0.15s;
+  transition: transform 0.22s cubic-bezier(.4,0,.2,1), background 0.15s, color 0.15s;
   flex-shrink: 0;
 }
+.dict-entry-arrow svg {
+  width: 15px; height: 15px;
+  stroke: currentColor; fill: none; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: stroke 0.15s;
+}
 .dict-entry[open] .dict-entry-arrow {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
   background: var(--gold-soft);
   color: var(--gold);
 }
@@ -1398,6 +1413,109 @@ img { display: block; max-width: 100%; }
   font-size: 0.92rem;
   color: var(--text-mute);
   font-style: italic;
+}
+
+/* ═══ Discover page accordions ═══ */
+.disc-accordions {
+  padding: 10px 18px 28px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.disc-acc {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  position: relative;
+}
+.disc-acc[open] {
+  border-color: var(--gold-soft);
+  box-shadow: 0 2px 14px rgba(160,120,32,0.10);
+}
+/* SG top stripe when open */
+.disc-acc[open]::before {
+  content: '';
+  position: absolute; left: 0; top: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,
+    #C84040 0%,#D08010 16%,#C8960A 32%,
+    #2A8A3A 48%,#1A8080 64%,#3060C0 80%,#7040B8 100%);
+}
+.disc-acc-summary {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 16px 16px 16px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.12s;
+}
+.disc-acc-summary::-webkit-details-marker { display: none; }
+.disc-acc-summary:active { background: var(--bg-soft); }
+.disc-acc-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: var(--gold-soft);
+  border-radius: 12px;
+  display: grid; place-items: center;
+  color: var(--gold);
+}
+.disc-acc-icon svg {
+  width: 20px; height: 20px;
+  stroke: currentColor; fill: none; stroke-width: 1.8;
+}
+.disc-acc-text { flex: 1; min-width: 0; }
+.disc-acc-eyebrow {
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 3px;
+}
+.disc-acc-title {
+  font-family: var(--ff-display); font-size: 1rem; font-weight: 700;
+  color: var(--text); letter-spacing: 0.01em; line-height: 1.2;
+}
+.disc-acc-sub {
+  font-family: var(--ff-serif); font-size: 0.82rem; font-style: italic;
+  color: var(--text-mute); margin-top: 3px;
+}
+.disc-acc-chevron {
+  width: 28px; height: 28px; flex-shrink: 0;
+  display: grid; place-items: center;
+  border-radius: 50%; background: var(--bg-soft); color: var(--text-mute);
+  transition: transform 0.22s cubic-bezier(.4,0,.2,1), background 0.15s, color 0.15s;
+}
+.disc-acc-chevron svg {
+  width: 15px; height: 15px;
+  stroke: currentColor; fill: none; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.disc-acc[open] .disc-acc-chevron {
+  transform: rotate(180deg);
+  background: var(--gold-soft); color: var(--gold);
+}
+.disc-acc-body {
+  border-top: 1px solid var(--line);
+  padding: 6px 0 6px;
+}
+/* Each item row inside the accordion */
+.disc-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  transition: background 0.12s;
+  border-bottom: 1px solid var(--bg-soft);
+}
+.disc-item:last-child { border-bottom: none; }
+.disc-item:active { background: var(--bg-soft); }
+.disc-item-text { flex: 1; min-width: 0; }
+.disc-item-title {
+  font-family: var(--ff-serif); font-size: 1rem; font-weight: 600;
+  color: var(--text); line-height: 1.25;
+}
+.disc-item-meta {
+  font-family: var(--ff); font-size: 0.76rem; color: var(--text-mute);
+  margin-top: 2px;
+}
+.disc-item-arrow {
+  width: 16px; height: 16px; flex-shrink: 0;
+  stroke: var(--text-mute); fill: none; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
 }
 
 /* ════════════════════════════════════════════════
@@ -2955,10 +3073,11 @@ html.app-font-xl  { font-size: 20px; }
     </div>
   </section>
 
-  <!-- ═══════════════ LEARN ═══════════════ -->
+  <!-- ═══════════════ LEARN / DISCOVER ═══════════════ -->
   <section class="page" id="page-learn">
-    <div class="section-head"><div><div class="section-title">Learn</div><div class="section-sub">Why Catholic — and why it's true</div></div></div>
+    <div class="section-head"><div><div class="section-title">Discover</div><div class="section-sub">Why Catholic — and why it's true</div></div></div>
 
+    <!-- Featured hero -->
     <div class="featured" style="margin-top:6px;" onclick="openDetail('why-catholic')">
       <img class="featured-img" src="img/jesus.jpg" alt="">
       <div class="featured-overlay"></div>
@@ -2969,38 +3088,154 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
 
-    <div class="section-head"><div><div class="section-title">Why Jesus?</div><div class="section-sub">The case for Christ — reason &amp; evidence</div></div></div>
-    <div class="h-row">
-      <div class="card-wide" onclick="openDetail('proof-jesus')"><div class="card-wide-cover"><img src="img/jesus.jpg" alt=""></div><div class="card-wide-title">Did Jesus Really Live?</div><div class="card-wide-meta">Historical evidence</div></div>
-      <div class="card-wide" onclick="openDetail('apparitions')"><div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div><div class="card-wide-title">Mary's Apparitions</div><div class="card-wide-meta">Documented</div></div>
-      <div class="card-wide" onclick="openDetail('commandments')"><div class="card-wide-cover"><img src="img/ten.jpg" alt=""></div><div class="card-wide-title">Ten Commandments</div><div class="card-wide-meta">Moral foundation</div></div>
-    </div>
+    <!-- Accordion groups -->
+    <div class="disc-accordions">
 
-    <div class="section-head"><div><div class="section-title">Scripture</div><div class="section-sub">The Word of God</div></div></div>
-    <div class="list">
-      <div class="list-row" onclick="openDetail('prophets')">
-        <div class="list-thumb"><div class="gradient-cover gc-prophets"><svg viewBox="0 0 24 24"><path d="M3 3l9 9 9-9M3 21l9-9 9 9"/></svg></div></div>
-        <div class="list-body"><div class="list-title">The Prophets</div><div class="list-meta">Fulfilled prophecy of Christ</div></div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="list-row" onclick="openDetail('revelation')">
-        <div class="list-thumb"><div class="gradient-cover gc-bible"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div></div>
-        <div class="list-body"><div class="list-title">Book of Revelation</div><div class="list-meta">End times explained</div></div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="list-row" onclick="openDetail('catechism')">
-        <div class="list-thumb"><div class="gradient-cover gc-bible"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div></div>
-        <div class="list-body"><div class="list-title">Catechism</div><div class="list-meta">Official teaching</div></div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-    </div>
+      <!-- Why Jesus? -->
+      <details class="disc-acc">
+        <summary class="disc-acc-summary">
+          <div class="disc-acc-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <div class="disc-acc-text">
+            <div class="disc-acc-eyebrow">Apologetics</div>
+            <div class="disc-acc-title">Why Jesus?</div>
+            <div class="disc-acc-sub">The case for Christ — reason &amp; evidence</div>
+          </div>
+          <span class="disc-acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </summary>
+        <div class="disc-acc-body">
+          <div class="disc-item" onclick="openDetail('proof-jesus')">
+            <div class="disc-item-text"><div class="disc-item-title">Did Jesus Really Live?</div><div class="disc-item-meta">Historical &amp; archaeological evidence</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('apparitions')">
+            <div class="disc-item-text"><div class="disc-item-title">Mary's Apparitions</div><div class="disc-item-meta">Documented &amp; Church-approved</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('commandments')">
+            <div class="disc-item-text"><div class="disc-item-title">Ten Commandments</div><div class="disc-item-meta">Moral foundation of the faith</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('apologetics')">
+            <div class="disc-item-text"><div class="disc-item-title">Apologetics</div><div class="disc-item-meta">Defending the faith with reason</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </details>
 
-    <div class="section-head"><div><div class="section-title">Sacraments</div><div class="section-sub">The seven channels of grace</div></div></div>
-    <div class="h-row">
-      <div class="card-sq" onclick="openDetail('eucharist')"><div class="card-sq-cover"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><path d="M3 3h18l-2 9c-.5 2-2.3 3-4.3 3H9.3c-2 0-3.8-1-4.3-3L3 3z"/></svg></div></div><div class="card-sq-title">Eucharist</div><div class="card-sq-meta">Real presence</div></div>
-      <div class="card-sq" onclick="openDetail('baptism')"><div class="card-sq-cover"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg></div></div><div class="card-sq-title">Baptism</div><div class="card-sq-meta">Born again</div></div>
-      <div class="card-sq" onclick="openDetail('confession')"><div class="card-sq-cover"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 12h14"/></svg></div></div><div class="card-sq-title">Confession</div><div class="card-sq-meta">Forgiveness</div></div>
-      <div class="card-sq" onclick="openDetail('confirmation')"><div class="card-sq-cover"><div class="gradient-cover gc-pope"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-5 5-5 10a5 5 0 0 0 10 0c0-3-2-5-2-5"/></svg></div></div><div class="card-sq-title">Confirmation</div><div class="card-sq-meta">Sealed in Spirit</div></div>
+      <!-- Scripture -->
+      <details class="disc-acc">
+        <summary class="disc-acc-summary">
+          <div class="disc-acc-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg>
+          </div>
+          <div class="disc-acc-text">
+            <div class="disc-acc-eyebrow">The Word</div>
+            <div class="disc-acc-title">Scripture</div>
+            <div class="disc-acc-sub">The living Word of God</div>
+          </div>
+          <span class="disc-acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </summary>
+        <div class="disc-acc-body">
+          <div class="disc-item" onclick="openDetail('prophets')">
+            <div class="disc-item-text"><div class="disc-item-title">The Prophets</div><div class="disc-item-meta">Fulfilled prophecy of Christ</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('revelation')">
+            <div class="disc-item-text"><div class="disc-item-title">Book of Revelation</div><div class="disc-item-meta">End times explained</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('catechism')">
+            <div class="disc-item-text"><div class="disc-item-title">Catechism</div><div class="disc-item-meta">Official Church teaching</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </details>
+
+      <!-- Sacraments -->
+      <details class="disc-acc">
+        <summary class="disc-acc-summary">
+          <div class="disc-acc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M5 12h14"/></svg>
+          </div>
+          <div class="disc-acc-text">
+            <div class="disc-acc-eyebrow">Grace</div>
+            <div class="disc-acc-title">Sacraments</div>
+            <div class="disc-acc-sub">The seven channels of grace</div>
+          </div>
+          <span class="disc-acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </summary>
+        <div class="disc-acc-body">
+          <div class="disc-item" onclick="openDetail('eucharist')">
+            <div class="disc-item-text"><div class="disc-item-title">Eucharist</div><div class="disc-item-meta">The real presence of Christ</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('baptism')">
+            <div class="disc-item-text"><div class="disc-item-title">Baptism</div><div class="disc-item-meta">Born again in water and Spirit</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('confession')">
+            <div class="disc-item-text"><div class="disc-item-title">Confession</div><div class="disc-item-meta">Forgiveness and reconciliation</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('confirmation')">
+            <div class="disc-item-text"><div class="disc-item-title">Confirmation</div><div class="disc-item-meta">Sealed in the Holy Spirit</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </details>
+
+      <!-- Church & History -->
+      <details class="disc-acc">
+        <summary class="disc-acc-summary">
+          <div class="disc-acc-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V21H3V10.5z"/><path d="M9 21V12h6v9"/></svg>
+          </div>
+          <div class="disc-acc-text">
+            <div class="disc-acc-eyebrow">History</div>
+            <div class="disc-acc-title">Church &amp; History</div>
+            <div class="disc-acc-sub">2,000 years of unbroken faith</div>
+          </div>
+          <span class="disc-acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </summary>
+        <div class="disc-acc-body">
+          <div class="disc-item" onclick="openDetail('church-history')">
+            <div class="disc-item-text"><div class="disc-item-title">Church History</div><div class="disc-item-meta">From Pentecost to today</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('councils')">
+            <div class="disc-item-text"><div class="disc-item-title">The Councils</div><div class="disc-item-meta">How doctrine was defined</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="disc-item" onclick="openDetail('papacy')">
+            <div class="disc-item-text"><div class="disc-item-title">The Papacy</div><div class="disc-item-meta">Succession from Peter</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </details>
+
+      <!-- Catholic Dictionary -->
+      <details class="disc-acc">
+        <summary class="disc-acc-summary">
+          <div class="disc-acc-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="disc-acc-text">
+            <div class="disc-acc-eyebrow">Reference</div>
+            <div class="disc-acc-title">Catholic Dictionary</div>
+            <div class="disc-acc-sub">Every term defined — searchable A–Z</div>
+          </div>
+          <span class="disc-acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </summary>
+        <div class="disc-acc-body">
+          <div class="disc-item" onclick="openDetail('dictionary')">
+            <div class="disc-item-text"><div class="disc-item-title">Open the Dictionary</div><div class="disc-item-meta">Search &amp; browse all Catholic terms</div></div>
+            <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </details>
+
     </div>
   </section>
 
@@ -3389,12 +3624,12 @@ html.app-font-xl  { font-size: 20px; }
     <span>Home</span>
   </button>
   <button class="nav-tab" data-page="pray" onclick="goPage('pray')">
-    <svg viewBox="0 0 24 24"><path d="M14 4l-2 8h6l-8 8 2-8H6l8-8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
     <span>Pray</span>
   </button>
   <button class="nav-tab" data-page="learn" onclick="goPage('learn')">
     <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-    <span>Learn</span>
+    <span>Discover</span>
   </button>
   <button class="nav-tab" data-page="miracles" onclick="goPage('miracles')">
     <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
@@ -3715,7 +3950,7 @@ html.app-font-xl  { font-size: 20px; }
           '<summary>' +
             '<span class="dict-entry-title">' + escapeHtml(t.title) + '</span>' +
             (t.subtitle ? '<span class="dict-entry-sub">' + escapeHtml(t.subtitle) + '</span>' : '') +
-            '<span class="dict-entry-arrow">+</span>' +
+            '<span class="dict-entry-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>' +
           '</summary>' +
           '<div class="dict-entry-body">' + inner + '</div>' +
         '</details>';
