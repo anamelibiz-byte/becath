@@ -3749,7 +3749,7 @@ html.app-font-xl  { font-size: 20px; }
   //    are merged in below — they take precedence over any stub here. ──
   var DETAIL = {
     'why-catholic':       { eyebrow:'Featured', title:'Why Catholic?', meta:'7 days · ~10 min each', img:'img/jesus.jpg', body:'A short, honest journey through the historical, philosophical, and personal evidence for the Catholic faith. Day 1: Did Jesus really live? Day 2: The empty tomb. Day 3: Mary\'s appearances. Day 4: The unbroken Church. Day 5: The saints and miracles. Day 6: The sacraments. Day 7: Why this Church, and not another.' },
-    'today-saint':        { eyebrow:'Today', title:'Saint of the Day', meta:'Updated daily', body:'Today\'s saint, their life, what they teach us, and a short prayer asking their intercession.' },
+    'today-saint':        { eyebrow:'Saint of the Day', title:'Saint of the Day', meta:'Updated daily', img:'img/saintday.jpg', hasAudio:false, body:'Loading today\'s saint…' },
     'today-mass':         { eyebrow:'Today', title:'Mass Readings', meta:'Daily liturgy · ~5 min', body:'First reading, responsorial psalm, gospel acclamation, gospel, and a short reflection.' },
     'today-prayer':       { eyebrow:'Morning Prayer', title:'Morning Offering', meta:'Start your day · ~2 min', img:'img/jesusapostles.jpg', hasAudio:false, blocks:[
       { type:'lead', eyebrow:'Start Here Every Morning', text:'Give your entire day to God before it begins. The Morning Offering is one of the most powerful habits in the Catholic spiritual life — a two-minute prayer that consecrates everything you will do, suffer, and love today.' },
@@ -3825,6 +3825,18 @@ html.app-font-xl  { font-size: 20px; }
       DETAIL[k] = window.BECATH_CONTENT[k];
     });
   }
+
+  // Resolve today's saint — substitute the calendar/rotation saint into the 'today-saint' slot
+  (function(){
+    var key = window._todaySaintKey;
+    if (!key) return;
+    var sd = (window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || DETAIL[key];
+    if (!sd) return;
+    DETAIL['today-saint'] = Object.assign({}, sd, {
+      eyebrow: 'Saint of the Day · ' + (sd.eyebrow || 'Saint'),
+      img: sd.img || 'img/saintday.jpg'
+    });
+  })();
 
   // ── Rich block renderer ──
   // A detail entry can have either { body: "string" } (legacy) or { blocks: [...] }
@@ -4225,6 +4237,133 @@ html.app-font-xl  { font-size: 20px; }
     var d = new Date();
     var opts = { weekday:'long', month:'long', day:'numeric' };
     document.getElementById('today-date').textContent = d.toLocaleDateString(undefined, opts);
+  })();
+
+  // ── Saint of the Day — calendar-based rotation ──
+  (function(){
+    // Catholic feast day calendar: key = "M-D", value = detail key in DETAIL/BECATH_CONTENT
+    var SAINT_CALENDAR = {
+      // January
+      '1-1':  'saint-mary-mother',   // Mary Mother of God
+      '1-17': 'saint-anthony-padua', // St. Anthony (Egypt) — use closest
+      '1-21': 'saint-agnes',
+      '1-22': 'saint-vincent',
+      '1-28': 'saint-aquinas-full',  // St. Thomas Aquinas
+      // February
+      '2-3':  'saint-blaise',
+      '2-11': 'saint-bernadette',    // Our Lady of Lourdes / St. Bernadette
+      '2-14': 'saint-valentine',
+      '2-22': 'saint-peter',         // Chair of Peter
+      // March
+      '3-4':  'saint-casimir',
+      '3-17': 'saint-patrick',
+      '3-19': 'saint-joseph',        // St. Joseph
+      '3-25': 'saint-annunciation',
+      // April
+      '4-16': 'saint-bernadette',
+      '4-23': 'saint-george',
+      '4-28': 'saint-gianna',        // St. Gianna Molla
+      '4-29': 'saint-catherine-siena',
+      // May
+      '5-1':  'saint-joseph',        // St. Joseph the Worker
+      '5-13': 'saint-fatima',
+      '5-22': 'saint-rita',          // St. Rita of Cascia
+      '5-25': 'saint-magdalene',     // St. Mary Magdalene de Pazzi
+      '5-30': 'saint-joan',          // St. Joan of Arc
+      // June
+      '6-13': 'saint-anthony-padua', // St. Anthony of Padua
+      '6-22': 'saint-thomas-more',
+      '6-24': 'saint-john-baptist',
+      '6-29': 'saint-peter',         // Sts. Peter & Paul
+      // July
+      '7-22': 'saint-magdalene',     // St. Mary Magdalene
+      '7-25': 'saint-james',
+      '7-26': 'saint-anne',
+      '7-31': 'saint-ignatius',      // St. Ignatius of Loyola
+      // August
+      '8-4':  'saint-vianney',
+      '8-10': 'saint-lawrence',
+      '8-11': 'saint-clare',
+      '8-14': 'saint-kolbe',         // St. Maximilian Kolbe
+      '8-15': 'saint-assumption',
+      '8-21': 'saint-pius-x',
+      '8-27': 'saint-monica',        // St. Monica
+      '8-28': 'saint-augustine',     // St. Augustine
+      // September
+      '9-3':  'saint-gregory',
+      '9-9':  'saint-peter-claver',
+      '9-13': 'saint-john-chrysostom',
+      '9-23': 'saint-padre-pio-full',// St. Padre Pio
+      '9-29': 'saint-michael',       // Sts. Michael, Gabriel, Raphael
+      // October
+      '10-1': 'saint-therese-full',  // St. Thérèse of Lisieux
+      '10-2': 'guardian-angel',      // Guardian Angels
+      '10-4': 'saint-francis-full',  // St. Francis of Assisi
+      '10-7': 'saint-rosary',
+      '10-15':'saint-teresa-avila',  // St. Teresa of Ávila
+      '10-16':'saint-margaret-mary',
+      '10-22':'saint-jpii',          // St. John Paul II
+      // November
+      '11-1': 'saint-all-saints',
+      '11-2': 'saint-all-souls',
+      '11-3': 'saint-martin-de-porres',
+      '11-4': 'saint-charles-borromeo',
+      '11-11':'saint-martin-tours',
+      '11-13':'saint-frances-xavier-cabrini',
+      '11-16':'saint-margaret-scotland',
+      '11-21':'saint-presentation',
+      '11-22':'saint-cecilia',
+      '11-30':'saint-paul',          // St. Andrew — use Paul
+      // December
+      '12-3': 'saint-francis-xavier',
+      '12-6': 'saint-nicholas',
+      '12-8': 'saint-immaculate-conception',
+      '12-12':'saint-juan-diego',
+      '12-13':'saint-lucy',
+      '12-26':'saint-stephen',
+      '12-27':'saint-john-apostle',
+      '12-28':'saint-holy-innocents'
+    };
+
+    // Fallback rotation for dates without a specific entry — cycles through all saints we have full data for
+    var SAINT_ROTATION = [
+      'saint-therese-full','saint-padre-pio-full','saint-faustina','saint-monica',
+      'saint-magdalene','saint-francis-full','saint-augustine','saint-aquinas-full',
+      'saint-anthony-padua','saint-mother-teresa-full','saint-bernadette','saint-joan',
+      'saint-jpii','saint-michael','saint-peter','saint-paul','saint-kolbe',
+      'saint-rita','saint-gianna','saint-ignatius','saint-teresa-avila',
+      'saint-catherine-siena','saint-joseph'
+    ];
+
+    var now = new Date();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+    var key = SAINT_CALENDAR[m + '-' + d];
+
+    // If no specific feast today, pick from rotation by day-of-year
+    if (!key || !((window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || (window.DETAIL && window.DETAIL[key]))) {
+      var dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+      key = SAINT_ROTATION[dayOfYear % SAINT_ROTATION.length];
+    }
+
+    // Resolve the saint's full detail data
+    var saintData = (window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || null;
+
+    if (saintData) {
+      // Inject into DETAIL so openDetail('today-saint') shows the right saint
+      // We do this after DETAIL is built (IIFE runs after script parse)
+      window._todaySaintKey = key;
+      window._todaySaintData = saintData;
+
+      // Update the home card subtitle
+      var nameEl = document.getElementById('today-saint-name');
+      if (nameEl) nameEl.textContent = saintData.title || 'Today\'s saint';
+    } else {
+      // We have the key string but content not loaded yet (content.js loads async) — handle below
+      window._todaySaintKey = key;
+      var nameEl = document.getElementById('today-saint-name');
+      // Will be resolved when openDetail fires
+    }
   })();
 
   // ── Onboarding state → Me page "Your Path" row ──
