@@ -514,11 +514,12 @@ img { display: block; max-width: 100%; }
 .mini-player-art svg { width: 18px; height: 18px; fill: currentColor; }
 .mini-player-info { flex: 1; min-width: 0; }
 .mini-player-title {
-  font-size: 0.86rem; font-weight: 600; color: var(--text);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-family: var(--ff-serif); font-size: 0.9rem; font-weight: 600;
+  color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .mini-player-sub {
-  font-size: 0.72rem; color: var(--text-mute);
+  font-family: var(--ff-display); font-size: 0.58rem; color: var(--gold);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px;
 }
 .mini-player-btn {
   width: 36px; height: 36px;
@@ -569,8 +570,8 @@ img { display: block; max-width: 100%; }
   margin-bottom: 10px;
 }
 .detail-meta {
-  font-size: 0.85rem; color: var(--text-mute);
-  margin-bottom: 18px;
+  font-family: var(--ff); font-size: 0.82rem; color: var(--text-mute);
+  margin-bottom: 18px; letter-spacing: 0.02em;
 }
 .btn-primary {
   width: 100%;
@@ -698,9 +699,9 @@ img { display: block; max-width: 100%; }
 .detail-body strong { color: var(--text); font-weight: 700; }
 .detail-body em { font-style: italic; }
 .db-h {
-  font-family: var(--ff-serif); font-size: 1.3rem; font-weight: 700;
-  color: var(--text); letter-spacing: -0.01em;
-  margin: 26px 0 10px;
+  font-family: var(--ff-display); font-size: 0.9rem; font-weight: 700;
+  color: var(--text); letter-spacing: 0.08em; text-transform: uppercase;
+  margin: 28px 0 12px;
 }
 .db-section-label {
   font-family: var(--ff-display); font-size: 0.62rem; font-weight: 700;
@@ -750,8 +751,8 @@ img { display: block; max-width: 100%; }
   color: #fff;
 }
 .db-lead-eyebrow {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
-  text-transform: uppercase; color: #FFD98A;
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: #FFD98A;
   margin-bottom: 10px;
 }
 .db-lead-text {
@@ -788,12 +789,13 @@ img { display: block; max-width: 100%; }
   background: var(--bg-soft);
 }
 .db-subsection-title {
-  font-family: var(--ff-serif); font-size: 1.08rem; font-weight: 700;
-  color: var(--text);
+  font-family: var(--ff-display); font-size: 0.78rem; font-weight: 700;
+  color: var(--text); letter-spacing: 0.06em; text-transform: uppercase;
 }
 .db-subsection-sub {
-  margin-top: 2px;
-  font-size: 0.78rem; color: var(--text-mute);
+  margin-top: 3px;
+  font-family: var(--ff-serif); font-size: 0.84rem; color: var(--text-mute);
+  font-style: italic;
 }
 .db-subsection-body { padding: 14px 16px; }
 .db-subsection-body > *:first-child { margin-top: 0; }
@@ -833,12 +835,12 @@ img { display: block; max-width: 100%; }
   box-shadow: var(--shadow-sm);
 }
 .db-arch-name {
-  font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 700;
-  color: var(--text);
+  font-family: var(--ff-display); font-size: 0.9rem; font-weight: 700;
+  color: var(--text); letter-spacing: 0.06em; text-transform: uppercase;
 }
 .db-arch-meaning {
-  font-size: 0.78rem; font-style: italic; color: var(--gold);
-  margin: 2px 0 6px; font-weight: 600;
+  font-family: var(--ff-serif); font-size: 0.84rem; font-style: italic;
+  color: var(--gold); margin: 3px 0 6px; font-weight: 500;
 }
 .db-arch-desc {
   font-size: 0.88rem; line-height: 1.55; color: var(--text-soft);
@@ -852,8 +854,8 @@ img { display: block; max-width: 100%; }
   border-radius: 14px;
 }
 .db-prayer-label {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
   margin-bottom: 10px;
 }
 .db-prayer-text {
@@ -877,8 +879,8 @@ img { display: block; max-width: 100%; }
 }
 .db-verse:last-child { border-bottom: none; }
 .db-verse-cite {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
-  color: var(--gold); text-transform: uppercase;
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
   margin-bottom: 4px;
 }
 .db-verse-text {
@@ -936,8 +938,8 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.02em;
 }
 .db-day-info { flex: 1; min-width: 0; }
-.db-day-title { font-size: 0.98rem; font-weight: 600; color: var(--text); }
-.db-day-meta { font-size: 0.8rem; color: var(--text-mute); margin-top: 2px; }
+.db-day-title { font-family: var(--ff-serif); font-size: 1rem; font-weight: 600; color: var(--text); }
+.db-day-meta { font-family: var(--ff); font-size: 0.76rem; color: var(--text-mute); margin-top: 2px; }
 .db-day-arrow {
   font-size: 1.4rem; color: var(--text-mute);
   flex-shrink: 0; line-height: 1;
@@ -957,8 +959,8 @@ img { display: block; max-width: 100%; }
   margin-bottom: 8px;
 }
 .journal-prompt-eyebrow {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
 }
 .journal-prompt-next {
   background: none;
@@ -983,8 +985,8 @@ img { display: block; max-width: 100%; }
   border-radius: 14px;
 }
 .journal-compose-label {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
   margin-bottom: 8px;
 }
 .journal-compose textarea {
@@ -1080,82 +1082,115 @@ img { display: block; max-width: 100%; }
 /* ═══ Pray-page daily checklist ═══ */
 .pray-checklist {
   margin: 6px 18px 18px;
-  padding: 16px 18px;
-  background: linear-gradient(135deg, var(--gold-soft), var(--bg-elev));
+  padding: 0;
+  background: linear-gradient(160deg, var(--gold-soft) 0%, var(--bg-elev) 55%);
   border: 1.5px solid var(--gold-soft);
-  border-radius: 18px;
-  box-shadow: var(--shadow-sm);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
 }
+/* SG stripe at top of card */
+.pray-checklist::before {
+  content: '';
+  display: block; height: 4px;
+  background: linear-gradient(90deg,
+    #C84040 0%,#C84040 14%,#D08010 14%,#D08010 28%,#C8960A 28%,#C8960A 42%,
+    #2A8A3A 42%,#2A8A3A 56%,#1A8080 56%,#1A8080 70%,#3060C0 70%,#3060C0 85%,
+    #7040B8 85%,#7040B8 100%);
+}
+.pray-checklist-inner { padding: 16px 18px 18px; }
 .pray-checklist-head {
   display: flex; align-items: flex-start; justify-content: space-between;
   margin-bottom: 10px;
 }
 .pray-checklist-title {
-  font-family: var(--ff-display); font-size: 0.88rem; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text);
+  font-family: var(--ff-display); font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text);
 }
 .pray-checklist-sub {
-  font-family: var(--ff-serif); font-size: 0.82rem; color: var(--text-mute);
-  font-style: italic; margin-top: 2px;
+  font-family: var(--ff-serif); font-size: 0.84rem; color: var(--text-mute);
+  font-style: italic; margin-top: 3px;
 }
 .pray-checklist-count {
-  font-family: var(--ff-serif); font-size: 1.5rem; font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
+  font-family: var(--ff-display); font-size: 1.3rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
 }
-.pray-checklist-count .pray-of { color: var(--text-mute); font-size: 1rem; margin: 0 2px; }
+.pray-checklist-count .pray-of {
+  font-family: var(--ff-serif); color: var(--text-mute);
+  font-size: 1rem; font-weight: 400; margin: 0 2px;
+}
 .pray-progress {
-  height: 6px;
-  background: var(--bg-soft);
+  height: 5px;
+  background: rgba(160,120,32,0.12);
   border-radius: 100px;
   overflow: hidden;
   margin-bottom: 14px;
 }
 .pray-progress-bar {
   height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--gold), #E8C68B);
+  /* SG rainbow progress */
+  background: linear-gradient(90deg,
+    #C84040, #D08010, #C8960A, #2A8A3A, #1A8080, #3060C0, #7040B8);
   border-radius: 100px;
-  transition: width 0.4s ease;
+  transition: width 0.5s cubic-bezier(.2,.9,.3,1);
 }
 .pray-checks {
   list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
 }
 .pray-checks li {
-  display: flex; align-items: center; gap: 9px;
-  padding: 9px 11px;
-  background: var(--bg-elev);
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  font-size: 0.78rem; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 13px;
+  background: rgba(255,255,255,0.72);
+  border: 1.5px solid rgba(216,210,196,0.6);
+  border-radius: 14px;
+  font-family: var(--ff-serif); font-size: 0.92rem; font-weight: 500;
   color: var(--text-soft);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.18s;
   user-select: none;
+  backdrop-filter: blur(4px);
 }
+.pray-checks li:hover { border-color: var(--gold-soft); background: rgba(255,255,255,0.9); }
 .pray-checks li:active { transform: scale(0.97); }
+/* Circular checkbox */
 .pray-checks li .pray-chk {
-  width: 18px; height: 18px;
-  border: 2px solid var(--gold-soft);
-  border-radius: 5px;
+  width: 20px; height: 20px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
   flex-shrink: 0;
   display: grid; place-items: center;
-  font-size: 0.7rem; font-weight: 800; color: #fff;
   background: var(--bg-elev);
-  transition: all 0.15s;
+  transition: all 0.2s;
+  position: relative;
+}
+.pray-checks li .pray-chk::after {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s;
 }
 .pray-checks li.done {
   background: var(--gold-soft);
   border-color: var(--gold);
   color: var(--text);
-  text-decoration: line-through;
-  text-decoration-color: var(--text-mute);
 }
 .pray-checks li.done .pray-chk {
   background: var(--gold);
   border-color: var(--gold);
 }
-.pray-checks li.done .pray-chk::after { content: '✓'; }
+.pray-checks li.done .pray-chk::after {
+  /* Checkmark via clip-path */
+  content: '';
+  width: 10px; height: 7px;
+  background: none;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+  transform: rotate(-45deg) translateY(-1px);
+}
 
 /* ═══ Accordion (collapsible big-section drop-downs) ═══ */
 .db-accordion {
@@ -1188,18 +1223,18 @@ img { display: block; max-width: 100%; }
 .db-accordion summary:active { background: var(--bg-soft); }
 .db-accordion-eyebrow {
   grid-area: eyebrow;
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
 }
 .db-accordion-title {
   grid-area: title;
-  font-family: var(--ff-serif); font-size: 1.24rem; font-weight: 700;
+  font-family: var(--ff-serif); font-size: 1.2rem; font-weight: 700;
   color: var(--text); letter-spacing: -0.005em; line-height: 1.25;
 }
 .db-accordion-sub {
   grid-area: sub;
-  font-size: 0.82rem; color: var(--text-mute);
-  margin-top: 3px;
+  font-family: var(--ff-serif); font-size: 0.84rem; color: var(--text-mute);
+  font-style: italic; margin-top: 3px;
 }
 .db-accordion-arrow {
   grid-area: arrow;
@@ -1322,15 +1357,13 @@ img { display: block; max-width: 100%; }
 .dict-entry summary:active { background: var(--bg-soft); }
 .dict-entry-title {
   flex: 1;
-  font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 700;
+  font-family: var(--ff-serif); font-size: 1.08rem; font-weight: 700;
   color: var(--text); letter-spacing: -0.005em;
 }
 .dict-entry-sub {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
-  color: var(--gold); text-transform: uppercase;
-  background: var(--gold-soft);
-  padding: 3px 8px;
-  border-radius: 100px;
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase;
+  background: var(--gold-soft); padding: 3px 8px; border-radius: 100px;
 }
 .dict-entry-arrow {
   width: 24px; height: 24px;
@@ -1954,6 +1987,137 @@ html {
 .mr-ref-label { font-family:'Cinzel',serif; font-size:9px; font-weight:700; letter-spacing:0.2em; color:var(--mr-gold); text-transform:uppercase; margin-bottom:4px; }
 .mr-ref-title { font-family:'Cormorant Garamond',var(--ff-serif); font-size:18px; font-weight:500; color:var(--mr-ink); margin-bottom:2px; }
 .mr-ref-desc { font-size:12px; color:var(--mr-ink-muted); line-height:1.4; }
+
+/* ═══════════════════════════════════════
+   GLOBAL FONT SIZE PICKER
+   ═══════════════════════════════════════ */
+
+/* App-wide font scale classes on <html> */
+html.app-font-sm  { font-size: 14px; }
+html.app-font-md  { font-size: 16px; }
+html.app-font-lg  { font-size: 18px; }
+html.app-font-xl  { font-size: 20px; }
+
+/* Trigger button — pill shape, bottom-right, always visible */
+.font-trigger-btn {
+  position: fixed;
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  right: 16px;
+  z-index: 300;
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 14px;
+  background: var(--bg-elev);
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  box-shadow: 0 2px 12px rgba(26,20,16,0.12);
+  cursor: pointer;
+  color: var(--text-soft);
+  font-family: var(--ff-display);
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.12em;
+  transition: all 0.2s;
+}
+.font-trigger-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 4px 16px rgba(160,120,32,0.18);
+}
+.font-trigger-btn svg { flex-shrink: 0; }
+
+/* Backdrop */
+.font-picker-wrap { position: fixed; inset: 0; z-index: 400; pointer-events: none; }
+.font-picker-wrap.open { pointer-events: auto; }
+.font-picker-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(26,20,16,0.28);
+  backdrop-filter: blur(2px);
+  opacity: 0; transition: opacity 0.25s;
+}
+.font-picker-wrap.open .font-picker-backdrop { opacity: 1; }
+
+/* Panel — slides up from bottom */
+.font-picker-panel {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  max-width: 480px; margin: 0 auto;
+  background: var(--bg-elev);
+  border-radius: 24px 24px 0 0;
+  padding: 8px 20px calc(env(safe-area-inset-bottom) + 28px);
+  box-shadow: 0 -8px 40px rgba(26,20,16,0.16);
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(.2,.9,.3,1);
+}
+.font-picker-wrap.open .font-picker-panel { transform: translateY(0); }
+
+/* Drag handle */
+.font-picker-panel::before {
+  content: '';
+  display: block;
+  width: 36px; height: 4px;
+  background: var(--line);
+  border-radius: 99px;
+  margin: 10px auto 20px;
+}
+
+.font-picker-label {
+  font-family: var(--ff-display);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-mute);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Four option buttons */
+.font-picker-options {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-bottom: 20px;
+}
+.font-picker-opt {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 14px 8px 12px;
+  background: var(--bg-soft);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.font-picker-opt:hover { border-color: var(--gold-soft); }
+.font-picker-opt.active {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+}
+.font-picker-preview {
+  font-family: var(--ff-serif);
+  font-weight: 600; color: var(--text);
+  line-height: 1;
+}
+.font-preview-sm { font-size: 18px; }
+.font-preview-md { font-size: 22px; }
+.font-preview-lg { font-size: 26px; }
+.font-preview-xl { font-size: 30px; }
+
+.font-picker-opt-label {
+  font-family: var(--ff-display);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mute);
+}
+.font-picker-opt.active .font-picker-opt-label { color: var(--gold); }
+
+/* Live preview sample */
+.font-picker-sample {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  text-align: center;
+  padding: 16px 20px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  transition: font-size 0.2s;
+}
 
 /* Font controls — shown/hidden via JS based on active page */
 .mr-font-controls {
@@ -2716,24 +2880,26 @@ html {
 
     <!-- Daily Checklist -->
     <div class="pray-checklist" id="prayChecklist">
-      <div class="pray-checklist-head">
-        <div>
-          <div class="pray-checklist-title">Today's Prayers</div>
-          <div class="pray-checklist-sub" id="prayChecklistSub">Tap each one as you pray it · resets daily</div>
+      <div class="pray-checklist-inner">
+        <div class="pray-checklist-head">
+          <div>
+            <div class="pray-checklist-title">Today's Prayers</div>
+            <div class="pray-checklist-sub" id="prayChecklistSub">Tap each one as you pray it · resets daily</div>
+          </div>
+          <div class="pray-checklist-count"><span id="prayDoneCount">0</span><span class="pray-of">/</span><span id="prayTotalCount">8</span></div>
         </div>
-        <div class="pray-checklist-count"><span id="prayDoneCount">0</span><span class="pray-of">/</span><span id="prayTotalCount">8</span></div>
+        <div class="pray-progress"><div class="pray-progress-bar" id="prayProgressBar"></div></div>
+        <ul class="pray-checks" id="prayChecks">
+          <li data-pkey="morning-offering" onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Morning Offering</li>
+          <li data-pkey="guardian-angel"   onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Guardian Angel Prayer</li>
+          <li data-pkey="gospel"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Gospel Reading</li>
+          <li data-pkey="angelus"          onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Angelus at Noon</li>
+          <li data-pkey="mercy"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Divine Mercy at 3 PM</li>
+          <li data-pkey="rosary"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>The Rosary</li>
+          <li data-pkey="examen"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Examination of Conscience</li>
+          <li data-pkey="night"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Night Prayer</li>
+        </ul>
       </div>
-      <div class="pray-progress"><div class="pray-progress-bar" id="prayProgressBar"></div></div>
-      <ul class="pray-checks" id="prayChecks">
-        <li data-pkey="morning-offering" onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Morning Offering</li>
-        <li data-pkey="guardian-angel"   onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Guardian Angel Prayer</li>
-        <li data-pkey="gospel"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Gospel Reading</li>
-        <li data-pkey="angelus"          onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Angelus at Noon</li>
-        <li data-pkey="mercy"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Divine Mercy at 3 PM</li>
-        <li data-pkey="rosary"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>The Rosary</li>
-        <li data-pkey="examen"           onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Examination of Conscience</li>
-        <li data-pkey="night"            onclick="togglePrayCheck(this)"><span class="pray-chk"></span>Night Prayer</li>
-      </ul>
     </div>
 
     <!-- Daily Rhythm card -->
@@ -3150,6 +3316,8 @@ html {
         <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
     </div>
+    <!-- SG stripe below hero -->
+    <div class="sg-stripe"></div>
     <div class="detail-content">
       <div class="detail-eyebrow" id="detail-eyebrow">Why Catholic?</div>
       <div class="detail-title" id="detail-title">Loading…</div>
@@ -3164,6 +3332,43 @@ html {
   </section>
 
 </div><!-- /.app -->
+
+<!-- ═══ Global Font Size Picker ═══ -->
+<div class="font-picker-wrap" id="fontPickerWrap">
+  <!-- Backdrop -->
+  <div class="font-picker-backdrop" id="fontPickerBackdrop" onclick="closeFontPicker()"></div>
+  <!-- Panel -->
+  <div class="font-picker-panel" id="fontPickerPanel">
+    <div class="font-picker-label">Text Size</div>
+    <div class="font-picker-options">
+      <button class="font-picker-opt" data-size="sm" onclick="setAppFont('sm')">
+        <span class="font-picker-preview font-preview-sm">Aa</span>
+        <span class="font-picker-opt-label">Small</span>
+      </button>
+      <button class="font-picker-opt active" data-size="md" onclick="setAppFont('md')">
+        <span class="font-picker-preview font-preview-md">Aa</span>
+        <span class="font-picker-opt-label">Default</span>
+      </button>
+      <button class="font-picker-opt" data-size="lg" onclick="setAppFont('lg')">
+        <span class="font-picker-preview font-preview-lg">Aa</span>
+        <span class="font-picker-opt-label">Large</span>
+      </button>
+      <button class="font-picker-opt" data-size="xl" onclick="setAppFont('xl')">
+        <span class="font-picker-preview font-preview-xl">Aa</span>
+        <span class="font-picker-opt-label">X-Large</span>
+      </button>
+    </div>
+    <div class="font-picker-sample" id="fontPickerSample">
+      "You have made us for Yourself, O Lord, and our heart is restless until it rests in You."
+    </div>
+  </div>
+</div>
+
+<!-- Font size trigger button -->
+<button class="font-trigger-btn" id="fontTriggerBtn" onclick="toggleFontPicker()" aria-label="Text size">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+  <span>AA</span>
+</button>
 
 <!-- Mini player -->
 <div class="mini-player" id="mini-player">
@@ -4160,6 +4365,64 @@ html {
 
   // Hide font controls initially
   mrUpdateFontControlsVisibility('home');
+})();
+
+// ═══════════════════════════════════════
+// GLOBAL FONT SIZE PICKER
+// ═══════════════════════════════════════
+(function() {
+  var FONT_KEY = 'becath_app_font';
+  var sizes = ['sm','md','lg','xl'];
+  var sampleSizes = { sm:'0.88rem', md:'1rem', lg:'1.12rem', xl:'1.25rem' };
+  var current = 'md';
+
+  function applyAppFont(size) {
+    if (sizes.indexOf(size) === -1) size = 'md';
+    current = size;
+    var html = document.documentElement;
+    sizes.forEach(function(s) { html.classList.remove('app-font-' + s); });
+    html.classList.add('app-font-' + size);
+    // Update active state on buttons
+    document.querySelectorAll('.font-picker-opt').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.size === size);
+    });
+    // Update sample preview size
+    var sample = document.getElementById('fontPickerSample');
+    if (sample) sample.style.fontSize = sampleSizes[size] || '1rem';
+    try { localStorage.setItem(FONT_KEY, size); } catch(e) {}
+  }
+
+  window.setAppFont = function(size) {
+    applyAppFont(size);
+  };
+
+  window.toggleFontPicker = function() {
+    var wrap = document.getElementById('fontPickerWrap');
+    if (!wrap) return;
+    var isOpen = wrap.classList.contains('open');
+    if (isOpen) {
+      closeFontPicker();
+    } else {
+      wrap.classList.add('open');
+    }
+  };
+
+  window.closeFontPicker = function() {
+    var wrap = document.getElementById('fontPickerWrap');
+    if (wrap) wrap.classList.remove('open');
+  };
+
+  // Close on ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeFontPicker();
+  });
+
+  // Restore saved size on load
+  (function init() {
+    var saved = 'md';
+    try { saved = localStorage.getItem(FONT_KEY) || 'md'; } catch(e) {}
+    applyAppFont(saved);
+  })();
 })();
 </script>
 
