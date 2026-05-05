@@ -2899,8 +2899,67 @@ html.app-font-xl  { font-size: 20px; }
       </div>
       <button class="section-link" onclick="goPage('scripture-browse')">See all</button>
     </div>
-    <div id="home-scripture-accordions" style="margin:0 4px;">
-      <!-- Rendered by JS below -->
+    <div class="h-row">
+      <div class="card-wide card-read" onclick="openDetail('scripture-money')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-scripture">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Money &amp; Provision</div>
+        <div class="card-wide-meta">What does God say about your finances?</div>
+      </div>
+      <div class="card-wide card-read" onclick="openDetail('scripture-purpose')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-bible">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Purpose &amp; Calling</div>
+        <div class="card-wide-meta">Why are you here? God has an answer.</div>
+      </div>
+      <div class="card-wide card-read" onclick="openDetail('scripture-healing')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-eucharist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Healing &amp; Peace</div>
+        <div class="card-wide-meta">For anxiety, grief, and the weight you carry</div>
+      </div>
+      <div class="card-wide card-read" onclick="openDetail('scripture-identity')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-rosary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Identity &amp; Worth</div>
+        <div class="card-wide-meta">Who does God say you are?</div>
+      </div>
+      <div class="card-wide card-read" onclick="openDetail('scripture-relationships')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-prayer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Relationships</div>
+        <div class="card-wide-meta">Love, family, forgiveness — from Scripture</div>
+      </div>
+      <div class="card-wide card-read" onclick="openDetail('scripture-faith')">
+        <div class="card-wide-cover">
+          <div class="gradient-cover gc-saints">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+          </div>
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
+        <div class="card-wide-title">Faith &amp; Breakthrough</div>
+        <div class="card-wide-meta">For hard seasons, doubt, and waiting on God</div>
+      </div>
     </div>
 
     <!-- Rosary & Mary -->
@@ -2980,7 +3039,7 @@ html.app-font-xl  { font-size: 20px; }
       <div class="v-col">
         <div class="card-row card-read" onclick="openDetail('saint-joseph')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Joseph</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span><span class="type-badge type-badge-read">Read</span>Foster Father of Jesus · Mar 19</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Joseph</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Foster Father of Jesus · Mar 19</div></div>
         </div>
         <div class="card-row card-read" onclick="openDetail('saint-therese-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
@@ -3196,23 +3255,23 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-wide card-audio" onclick="openDetail('stations-of-cross')">
+      <div class="card-wide card-read" onclick="openDetail('stations-of-cross')">
         <div class="card-wide-cover"><img src="img/stations.jpg" alt="">
-          <span class="type-pill type-pill-audio">Audio</span>
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Stations of the Cross</div>
         <div class="card-wide-meta">14 stations · Fridays &amp; Lent</div>
       </div>
-      <div class="card-wide card-audio" onclick="openDetail('mary-full')">
+      <div class="card-wide card-read" onclick="openDetail('mary-full')">
         <div class="card-wide-cover"><img src="img/mary.jpg" alt="">
-          <span class="type-pill type-pill-audio">Audio</span>
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Mary &amp; Her Appearances</div>
         <div class="card-wide-meta">15 visits across 2,000 years</div>
       </div>
-      <div class="card-wide card-audio" onclick="openDetail('healing-love')">
+      <div class="card-wide card-read" onclick="openDetail('healing-love')">
         <div class="card-wide-cover"><img src="img/healing.jpg" alt="">
-          <span class="type-pill type-pill-audio">Audio</span>
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Healing &amp; Love</div>
         <div class="card-wide-meta">What the Church teaches</div>
@@ -3248,13 +3307,17 @@ html.app-font-xl  { font-size: 20px; }
         <div class="card-wide-title">The Seven Sacraments</div>
         <div class="card-wide-meta">Channels of divine life</div>
       </div>
-      <div class="card-wide" onclick="openDetail('baptism-full')">
-        <div class="card-wide-cover"><img src="img/baptism.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('baptism-full')">
+        <div class="card-wide-cover"><img src="img/baptism.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">Catholic Baptism</div>
         <div class="card-wide-meta">A complete guide</div>
       </div>
-      <div class="card-wide" onclick="openDetail('eucharist')">
-        <div class="card-wide-cover"><img src="img/eucharist.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('eucharist')">
+        <div class="card-wide-cover"><img src="img/eucharist.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">The Eucharist</div>
         <div class="card-wide-meta">Source &amp; summit</div>
       </div>
@@ -3273,7 +3336,7 @@ html.app-font-xl  { font-size: 20px; }
         <div class="card-wide-title">The Prophets</div>
         <div class="card-wide-meta">Voices across the ages</div>
       </div>
-      <div class="card-wide" onclick="openDetail('revelation')">
+      <div class="card-wide card-read" onclick="openDetail('revelation')">
         <div class="card-wide-cover"><img src="img/revelation.jpg" alt=""></div>
         <div class="card-wide-title">Book of Revelation</div>
         <div class="card-wide-meta">Christ&rsquo;s victory revealed</div>
@@ -5373,96 +5436,6 @@ html.app-font-xl  { font-size: 20px; }
   renderTopics('all');
 })();
 
-// ── Home screen: God's Word for You accordions ──────────────────────────────
-(function() {
-  var HOME_CATS = [
-    { cat:'money',         label:'Money & Provision',   sub:'What does God say about your finances?',        color:'var(--sg-amber)',  gcClass:'gc-scripture' },
-    { cat:'purpose',       label:'Purpose & Calling',   sub:'Why are you here? God has an answer.',          color:'var(--sg-blue)',   gcClass:'gc-bible'    },
-    { cat:'healing',       label:'Healing & Peace',     sub:'For anxiety, grief, and the weight you carry',  color:'var(--sg-green)',  gcClass:'gc-eucharist'},
-    { cat:'identity',      label:'Identity & Worth',    sub:'Who does God say you are?',                     color:'var(--sg-violet)', gcClass:'gc-rosary'   },
-    { cat:'relationships', label:'Relationships',        sub:'Love, family, forgiveness — from Scripture',    color:'var(--sg-red)',    gcClass:'gc-prayer'   },
-    { cat:'faith',         label:'Faith & Breakthrough', sub:'For hard seasons, doubt, and waiting on God',  color:'var(--sg-teal)',   gcClass:'gc-eucharist'},
-  ];
-
-  var HOME_TOPICS = [
-    { cat:'money',         label:'Prosperity',          sub:'God desires you to flourish',                   id:'topic-prosperity'      },
-    { cat:'money',         label:'Provision',           sub:'God as your source — He meets every need',      id:'topic-provision'       },
-    { cat:'money',         label:'Stewardship',         sub:'Managing what God entrusted to you',            id:'topic-stewardship'     },
-    { cat:'money',         label:'Generosity & Giving', sub:'You cannot out-give God',                       id:'topic-generosity'      },
-    { cat:'money',         label:'Favor',               sub:'Divine positioning',                            id:'topic-favor'           },
-    { cat:'money',         label:'Debt & Freedom',      sub:'Breaking cycles of lack',                       id:'topic-debt-freedom'    },
-    { cat:'purpose',       label:'Purpose & Calling',   sub:'Created on purpose, for a purpose',             id:'topic-purpose'         },
-    { cat:'purpose',       label:'Gifts & Talents',     sub:'What God placed in you is not an accident',     id:'topic-gifts'           },
-    { cat:'purpose',       label:'Work & Excellence',   sub:'Everything you do can be an act of worship',    id:'topic-work'            },
-    { cat:'purpose',       label:'Wisdom & Discernment',sub:'How to hear God in the noise',                  id:'topic-wisdom'          },
-    { cat:'purpose',       label:'Dreams & Vision',     sub:'God plants holy desires as seeds of vocation',  id:'topic-dreams'          },
-    { cat:'healing',       label:'Healing',             sub:'Jesus healed then, and He heals now',           id:'topic-healing'         },
-    { cat:'healing',       label:'Peace & Anxiety',     sub:'The peace that surpasses understanding',        id:'topic-peace'           },
-    { cat:'healing',       label:'Rest & Sabbath',      sub:'God rested. He commands your rest.',            id:'topic-rest'            },
-    { cat:'healing',       label:'Grief & Suffering',   sub:'God does not waste your pain',                  id:'topic-grief'           },
-    { cat:'healing',       label:'Shalom',              sub:'Biblical wholeness — body, soul, and spirit',   id:'topic-shalom'          },
-    { cat:'identity',      label:'Identity in Christ',  sub:'Who you are before you do anything',            id:'topic-identity'        },
-    { cat:'identity',      label:'Imago Dei',           sub:'Made in the image and likeness of God',         id:'topic-imago-dei'       },
-    { cat:'identity',      label:'Baptism & New Life',  sub:'You are a new creation',                        id:'topic-baptism'         },
-    { cat:'identity',      label:'Courage & Boldness',  sub:'The fear of man is a snare — you are free',     id:'topic-courage'         },
-    { cat:'identity',      label:'Worth & Dignity',     sub:'You were worth dying for',                      id:'topic-worth'           },
-    { cat:'relationships', label:'Love',                sub:'Agape — the love that lays down its life',      id:'topic-love'            },
-    { cat:'relationships', label:'Marriage & Family',   sub:'The domestic church',                           id:'topic-marriage'        },
-    { cat:'relationships', label:'Friendship',          sub:'Iron sharpens iron',                            id:'topic-friendship'      },
-    { cat:'relationships', label:'Forgiveness',         sub:'The most countercultural act in the world',     id:'topic-forgiveness'     },
-    { cat:'relationships', label:'Unity & Community',   sub:'You were not made to do this alone',            id:'topic-unity'           },
-    { cat:'faith',         label:'Faith',               sub:'The substance of things hoped for',             id:'topic-faith'           },
-    { cat:'faith',         label:'Prayer',              sub:'Ask, seek, knock — the mechanics of heaven',    id:'topic-prayer'          },
-    { cat:'faith',         label:'Spiritual Warfare',   sub:'You are in a battle — here is your armor',      id:'topic-spiritual-warfare'},
-    { cat:'faith',         label:'Waiting & Patience',  sub:'Holy waiting is not passive — it is powerful',  id:'topic-waiting'         },
-    { cat:'faith',         label:'Mind & Renewal',      sub:'What you think shapes what you become',         id:'topic-mind'            },
-  ];
-
-  window.homeScriptureToggle = function(btn) {
-    var acc = btn.closest('.hsa');
-    var isOpen = acc.classList.contains('open');
-    document.querySelectorAll('#home-scripture-accordions .hsa').forEach(function(a){ a.classList.remove('open'); });
-    if (!isOpen) acc.classList.add('open');
-  };
-
-  function buildHomeAccordions() {
-    var container = document.getElementById('home-scripture-accordions');
-    if (!container) return;
-    var html = '';
-    HOME_CATS.forEach(function(c) {
-      var topics = HOME_TOPICS.filter(function(t){ return t.cat === c.cat; });
-      var topicRows = topics.map(function(t){
-        return '<div class="hsa-topic-row" onclick="openDetail(\'' + t.id + '\')">'
-          + '<div style="width:7px;height:7px;border-radius:50%;background:' + c.color + ';flex-shrink:0;opacity:0.7;margin-top:3px;"></div>'
-          + '<div style="flex:1;">'
-          + '<div class="hsa-topic-title">' + t.label + '</div>'
-          + '<div class="hsa-topic-sub">' + t.sub + '</div>'
-          + '</div>'
-          + '<svg style="width:14px;height:14px;flex-shrink:0;color:var(--text-faint);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
-          + '</div>';
-      }).join('');
-      html += '<div class="hsa">'
-        + '<div class="hsa-head" onclick="homeScriptureToggle(this)">'
-        + '<div class="hsa-dot" style="background:' + c.color + ';"></div>'
-        + '<div class="hsa-labels">'
-        + '<div class="hsa-title">' + c.label + '</div>'
-        + '<div class="hsa-sub">' + c.sub + '</div>'
-        + '</div>'
-        + '<svg class="hsa-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
-        + '</div>'
-        + '<div class="hsa-body">' + topicRows + '</div>'
-        + '</div>';
-    });
-    container.innerHTML = html;
-  }
-
-  // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildHomeAccordions);
-  } else {
-    buildHomeAccordions();
-  }
-})();
 </script>
 
 </body>
