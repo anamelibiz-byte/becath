@@ -4439,4 +4439,602 @@ window.BECATH_CONTENT['councils'] = {
     { type:'callout', tone:'violet', title:'Vatican II · 1962–1965', body:'Called by Pope St. John XXIII ("Good Pope John"), continued by Paul VI. Produced 16 documents covering liturgy, divine revelation, the Church, ecumenism, religious freedom, and the Church in the modern world. Lumen Gentium (the Church) and Gaudium et Spes (the Church in the modern world) are its most studied texts. It did not change doctrine — it renewed the Church\'s way of presenting it.' },
     { type:'callout', tone:'gold', title:'Is There a Vatican III?', body:'No council has been called since Vatican II. Some theologians and bishops have suggested one may be needed — others argue Vatican II\'s documents have not yet been fully received. The decision belongs to the Pope alone.' },
   ]
+
+
+  // ────────────────────────────────────────────────────────
+  // EUCHARISTIC MIRACLES
+  // ────────────────────────────────────────────────────────
+  'miracle-lanciano': {
+    eyebrow: 'Eucharistic Miracle',
+    title: 'Lanciano, Italy — 8th Century',
+    meta: 'The oldest recorded Eucharistic miracle · Scientifically verified',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'750 AD — A Doubting Monk',
+        text:'A Basilian monk celebrating Mass in Lanciano, Italy, began to doubt whether the bread and wine truly became the Body and Blood of Christ. At the moment of consecration — the Host transformed into living flesh. The wine became real blood.',
+        quote:{ text:'This is my body... this is my blood.', cite:'Matthew 26:26–28' }
+      },
+      { type:'sectionLabel', text:'What the Science Found' },
+      { type:'callout', tone:'gold', title:'Investigated by Scientists — 1970–1981', body:'At the request of the Holy See, Professor Odoardo Linoli (professor of anatomy, pathological histology, chemistry and clinical microscopy) conducted rigorous scientific analysis. His findings were later confirmed by the World Health Organization.' },
+      { type:'list', items:[
+        '<strong>The flesh:</strong> Real human cardiac muscle tissue — from the left ventricle of a living human heart. No preservatives. No decay after 1,250 years.',
+        '<strong>The blood:</strong> Real human blood — Type AB. The same blood type found on the Shroud of Turin and the Sudarium of Oviedo.',
+        '<strong>The proteins:</strong> Normal blood protein ratios — as if drawn from a living person the same day.',
+        '<strong>No explanation:</strong> Professor Linoli stated the preservation is "a fact that science cannot explain by any natural means."'
+      ]},
+      { type:'callout', tone:'blue', title:'The WHO Confirmation', body:'The World Health Organization conducted a 500-day study and confirmed the findings. Their conclusion: no human hand could have produced or preserved these relics. The tissue shows no signs of any preserving agent whatsoever.' },
+      { type:'sectionLabel', text:'What It Means for Faith' },
+      { type:'p', text:'The Church has never required Catholics to believe in any specific private miracle. But Lanciano stands as one of the most scientifically investigated events in religious history. For 1,250 years, a piece of human heart tissue — identified as cardiac muscle — has sat in a reliquary in central Italy. Science cannot explain it. Faith knows what it is.' },
+      { type:'quote', text:'Blessed are those who have not seen and yet have believed.', cite:'John 20:29' },
+      { type:'prayer', label:'Prayer Before the Eucharist', text:'Lord Jesus, I believe You are truly present — Body, Blood, Soul, and Divinity — in the Eucharist. Where science reaches its limits, faith steps forward. I receive You not because I understand, but because I trust. Amen.' }
+    ]
+  },
+
+  'miracle-buenosaires': {
+    eyebrow: 'Eucharistic Miracle',
+    title: 'Buenos Aires, Argentina — 1996',
+    meta: 'Investigated personally by Cardinal Jorge Mario Bergoglio — now Pope Francis',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'The Miracle Pope Francis Could Not Ignore',
+        text:'In 1996, a consecrated Host was found discarded in a candleholder at a Buenos Aires church. Standard practice is to place the Host in water and allow it to dissolve. Instead, it began to transform — turning into bleeding flesh. The local bishop at the time was Cardinal Jorge Mario Bergoglio.',
+      },
+      { type:'callout', tone:'gold', title:'What Happened', body:'The Host was placed in water and stored in the tabernacle. Eight days later, it had transformed into a bloody, flesh-like substance. Cardinal Bergoglio ordered it photographed and preserved. In 1999, a sample was sent — without any identification of its origin — to Dr. Frederick Zugibe, a leading forensic pathologist and cardiologist in New York.' },
+      { type:'sectionLabel', text:'The Scientist's Report' },
+      { type:'p', text:'Dr. Zugibe examined the tissue without knowing what it was or where it came from. His findings: the tissue was real human heart muscle — specifically from the left ventricle, inflamed and alive. White blood cells were present. This meant the tissue was alive at the time of examination — a scientific impossibility for tissue that had been sitting in water for years.' },
+      { type:'callout', tone:'blue', title:'Dr. Zugibe's Conclusion', body:'"The analyzed material is a fragment of the myocardium [heart muscle]... The white blood cells indicate the sample was alive when tested. How a fragment of human heart, kept in water for three years, could remain alive — I have no scientific explanation."' },
+      { type:'p', text:'When Dr. Zugibe was finally told the origin of the sample — a consecrated Eucharistic Host — he was reportedly stunned.' },
+      { type:'quote', text:'For my flesh is real food and my blood is real drink.', cite:'John 6:55' },
+      { type:'prayer', label:'Act of Faith', text:'Lord, I believe — help my unbelief. You have given me evidence that reaches past science into mystery. I choose faith. I choose You. Amen.' }
+    ]
+  },
+
+  'miracle-sokolka': {
+    eyebrow: 'Eucharistic Miracle',
+    title: 'Sokółka, Poland — 2008',
+    meta: 'Cardiac muscle tissue · Confirmed by independent pathologists',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'Poland, 2008',
+        text:'During Mass in Sokółka, a consecrated Host fell to the floor. It was placed in water in a locked safe per protocol. Two weeks later, when the safe was opened — a blood-red stain had appeared on the Host and transformed into a reddish, fibrous tissue.'
+      },
+      { type:'callout', tone:'gold', title:'The Scientific Analysis', body:'Two professors of pathomorphology at the Medical University of Białystok — Dr. Maria Sobaniec-Łotowska and Dr. Stanisław Sulkowski — examined the tissue independently. Both came to the same conclusion: the tissue was human myocardial (heart muscle) tissue, intertwined with the bread such that separation was impossible without destroying both.' },
+      { type:'list', items:[
+        'The tissue showed signs of a heart in agony — consistent with the suffering of a person dying.',
+        'The tissue was alive at the time of analysis.',
+        'The bread and heart tissue were so intertwined they could not be separated.',
+        'No scientific explanation exists for how this occurred.'
+      ]},
+      { type:'quote', text:'Unless you eat the flesh of the Son of Man and drink his blood, you have no life in you.', cite:'John 6:53' },
+      { type:'callout', tone:'blue', title:'Church Approval', body:'The Archbishop of Białystok approved the miracle as "a sign given to humanity" for faith and conversion. The relic is kept at the local parish and can be venerated.' },
+      { type:'prayer', label:'Prayer of Adoration', text:'Jesus, hidden in the Eucharist — I adore You. These miracles are not given because we deserve them. They are given because You love us too much to leave us without evidence. Thank You. Amen.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // APPARITION MIRACLES
+  // ────────────────────────────────────────────────────────
+  'miracle-fatima': {
+    eyebrow: 'Marian Apparition',
+    title: 'Fátima, Portugal — 1917',
+    meta: 'Witnessed by 70,000 people · Predicted before it happened',
+    gc: 'gc-mary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'May 13 – October 13, 1917',
+        text:'Three shepherd children in Fátima, Portugal — Lúcia (10), Francisco (9), and Jacinta (7) — reported a series of apparitions of the Virgin Mary. The final apparition, on October 13, was witnessed by approximately 70,000 people, including journalists and skeptics.',
+        quote:{ text:'I am the Lady of the Rosary. I have come to warn the faithful to amend their lives.', cite:'Our Lady of Fátima' }
+      },
+      { type:'sectionLabel', text:'The Miracle of the Sun' },
+      { type:'callout', tone:'gold', title:'Announced Three Months in Advance', body:'Lúcia had publicly announced that a miracle would occur at noon on October 13, 1917. Portuguese newspapers sent reporters — many of them secularists and skeptics — specifically to debunk it. The miracle happened exactly as predicted.' },
+      { type:'p', text:'At noon, in front of 70,000 witnesses, the clouds parted and the sun appeared to "dance" — spinning, emitting multicolored light, and plunging toward the earth in a terrifying zigzag motion. Witnesses reported the phenomenon lasted approximately 10 minutes. The ground and clothes of the crowd — soaked from heavy rain — were completely dry afterward.' },
+      { type:'p', text:'The event was reported by secular newspapers including O Século and Ordem, whose reporters had attended specifically to report on the "absurd" claims of visionaries. Their accounts, published the next day, described what they witnessed.' },
+      { type:'sectionLabel', text:'The Three Secrets' },
+      { type:'list', items:[
+        '<strong>First Secret:</strong> A vision of Hell — described by the children in vivid detail. Mary said it was shown so they would pray for souls.',
+        '<strong>Second Secret:</strong> The consecration of Russia to the Immaculate Heart of Mary. Mary warned that if this was not done, Russia would "spread her errors throughout the world." This was said in 1917 — the same year of the Bolshevik Revolution.',
+        '<strong>Third Secret:</strong> Sealed and not opened until 2000. It depicted the assassination attempt on a pope — widely interpreted as the 1981 attack on Pope John Paul II, who credited Our Lady of Fátima with saving his life.'
+      ]},
+      { type:'callout', tone:'blue', title:'Church Approval', body:'The apparitions were approved by the Bishop of Leiria in 1930 after a rigorous canonical investigation. Two of the three children — Francisco and Jacinta — have been canonized as saints. The feast of Our Lady of Fátima is May 13.' },
+      { type:'prayer', label:'Fátima Prayer (The Angel's Prayer)', text:'O my Jesus, forgive us our sins, save us from the fires of hell. Lead all souls to Heaven, especially those in most need of Thy mercy. Amen.' }
+    ]
+  },
+
+  'miracle-lourdes': {
+    eyebrow: 'Marian Apparition',
+    title: 'Lourdes, France — 1858',
+    meta: '70+ verified medical miracles · Investigated by the Lourdes Medical Bureau',
+    gc: 'gc-mary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'February 11, 1858 — A 14-Year-Old Girl',
+        text:'Bernadette Soubirous, a poor, uneducated 14-year-old girl in southern France, reported 18 apparitions of a "beautiful Lady" in the grotto of Massabielle. The Lady eventually identified herself: "I am the Immaculate Conception" — a theological term Bernadette had never heard and did not understand.',
+      },
+      { type:'callout', tone:'gold', title:'The Spring That Wasn't There', body:'During one apparition, the Lady instructed Bernadette to "dig in the ground and drink." Bernadette dug — and a spring appeared. That spring has never stopped flowing. Today it produces 32,000 gallons of water per day and has been the site of scientifically verified miraculous healings for over 165 years.' },
+      { type:'sectionLabel', text:'The Medical Evidence' },
+      { type:'p', text:'The Lourdes Medical Bureau — founded in 1883 — is an independent body of medical professionals that investigates healing claims at Lourdes. Their process is extraordinarily rigorous: the cure must be instantaneous, complete, permanent, and without medical explanation. To date, 70 healings have been officially declared miraculous by the Church after meeting this standard.' },
+      { type:'list', items:[
+        'Cases of advanced tuberculosis resolved instantaneously.',
+        'Bone cancer with no remaining trace.',
+        'Blindness reversed with no medical intervention.',
+        'Cases declared "inexplicable" by the Bureau's own secular physicians.',
+        'Six million pilgrims visit Lourdes annually — making it one of the most visited pilgrimage sites in the world.'
+      ]},
+      { type:'callout', tone:'blue', title:'Bernadette's Life', body:'Bernadette Soubirous spent her remaining years as a nun in Nevers, France. She died in 1879 at age 35 and was canonized in 1933. Her body remains incorrupt — preserved without embalming — and can be seen today at the chapel in Nevers.' },
+      { type:'quote', text:'Penance! Penance! Penance! Pray to God for sinners.', cite:'Our Lady of Lourdes to Bernadette' },
+      { type:'prayer', label:'Prayer to Our Lady of Lourdes', text:'Our Lady of Lourdes, you appeared to a child the world overlooked and asked for prayer and penance. Give us the simplicity of Bernadette — to trust, to kneel, and to believe what we cannot explain. Intercede for us. Amen.' }
+    ]
+  },
+
+  'miracle-guadalupe': {
+    eyebrow: 'Marian Apparition',
+    title: 'Our Lady of Guadalupe — 1531',
+    meta: 'Mexico City · Tilma image with no scientific explanation · 9 million conversions',
+    gc: 'gc-mary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'December 1531 — Juan Diego',
+        text:'A poor indigenous man named Juan Diego reported apparitions of a woman who identified herself as the Virgin Mary on Tepeyac Hill near Mexico City. She left behind an image on his tilma (cloak) that has defied scientific explanation for nearly 500 years.',
+        quote:{ text:'Am I not here, I who am your mother?', cite:'Our Lady of Guadalupe to Juan Diego' }
+      },
+      { type:'sectionLabel', text:'What Science Cannot Explain' },
+      { type:'list', items:[
+        '<strong>The fabric:</strong> The tilma is made of ayate cloth — a rough cactus fiber that should have disintegrated within 20 years. It has survived nearly 500 years without any preservation treatment.',
+        '<strong>No brushstrokes:</strong> Infrared and ultraviolet analysis found no sketch marks, no sizing, and no sign of human painting technique. The image appears to have been "placed" on the cloth.',
+        '<strong>The eyes:</strong> Ophthalmologists examining the eyes in the image found reflections consistent with a living human eye — including the distortion caused by the curvature of the cornea. Figures appear reflected in the eye as they would in a real human eye.',
+        '<strong>The stars:</strong> The arrangement of stars on Mary's mantle corresponds exactly to the star positions over Mexico City on December 12, 1531 — viewed from above, as if from space.',
+        '<strong>Temperature:</strong> The tilma maintains a constant temperature of 98.6°F — the temperature of a living human body.'
+      ]},
+      { type:'callout', tone:'gold', title:'9 Million Conversions in 7 Years', body:'Before the apparitions, Spanish missionaries had struggled for years with minimal results in Mexico. After the tilma appeared, approximately 9 million indigenous people converted to Christianity within 7 years. The image spoke directly to indigenous symbolism: Mary stood before the sun (not worshipped as a god), on the moon (not feared), and wore the black sash — the sign of pregnancy in Aztec culture, announcing she carried the Son of God.' },
+      { type:'callout', tone:'blue', title:'Feast Day', body:'December 12 is the Feast of Our Lady of Guadalupe. She is the Patroness of the Americas and of unborn children. Her basilica in Mexico City is the most visited Catholic pilgrimage site in the world — receiving 20 million visitors annually.' },
+      { type:'prayer', label:'Prayer to Our Lady of Guadalupe', text:'Our Lady of Guadalupe, you appeared not to the powerful but to the humble. You speak in the language of those who feel overlooked. Intercede for us — for the unborn, for the poor, for all who need a mother's protection. Amen.' }
+    ]
+  },
+
+  'miracle-shroud': {
+    eyebrow: 'Physical Evidence',
+    title: 'The Shroud of Turin',
+    meta: 'The most scientifically studied artifact in human history',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'A Linen Cloth That Baffles Science',
+        text:'The Shroud of Turin is a 14-foot linen cloth bearing the faint image of a crucified man. It is the most scientifically studied artifact in human history — examined by dozens of independent research teams including NASA scientists — and its image remains unexplained.',
+      },
+      { type:'sectionLabel', text:'What the Science Found' },
+      { type:'list', items:[
+        '<strong>The image:</strong> It is not painted. No pigment, dye, or artistic medium has been identified. The image is superficial — only the outermost fibers of the linen are affected, a depth of 0.2 micrometers.',
+        '<strong>3D encoded data:</strong> NASA scientists discovered the image contains 3D spatial information — impossible to encode in a 2D painting. This was discovered using VP-8 image analyzers used to study NASA space photography.',
+        '<strong>The wounds:</strong> Every wound is consistent with Roman crucifixion as described in the Gospels — scourging, crown of thorns, nail wounds in the wrists (not palms as commonly depicted), lance wound in the side.',
+        '<strong>The blood:</strong> Real human blood — Type AB — the same type as the Lanciano miracle and the Sudarium of Oviedo. The blood was on the cloth before the image.',
+        '<strong>Pollen:</strong> Pollen from over 58 plant species was found — many exclusive to the Jerusalem area and only in bloom during spring (Passover season).'
+      ]},
+      { type:'callout', tone:'gold', title:'The 1988 Carbon Dating Controversy', body:'A 1988 carbon-14 test dated the cloth to 1260–1390 AD. However, multiple scientists have since challenged the methodology — the sample taken was from a corner that had been repaired in the medieval period with different-age thread. Peer-reviewed studies published in 2005 and later demonstrated the sample was taken from a rewoven section. The debate continues in the scientific literature.' },
+      { type:'callout', tone:'blue', title:'The Image Formation Mystery', body:'No known technology — ancient or modern — can reproduce the Shroud image. STURP (Shroud of Turin Research Project) scientists concluded: the image was formed by some kind of radiant energy that scorched the outermost fibers. Some researchers have proposed that a burst of radiation at the moment of resurrection could explain the image formation — an event that, by definition, lies outside the scope of science.' },
+      { type:'prayer', label:'Prayer Before the Holy Face', text:'Holy Face of Jesus — marked by suffering, radiant with love — I look at You and remember what You endured. Every wound was for me. I do not need to understand everything to believe. I only need to look at You. Amen.' }
+    ]
+  },
+
+  'miracle-incorrupt': {
+    eyebrow: 'Physical Evidence',
+    title: 'Incorrupt Saints',
+    meta: 'Bodies preserved without embalming — across centuries',
+    gc: 'gc-saints',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'Death That Looks Like Sleep',
+        text:'Incorruptibility is the phenomenon of a saint's body remaining preserved after death — without embalming, without special burial conditions — sometimes for centuries. The Church does not claim supernatural cause automatically, but many cases have defied scientific explanation.',
+      },
+      { type:'sectionLabel', text:'Notable Incorrupt Saints' },
+      { type:'list', items:[
+        '<strong>St. Bernadette Soubirous (d. 1879):</strong> Her body was exhumed three times — in 1909, 1919, and 1925. Each time, it was found perfectly preserved. She is displayed today at the Chapel of Saint Gildard in Nevers, France. Her face has a thin wax covering added to protect the original skin.',
+        '<strong>St. Padre Pio (d. 1968):</strong> His stigmata wounds — which he bore for 50 years — disappeared completely at the moment of his death, leaving only smooth, healed skin where the wounds had been for decades.',
+        '<strong>St. Catherine Labouré (d. 1876):</strong> Exhumed in 1933 — 57 years after death — and found completely incorrupt. Her eyes remained blue.',
+        '<strong>St. Pope John XXIII (d. 1963):</strong> When his body was exhumed for beatification in 2001, it was found in a state of remarkable preservation — still recognizable.',
+        '<strong>St. Rita of Cascia (d. 1457):</strong> Her body has been incorrupt for over 560 years and is displayed in the Basilica of Cascia, Italy.'
+      ]},
+      { type:'callout', tone:'gold', title:'What Incorruptibility Is Not', body:'It is not the same as mummification (which requires specific dry conditions) or embalming. Many incorrupt saints were buried in damp soil or stone crypts — conditions that normally accelerate decomposition. The Church evaluates each case individually and does not list incorruptibility as a requirement for canonization.' },
+      { type:'p', text:'These cases do not "prove" the resurrection or constitute doctrine. They are signs — given to the faithful as reminders that the body matters, that holiness leaves a mark, and that what seems like an ending is not always what it appears.' },
+      { type:'prayer', label:'Prayer for a Holy Death', text:'Lord Jesus, who conquered death and rose in glory — help me live in a way that makes me unafraid of dying. Let my life be spent so entirely for You that at the end, nothing is wasted. Amen.' }
+    ]
+  },
+
+  'miracle-padre-pio': {
+    eyebrow: 'Modern Miracle',
+    title: 'Padre Pio — The Stigmatist of San Giovanni',
+    meta: '1887–1968 · 50 years of stigmata · Millions of verified testimonies',
+    gc: 'gc-saints',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'A Priest Who Bled for 50 Years',
+        text:'Francesco Forgione — known as Padre Pio — was an Italian Capuchin priest who bore the stigmata (the wounds of Christ) for 50 consecutive years. He is one of the most documented miracle workers in modern history and was canonized by Pope John Paul II in 2002.',
+      },
+      { type:'callout', tone:'gold', title:'The Stigmata — Examined by Doctors', body:'Multiple physicians examined Padre Pio's wounds over the decades — including skeptical doctors sent by Church authorities specifically to investigate fraud. All found the same thing: real open wounds that bled, did not become infected, did not heal, and showed no sign of self-infliction. The wounds bled approximately a cup of blood daily. They disappeared completely at the moment of his death.' },
+      { type:'sectionLabel', text:'Documented Phenomena' },
+      { type:'list', items:[
+        '<strong>Bilocation:</strong> Padre Pio was reported simultaneously in two places on multiple verified occasions — including during World War II, when Allied pilots reported seeing a friar in the sky who turned their planes away from San Giovanni Rotondo. The town was never bombed.',
+        '<strong>Reading souls:</strong> During confession, Padre Pio reportedly knew the sins of penitents before they spoke — including sins they had deliberately omitted or forgotten. Thousands of testimonies document this.',
+        '<strong>Healing:</strong> Numerous medically verified healings are attributed to his intercession — including the restoration of sight to a woman born without pupils.',
+        '<strong>The scent:</strong> A mysterious fragrance of flowers or incense was often reported in his presence — and at the moment of his reported bilocations.',
+        '<strong>Fasting:</strong> For extended periods, he reportedly subsisted on almost no food — surviving primarily on the Eucharist.'
+      ]},
+      { type:'callout', tone:'blue', title:'His Words', body:'"Pray, hope, and don't worry. Worry is useless. God is merciful and will hear your prayer." This single statement has brought peace to millions.' },
+      { type:'prayer', label:'Prayer Through Padre Pio', text:'Padre Pio — you suffered willingly what Christ suffered, and you did not flinch. You heard confessions for hours, bore wounds for decades, and never stopped praying for others. Pray for us now. Help us carry what we carry with even a fraction of your trust. Amen.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // ROSARY MYSTERIES
+  // ────────────────────────────────────────────────────────
+  'rosary-joyful': {
+    eyebrow: 'The Holy Rosary',
+    title: 'Joyful Mysteries',
+    meta: 'Prayed on Mondays & Saturdays · The Incarnation',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'How to Pray the Rosary', body:'Begin with the Apostles' Creed, then an Our Father, three Hail Marys, a Glory Be. Then for each of the five mysteries: announce the mystery, pray an Our Father, ten Hail Marys, a Glory Be, and the Fátima Prayer. End with the Hail Holy Queen.' },
+      { type:'sectionLabel', text:'The Five Joyful Mysteries' },
+      { type:'subsection', title:'1. The Annunciation', subtitle:'Luke 1:26–38', blocks:[
+        { type:'p', text:'The angel Gabriel appears to Mary in Nazareth and announces that she will conceive and bear the Son of God. Mary asks how this can be since she is a virgin. Gabriel tells her the Holy Spirit will come upon her. Mary says: <em>"Behold, I am the handmaid of the Lord. May it be done to me according to your word."</em>' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Humility — the willingness to say yes to God even when we do not understand. Mary's fiat ("let it be done") is the hinge on which salvation history turns.' }
+      ]},
+      { type:'subsection', title:'2. The Visitation', subtitle:'Luke 1:39–56', blocks:[
+        { type:'p', text:'Mary travels to visit her cousin Elizabeth, who is pregnant with John the Baptist. When Mary arrives and greets Elizabeth, John leaps in the womb. Elizabeth, filled with the Holy Spirit, cries out: <em>"Blessed are you among women, and blessed is the fruit of your womb!"</em> Mary responds with the Magnificat.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Love of neighbor — the first thing Mary did after saying yes to God was go to serve someone else.' }
+      ]},
+      { type:'subsection', title:'3. The Nativity', subtitle:'Luke 2:1–20', blocks:[
+        { type:'p', text:'Jesus is born in Bethlehem in a stable because there is no room at the inn. He is wrapped in cloths and laid in a manger. Angels announce His birth to shepherds: <em>"Today in the city of David a Savior has been born for you who is Christ and Lord."</em> The shepherds go, find everything as the angel said, and return glorifying God.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Poverty of spirit — God chose to enter the world not in a palace but in a stable. The greatest things arrive simply.' }
+      ]},
+      { type:'subsection', title:'4. The Presentation', subtitle:'Luke 2:22–38', blocks:[
+        { type:'p', text:'Mary and Joseph bring the infant Jesus to the Temple in Jerusalem to fulfill the Law of Moses. The elderly Simeon, who had been promised he would not die before seeing the Messiah, takes Jesus in his arms and says: <em>"Now, Master, you may let your servant go in peace... for my eyes have seen your salvation."</em> He then tells Mary: "A sword will pierce your own soul."' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Obedience and purity of intention — doing what God asks even when it costs.' }
+      ]},
+      { type:'subsection', title:'5. Finding Jesus in the Temple', subtitle:'Luke 2:41–52', blocks:[
+        { type:'p', text:'When Jesus is 12, the family travels to Jerusalem for Passover. On the return journey, Mary and Joseph realize Jesus is missing. After three days of searching, they find Him in the Temple — sitting among the teachers, listening and asking questions. When Mary asks why He did this, He answers: <em>"Did you not know that I must be in my Father's house?"</em>' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Seeking God above all things — even when He seems lost, He is exactly where He should be.' }
+      ]},
+      { type:'prayer', label:'Hail Holy Queen', text:'Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ. Amen.' }
+    ]
+  },
+
+  'rosary-sorrowful': {
+    eyebrow: 'The Holy Rosary',
+    title: 'Sorrowful Mysteries',
+    meta: 'Prayed on Tuesdays & Fridays · The Passion',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'Why Meditate on Suffering?', body:'The Sorrowful Mysteries ask us to sit with the Passion of Christ — not to dwell in pain, but to understand love. Every wound was chosen. Every step toward Calvary was voluntary. This is what love looks like when it has no limit.' },
+      { type:'sectionLabel', text:'The Five Sorrowful Mysteries' },
+      { type:'subsection', title:'1. The Agony in the Garden', subtitle:'Luke 22:39–46', blocks:[
+        { type:'p', text:'Jesus goes to the Garden of Gethsemane after the Last Supper. He prays: <em>"Father, if you are willing, take this cup from me; yet not my will, but yours be done."</em> His sweat falls like drops of blood (a documented medical phenomenon called hematidrosis, caused by extreme psychological distress). His disciples fall asleep.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Conformity to God's will — the hardest prayer: not my will, but Yours.' }
+      ]},
+      { type:'subsection', title:'2. The Scourging at the Pillar', subtitle:'Matthew 27:26', blocks:[
+        { type:'p', text:'Pilate, seeking to appease the crowd, orders Jesus scourged. Roman scourging used a flagrum — leather straps with lead balls or bone fragments that tore flesh. The Shroud of Turin documents over 120 separate scourge marks across the entire body. Jesus endured this without speaking.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Mortification — the willingness to suffer rather than compromise truth.' }
+      ]},
+      { type:'subsection', title:'3. The Crowning with Thorns', subtitle:'Matthew 27:27–31', blocks:[
+        { type:'p', text:'The Roman soldiers mock Jesus as a false king. They press a crown of thorns into His scalp, put a reed in His hand as a scepter, and kneel before Him in mockery. They spit on Him and strike His head, driving the thorns deeper. Then they lead Him to Golgotha.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Moral courage — the willingness to be mocked for truth rather than deny it.' }
+      ]},
+      { type:'subsection', title:'4. The Carrying of the Cross', subtitle:'Luke 23:26–32', blocks:[
+        { type:'p', text:'Jesus carries His cross through Jerusalem toward Golgotha. He has been beaten, scourged, and has not slept. He falls. Simon of Cyrene is compelled to help carry the cross. Women weep along the road — and Jesus turns to comfort them, not Himself: <em>"Daughters of Jerusalem, weep not for me, but for yourselves and your children."</em>' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Patient endurance — bearing what we cannot change with dignity and grace.' }
+      ]},
+      { type:'subsection', title:'5. The Crucifixion', subtitle:'Luke 23:33–49', blocks:[
+        { type:'p', text:'Jesus is nailed to the cross at 9 AM and dies at 3 PM. From the cross He speaks seven times — forgiving His executioners, promising Paradise to the repentant thief, giving His mother to John, crying out the words of Psalm 22 in abandonment, and finally: <em>"Father, into your hands I commend my spirit."</em> The curtain of the Temple tears. A Roman soldier says: "Truly this man was the Son of God."' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Salvation — the mystery that love paid what we owed.' }
+      ]},
+      { type:'prayer', label:'Prayer at the Cross', text:'Lord Jesus, at the cross I stop. I stop my excuses, my complaints, my smallness. You hung there for me. That is enough to silence everything. Thank You. Amen.' }
+    ]
+  },
+
+  'rosary-glorious': {
+    eyebrow: 'The Holy Rosary',
+    title: 'Glorious Mysteries',
+    meta: 'Prayed on Wednesdays & Sundays · The Resurrection',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'The Heart of the Faith', body:'The Glorious Mysteries meditate on the Resurrection, Ascension, Pentecost, and the glorification of Mary. Christianity does not end at the cross — it begins at the empty tomb. These mysteries are the proof that suffering is not the last word.' },
+      { type:'sectionLabel', text:'The Five Glorious Mysteries' },
+      { type:'subsection', title:'1. The Resurrection', subtitle:'John 20:1–18', blocks:[
+        { type:'p', text:'Three days after His death, Jesus rises from the dead — not resuscitated, but transformed into a glorified body that can appear, disappear, eat, and yet pass through locked doors. He appears first to Mary Magdalene, then to the apostles. His resurrection is not a metaphor. Paul writes: <em>"If Christ has not been raised, your faith is futile."</em> (1 Cor 15:17)' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Faith — the certainty that death is not the end and love always wins.' }
+      ]},
+      { type:'subsection', title:'2. The Ascension', subtitle:'Acts 1:6–11', blocks:[
+        { type:'p', text:'Forty days after the Resurrection, Jesus ascends bodily into Heaven in the presence of His disciples. Two angels appear: <em>"Men of Galilee, why do you stand looking up at the sky? This Jesus, who has been taken up from you into heaven, will come back in the same way."</em> Jesus takes His glorified humanity permanently into the presence of the Father — the first human body in Heaven.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Hope — our destination is not death but glory. Where He went, we are called to follow.' }
+      ]},
+      { type:'subsection', title:'3. The Descent of the Holy Spirit', subtitle:'Acts 2:1–13', blocks:[
+        { type:'p', text:'Ten days after the Ascension, on the Jewish feast of Pentecost, the apostles are gathered with Mary in the upper room. A sound like a rushing wind fills the house. Tongues of fire rest on each person. They are filled with the Holy Spirit and begin speaking in languages they do not know. The Church is born. Peter preaches — and 3,000 people convert in a single day.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Love — the Holy Spirit poured into our hearts as the bond between Father and Son.' }
+      ]},
+      { type:'subsection', title:'4. The Assumption of Mary', subtitle:'Catechism §966', blocks:[
+        { type:'p', text:'Mary, at the end of her earthly life, is taken body and soul into heavenly glory. This is defined dogma (Pius XII, 1950). Mary's body was not subject to corruption — she who carried the Author of Life was not left to decay. She is the first fully redeemed human being, the prototype of what resurrection means for all of us.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Devotion to Mary — she is the image of what we are called to become.' }
+      ]},
+      { type:'subsection', title:'5. The Coronation of Mary', subtitle:'Revelation 12:1', blocks:[
+        { type:'p', text:'Mary is crowned Queen of Heaven and Earth — not as a goddess, but as the greatest of God's creatures, elevated by grace. Scripture describes her as the woman clothed with the sun, with the moon under her feet, and a crown of twelve stars on her head. She reigns not by her own power but entirely by the gift of her Son.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Eternal happiness — the crown awaits all who persevere to the end.' }
+      ]},
+      { type:'prayer', label:'Hail Holy Queen', text:'Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. Turn then, most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ. Amen.' }
+    ]
+  },
+
+  'rosary-luminous': {
+    eyebrow: 'The Holy Rosary',
+    title: 'Luminous Mysteries',
+    meta: 'Prayed on Thursdays · The Public Ministry · Added by St. John Paul II in 2002',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'callout', tone:'gold', title:'The Mysteries of Light', body:'St. John Paul II added the Luminous Mysteries in his apostolic letter Rosarium Virginis Mariae (2002), filling a gap in the Rosary by focusing on the public ministry of Jesus — the years of His teaching, signs, and proclamation of the Kingdom.' },
+      { type:'sectionLabel', text:'The Five Luminous Mysteries' },
+      { type:'subsection', title:'1. The Baptism of Jesus', subtitle:'Matthew 3:13–17', blocks:[
+        { type:'p', text:'Jesus presents Himself for baptism by John in the Jordan River. John protests — it should be the other way around. Jesus insists: "It is fitting to fulfill all righteousness." At His baptism, the heavens open, the Spirit descends as a dove, and the Father's voice is heard: <em>"This is my beloved Son, with whom I am well pleased."</em> The Trinity is revealed simultaneously for the first time.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Openness to the Holy Spirit — the willingness to receive what God wants to give.' }
+      ]},
+      { type:'subsection', title:'2. The Wedding at Cana', subtitle:'John 2:1–12', blocks:[
+        { type:'p', text:'At a wedding in Cana, the wine runs out. Mary tells Jesus: "They have no wine." Jesus says: "My hour has not yet come." Mary turns to the servants and says: <em>"Do whatever he tells you."</em> Jesus turns 120–180 gallons of water into the finest wine. This is His first public miracle — initiated by His mother's intercession.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Mary's intercession — she notices what we lack and brings our need to her Son.' }
+      ]},
+      { type:'subsection', title:'3. The Proclamation of the Kingdom', subtitle:'Mark 1:15', blocks:[
+        { type:'p', text:'Jesus begins His public ministry with a message: <em>"The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel."</em> He heals, casts out demons, forgives sins, and calls disciples. He reveals that the Kingdom of God is not a future political state — it is a present reality available to all who receive it.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Repentance and trust in God's mercy — the Kingdom is closer than we think.' }
+      ]},
+      { type:'subsection', title:'4. The Transfiguration', subtitle:'Matthew 17:1–8', blocks:[
+        { type:'p', text:'Jesus takes Peter, James, and John up a high mountain. Before them, He is transfigured — His face shines like the sun, His clothes become dazzling white. Moses and Elijah appear with Him. The Father's voice speaks from a cloud: <em>"This is my beloved Son, with whom I am well pleased; listen to him."</em> The disciples fall on their faces in awe.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Desire for holiness — we are meant to be transformed, transfigured, made like Him.' }
+      ]},
+      { type:'subsection', title:'5. The Institution of the Eucharist', subtitle:'Matthew 26:26–28', blocks:[
+        { type:'p', text:'At the Last Supper, Jesus takes bread, gives thanks, breaks it and says: <em>"Take and eat; this is my body."</em> Then He takes the cup: <em>"Drink from it, all of you, for this is my blood of the covenant, which will be shed on behalf of many for the forgiveness of sins."</em> He commands: "Do this in memory of me." The Eucharist is instituted — the sacrament that makes the sacrifice of Calvary present in every Mass.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Eucharistic adoration — recognizing the greatest gift ever given.' }
+      ]},
+      { type:'prayer', label:'Prayer After the Rosary', text:'O God, whose only-begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life, grant, we beseech Thee, that by meditating upon these mysteries of the most holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise. Amen.' }
+    ]
+  },
+
+  // ────────────────────────────────────────────────────────
+  // SACRAMENTS SUB-PAGES
+  // ────────────────────────────────────────────────────────
+  'baptism': {
+    eyebrow: 'The Sacraments',
+    title: 'Baptism',
+    meta: 'The door to the Church · Full teaching',
+    gc: 'gc-baptism',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'Born of Water and Spirit',
+        text:'Baptism is the first and foundational sacrament — the door through which all other sacraments are received. It is not a symbol. It accomplishes what it signifies: new birth, forgiveness of all sin, and entry into the Body of Christ.',
+        quote:{ text:'Unless one is born of water and the Spirit, he cannot enter the kingdom of God.', cite:'John 3:5' }
+      },
+      { type:'sectionLabel', text:'What Baptism Does' },
+      { type:'list', items:[
+        '<strong>Forgives original sin</strong> — and every actual sin committed before baptism.',
+        '<strong>Gives new life</strong> — you become a child of God, an heir of Heaven.',
+        '<strong>Incorporates into the Church</strong> — you become a member of the Body of Christ.',
+        '<strong>Imparts a permanent mark</strong> — baptism cannot be repeated; its seal is permanent.',
+        '<strong>Grants the Holy Spirit</strong> — the Spirit comes to dwell in you.'
+      ]},
+      { type:'callout', tone:'gold', title:'Infant vs. Adult Baptism', body:'The Church baptizes infants because parents make the decision of faith on behalf of a child who cannot yet choose — as parents make all life decisions for children. Baptism is a gift, not a reward for understanding. Adults who were never baptized go through the OCIA (Order of Christian Initiation for Adults) process.' },
+      { type:'callout', tone:'blue', title:'Emergency Baptism', body:'In an emergency, any person — even a non-Christian — can baptize validly using water and the words: "I baptize you in the name of the Father, and of the Son, and of the Holy Spirit." The intention must be to do what the Church does.' },
+      { type:'prayer', label:'Prayer of Remembrance', text:'Lord, on the day of my baptism, You claimed me. Whatever I have done since — You claimed me first. Let me live worthy of that name written on my soul. Amen.' }
+    ]
+  },
+
+  'confession': {
+    eyebrow: 'The Sacraments',
+    title: 'Confession (Reconciliation)',
+    meta: 'The sacrament of healing · How it works, why it matters',
+    gc: 'gc-sacraments',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'The Most Underused Sacrament',
+        text:'Confession is the sacrament by which sins committed after baptism are forgiven through the ministry of a priest. Jesus gave this authority to the apostles explicitly — and through them to their successors. It is not optional for Catholics who are conscious of serious sin.',
+        quote:{ text:'Receive the Holy Spirit. Whose sins you forgive are forgiven them, and whose sins you retain are retained.', cite:'John 20:22–23 · Jesus to the Apostles' }
+      },
+      { type:'sectionLabel', text:'How to Go to Confession' },
+      { type:'list', items:[
+        '<strong>1. Examine your conscience</strong> — review your thoughts, words, actions, and omissions since your last confession. The Ten Commandments and the Beatitudes are a good guide.',
+        '<strong>2. Have contrition</strong> — genuine sorrow for having offended God. This is the most important part. Perfect contrition (sorrow because you love God) forgives even before absolution.',
+        '<strong>3. Confess your sins</strong> — tell the priest your sins honestly. You do not need flowery language. Be clear about the sin and, for grave sins, the approximate number.',
+        '<strong>4. Receive penance</strong> — the priest assigns a penance (usually prayers). Do it.',
+        '<strong>5. Receive absolution</strong> — the priest says the words of absolution. In that moment, your sins are truly forgiven by God through His minister.'
+      ]},
+      { type:'callout', tone:'gold', title:'Seal of Confession', body:'The seal of confession is absolute and inviolable. A priest may never, under any circumstances, reveal anything heard in confession — not to police, not to parents, not under threat of death. This seal has never been broken in 2,000 years of Church history. You are safe to speak.' },
+      { type:'callout', tone:'blue', title:'What If I'm Embarrassed?', body:'The priest has heard everything. He is not there to judge you — he is there to stand in for Christ and speak the words of mercy. Many priests say that hearing confessions is the most beautiful part of their priesthood. The more specific and honest you are, the more free you will feel afterward.' },
+      { type:'prayer', label:'Act of Contrition', text:'O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasions of sin. Amen.' }
+    ]
+  },
+
+  'confirmation': {
+    eyebrow: 'The Sacraments',
+    title: 'Confirmation',
+    meta: 'The completion of baptism · Sealed with the Holy Spirit',
+    gc: 'gc-sacraments',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'The Sacrament of Spiritual Maturity',
+        text:'Confirmation completes what baptism began. Through Confirmation, the baptized person receives the fullness of the Holy Spirit — the same Spirit that descended at Pentecost — and is strengthened and sent as a witness.',
+        quote:{ text:'You will receive power when the Holy Spirit comes upon you, and you will be my witnesses.', cite:'Acts 1:8' }
+      },
+      { type:'callout', tone:'gold', title:'What Happens at Confirmation', body:'The bishop (or delegated priest) anoints the forehead with Sacred Chrism oil in the sign of the cross, lays hands on the person, and says: "Be sealed with the Gift of the Holy Spirit." In that moment, the seven gifts of the Holy Spirit are given: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, Fear of the Lord.' },
+      { type:'sectionLabel', text:'The Seven Gifts of the Holy Spirit' },
+      { type:'list', items:[
+        '<strong>Wisdom:</strong> Seeing life from God's perspective — what matters eternally.',
+        '<strong>Understanding:</strong> Deeper grasp of the faith and its meaning.',
+        '<strong>Counsel:</strong> Good judgment in moral decisions.',
+        '<strong>Fortitude:</strong> Courage to live and defend the faith.',
+        '<strong>Knowledge:</strong> Understanding of God's creation and how it leads back to Him.',
+        '<strong>Piety:</strong> Reverence for God and care for His people.',
+        '<strong>Fear of the Lord:</strong> Awe before God's greatness — not terror, but reverence.'
+      ]},
+      { type:'prayer', label:'Come, Holy Spirit', text:'Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love. Send forth your Spirit and they shall be created, and you shall renew the face of the earth. Amen.' }
+    ]
+  },
+
+  'catechism': {
+    eyebrow: 'The Faith',
+    title: 'The Catechism',
+    meta: 'What Catholics believe and why — the complete summary',
+    gc: 'gc-learn',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'The Catholic Catechism',
+        text:'The Catechism of the Catholic Church (CCC) is the official summary of Catholic belief — published in 1992 by Pope John Paul II. It covers what Catholics believe, how they celebrate, how they live, and how they pray. Everything in it is traceable to Scripture and 2,000 years of Tradition.',
+      },
+      { type:'sectionLabel', text:'The Four Pillars' },
+      { type:'list', items:[
+        '<strong>Part 1 — The Creed:</strong> What Catholics believe about God, creation, Jesus Christ, the Holy Spirit, the Church, and eternal life.',
+        '<strong>Part 2 — The Sacraments:</strong> The seven sacraments — how God acts through physical signs to give grace.',
+        '<strong>Part 3 — The Commandments:</strong> How Catholics are called to live — the moral life, virtues, and social teaching.',
+        '<strong>Part 4 — Prayer:</strong> How Catholics pray — especially the Our Father, analyzed line by line.'
+      ]},
+      { type:'callout', tone:'gold', title:'The Creed in Brief', body:'Catholics profess the Nicene Creed at every Sunday Mass. It was defined at the Council of Nicaea (325 AD) and the Council of Constantinople (381 AD). It is the most universal summary of Christian belief ever written — unchanged for 1,700 years.' },
+      { type:'callout', tone:'blue', title:'Reading the Catechism', body:'The full CCC has 2,865 numbered paragraphs. The best place to start is the YouCat (Youth Catechism) or the Compendium — both are official summaries approved by the Church. The full CCC is available free online at vatican.va.' },
+      { type:'prayer', label:'The Nicene Creed', text:'I believe in one God, the Father almighty, maker of heaven and earth, of all things visible and invisible. I believe in one Lord Jesus Christ, the Only Begotten Son of God, born of the Father before all ages. God from God, Light from Light, true God from true God, begotten, not made, consubstantial with the Father; through him all things were made. For us men and for our salvation he came down from heaven, and by the Holy Spirit was incarnate of the Virgin Mary, and became man. For our sake he was crucified under Pontius Pilate, he suffered death and was buried, and rose again on the third day in accordance with the Scriptures. He ascended into heaven and is seated at the right hand of the Father. He will come again in glory to judge the living and the dead and his kingdom will have no end. I believe in the Holy Spirit, the Lord, the giver of life, who proceeds from the Father and the Son, who with the Father and the Son is adored and glorified, who has spoken through the prophets. I believe in one, holy, catholic and apostolic Church. I confess one Baptism for the forgiveness of sins and I look forward to the resurrection of the dead and the life of the world to come. Amen.' }
+    ]
+  },
+
+  'commandments': {
+    eyebrow: 'The Faith',
+    title: 'The Ten Commandments',
+    meta: 'Given to Moses · Fulfilled by Christ · The foundation of moral life',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'Not a Cage — A Blueprint',
+        text:'The Ten Commandments were given to Moses on Mount Sinai as the covenant law of God's people. Jesus did not abolish them — He fulfilled and deepened them. They are not restrictions on freedom; they are the architecture of a life that works.',
+        quote:{ text:'Do not think that I have come to abolish the Law or the Prophets; I have not come to abolish them but to fulfill them.', cite:'Matthew 5:17' }
+      },
+      { type:'sectionLabel', text:'The Ten Commandments' },
+      { type:'list', items:[
+        '<strong>1. I am the Lord your God — you shall have no other gods before me.</strong> Put nothing above God. Not money. Not approval. Not comfort.',
+        '<strong>2. Do not take the name of the Lord your God in vain.</strong> Reverence the name of God. Words have weight.',
+        '<strong>3. Keep holy the Sabbath.</strong> Rest is not laziness — it is obedience. One day for God and renewal.',
+        '<strong>4. Honor your father and your mother.</strong> The family is the first school of virtue and the first Church.',
+        '<strong>5. You shall not kill.</strong> All human life — from conception to natural death — is sacred.',
+        '<strong>6. You shall not commit adultery.</strong> Sexual intimacy belongs within marriage. Chastity is not repression — it is freedom.',
+        '<strong>7. You shall not steal.</strong> Respect what belongs to others — property, time, reputation.',
+        '<strong>8. You shall not bear false witness.</strong> Tell the truth. Every lie damages the fabric of human community.',
+        '<strong>9. You shall not covet your neighbor's wife.</strong> Guard your heart — desire itself must be ordered.',
+        '<strong>10. You shall not covet your neighbor's goods.</strong> Contentment is a virtue. Envy is a poison.'
+      ]},
+      { type:'callout', tone:'gold', title:'Jesus Summarizes the Law', body:'"Love the Lord your God with all your heart and with all your soul and with all your mind. This is the first and greatest commandment. And the second is like it: Love your neighbor as yourself. All the Law and the Prophets hang on these two commandments." (Matthew 22:37–40)' },
+      { type:'prayer', label:'Prayer for a Clean Heart', text:'Lord, You gave us Your commandments not to burden us but to protect us. Where I have broken them — forgive me. Where I struggle to keep them — strengthen me. Write Your law not on stone but on my heart. Amen.' }
+    ]
+  },
+
+  'church-history': {
+    eyebrow: 'The Faith',
+    title: 'Church History',
+    meta: '2,000 years · Councils, saints, reformations, and continuity',
+    gc: 'gc-learn',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'The Longest Story Ever Told',
+        text:'The Catholic Church is the oldest continuously operating institution in human history. Every empire that has tried to destroy it — Roman, Ottoman, Communist, Nazi — has fallen. The Church remains. This is not an accident.',
+        quote:{ text:'The gates of hell shall not prevail against it.', cite:'Matthew 16:18' }
+      },
+      { type:'sectionLabel', text:'Key Periods' },
+      { type:'subsection', title:'The Apostolic Age (33–100 AD)', subtitle:'', blocks:[
+        { type:'p', text:'Jesus ascends. Pentecost. The Church is born. The apostles scatter across the known world — Peter to Rome, Paul throughout the Mediterranean, Thomas to India, Mark to Egypt, Andrew to Greece. The New Testament is written. The apostles are martyred one by one. The faith spreads faster than Rome can suppress it.' }
+      ]},
+      { type:'subsection', title:'The Patristic Age (100–500 AD)', subtitle:'', blocks:[
+        { type:'p', text:'The Church Fathers define the faith against heresies. The Trinity is defined at Nicaea (325 AD). The canon of Scripture is established. Augustine writes the Confessions and City of God. Constantine ends persecution in 313 AD. The Roman Empire falls in 476 AD — but the Church continues.' }
+      ]},
+      { type:'subsection', title:'The Medieval Church (500–1500 AD)', subtitle:'', blocks:[
+        { type:'p', text:'The Church preserves civilization through the barbarian invasions — monasteries copy manuscripts, educate kings, and feed the poor. The great cathedrals are built. Thomas Aquinas writes the Summa Theologica. The Crusades. The Great Schism (1054) splits East and West. Dante writes the Divine Comedy.' }
+      ]},
+      { type:'subsection', title:'Reformation & Counter-Reformation (1500–1650 AD)', subtitle:'', blocks:[
+        { type:'p', text:'Martin Luther posts 95 Theses in 1517. Protestantism fractures Christianity. The Council of Trent (1545–1563) defines and clarifies Catholic doctrine in response — this is not "changing" the faith, but articulating it with unprecedented precision. St. Ignatius founds the Jesuits. St. Teresa of Ávila and St. John of the Cross reform the Carmelites.' }
+      ]},
+      { type:'subsection', title:'The Modern Church (1800–Today)', subtitle:'', blocks:[
+        { type:'p', text:'Vatican I (1870) defines papal infallibility. Vatican II (1962–1965) renews the Church for the modern world. St. John Paul II helps bring down Communism. Pope Francis leads the Church in 2024 through the complexities of the modern world. Through it all — the same Creed, the same sacraments, the same Mass.' }
+      ]},
+      { type:'callout', tone:'gold', title:'21 Ecumenical Councils', body:'The Church has held 21 Ecumenical Councils over 2,000 years — gatherings of the world's bishops to define doctrine and address crises. Every council has produced definitions the Church still holds today. The most recent was Vatican II (1962–1965).' }
+    ]
+  },
+
+  'councils': {
+    eyebrow: 'The Faith',
+    title: 'The Ecumenical Councils',
+    meta: '21 Councils · 2,000 years of defined doctrine',
+    gc: 'gc-learn',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'When the Church Speaks Definitively',
+        text:'An Ecumenical Council is a gathering of all the world's Catholic bishops, convened and confirmed by the Pope, to define doctrine or address serious matters affecting the whole Church. Their definitions on faith and morals are irreformable — they cannot be undone.',
+      },
+      { type:'sectionLabel', text:'The Most Important Councils' },
+      { type:'list', items:[
+        '<strong>Nicaea I (325 AD):</strong> Defined the divinity of Christ against Arianism. Produced the Nicene Creed.',
+        '<strong>Constantinople I (381 AD):</strong> Defined the divinity of the Holy Spirit.',
+        '<strong>Ephesus (431 AD):</strong> Defined Mary as Theotokos (God-bearer/Mother of God).',
+        '<strong>Chalcedon (451 AD):</strong> Defined that Christ is one person with two complete natures — fully God and fully human.',
+        '<strong>Trent (1545–1563 AD):</strong> Defined Catholic doctrine on Scripture, Tradition, justification, and the sacraments in response to the Protestant Reformation.',
+        '<strong>Vatican I (1869–1870 AD):</strong> Defined papal primacy and papal infallibility.',
+        '<strong>Vatican II (1962–1965 AD):</strong> Renewed the Church's engagement with the modern world — liturgical reform, ecumenism, religious freedom.'
+      ]},
+      { type:'callout', tone:'gold', title:'What Infallibility Means', body:'When the Pope defines a doctrine of faith or morals "ex cathedra" (from the chair — formally binding the whole Church), that definition is protected from error by the Holy Spirit. This has happened twice: the Immaculate Conception (1854) and the Assumption of Mary (1950). It does not mean every papal statement is infallible.' }
+    ]
+  },
+
+  'hail-mary': {
+    eyebrow: 'Prayer',
+    title: 'The Hail Mary',
+    meta: 'The most prayed prayer in the world after the Our Father',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'A Prayer Built from Scripture',
+        text:'The Hail Mary is not a Catholic invention. It is assembled almost entirely from Scripture — and has been prayed by Christians for over a thousand years.',
+      },
+      { type:'prayer', label:'The Hail Mary', text:'Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.' },
+      { type:'sectionLabel', text:'Line by Line' },
+      { type:'list', items:[
+        '<strong>"Hail Mary, full of grace"</strong> — the angel Gabriel's exact words to Mary. (Luke 1:28)',
+        '<strong>"The Lord is with thee"</strong> — also from Gabriel's greeting.',
+        '<strong>"Blessed art thou among women, and blessed is the fruit of thy womb"</strong> — Elizabeth's exact words when Mary arrived at her home. (Luke 1:42)',
+        '<strong>"Jesus"</strong> — the name added to make explicit who "the fruit of thy womb" is.',
+        '<strong>"Holy Mary, Mother of God"</strong> — defined doctrine from the Council of Ephesus (431 AD).',
+        '<strong>"Pray for us sinners, now and at the hour of our death"</strong> — the Church's petition, added by the 15th century and formally standardized.'
+      ]},
+      { type:'callout', tone:'gold', title:'Why Ask Mary to Pray?', body:'Asking Mary to pray for us is no different from asking a friend to pray for you — except Mary is in Heaven, closer to God than any human soul. "The prayer of a righteous person is powerful and effective." (James 5:16) If this is true of any saint, how much more of the Mother of God?' },
+    ]
+  },
+
+  'about': {
+    eyebrow: 'BeCatholic',
+    title: 'About BeCath',
+    meta: 'BeCath.com · hello@becath.com',
+    gc: 'gc-learn',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:'Why This App Exists',
+        text:'BeCath was built for people who want to go deeper into the Catholic faith — whether you're brand new, coming back after years away, or a lifelong Catholic who wants to understand what you've always believed.',
+      },
+      { type:'callout', tone:'gold', title:'What BeCath Is', body:'A comprehensive faith companion — covering saints, scripture, sacraments, miracles, apologetics, prayers, and the full sweep of 2,000 years of Catholic belief. Everything is written with care, sourced from Scripture and the Catechism, and designed to be read anywhere.' },
+      { type:'sectionLabel', text:'Contact' },
+      { type:'callout', tone:'blue', title:'Get in Touch', body:'For questions, feedback, or content suggestions: hello@becath.com
+
+We read every message.' },
+      { type:'sectionLabel', text:'Legal' },
+      { type:'list', items:[
+        'Privacy Policy — available at BeCath.com/privacy',
+        'Terms of Use — available at BeCath.com/terms',
+        'Content is for informational and devotional purposes only.',
+        'BeCath.com © 2024. All rights reserved.'
+      ]}
+    ]
+  },
+
+
 };
