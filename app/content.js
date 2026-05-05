@@ -127,7 +127,7 @@ window.BECATH_CONTENT = {
       { type:'dayLinks', items:[
         { day:'Day 1', key:'proof-jesus',     title:'Did Jesus really live?',           meta:'Historical evidence · 12 min' },
         { day:'Day 2', key:'empty-tomb',      title:'The empty tomb',                   meta:'The Resurrection case · 10 min' },
-        { day:'Day 3', key:'apparitions',     title:'Mary\'s appearances',               meta:'Documented apparitions · 10 min' },
+        { day:'Day 3', key:'mary-full',     title:'Mary\'s appearances',               meta:'Documented apparitions · 10 min' },
         { day:'Day 4', key:'unbroken-church', title:'The unbroken Church',              meta:'2,000 years of succession · 10 min' },
         { day:'Day 5', key:'saints-miracles', title:'The saints and miracles',          meta:'Witnesses to the truth · 10 min' },
         { day:'Day 6', key:'sacraments',      title:'The sacraments',                   meta:'Seven channels of grace · 12 min' },
@@ -4374,4 +4374,69 @@ window.BECATH_CONTENT = {
     ]
   },
 
+};
+
+// ── Injected: church-history + councils ──
+window.BECATH_CONTENT['church-history'] = {
+  eyebrow: 'The Catholic Church',
+  title: 'Church History',
+  meta: 'From Pentecost to Today · 2,000 Years',
+  hasAudio: false,
+  blocks: [
+    { type:'lead', eyebrow:'The Longest Story Ever Told',
+      text:'The Catholic Church is the oldest continuously operating institution in the world. It has outlasted every empire, survived every persecution, and carried the Gospel across every continent. This is not a story of perfect people — it is a story of God working through imperfect ones.',
+      quote:{ text:'The gates of Hades shall not prevail against it.', cite:'Matthew 16:18' }
+    },
+    { type:'h2', text:'33 AD — The Beginning' },
+    { type:'body', text:'On the day of Pentecost, the Holy Spirit descended on the Apostles gathered in the Upper Room. Peter stood up and preached — three thousand were baptized in a single day. The Church was born not as a human institution but as a divine one, born of fire and breath.\n\nFor the first three centuries, Christians were a persecuted minority. They worshipped in homes and catacombs. Hundreds of thousands were martyred — thrown to lions, burned alive, beheaded. Yet the Church grew. Tertullian wrote: "The blood of martyrs is the seed of Christians."' },
+    { type:'callout', tone:'gold', title:'The Early Martyrs', body:'St. Peter was crucified upside down in Rome (~64 AD). St. Paul was beheaded. St. Stephen was stoned — the first martyr. St. Ignatius of Antioch was fed to lions in 107 AD, writing letters of joy to every church as he traveled to his death.' },
+    { type:'h2', text:'313 AD — Constantine & Freedom' },
+    { type:'body', text:'Emperor Constantine issued the Edict of Milan, ending Roman persecution of Christians. For the first time, the Church could worship openly. Constantine himself was baptized on his deathbed. Churches were built over the graves of martyrs — St. Peter\'s Basilica stands over the tomb of Peter himself.\n\nThis era also brought the first great theological battles. Arianism claimed Jesus was not fully God. The Council of Nicaea (325 AD) defined what Christians had always believed: Jesus is fully God and fully man. The Nicene Creed, still prayed at Mass today, was written in this council.' },
+    { type:'h2', text:'476–1054 — The Middle Ages' },
+    { type:'body', text:'When the Roman Empire fell, the Church became the stabilizing force of Western civilization. Monks preserved ancient texts, built hospitals, and established the first universities. The great cathedrals of Europe were not just buildings — they were stone catechisms, teaching illiterate populations the entire story of salvation through art, stained glass, and sculpture.\n\nIn 1054, the Great Schism split Eastern and Western Christianity. The Eastern Orthodox churches separated over questions of papal authority and theological formulations. The relationship remains unhealed today — though significant dialogue continues.' },
+    { type:'callout', tone:'dark', title:'The Crusades — A Complicated Chapter', body:'The Crusades (1096–1291) were military campaigns to reclaim the Holy Land from Muslim rule. They were complex — motivated by genuine faith, political ambition, and at times, real atrocity. Pope St. John Paul II publicly apologized for the sins committed in the Church\'s name during this era. The Church does not hide this history — it faces it.' },
+    { type:'h2', text:'1517 — The Reformation' },
+    { type:'body', text:'Martin Luther nailed his 95 Theses to the church door in Wittenberg, igniting the Protestant Reformation. Real abuses in the Church — corruption, the selling of indulgences — had created a crisis of credibility. The Church responded not by ignoring the criticism but with the Council of Trent (1545–1563): sweeping internal reforms, clearer doctrine, better-trained priests.\n\nThe centuries that followed brought both tragedy and renewal: religious wars in Europe, missionary expansion into the Americas and Asia, the founding of new religious orders (Jesuits, Dominicans, Franciscans).' },
+    { type:'h2', text:'1869–1870 — Vatican I' },
+    { type:'body', text:'The First Vatican Council formally defined papal infallibility — the doctrine that when the Pope speaks ex cathedra (from the chair) on matters of faith and morals, he is protected from error by the Holy Spirit. This has been invoked only twice in modern history: the Immaculate Conception (1854) and the Assumption of Mary (1950).' },
+    { type:'h2', text:'1962–1965 — Vatican II' },
+    { type:'body', text:'The Second Vatican Council was called by Pope St. John XXIII. It did not change doctrine — it opened the windows. Mass could now be celebrated in local languages. The Church explicitly recognized religious freedom. It called for deeper engagement with the modern world, ecumenism with other Christians, and respect for other religions.\n\nVatican II remains the most debated event in modern Catholicism — some believe it went too far, others not far enough. The Church continues to receive and interpret its documents.' },
+    { type:'h2', text:'Today — 2,000 Years On' },
+    { type:'body', text:'The Catholic Church today is the largest Christian denomination on earth: 1.4 billion members across 200+ countries. It runs the world\'s largest network of hospitals, schools, and charitable organizations. It has survived Roman emperors, medieval corruption, the Reformation, two World Wars, and the sexual abuse crisis — each time humbled, reformed, and continuing.\n\nIt is not a museum. It is a living body. And it is still going.' },
+    { type:'callout', tone:'violet', title:'Why This Matters', body:'Knowing where the Church has been helps you trust where she is going. The same Spirit who guided the first disciples through persecution guides the Church today. History does not shake faith — it deepens it.' },
+  ]
+};
+
+window.BECATH_CONTENT['councils'] = {
+  eyebrow: 'The Catholic Church',
+  title: 'The Great Councils',
+  meta: '21 Councils · 325 AD to 1965 AD',
+  hasAudio: false,
+  blocks: [
+    { type:'lead', eyebrow:'What Is an Ecumenical Council?',
+      text:'An Ecumenical Council is a gathering of all the world\'s Catholic bishops, convened by the Pope to settle matters of doctrine, discipline, or reform. There have been 21 of them. Each one was called by a crisis — and each one clarified what the Church has always believed.',
+      quote:{ text:'For where two or three are gathered in my name, there am I among them.', cite:'Matthew 18:20' }
+    },
+    { type:'callout', tone:'gold', title:'How It Works', body:'The Pope calls the council. All bishops in communion with Rome are invited. Theologians advise. Debates happen — sometimes fierce ones. The Pope then confirms the final documents. Only then do they carry the full weight of the Church\'s teaching authority (Magisterium).' },
+    { type:'h2', text:'The Seven Ecumenical Councils of the Early Church' },
+    { type:'body', text:'These first seven councils are recognized by Catholic, Eastern Orthodox, and some Protestant churches as authoritative. They defined the core of Christian belief.' },
+    { type:'callout', tone:'dark', title:'1. Nicaea I · 325 AD', body:'Called to combat Arianism (the heresy that Jesus was a creature, not God). Result: The Nicene Creed. Jesus is defined as "consubstantial with the Father" — one in being with God, fully divine, not merely the greatest of creatures.' },
+    { type:'callout', tone:'dark', title:'2. Constantinople I · 381 AD', body:'Expanded the Nicene Creed to fully define the Holy Spirit as Lord and giver of life, proceeding from the Father. Condemned Apollinarianism (which denied Jesus had a human mind).' },
+    { type:'callout', tone:'dark', title:'3. Ephesus · 431 AD', body:'Defined Mary as Theotokos — God-bearer, Mother of God. This was not primarily about Mary but about Jesus: if Mary is not the Mother of God, then the one she bore is not fully God. St. Cyril of Alexandria led the defense. Nestorius, who opposed the title, was deposed.' },
+    { type:'callout', tone:'dark', title:'4. Chalcedon · 451 AD', body:'Defined the two natures of Christ — fully human, fully divine — united in one Person without confusion, change, division, or separation. This definition remains the Christological center of Christianity. The "Chalcedonian formula" is still the test of orthodox Christianity today.' },
+    { type:'callout', tone:'dark', title:'5. Constantinople II · 553 AD', body:'Clarified and confirmed the teachings of Chalcedon. Condemned "the Three Chapters" — writings that were deemed to lean toward Nestorianism.' },
+    { type:'callout', tone:'dark', title:'6. Constantinople III · 680–681 AD', body:'Condemned Monothelitism — the heresy that Christ had only one will (divine). Defined that Christ has two wills, divine and human, in perfect harmony. Pope Honorius I, who had been ambiguous on the matter, was posthumously condemned — an awkward moment that shows councils can correct even popes.' },
+    { type:'callout', tone:'dark', title:'7. Nicaea II · 787 AD', body:'Restored the veneration of icons after the Iconoclast controversy. Defined the difference between veneration (honoring) and worship (adoration, given to God alone). Icons are not idols — they are windows into heaven.' },
+    { type:'h2', text:'The Medieval Councils (8–14)' },
+    { type:'body', text:'Lateran I (1123), Lateran II (1139), Lateran III (1179), Lateran IV (1215), Lyons I (1245), Lyons II (1274), Vienne (1311–1312). These councils addressed church reform, crusades, papal authority, the suppression of the Knights Templar, and the Filioque controversy with the East.' },
+    { type:'callout', tone:'gold', title:'Lateran IV · 1215 AD — The Most Important Medieval Council', body:'Convened by Pope Innocent III. It formally defined Transubstantiation (the bread and wine truly become the Body and Blood of Christ), required annual confession and Communion for all Catholics, and addressed the Albigensian heresy. It shaped Catholic life for centuries.' },
+    { type:'h2', text:'The Reform Councils (15–18)' },
+    { type:'callout', tone:'dark', title:'Council of Constance · 1414–1418', body:'Ended the Western Schism, in which three men simultaneously claimed to be Pope. Elected Martin V as the undisputed Pope.' },
+    { type:'callout', tone:'dark', title:'Council of Florence · 1431–1449', body:'Attempted reunion with Eastern churches (briefly achieved, never sustained). Defined the seven sacraments and the doctrine of Purgatory.' },
+    { type:'callout', tone:'dark', title:'Council of Trent · 1545–1563', body:'The Catholic response to the Protestant Reformation. Did not compromise doctrine — clarified and deepened it. Defined Scripture and Tradition as dual sources of revelation. Reformed clerical education, the liturgy, and Church governance. Created the modern seminary system. One of the most consequential councils in history.' },
+    { type:'h2', text:'The Modern Councils' },
+    { type:'callout', tone:'violet', title:'Vatican I · 1869–1870', body:'Defined papal infallibility. Interrupted by the Franco-Prussian War and never formally closed (technically adjourned). Completed by Vatican II. Infallibility is narrowly defined: it applies only when the Pope speaks ex cathedra on faith or morals — not to opinions, speeches, or encyclicals.' },
+    { type:'callout', tone:'violet', title:'Vatican II · 1962–1965', body:'Called by Pope St. John XXIII ("Good Pope John"), continued by Paul VI. Produced 16 documents covering liturgy, divine revelation, the Church, ecumenism, religious freedom, and the Church in the modern world. Lumen Gentium (the Church) and Gaudium et Spes (the Church in the modern world) are its most studied texts. It did not change doctrine — it renewed the Church\'s way of presenting it.' },
+    { type:'callout', tone:'gold', title:'Is There a Vatican III?', body:'No council has been called since Vatican II. Some theologians and bishops have suggested one may be needed — others argue Vatican II\'s documents have not yet been fully received. The decision belongs to the Pope alone.' },
+  ]
 };
