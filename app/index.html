@@ -536,9 +536,15 @@ img { display: block; max-width: 100%; }
 /* ── Detail page ── */
 .detail-hero {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 9;
+  max-height: 240px;
   background: var(--bg-soft);
   overflow: hidden;
+}
+.detail-hero.hero-compact {
+  aspect-ratio: unset;
+  height: 140px;
+  max-height: 140px;
 }
 .detail-hero img { width: 100%; height: 100%; object-fit: cover; }
 .detail-hero .gradient-cover {
@@ -2559,7 +2565,7 @@ html.app-font-xl  { font-size: 20px; }
         <div class="card-sq-title">Morning Offering</div>
         <div class="card-sq-meta">Start your day · ~2 min</div>
       </div>
-      <div class="card-sq" onclick="goPage('journal')">
+      <div class="card-sq" onclick="openDetail('journal')">
         <div class="card-sq-cover">
           <img src="img/happyjesusbook.jpg" alt="">
         </div>
@@ -3714,11 +3720,13 @@ html.app-font-xl  { font-size: 20px; }
       <div class="detail-eyebrow" id="detail-eyebrow">Why Catholic?</div>
       <div class="detail-title" id="detail-title">Loading…</div>
       <div class="detail-meta" id="detail-meta"></div>
-      <button class="btn-primary" onclick="playMiniPlayer()">
-        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21"/></svg>
-        Begin
-      </button>
-      <button class="btn-secondary" onclick="alert('Saved to your library')">Save for later</button>
+      <div id="detail-audio-btns" style="display:none;">
+        <button class="btn-primary" onclick="playMiniPlayer()">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21"/></svg>
+          Begin
+        </button>
+        <button class="btn-secondary" onclick="alert('Saved to your library')">Save for later</button>
+      </div>
       <div class="detail-body" id="detail-body"></div>
     </div>
   </section>
@@ -3798,7 +3806,7 @@ html.app-font-xl  { font-size: 20px; }
   </button>
 </nav>
 
-<script src="content.js?v=20260503-2"></script>
+<script src="content.js?v=20260504-1"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -4225,25 +4233,25 @@ html.app-font-xl  { font-size: 20px; }
       bodyEl.innerHTML = '';
     }
 
-    // Show/hide audio buttons based on hasAudio flag
-    var btnPrimary = document.querySelector('#page-detail .btn-primary');
-    var btnSecondary = document.querySelector('#page-detail .btn-secondary');
-    if (d.hasAudio === false) {
-      if (btnPrimary) btnPrimary.style.display = 'none';
-      if (btnSecondary) btnSecondary.style.display = 'none';
-    } else {
-      if (btnPrimary) btnPrimary.style.display = '';
-      if (btnSecondary) btnSecondary.style.display = '';
-    }
+    // Show/hide audio buttons
+    var audioBtns = document.getElementById('detail-audio-btns');
+    if (audioBtns) audioBtns.style.display = (d.hasAudio === false) ? 'none' : 'block';
 
     var hero = document.getElementById('detail-hero');
     hero.querySelectorAll('img,.gradient-cover').forEach(function(n){ if(!n.classList.contains('detail-back-icon')) n.remove(); });
     if (d.img) {
+      hero.classList.remove('hero-compact');
       var img = document.createElement('img'); img.src = d.img; img.alt = '';
       hero.insertBefore(img, hero.firstChild);
     } else {
+      // Text-only entries: smaller hero with gradient, no audio = compact
+      if (d.hasAudio === false) {
+        hero.classList.add('hero-compact');
+      } else {
+        hero.classList.remove('hero-compact');
+      }
       var gc = document.createElement('div'); gc.className = 'gradient-cover ' + (d.gc || 'gc-prayer');
-      gc.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>';
+      gc.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
       hero.insertBefore(gc, hero.firstChild);
     }
     goPage('detail');

@@ -3272,7 +3272,7 @@ window.BECATH_CONTENT = {
         { type:'prayer', label:'Prayer', text:'Lord Jesus, laid in the tomb — the darkest Saturday in history. Help me to trust You in my times of waiting, of silence, of death. You are already working in the dark. I will wait for Your Sunday. Amen.' }
       ]}
     ]
-  }
+  },
 
 
   // ────────────────────────────────────────────────────────
