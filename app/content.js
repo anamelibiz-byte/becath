@@ -3280,7 +3280,7 @@ window.BECATH_CONTENT = {
   // ────────────────────────────────────────────────────────
 
   'scripture-money': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Money & Provision',
     meta: 'What God says about your finances · 6 topics',
     gc: 'gc-scripture',
@@ -3356,7 +3356,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-purpose': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Purpose & Calling',
     meta: 'Why are you here? God has an answer · 5 topics',
     gc: 'gc-bible',
@@ -3420,7 +3420,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-healing': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Healing & Peace',
     meta: 'For anxiety, grief, and the weight you carry · 5 topics',
     img: 'img/healing.jpg',
@@ -3487,7 +3487,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-identity': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Identity & Worth',
     meta: 'Who does God say you are? · 5 topics',
     gc: 'gc-rosary',
@@ -3551,7 +3551,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-relationships': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Relationships',
     meta: 'Love, family, and forgiveness — from Scripture · 5 topics',
     gc: 'gc-eucharist',
@@ -3616,7 +3616,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-faith': {
-    eyebrow: "God's Word for Your Life",
+    eyebrow: "God's Word for You",
     title: 'Faith & Breakthrough',
     meta: 'For hard seasons, doubt, and waiting on God · 5 topics',
     gc: 'gc-prayer',
@@ -3678,6 +3678,698 @@ window.BECATH_CONTENT = {
           { cite:'Proverbs 23:7', text:'For as he thinks in his heart, so is he.' },
           { cite:'Isaiah 55:8–9', text:'"For my thoughts are not your thoughts, neither are your ways my ways," declares the Lord.' },
         ]}
+      ]},
+    ]
+  },
+
+
+  // ── God's Word for You — 31 Individual Topic Pages ──────────────────────
+
+  // MONEY & PROVISION ─────────────────────────────────────────────────────
+
+  'topic-prosperity': {
+    eyebrow: "God's Word for You",
+    title: 'Prosperity',
+    meta: 'God desires you to flourish',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'God is not against your flourishing. Biblical prosperity is not health-and-wealth theology — it is the deep conviction that God wants you whole: spiritually, relationally, and materially. He is a good Father who gives good gifts.',
+        quote:{ text:'The blessing of the Lord makes rich, and he adds no sorrow with it.', cite:'Proverbs 10:22' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'The Church teaches that genuine prosperity — <em>beatitudo</em> — is ordered to the common good. True flourishing includes the spiritual and communal. It is never one person\'s gain at another\'s expense.' },
+      { type:'verseList', items:[
+        { cite:'3 John 1:2', text:'Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.' },
+        { cite:'Jeremiah 29:11', text:'For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.' },
+        { cite:'Deuteronomy 8:18', text:'Remember the Lord your God, for it is he who gives you the ability to produce wealth.' },
+        { cite:'Proverbs 10:22', text:'The blessing of the Lord makes rich, and he adds no sorrow with it.' },
+        { cite:'Psalm 1:3', text:'That person is like a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither — whatever they do prospers.' },
+      ]},
+      { type:'quote', text:'It is not the man who has too little, but the man who craves more, that is poor.', cite:'Seneca, quoted by St. Thomas Aquinas' },
+    ]
+  },
+
+  'topic-provision': {
+    eyebrow: "God's Word for You",
+    title: 'Provision',
+    meta: 'God as your source',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'You were not meant to carry the weight of your own provision alone. God is your source — not your job, not the economy, not your savings account. He fed Israel in the desert. He feeds birds who do not plant. He will take care of you.',
+        quote:{ text:'The Lord is my shepherd; I shall not want.', cite:'Psalm 23:1' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'Catholic tradition calls this <em>providentia Dei</em> — divine providence. It does not mean passivity, but a deep trust that lets you act without anxiety. God works through natural means, including your own effort.' },
+      { type:'verseList', items:[
+        { cite:'Philippians 4:19', text:'And my God will meet all your needs according to the riches of his glory in Christ Jesus.' },
+        { cite:'Psalm 23:1', text:'The Lord is my shepherd; I shall not want.' },
+        { cite:'Matthew 6:26', text:'Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?' },
+        { cite:'Isaiah 58:11', text:'The Lord will guide you always; he will satisfy your needs in a sun-scorched land and will strengthen your frame.' },
+        { cite:'Matthew 6:33', text:'But seek first his kingdom and his righteousness, and all these things will be given to you as well.' },
+        { cite:'Psalm 37:25', text:'I was young and now I am old, yet I have never seen the righteous forsaken or their children begging bread.' },
+      ]},
+    ]
+  },
+
+  'topic-stewardship': {
+    eyebrow: "God's Word for You",
+    title: 'Stewardship',
+    meta: 'Managing what God entrusted to you',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Everything you have is on loan. Your money, your time, your gifts — all entrusted to you by God. Stewardship is the posture of a person who knows they are managing what belongs to Another, and doing it with excellence.',
+        quote:{ text:'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things.', cite:'Matthew 25:21' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'Catholic Social Teaching calls this the <em>universal destination of goods</em>: everything you hold is ultimately entrusted to you for the good of all. Stewardship is accountability to God and neighbor — not just good financial management.' },
+      { type:'verseList', items:[
+        { cite:'Luke 16:10', text:'Whoever can be trusted with very little can also be trusted with much, and whoever is dishonest with very little will also be dishonest with much.' },
+        { cite:'Matthew 25:21', text:'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things. Come and share your master\'s happiness!' },
+        { cite:'Proverbs 21:5', text:'The plans of the diligent lead to profit as surely as haste leads to poverty.' },
+        { cite:'1 Corinthians 4:2', text:'Now it is required that those who have been given a trust must prove faithful.' },
+        { cite:'Luke 14:28', text:'Suppose one of you wants to build a tower. Won\'t you first sit down and estimate the cost to see if you have enough money to complete it?' },
+      ]},
+    ]
+  },
+
+  'topic-generosity': {
+    eyebrow: "God's Word for You",
+    title: 'Generosity & Giving',
+    meta: 'You cannot out-give God',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The most financially counterintuitive truth in Scripture: generosity creates more, not less. Giving is not a tax — it is a seed. And it shapes the soul of the giver far more than it impacts the recipient.',
+        quote:{ text:'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.', cite:'Luke 6:38' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'St. John Chrysostom wrote: <em>"Not to share your goods with the poor is to steal from them."</em> The Church invites generosity not as a financial strategy but as a virtue — a habit of the soul that makes you more like God, who gives endlessly.' },
+      { type:'verseList', items:[
+        { cite:'Luke 6:38', text:'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap. For with the measure you use, it will be measured to you.' },
+        { cite:'2 Corinthians 9:7', text:'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.' },
+        { cite:'Malachi 3:10', text:'Bring the whole tithe into the storehouse... Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven and pour out so much blessing.' },
+        { cite:'Proverbs 11:24', text:'One person gives freely, yet gains even more; another withholds unduly, but comes to poverty.' },
+        { cite:'Proverbs 19:17', text:'Whoever is kind to the poor lends to the Lord, and he will reward them for what they have done.' },
+      ]},
+    ]
+  },
+
+  'topic-favor': {
+    eyebrow: "God's Word for You",
+    title: 'Favor',
+    meta: 'Divine positioning — doors open',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Favor is what happens when God\'s blessing precedes you. Doors open that have no reason to open. The right person appears at the right time. Joseph went from prison to second-in-command of Egypt. That is favor — and it is available to you.',
+        quote:{ text:'Surely, Lord, you bless the righteous; you surround them with your favor as with a shield.', cite:'Psalm 5:12' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'<em>Gratia</em> — grace — literally means favor. Every moment of providential alignment in your life is God\'s ongoing grace at work. The sacraments are the primary channel of this grace, but it flows into every area of life.' },
+      { type:'verseList', items:[
+        { cite:'Psalm 5:12', text:'Surely, Lord, you bless the righteous; you surround them with your favor as with a shield.' },
+        { cite:'Luke 2:52', text:'And Jesus grew in wisdom and stature, and in favor with God and man.' },
+        { cite:'Genesis 39:21', text:'But the Lord was with Joseph and showed him steadfast love and gave him favor in the sight of the keeper of the prison.' },
+        { cite:'Psalm 90:17', text:'May the favor of the Lord our God rest on us; establish the work of our hands for us — yes, establish the work of our hands.' },
+        { cite:'Proverbs 3:4', text:'Then you will win favor and a good name in the sight of God and man.' },
+      ]},
+    ]
+  },
+
+  'topic-debt-freedom': {
+    eyebrow: "God's Word for You",
+    title: 'Debt & Financial Freedom',
+    meta: 'Breaking cycles of lack',
+    gc: 'gc-scripture',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Debt is not just a financial problem — it is a freedom problem. Scripture takes it seriously. Financial freedom is not about wealth; it is about the ability to be generous, to say yes to God\'s call without financial chains holding you back.',
+        quote:{ text:'The rich rule over the poor, and the borrower is slave to the lender.', cite:'Proverbs 22:7' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'The Church historically prohibited usury because it recognized how debt traps people. The principle behind it: freedom of conscience requires financial freedom. A person drowning in debt cannot freely respond to God\'s call.' },
+      { type:'verseList', items:[
+        { cite:'Proverbs 22:7', text:'The rich rule over the poor, and the borrower is slave to the lender.' },
+        { cite:'Romans 13:8', text:'Let no debt remain outstanding, except the continuing debt to love one another, for whoever loves others has fulfilled the law.' },
+        { cite:'Deuteronomy 15:6', text:'For the Lord your God will bless you as he has promised, and you will lend to many nations but will borrow from none.' },
+        { cite:'Psalm 37:21', text:'The wicked borrow and do not repay, but the righteous give generously.' },
+        { cite:'Proverbs 22:26–27', text:'Do not be one who shakes hands in pledge or puts up security for debts; if you lack the means to pay, your very bed will be snatched from under you.' },
+      ]},
+    ]
+  },
+
+  // PURPOSE & CALLING ─────────────────────────────────────────────────────
+
+  'topic-purpose': {
+    eyebrow: "God's Word for You",
+    title: 'Purpose & Calling',
+    meta: 'You were created on purpose',
+    gc: 'gc-bible',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'You are not an accident. You were not randomly assembled by chance. Before the world began, God had you in mind — and He placed you here, at this moment in history, with a specific shape and calling.',
+        quote:{ text:'Before I formed you in the womb I knew you, before you were born I set you apart.', cite:'Jeremiah 1:5' }
+      },
+      { type:'callout', tone:'blue', title:'Catholic Context', body:'<em>Vocatio</em> — vocation — is central to Catholic identity. Every person has a primary calling to holiness, and a particular calling (marriage, religious life, priesthood, single life) through which that holiness is lived out day by day.' },
+      { type:'verseList', items:[
+        { cite:'Jeremiah 1:5', text:'Before I formed you in the womb I knew you, before you were born I set you apart; I appointed you as a prophet to the nations.' },
+        { cite:'Ephesians 2:10', text:'For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.' },
+        { cite:'Romans 8:28', text:'And we know that in all things God works for the good of those who love him, who have been called according to his purpose.' },
+        { cite:'Isaiah 46:10', text:'"My purpose will stand," declares the Lord.' },
+        { cite:'Psalm 57:2', text:'I cry out to God Most High, to God, who vindicates me. He sends from heaven and saves me — God sends forth his love and his faithfulness.' },
+      ]},
+    ]
+  },
+
+  'topic-gifts': {
+    eyebrow: "God's Word for You",
+    title: 'Gifts & Talents',
+    meta: 'What God placed in you is not an accident',
+    gc: 'gc-bible',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Everything you are naturally good at is a gift — not a coincidence. Your gifts are not for your glory. They are tools God gave you to serve others and to make His presence tangible in the world.',
+        quote:{ text:'We have different gifts, according to the grace given to each of us.', cite:'Romans 12:6' }
+      },
+      { type:'callout', tone:'blue', title:'Catholic Context', body:'The gifts of the Holy Spirit — wisdom, understanding, counsel, fortitude, knowledge, piety, fear of the Lord — are given at Baptism and Confirmation and deepen through the sacraments. They are not talents; they are divine capacities.' },
+      { type:'verseList', items:[
+        { cite:'Romans 12:6–8', text:'We have different gifts, according to the grace given to each of us. If your gift is prophesying, then prophesy in accordance with your faith; if it is serving, then serve; if it is teaching, then teach.' },
+        { cite:'1 Corinthians 12:4–7', text:'There are different kinds of gifts, but the same Spirit distributes them. There are different kinds of service, but the same Lord. Now to each one the manifestation of the Spirit is given for the common good.' },
+        { cite:'Matthew 25:14–15', text:'For it will be like a man going on a journey, who called his servants and entrusted to each the management of his possessions... to each according to his ability.' },
+        { cite:'1 Peter 4:10', text:'Each of you should use whatever gift you have received to serve others, as faithful stewards of God\'s grace in its various forms.' },
+      ]},
+    ]
+  },
+
+  'topic-work': {
+    eyebrow: "God's Word for You",
+    title: 'Work & Excellence',
+    meta: 'Everything you do can be worship',
+    gc: 'gc-bible',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'God worked. The first thing we see Him do in Scripture is create — with care, with intention, with excellence. Then He rested. Your work is not separate from your spiritual life. Done with the right heart, it is an act of worship.',
+        quote:{ text:'Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.', cite:'Colossians 3:23' }
+      },
+      { type:'callout', tone:'blue', title:'Catholic Context', body:'St. John Paul II\'s encyclical <em>Laborem Exercens</em> teaches that work has a subjective dimension — it shapes the person who does it. You are not just producing something; you are becoming someone. Work is participation in God\'s ongoing creation.' },
+      { type:'verseList', items:[
+        { cite:'Colossians 3:23', text:'Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.' },
+        { cite:'Proverbs 16:3', text:'Commit to the Lord whatever you do, and he will establish your plans.' },
+        { cite:'Ecclesiastes 9:10', text:'Whatever your hand finds to do, do it with all your might.' },
+        { cite:'Proverbs 22:29', text:'Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank.' },
+        { cite:'2 Thessalonians 3:10', text:'The one who is unwilling to work shall not eat.' },
+      ]},
+    ]
+  },
+
+  'topic-wisdom': {
+    eyebrow: "God's Word for You",
+    title: 'Wisdom & Discernment',
+    meta: 'How to hear God in the noise',
+    gc: 'gc-bible',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Wisdom is not intelligence. It is the ability to see what God sees — to judge situations the way Heaven judges them. It is available to anyone who asks. God is not stingy with it.',
+        quote:{ text:'If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.', cite:'James 1:5' }
+      },
+      { type:'callout', tone:'blue', title:'Catholic Context', body:'Discernment of spirits is a charism refined by the saints — Ignatius of Loyola systematized it in the <em>Spiritual Exercises</em>. The basic principle: movements toward God (consolation) vs. movements away from Him (desolation) are signs to read in prayer.' },
+      { type:'verseList', items:[
+        { cite:'James 1:5', text:'If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.' },
+        { cite:'Proverbs 3:5–6', text:'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.' },
+        { cite:'Proverbs 4:7', text:'The beginning of wisdom is this: Get wisdom. Though it cost all you have, get understanding.' },
+        { cite:'Psalm 25:4–5', text:'Show me your ways, Lord, teach me your paths. Guide me in your truth and teach me, for you are God my Savior.' },
+        { cite:'Colossians 3:16', text:'Let the message of Christ dwell among you richly as you teach and admonish one another with all wisdom.' },
+      ]},
+    ]
+  },
+
+  'topic-dreams': {
+    eyebrow: "God's Word for You",
+    title: 'Dreams & Vision',
+    meta: 'God plants holy desires in you',
+    gc: 'gc-bible',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The desires you cannot shake — the things you keep coming back to, the vision that will not die — are often the echo of what God placed in you before you were born. Holy desires are seeds of vocation.',
+        quote:{ text:'Where there is no vision, the people perish.', cite:'Proverbs 29:18 (KJV)' }
+      },
+      { type:'callout', tone:'blue', title:'Catholic Context', body:'St. Thomas Aquinas taught that rightly ordered desire (<em>appetitus rectus</em>) is itself a participation in divine goodness. The saints were not dreamless people — Francis dreamed of rebuilding the Church, Thérèse dreamed of a little way to holiness that would reach millions.' },
+      { type:'verseList', items:[
+        { cite:'Proverbs 29:18', text:'Where there is no vision, the people perish; but he that keepeth the law, happy is he.' },
+        { cite:'Habakkuk 2:2–3', text:'Write down the revelation and make it plain on tablets so that a herald may run with it. For the revelation awaits an appointed time; it speaks of the end and will not prove false.' },
+        { cite:'Joel 2:28', text:'Your sons and daughters will prophesy, your old men will dream dreams, your young men will see visions.' },
+        { cite:'Psalm 37:4', text:'Take delight in the Lord, and he will give you the desires of your heart.' },
+        { cite:'Ephesians 3:20', text:'Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us.' },
+      ]},
+    ]
+  },
+
+  // HEALING & PEACE ────────────────────────────────────────────────────────
+
+  'topic-healing': {
+    eyebrow: "God's Word for You",
+    title: 'Healing',
+    meta: 'Jesus healed then — and He heals now',
+    gc: 'gc-green',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Healing is not a peripheral theme in Scripture — it is central to who Jesus is. He healed everyone who came to Him. He never said "this is not God\'s will for you." Physical, emotional, and spiritual healing are part of the Gospel.',
+        quote:{ text:'He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; by his wounds you have been healed.', cite:'1 Peter 2:24' }
+      },
+      { type:'callout', tone:'sage', title:'Catholic Context', body:'The Sacrament of the Anointing of the Sick is not a death rite — it is a healing sacrament. The Church prays for physical healing while also preparing the soul. Lourdes and other shrines have documented thousands of medically verified healings attributed to prayer.' },
+      { type:'verseList', items:[
+        { cite:'1 Peter 2:24', text:'He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; by his wounds you have been healed.' },
+        { cite:'James 5:14–15', text:'Is anyone among you sick? Let them call the elders of the church to pray over them and anoint them with oil in the name of the Lord. And the prayer offered in faith will make the sick person well.' },
+        { cite:'Psalm 103:2–3', text:'Praise the Lord, my soul, and forget not all his benefits — who forgives all your sins and heals all your diseases.' },
+        { cite:'Jeremiah 17:14', text:'Heal me, Lord, and I will be healed; save me and I will be saved, for you are the one I praise.' },
+        { cite:'Isaiah 53:5', text:'But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed.' },
+      ]},
+    ]
+  },
+
+  'topic-peace': {
+    eyebrow: "God's Word for You",
+    title: 'Peace & Anxiety',
+    meta: 'The peace that surpasses understanding',
+    gc: 'gc-green',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Anxiety is not a character flaw — it is a human experience. But Scripture does not leave you there. God offers a peace that is not dependent on your circumstances — a peace that guards your heart like a soldier at the gate.',
+        quote:{ text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.', cite:'Philippians 4:6–7' }
+      },
+      { type:'callout', tone:'sage', title:'Catholic Context', body:'<em>Pax Christi</em> — the peace of Christ — is not the absence of conflict but the presence of God in the middle of it. St. Thérèse of Lisieux suffered profound interior darkness and anxiety, yet she held her peace by surrendering each moment to God\'s mercy.' },
+      { type:'verseList', items:[
+        { cite:'Philippians 4:6–7', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.' },
+        { cite:'John 14:27', text:'Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.' },
+        { cite:'Isaiah 26:3', text:'You will keep in perfect peace those whose minds are steadfast, because they trust in you.' },
+        { cite:'Psalm 55:22', text:'Cast your cares on the Lord and he will sustain you; he will never let the righteous be shaken.' },
+        { cite:'Matthew 11:28–29', text:'Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.' },
+      ]},
+    ]
+  },
+
+  'topic-rest': {
+    eyebrow: "God's Word for You",
+    title: 'Rest & Sabbath',
+    meta: 'God rested. He commands yours.',
+    gc: 'gc-green',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'God did not rest on the seventh day because He was tired. He rested to show you that rest is sacred — that stopping is not laziness, it is a declaration that you are not God, and that is a very good thing.',
+        quote:{ text:'By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work.', cite:'Genesis 2:2' }
+      },
+      { type:'callout', tone:'sage', title:'Catholic Context', body:'Sunday Mass is not an obligation tacked onto a busy week — it is the heart of the week. The Catechism calls Sunday the "original feast day," the day that gives meaning to all other days. It is a foretaste of eternal rest, the <em>sabbath</em> that heaven is.' },
+      { type:'verseList', items:[
+        { cite:'Genesis 2:2–3', text:'By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work. Then God blessed the seventh day and made it holy.' },
+        { cite:'Matthew 11:28', text:'Come to me, all you who are weary and burdened, and I will give you rest.' },
+        { cite:'Psalm 46:10', text:'Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.' },
+        { cite:'Exodus 20:8', text:'Remember the Sabbath day by keeping it holy.' },
+        { cite:'Hebrews 4:9–10', text:'There remains, then, a Sabbath-rest for the people of God; for anyone who enters God\'s rest also rests from their works, just as God did from his.' },
+      ]},
+    ]
+  },
+
+  'topic-grief': {
+    eyebrow: "God's Word for You",
+    title: 'Grief & Suffering',
+    meta: 'God does not waste your pain',
+    gc: 'gc-green',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Jesus wept at the grave of Lazarus. He did not say "don\'t cry." He cried with them. God does not dismiss your grief — He enters it. And Scripture promises He redeems what it means for something to be lost.',
+        quote:{ text:'He heals the brokenhearted and binds up their wounds.', cite:'Psalm 147:3' }
+      },
+      { type:'callout', tone:'sage', title:'Catholic Context', body:'The theology of the Cross — <em>theologia crucis</em> — holds that suffering is not meaningless. When united to Christ\'s suffering on the Cross, your pain becomes redemptive. It is the most profound mystery of the faith: nothing is wasted.' },
+      { type:'verseList', items:[
+        { cite:'Psalm 147:3', text:'He heals the brokenhearted and binds up their wounds.' },
+        { cite:'Romans 8:18', text:'I consider that our present sufferings are not worth comparing with the glory that will be revealed in us.' },
+        { cite:'2 Corinthians 1:3–4', text:'Praise be to the God and Father of our Lord Jesus Christ, the Father of compassion and the God of all comfort, who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves receive from God.' },
+        { cite:'Revelation 21:4', text:'He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.' },
+        { cite:'John 11:35', text:'Jesus wept.' },
+      ]},
+    ]
+  },
+
+  'topic-shalom': {
+    eyebrow: "God's Word for You",
+    title: 'Shalom',
+    meta: 'Biblical wholeness — body, soul, and spirit',
+    gc: 'gc-green',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Shalom is the Hebrew word usually translated "peace," but it means so much more. It means wholeness. Nothing missing, nothing broken. It is God\'s vision for your entire life — not just your soul, but your body, your relationships, your work, your home.',
+        quote:{ text:'The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.', cite:'Numbers 6:24–26' }
+      },
+      { type:'callout', tone:'sage', title:'Catholic Context', body:'The Catechism describes peace as "the tranquility of order" (<em>tranquillitas ordinis</em> — St. Augustine). It is not the absence of tension, but every part of life in its right relationship: soul rightly ordered to God, body to soul, person to community, community to creation.' },
+      { type:'verseList', items:[
+        { cite:'Numbers 6:24–26', text:'The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.' },
+        { cite:'Isaiah 54:10', text:'"Though the mountains be shaken and the hills be removed, yet my unfailing love for you will not be shaken nor my covenant of peace be removed," says the Lord.' },
+        { cite:'John 16:33', text:'I have told you these things, so that in me you may have peace. In this world you will have trouble. But take heart! I have overcome the world.' },
+        { cite:'Romans 15:13', text:'May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.' },
+        { cite:'Philippians 4:7', text:'And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.' },
+      ]},
+    ]
+  },
+
+  // IDENTITY & WORTH ───────────────────────────────────────────────────────
+
+  'topic-identity': {
+    eyebrow: "God's Word for You",
+    title: 'Identity in Christ',
+    meta: 'Who you are before you do anything',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Your identity is not your job, your sin, your past, your family name, or your reputation. It is what God says you are — before you do anything, before you earn anything, before you prove anything.',
+        quote:{ text:'See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!', cite:'1 John 3:1' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'At Baptism, your identity was permanently stamped. You became a child of God, a temple of the Holy Spirit, a member of the Body of Christ. The Church calls this the <em>character</em> of Baptism — it cannot be undone, even by sin.' },
+      { type:'verseList', items:[
+        { cite:'1 John 3:1', text:'See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!' },
+        { cite:'Galatians 3:26', text:'So in Christ Jesus you are all children of God through faith.' },
+        { cite:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!' },
+        { cite:'Romans 8:15–16', text:'The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, "Abba, Father." The Spirit himself testifies with our spirit that we are God\'s children.' },
+        { cite:'Ephesians 1:4–5', text:'For he chose us in him before the creation of the world to be holy and blameless in his sight. In love he predestined us for adoption to sonship through Jesus Christ.' },
+      ]},
+    ]
+  },
+
+  'topic-imago-dei': {
+    eyebrow: "God's Word for You",
+    title: 'Imago Dei',
+    meta: 'Made in the image and likeness of God',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'You bear the image of God. Not metaphorically — actually. Something of who God is is inscribed in who you are. This is the foundation of human dignity, and it is why every human life is sacred from conception to natural death.',
+        quote:{ text:'So God created mankind in his own image, in the image of God he created them; male and female he created them.', cite:'Genesis 1:27' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'<em>Imago Dei</em> is the bedrock of Catholic Social Teaching. Every human right — the right to life, dignity, fair wages, education, religious freedom — flows from this single truth: that every person bears the image of God. It cannot be erased by sin, poverty, or disability.' },
+      { type:'verseList', items:[
+        { cite:'Genesis 1:27', text:'So God created mankind in his own image, in the image of God he created them; male and female he created them.' },
+        { cite:'Psalm 139:13–14', text:'For you created my inmost being; you knit me together in my mother\'s womb. I praise you because I am fearfully and wonderfully made.' },
+        { cite:'Genesis 9:6', text:'Whoever sheds human blood, by humans shall their blood be shed; for in the image of God has God made mankind.' },
+        { cite:'James 3:9', text:'With the tongue we praise our Lord and Father, and with it we curse human beings, who have been made in God\'s likeness.' },
+      ]},
+    ]
+  },
+
+  'topic-baptism': {
+    eyebrow: "God's Word for You",
+    title: 'Baptism & New Life',
+    meta: 'You are a new creation',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Baptism is not a ceremony. It is a death and a resurrection. You went down into the water with your old identity — and came up with a new one. This is not metaphor. It is the most real thing that has ever happened to you.',
+        quote:{ text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!', cite:'2 Corinthians 5:17' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'The Catechism teaches that Baptism is the gateway to the other sacraments. It imprints an indelible spiritual mark — a permanent, unchangeable character — on the soul. You cannot be un-baptized. Even if you walk away, you remain marked as God\'s own.' },
+      { type:'verseList', items:[
+        { cite:'Romans 6:3–4', text:'Or don\'t you know that all of us who were baptized into Christ Jesus were baptized into his death? We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life.' },
+        { cite:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!' },
+        { cite:'John 3:5', text:'Jesus answered, "Very truly I tell you, no one can enter the kingdom of God unless they are born of water and the Spirit."' },
+        { cite:'Galatians 2:20', text:'I have been crucified with Christ and I no longer live, but Christ lives in me.' },
+        { cite:'Titus 3:5', text:'He saved us through the washing of rebirth and renewing by the Holy Spirit.' },
+      ]},
+    ]
+  },
+
+  'topic-courage': {
+    eyebrow: "God's Word for You",
+    title: 'Courage & Boldness',
+    meta: 'The fear of man is a snare — you are free',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'God\'s most repeated command in Scripture is not "be good" or "go to church." It is "do not be afraid." He says it over 365 times — one for every day of the year. Fear is the enemy of your calling.',
+        quote:{ text:'For God has not given us a spirit of fear, but of power and of love and of a sound mind.', cite:'2 Timothy 1:7 (NKJV)' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'Fortitude is one of the four cardinal virtues. The saints were not people without fear — they were people who acted despite fear. Joan of Arc, Thomas More, Maximilian Kolbe — all terrified, all courageous. Courage is not the absence of fear; it is faith in God stronger than fear.' },
+      { type:'verseList', items:[
+        { cite:'2 Timothy 1:7', text:'For God has not given us a spirit of fear, but of power and of love and of a sound mind.' },
+        { cite:'Joshua 1:9', text:'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.' },
+        { cite:'Isaiah 41:10', text:'So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.' },
+        { cite:'Proverbs 28:1', text:'The wicked flee though no one pursues, but the righteous are as bold as a lion.' },
+        { cite:'Romans 8:31', text:'What, then, shall we say in response to these things? If God is for us, who can be against us?' },
+      ]},
+    ]
+  },
+
+  'topic-worth': {
+    eyebrow: "God's Word for You",
+    title: 'Worth & Dignity',
+    meta: 'You were worth dying for',
+    gc: 'gc-rosary',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The cross is God\'s definitive statement about your worth. He did not send an angel. He came Himself. He went through every human suffering — rejection, betrayal, physical agony, death — and He said it was worth it. For you.',
+        quote:{ text:'But God demonstrates his own love for us in this: While we were still sinners, Christ died for us.', cite:'Romans 5:8' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'Human dignity is not earned — it is inherent. The <em>Catechism</em> states: "The dignity of the human person is rooted in his creation in the image and likeness of God." No sin, failure, or circumstance can erase what God has inscribed on you.' },
+      { type:'verseList', items:[
+        { cite:'Romans 5:8', text:'But God demonstrates his own love for us in this: While we were still sinners, Christ died for us.' },
+        { cite:'Luke 12:6–7', text:'Are not five sparrows sold for two pennies? Yet not one of them is forgotten by God. Indeed, the very hairs of your head are all numbered. Don\'t be afraid; you are worth more than many sparrows.' },
+        { cite:'Psalm 139:17–18', text:'How precious to me are your thoughts, God! How vast is the sum of them! Were I to count them, they would outnumber the grains of sand — when I awake, I am still with you.' },
+        { cite:'Isaiah 43:4', text:'Since you are precious and honored in my sight, and because I love you, I will give people in exchange for you, nations in exchange for your life.' },
+      ]},
+    ]
+  },
+
+  // RELATIONSHIPS ──────────────────────────────────────────────────────────
+
+  'topic-love': {
+    eyebrow: "God's Word for You",
+    title: 'Love',
+    meta: 'Agape — the love that lays down its life',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The Greek word <em>agape</em> describes a love that is not a feeling — it is a decision. It is the kind of love that shows up when it is inconvenient, costly, and not returned. It is the love that crucified Jesus.',
+        quote:{ text:'Greater love has no one than this: to lay down one\'s life for one\'s friends.', cite:'John 15:13' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'The Eucharist is the school of love. In the Mass, Christ does not merely remember His sacrifice — He makes it present. You receive Love itself in the Host. The more frequently you receive the Eucharist, the more you become capable of loving as He loves.' },
+      { type:'verseList', items:[
+        { cite:'1 Corinthians 13:4–7', text:'Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs. Love does not delight in evil but rejoices with the truth. It always protects, always trusts, always hopes, always perseveres.' },
+        { cite:'John 15:13', text:'Greater love has no one than this: to lay down one\'s life for one\'s friends.' },
+        { cite:'1 John 4:19', text:'We love because he first loved us.' },
+        { cite:'Romans 8:38–39', text:'For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.' },
+      ]},
+    ]
+  },
+
+  'topic-marriage': {
+    eyebrow: "God's Word for You",
+    title: 'Marriage & Family',
+    meta: 'The domestic church',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Marriage is not a contract — it is a covenant. The difference is massive. A contract is broken when one party fails. A covenant holds even then. It is a living icon of Christ\'s love for the Church — total, faithful, fruitful, and free.',
+        quote:{ text:'Husbands, love your wives, just as Christ loved the church and gave himself up for her.', cite:'Ephesians 5:25' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'Marriage is one of the seven sacraments. The spouses are the ministers of the sacrament to each other — God uses your marriage as a channel of grace. Your home is a <em>domestic church</em> — the first and most important place where faith is lived and handed on.' },
+      { type:'verseList', items:[
+        { cite:'Ephesians 5:25', text:'Husbands, love your wives, just as Christ loved the church and gave himself up for her.' },
+        { cite:'Genesis 2:24', text:'That is why a man leaves his father and mother and is united to his wife, and they become one flesh.' },
+        { cite:'Proverbs 31:10', text:'A wife of noble character who can find? She is worth far more than rubies.' },
+        { cite:'Colossians 3:13–14', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you. And over all these virtues put on love, which binds them all together in perfect unity.' },
+        { cite:'Psalm 127:3', text:'Children are a heritage from the Lord, offspring a reward from him.' },
+      ]},
+    ]
+  },
+
+  'topic-friendship': {
+    eyebrow: "God's Word for You",
+    title: 'Friendship',
+    meta: 'Iron sharpens iron',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'You were not made to do life alone. The people around you are not accessories — they are essential to who you become. The wrong friends pull you down. The right ones make you someone you could not be by yourself.',
+        quote:{ text:'As iron sharpens iron, so one person sharpens another.', cite:'Proverbs 27:17' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'The saints almost always traveled in pairs or groups. Francis had Clare. Basil had Gregory. Teresa of Ávila had John of the Cross. Spiritual friendship — what Aelred of Rievaulx called <em>amicitia spiritualis</em> — is a profound path to holiness.' },
+      { type:'verseList', items:[
+        { cite:'Proverbs 27:17', text:'As iron sharpens iron, so one person sharpens another.' },
+        { cite:'Ecclesiastes 4:9–10', text:'Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up. But pity anyone who falls and has no one to help them up.' },
+        { cite:'John 15:15', text:'I no longer call you servants, because a servant does not know his master\'s business. Instead, I have called you friends, for everything that I learned from my Father I have made known to you.' },
+        { cite:'Proverbs 17:17', text:'A friend loves at all times, and a brother is born for a time of adversity.' },
+      ]},
+    ]
+  },
+
+  'topic-forgiveness': {
+    eyebrow: "God's Word for You",
+    title: 'Forgiveness',
+    meta: 'The most countercultural act in the world',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Forgiveness is not saying what happened was okay. It is releasing your claim to revenge and letting God be the judge. It is the most counterintuitive thing Jesus asks you to do — and the most freeing.',
+        quote:{ text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.', cite:'Colossians 3:13' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'The Sacrament of Confession is how Catholics receive God\'s forgiveness — but the forgiveness we extend to others is just as important. Jesus connects the two explicitly in the Our Father: "Forgive us our trespasses, as we forgive those who trespass against us." The condition is unsettling. It is also liberating.' },
+      { type:'verseList', items:[
+        { cite:'Colossians 3:13', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.' },
+        { cite:'Matthew 18:21–22', text:'Then Peter came to Jesus and asked, "Lord, how many times shall I forgive my brother or sister who sins against me? Up to seven times?" Jesus answered, "I tell you, not seven times, but seventy-seven times."' },
+        { cite:'Ephesians 4:31–32', text:'Get rid of all bitterness, rage and anger, brawling and slander, along with every form of malice. Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.' },
+        { cite:'Matthew 6:14–15', text:'For if you forgive other people when they sin against you, your heavenly Father will also forgive you. But if you do not forgive others their sins, your Father will not forgive your sins.' },
+      ]},
+    ]
+  },
+
+  'topic-unity': {
+    eyebrow: "God's Word for You",
+    title: 'Unity & Community',
+    meta: 'You were not made to do this alone',
+    gc: 'gc-eucharist',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The Trinity is a community. God Himself is not alone — He is Father, Son, and Spirit in eternal relationship. He made you in His image, which means He made you for community. Isolation is not holy. It is a wound.',
+        quote:{ text:'And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together.', cite:'Hebrews 10:24–25' }
+      },
+      { type:'callout', tone:'rose', title:'Catholic Context', body:'The Church is not an institution — it is the Body of Christ. When you receive the Eucharist, you are incorporated more deeply into that Body. You cannot be a Catholic alone. The sacraments are communal by nature. Your holiness and your neighbor\'s holiness are inseparable.' },
+      { type:'verseList', items:[
+        { cite:'Hebrews 10:24–25', text:'And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together, as some are in the habit of doing, but encouraging one another — and all the more as you see the Day approaching.' },
+        { cite:'Acts 2:42', text:'They devoted themselves to the apostles\' teaching and to fellowship, to the breaking of bread and to prayer.' },
+        { cite:'Romans 12:4–5', text:'For just as each of us has one body with many members, and these members do not all have the same function, so in Christ we, though many, form one body, and each member belongs to all the others.' },
+        { cite:'1 Corinthians 12:26–27', text:'If one part suffers, every part suffers with it; if one part is honored, every part rejoices with it. Now you are the body of Christ, and each one of you is a part of it.' },
+      ]},
+    ]
+  },
+
+  // FAITH & BREAKTHROUGH ───────────────────────────────────────────────────
+
+  'topic-faith': {
+    eyebrow: "God's Word for You",
+    title: 'Faith',
+    meta: 'The substance of things hoped for',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Faith is not blind hope. It is the conviction that what God has said is more real than what you can see. It is the ability to act on the unseen — to build the ark before it rains.',
+        quote:{ text:'Now faith is confidence in what we hope for and assurance about what we do not see.', cite:'Hebrews 11:1' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'Faith is the first of the three theological virtues — faith, hope, and charity — infused at Baptism. Unlike the natural virtues, faith cannot be acquired by human effort alone. It is a gift. But it must be freely accepted and actively lived. <em>Fides quaerens intellectum</em> — faith seeking understanding.' },
+      { type:'verseList', items:[
+        { cite:'Hebrews 11:1', text:'Now faith is confidence in what we hope for and assurance about what we do not see.' },
+        { cite:'Mark 9:23', text:'"Everything is possible for one who believes." Immediately the boy\'s father exclaimed, "I do believe; help me overcome my unbelief!"' },
+        { cite:'James 2:17', text:'In the same way, faith by itself, if it is not accompanied by action, is dead.' },
+        { cite:'Romans 10:17', text:'Consequently, faith comes from hearing the message, and the message is heard through the word about Christ.' },
+        { cite:'Matthew 17:20', text:'"Truly I tell you, if you have faith as small as a mustard seed, you can say to this mountain, \'Move from here to there,\' and it will move. Nothing will be impossible for you."' },
+      ]},
+    ]
+  },
+
+  'topic-prayer': {
+    eyebrow: "God's Word for You",
+    title: 'Prayer',
+    meta: 'Ask, seek, knock',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Prayer is not a spiritual discipline you perform to earn God\'s attention. It is a conversation with someone who is already leaning in. He is not waiting for you to get it right. He is just waiting for you.',
+        quote:{ text:'Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.', cite:'Matthew 7:7' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'The Church offers four types of prayer: adoration, contrition, thanksgiving, and supplication (ACTS). The Liturgy of the Hours — prayed seven times a day by religious — is the Church\'s continuous conversation with God. Every Catholic is invited to join it.' },
+      { type:'verseList', items:[
+        { cite:'Matthew 7:7–8', text:'Ask and it will be given to you; seek and you will find; knock and the door will be opened to you. For everyone who asks receives; the one who seeks finds; and to the one who knocks, the door will be opened.' },
+        { cite:'1 Thessalonians 5:17', text:'Pray continually.' },
+        { cite:'Philippians 4:6', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.' },
+        { cite:'Romans 8:26', text:'In the same way, the Spirit helps us in our weakness. We do not know what we ought to pray for, but the Spirit himself intercedes for us through wordless groans.' },
+        { cite:'Jeremiah 33:3', text:'Call to me and I will answer you and tell you great and unsearchable things you do not know.' },
+      ]},
+    ]
+  },
+
+  'topic-spiritual-warfare': {
+    eyebrow: "God's Word for You",
+    title: 'Spiritual Warfare',
+    meta: 'You are in a battle — here is your armor',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The spiritual life is not a retreat from conflict — it is a battlefield. There are forces actively working against your holiness, your joy, your relationships, and your calling. Scripture does not tiptoe around this. It gives you armor.',
+        quote:{ text:'For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms.', cite:'Ephesians 6:12' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'The Church teaches the real existence of the devil — not as a metaphor, but as a fallen angel with real influence. The Rite of Baptism includes a formal renunciation of Satan. Confession, the Eucharist, the Rosary, and sacred scapulars are among the Church\'s traditional weapons against spiritual attack.' },
+      { type:'verseList', items:[
+        { cite:'Ephesians 6:11–13', text:'Put on the full armor of God, so that you can take your stand against the devil\'s schemes. For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms.' },
+        { cite:'1 Peter 5:8', text:'Be sober-minded; be watchful. Your adversary the devil prowls around like a roaring lion, seeking someone to devour.' },
+        { cite:'James 4:7', text:'Submit yourselves, then, to God. Resist the devil, and he will flee from you.' },
+        { cite:'Romans 8:37', text:'No, in all these things we are more than conquerors through him who loved us.' },
+        { cite:'Revelation 12:11', text:'They triumphed over him by the blood of the Lamb and by the word of their testimony.' },
+      ]},
+    ]
+  },
+
+  'topic-waiting': {
+    eyebrow: "God's Word for You",
+    title: 'Waiting & Patience',
+    meta: 'Holy waiting is not passive — it is powerful',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'The waiting seasons of your life are not wasted seasons. Every major figure in Scripture waited: Abraham waited 25 years for Isaac. Joseph waited 13 years in slavery and prison. Mary waited 30 years before Jesus\'s ministry began. God uses the waiting.',
+        quote:{ text:'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.', cite:'Isaiah 40:31' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'Advent is the Church\'s annual school of holy waiting. Four weeks of leaning into the silence, of resisting the culture of immediate gratification, of practicing the deep conviction that what God has promised will come. Advent teaches you how to wait well.' },
+      { type:'verseList', items:[
+        { cite:'Isaiah 40:31', text:'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.' },
+        { cite:'Psalm 27:14', text:'Wait for the Lord; be strong and take heart and wait for the Lord.' },
+        { cite:'Lamentations 3:25–26', text:'The Lord is good to those whose hope is in him, to the one who seeks him; it is good to wait quietly for the salvation of the Lord.' },
+        { cite:'Romans 5:3–4', text:'Not only so, but we also glory in our sufferings, because we know that suffering produces perseverance; perseverance, character; and character, hope.' },
+        { cite:'Hebrews 6:15', text:'And so after waiting patiently, Abraham received what was promised.' },
+      ]},
+    ]
+  },
+
+  'topic-mind': {
+    eyebrow: "God's Word for You",
+    title: 'Mind & Renewal',
+    meta: 'What you think shapes who you become',
+    gc: 'gc-prayer',
+    hasAudio: false,
+    blocks: [
+      { type:'lead', eyebrow:"What God Says",
+        text:'Your mind is a battlefield. The thoughts you entertain, the voices you listen to, the content you consume — they are not neutral. They are forming you. Scripture calls you to take every thought captive and to be transformed by the renewing of your mind.',
+        quote:{ text:'Do not conform to the pattern of this world, but be transformed by the renewing of your mind.', cite:'Romans 12:2' }
+      },
+      { type:'callout', tone:'gold', title:'Catholic Context', body:'<em>Lectio Divina</em> — sacred reading — is the Church\'s ancient practice of letting Scripture reshape the mind from the inside. You read slowly, listen, respond, and rest in the Word. Over time, your thoughts begin to sound less like the world and more like God.' },
+      { type:'verseList', items:[
+        { cite:'Romans 12:2', text:'Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God\'s will is — his good, pleasing and perfect will.' },
+        { cite:'Philippians 4:8', text:'Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable — if anything is excellent or praiseworthy — think about such things.' },
+        { cite:'2 Corinthians 10:5', text:'We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ.' },
+        { cite:'Proverbs 23:7', text:'For as he thinks in his heart, so is he.' },
+        { cite:'Isaiah 55:8–9', text:'"For my thoughts are not your thoughts, neither are your ways my ways," declares the Lord. "As the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts."' },
       ]},
     ]
   },

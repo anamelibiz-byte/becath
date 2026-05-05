@@ -2693,10 +2693,10 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
 
-    <!-- God's Word for Your Life -->
+    <!-- God's Word for You -->
     <div class="section-head">
       <div>
-        <div class="section-title">God's Word for Your Life</div>
+        <div class="section-title">God's Word for You</div>
         <div class="section-sub">What the Bible says about money, purpose, healing &amp; more</div>
       </div>
       <button class="section-link" onclick="goPage('scripture-browse')">See all</button>
@@ -3680,8 +3680,8 @@ html.app-font-xl  { font-size: 20px; }
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <div>
-          <div style="font-family:var(--ff-display);font-size:1rem;font-weight:600;letter-spacing:0.04em;color:var(--text);">God's Word for Your Life</div>
-          <div style="font-size:0.75rem;color:var(--text-mute);margin-top:1px;">31 topics · what the Bible says about you</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;font-weight:600;letter-spacing:0.04em;color:var(--text);">God's Word for You</div>
+          <div style="font-size:0.75rem;color:var(--text-mute);margin-top:1px;">31 topics · what God says about your life</div>
         </div>
       </div>
       <!-- Stained glass stripe -->
@@ -4974,55 +4974,48 @@ html.app-font-xl  { font-size: 20px; }
   // All 31 topics — category, display label, subtitle, detail id, accent color
   var SB_TOPICS = [
     // Money & Provision (6)
-    { cat:'money',         label:'Prosperity',          sub:'God desires you to flourish in every dimension', id:'scripture-money',         color:'var(--sg-amber)' },
-    { cat:'money',         label:'Provision',           sub:'God as your source — He meets every need',       id:'scripture-money',         color:'var(--sg-amber)' },
-    { cat:'money',         label:'Stewardship',         sub:'Managing what God entrusted to you, wisely',     id:'scripture-money',         color:'var(--sg-amber)' },
-    { cat:'money',         label:'Generosity & Giving', sub:'You cannot out-give God',                        id:'scripture-money',         color:'var(--sg-amber)' },
-    { cat:'money',         label:'Favor',               sub:'Divine positioning — doors open, blessings find you', id:'scripture-money',    color:'var(--sg-amber)' },
-    { cat:'money',         label:'Debt & Freedom',      sub:'Breaking cycles of lack',                        id:'scripture-money',         color:'var(--sg-amber)' },
+    { cat:'money',         label:'Prosperity',          sub:'God desires you to flourish in every dimension', id:'topic-prosperity',      color:'var(--sg-amber)' },
+    { cat:'money',         label:'Provision',           sub:'God as your source — He meets every need',       id:'topic-provision',       color:'var(--sg-amber)' },
+    { cat:'money',         label:'Stewardship',         sub:'Managing what God entrusted to you, wisely',     id:'topic-stewardship',     color:'var(--sg-amber)' },
+    { cat:'money',         label:'Generosity & Giving', sub:'You cannot out-give God',                        id:'topic-generosity',      color:'var(--sg-amber)' },
+    { cat:'money',         label:'Favor',               sub:'Divine positioning — doors open, blessings find you', id:'topic-favor',      color:'var(--sg-amber)' },
+    { cat:'money',         label:'Debt & Freedom',      sub:'Breaking cycles of lack',                        id:'topic-debt-freedom',    color:'var(--sg-amber)' },
     // Purpose & Calling (5)
-    { cat:'purpose',       label:'Purpose & Calling',   sub:'You were created on purpose, for a purpose',     id:'scripture-purpose',       color:'var(--sg-blue)'  },
-    { cat:'purpose',       label:'Gifts & Talents',     sub:'What God placed in you is not an accident',      id:'scripture-purpose',       color:'var(--sg-blue)'  },
-    { cat:'purpose',       label:'Work & Excellence',   sub:'Everything you do can be an act of worship',     id:'scripture-purpose',       color:'var(--sg-blue)'  },
-    { cat:'purpose',       label:'Wisdom & Discernment',sub:'How to hear God in the noise of daily life',     id:'scripture-purpose',       color:'var(--sg-blue)'  },
-    { cat:'purpose',       label:'Dreams & Vision',     sub:'God plants holy desires as seeds of vocation',   id:'scripture-purpose',       color:'var(--sg-blue)'  },
+    { cat:'purpose',       label:'Purpose & Calling',   sub:'You were created on purpose, for a purpose',     id:'topic-purpose',         color:'var(--sg-blue)'  },
+    { cat:'purpose',       label:'Gifts & Talents',     sub:'What God placed in you is not an accident',      id:'topic-gifts',           color:'var(--sg-blue)'  },
+    { cat:'purpose',       label:'Work & Excellence',   sub:'Everything you do can be an act of worship',     id:'topic-work',            color:'var(--sg-blue)'  },
+    { cat:'purpose',       label:'Wisdom & Discernment',sub:'How to hear God in the noise of daily life',     id:'topic-wisdom',          color:'var(--sg-blue)'  },
+    { cat:'purpose',       label:'Dreams & Vision',     sub:'God plants holy desires as seeds of vocation',   id:'topic-dreams',          color:'var(--sg-blue)'  },
     // Healing & Peace (5)
-    { cat:'healing',       label:'Healing',             sub:'Jesus healed then, and He heals now',            id:'scripture-healing',       color:'var(--sg-green)' },
-    { cat:'healing',       label:'Peace & Anxiety',     sub:'The peace that surpasses understanding',         id:'scripture-healing',       color:'var(--sg-green)' },
-    { cat:'healing',       label:'Rest & Sabbath',      sub:'God rested. He commands your rest.',             id:'scripture-healing',       color:'var(--sg-green)' },
-    { cat:'healing',       label:'Grief & Suffering',   sub:'God does not waste your pain',                   id:'scripture-healing',       color:'var(--sg-green)' },
-    { cat:'healing',       label:'Shalom',              sub:'Biblical wholeness — body, soul, and spirit',    id:'scripture-healing',       color:'var(--sg-green)' },
+    { cat:'healing',       label:'Healing',             sub:'Jesus healed then, and He heals now',            id:'topic-healing',         color:'var(--sg-green)' },
+    { cat:'healing',       label:'Peace & Anxiety',     sub:'The peace that surpasses understanding',         id:'topic-peace',           color:'var(--sg-green)' },
+    { cat:'healing',       label:'Rest & Sabbath',      sub:'God rested. He commands your rest.',             id:'topic-rest',            color:'var(--sg-green)' },
+    { cat:'healing',       label:'Grief & Suffering',   sub:'God does not waste your pain',                   id:'topic-grief',           color:'var(--sg-green)' },
+    { cat:'healing',       label:'Shalom',              sub:'Biblical wholeness — body, soul, and spirit',    id:'topic-shalom',          color:'var(--sg-green)' },
     // Identity & Worth (5)
-    { cat:'identity',      label:'Identity in Christ',  sub:'Who you are before you do anything',             id:'scripture-identity',      color:'var(--sg-violet)'},
-    { cat:'identity',      label:'Imago Dei',           sub:'Made in the image and likeness of God',          id:'scripture-identity',      color:'var(--sg-violet)'},
-    { cat:'identity',      label:'Baptism & New Life',  sub:'You are a new creation — this is not metaphor',  id:'scripture-identity',      color:'var(--sg-violet)'},
-    { cat:'identity',      label:'Courage & Boldness',  sub:'The fear of man is a snare — you are free',      id:'scripture-identity',      color:'var(--sg-violet)'},
-    { cat:'identity',      label:'Worth & Dignity',     sub:'You were worth dying for',                       id:'scripture-identity',      color:'var(--sg-violet)'},
+    { cat:'identity',      label:'Identity in Christ',  sub:'Who you are before you do anything',             id:'topic-identity',        color:'var(--sg-violet)'},
+    { cat:'identity',      label:'Imago Dei',           sub:'Made in the image and likeness of God',          id:'topic-imago-dei',       color:'var(--sg-violet)'},
+    { cat:'identity',      label:'Baptism & New Life',  sub:'You are a new creation — this is not metaphor',  id:'topic-baptism',         color:'var(--sg-violet)'},
+    { cat:'identity',      label:'Courage & Boldness',  sub:'The fear of man is a snare — you are free',      id:'topic-courage',         color:'var(--sg-violet)'},
+    { cat:'identity',      label:'Worth & Dignity',     sub:'You were worth dying for',                       id:'topic-worth',           color:'var(--sg-violet)'},
     // Relationships (5)
-    { cat:'relationships', label:'Love',                sub:'Agape — the love that lays down its life',       id:'scripture-relationships', color:'var(--sg-red)'   },
-    { cat:'relationships', label:'Marriage & Family',   sub:'The domestic church — your first mission field', id:'scripture-relationships', color:'var(--sg-red)'   },
-    { cat:'relationships', label:'Friendship',          sub:'Iron sharpens iron',                             id:'scripture-relationships', color:'var(--sg-red)'   },
-    { cat:'relationships', label:'Forgiveness',         sub:'The most countercultural act in the world',      id:'scripture-relationships', color:'var(--sg-red)'   },
-    { cat:'relationships', label:'Unity & Community',   sub:'You were not made to do this alone',             id:'scripture-relationships', color:'var(--sg-red)'   },
+    { cat:'relationships', label:'Love',                sub:'Agape — the love that lays down its life',       id:'topic-love',            color:'var(--sg-red)'   },
+    { cat:'relationships', label:'Marriage & Family',   sub:'The domestic church — your first mission field', id:'topic-marriage',        color:'var(--sg-red)'   },
+    { cat:'relationships', label:'Friendship',          sub:'Iron sharpens iron',                             id:'topic-friendship',      color:'var(--sg-red)'   },
+    { cat:'relationships', label:'Forgiveness',         sub:'The most countercultural act in the world',      id:'topic-forgiveness',     color:'var(--sg-red)'   },
+    { cat:'relationships', label:'Unity & Community',   sub:'You were not made to do this alone',             id:'topic-unity',           color:'var(--sg-red)'   },
     // Faith & Breakthrough (5)
-    { cat:'faith',         label:'Faith',               sub:'The substance of things hoped for',              id:'scripture-faith',         color:'var(--sg-teal)'  },
-    { cat:'faith',         label:'Prayer',              sub:'Ask, seek, knock — the mechanics of heaven',     id:'scripture-faith',         color:'var(--sg-teal)'  },
-    { cat:'faith',         label:'Spiritual Warfare',   sub:'You are in a battle — here is your armor',       id:'scripture-faith',         color:'var(--sg-teal)'  },
-    { cat:'faith',         label:'Waiting & Patience',  sub:'Holy waiting is not passive — it is powerful',   id:'scripture-faith',         color:'var(--sg-teal)'  },
-    { cat:'faith',         label:'Mind & Renewal',      sub:'What you think shapes what you become',          id:'scripture-faith',         color:'var(--sg-teal)'  },
+    { cat:'faith',         label:'Faith',               sub:'The substance of things hoped for',              id:'topic-faith',           color:'var(--sg-teal)'  },
+    { cat:'faith',         label:'Prayer',              sub:'Ask, seek, knock — the mechanics of heaven',     id:'topic-prayer',          color:'var(--sg-teal)'  },
+    { cat:'faith',         label:'Spiritual Warfare',   sub:'You are in a battle — here is your armor',       id:'topic-spiritual-warfare', color:'var(--sg-teal)'},
+    { cat:'faith',         label:'Waiting & Patience',  sub:'Holy waiting is not passive — it is powerful',   id:'topic-waiting',         color:'var(--sg-teal)'  },
+    { cat:'faith',         label:'Mind & Renewal',      sub:'What you think shapes what you become',          id:'topic-mind',            color:'var(--sg-teal)'  },
   ];
 
   var CAT_LABELS = {
     money:'Money & Provision', purpose:'Purpose & Calling', healing:'Healing & Peace',
     identity:'Identity & Worth', relationships:'Relationships', faith:'Faith & Breakthrough'
   };
-
-  // Color swatch SVG for each topic row
-  function swatchSVG(color) {
-    return '<div style="width:40px;height:40px;border-radius:10px;background:' + color + ';flex-shrink:0;display:flex;align-items:center;justify-content:center;">'
-      + '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'
-      + '</div>';
-  }
 
   function renderTopics(cat) {
     var list = document.getElementById('sb-list');
@@ -5035,18 +5028,19 @@ html.app-font-xl  { font-size: 20px; }
       // Category header (only when showing all)
       if (cat === 'all' && t.cat !== lastCat) {
         lastCat = t.cat;
-        html += '<div style="font-family:var(--ff-display);font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mute);padding:18px 0 8px 2px;">'
+        html += '<div style="font-family:var(--ff-display);font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mute);padding:20px 0 8px 2px;">'
           + CAT_LABELS[t.cat] + '</div>';
       }
-      html += '<div class="card-row" onclick="openDetail(\'' + t.id + '\')" style="margin-bottom:6px;">'
-        + '<div class="card-row-thumb" style="background:none;border-radius:10px;overflow:visible;">'
-        + swatchSVG(t.color)
+      html += '<div class="card-row" onclick="openDetail(\'' + t.id + '\')" style="margin-bottom:4px;padding:12px 14px;">'
+        + '<div style="width:38px;height:38px;border-radius:50%;background:' + t.color + ';flex-shrink:0;opacity:0.18;"></div>'
+        + '<div style="position:absolute;width:38px;height:38px;margin-left:0;display:flex;align-items:center;justify-content:center;">'
+        + '<div style="width:10px;height:10px;border-radius:50%;background:' + t.color + ';"></div>'
         + '</div>'
-        + '<div class="card-row-info">'
-        + '<div class="card-row-title" style="font-weight:600;">' + t.label + '</div>'
+        + '<div class="card-row-info" style="margin-left:12px;">'
+        + '<div class="card-row-title">' + t.label + '</div>'
         + '<div class="card-row-meta">' + t.sub + '</div>'
         + '</div>'
-        + '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--text-mute)" stroke-width="2" style="flex-shrink:0;"><polyline points="9 18 15 12 9 6"/></svg>'
+        + '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--text-mute)" stroke-width="2" style="flex-shrink:0;opacity:0.5;"><polyline points="9 18 15 12 9 6"/></svg>'
         + '</div>';
     });
     list.innerHTML = html;
