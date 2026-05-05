@@ -774,12 +774,42 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Theme toggle in profile ── */
+.profile-section-label {
+  font-family: var(--ff-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  padding: 20px 18px 6px;
+}
 .profile-row {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 18px;
+  padding: 14px 18px;
   border-bottom: 1px solid var(--line);
+  gap: 12px;
 }
-.profile-row-label { font-family: var(--ff-serif); font-size: 1rem; color: var(--text); font-weight: 500; }
+.profile-row-icon {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-mute);
+}
+.profile-row-label { font-family: var(--ff-serif); font-size: 1rem; color: var(--text); font-weight: 500; flex: 1; }
+.profile-row-badge {
+  font-family: var(--ff-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200,150,10,0.1);
+  border: 1px solid rgba(200,150,10,0.25);
+  border-radius: 99px;
+  padding: 2px 8px;
+}
 .theme-segment {
   display: flex; gap: 4px;
   background: var(--bg-soft);
@@ -2998,6 +3028,10 @@ html.app-font-xl  { font-size: 20px; }
           <div class="card-row-thumb"><div class="gradient-cover gc-gold-soft" style="background:linear-gradient(135deg,#B8893A 0%,#E8C68B 100%);"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div></div>
           <div class="card-row-info"><div class="card-row-title">Full Saints Library</div><div class="card-row-meta">All saints · A–Z reference</div></div>
         </div>
+        <div class="card-row" onclick="openDetail('saints-canonization')">
+          <div class="card-row-thumb"><div class="gradient-cover gc-saints" style="background:linear-gradient(135deg,#6B4E2C 0%,#B8893A 100%);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div></div>
+          <div class="card-row-info"><div class="card-row-title">How Saints Are Made</div><div class="card-row-meta">The path to canonization · 4 stages</div></div>
+        </div>
       </div>
 
     </div>
@@ -3493,9 +3527,26 @@ html.app-font-xl  { font-size: 20px; }
 
   <!-- ═══════════════ ME ═══════════════ -->
   <section class="page" id="page-me">
-    <div class="section-head"><div><div class="section-title">Me</div><div class="section-sub">Settings &amp; preferences</div></div></div>
+    <div class="section-head"><div><div class="section-title">Me</div><div class="section-sub">Your personal space</div></div></div>
     <div style="padding:0;">
+
+      <!-- Personal -->
+      <div class="profile-section-label">Personal</div>
+      <div class="profile-row" onclick="openDetail('journal')">
+        <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="profile-row-label">My Prayer Journal</div>
+        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="profile-row" onclick="alert('Notifications: coming soon')">
+        <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <div class="profile-row-label">Notifications</div>
+        <div class="profile-row-badge">Soon</div>
+      </div>
+
+      <!-- Appearance -->
+      <div class="profile-section-label">Appearance</div>
       <div class="profile-row">
+        <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
         <div class="profile-row-label">Theme</div>
         <div class="theme-segment" id="theme-seg">
           <button data-theme="auto" class="active">Auto</button>
@@ -3503,34 +3554,15 @@ html.app-font-xl  { font-size: 20px; }
           <button data-theme="dark">Dark</button>
         </div>
       </div>
-      <div class="profile-row" onclick="openDetail('journal')">
-        <div class="profile-row-label">My Prayer Journal</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="profile-row" onclick="openDetail('prosperity')">
-        <div class="profile-row-label">Prosperity Scriptures</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
+
+      <!-- About -->
+      <div class="profile-section-label">About</div>
       <div class="profile-row" onclick="openDetail('about')">
+        <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="profile-row-label">About BeCath</div>
         <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
-      <div class="profile-row" onclick="openDetail('daily-rhythm')">
-        <div class="profile-row-label">A Daily Rhythm</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="profile-row" onclick="openDetail('dictionary')">
-        <div class="profile-row-label">Catholic Dictionary</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="profile-row" onclick="openDetail('saints-canonization')">
-        <div class="profile-row-label">How Saints Are Made</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="profile-row" onclick="alert('Notifications: coming soon')">
-        <div class="profile-row-label">Notifications</div>
-        <div class="list-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
+
     </div>
   </section>
 
