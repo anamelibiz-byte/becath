@@ -3423,7 +3423,7 @@ html.app-font-xl  { font-size: 20px; }
     <!-- Top bar with back -->
     <div class="topbar" style="position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 18px 14px;">
       <div style="display:flex;align-items:center;gap:12px;">
-        <button class="icon-btn" onclick="goBack()" aria-label="Back" style="flex-shrink:0;">
+        <button class="icon-btn" onclick="searchBackOrClose()" aria-label="Back" style="flex-shrink:0;">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <div style="position:relative;flex:1;">
@@ -4278,7 +4278,7 @@ html.app-font-xl  { font-size: 20px; }
   </button>
 </nav>
 
-<script src="content.js?v=20260504-6"></script>
+<script src="content.js?v=20260504-8"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -4918,9 +4918,18 @@ html.app-font-xl  { font-size: 20px; }
     _updateSaveBtn(id);
   };
 
-  // Render saved page on navigate
+  // Render saved page on navigate + reset search when leaving it
   var _origGoPage2 = window.goPage;
   window.goPage = function(name, opts){
+    // Reset search state when navigating away from search
+    if (name !== 'search') {
+      var inp = document.getElementById('searchInput');
+      var cats = document.getElementById('searchCategories');
+      var res  = document.getElementById('searchResults');
+      if (inp)  inp.value = '';
+      if (cats) cats.style.display = '';
+      if (res)  { res.style.display = 'none'; res.innerHTML = ''; }
+    }
     if (typeof _origGoPage2 === 'function') _origGoPage2(name, opts);
     if (name === 'saved') _savedRenderPage();
   };
@@ -5070,6 +5079,23 @@ html.app-font-xl  { font-size: 20px; }
   window.fillSearch = function(q){
     var inp = document.getElementById('searchInput');
     if(inp){ inp.value = q; runSearch(q); }
+  };
+
+  // If results are showing, back clears to browse state. Otherwise leave the page.
+  window.searchBackOrClose = function(){
+    var res = document.getElementById('searchResults');
+    var inp = document.getElementById('searchInput');
+    var cats = document.getElementById('searchCategories');
+    if (res && res.style.display !== 'none') {
+      // Clear back to browse state
+      if (inp)  inp.value = '';
+      if (cats) cats.style.display = '';
+      res.style.display = 'none';
+      res.innerHTML = '';
+      if (inp) inp.blur();
+    } else {
+      goBack();
+    }
   };
 
   window.runSearch = function(q){
