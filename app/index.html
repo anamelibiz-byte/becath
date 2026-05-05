@@ -389,6 +389,34 @@ img { display: block; max-width: 100%; }
   font-family: var(--ff); font-size: 0.74rem; color: var(--text-mute);
 }
 
+/* ── Audio / Read type indicators ── */
+/* Left stripe on row cards */
+.card-row.card-audio { border-left: 3px solid #7040B8; padding-left: 13px; border-radius: 0 var(--radius) var(--radius) 0; }
+.card-row.card-read  { border-left: 3px solid #1A8080; padding-left: 13px; border-radius: 0 var(--radius) var(--radius) 0; }
+
+/* Corner pill on sq + wide covers */
+.card-sq-cover .type-pill,
+.card-wide-cover .type-pill {
+  position: absolute; top: 7px; right: 7px;
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 99px;
+  pointer-events: none;
+}
+.type-pill-audio { background: rgba(112,64,184,0.88); color: #EDE0FF; }
+.type-pill-read  { background: rgba(26,128,128,0.88); color: #D8F5F5; }
+
+/* Meta badge inline */
+.type-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-family: var(--ff-display); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 1px 6px; border-radius: 99px;
+  margin-right: 4px; vertical-align: middle;
+}
+.type-badge-audio { background: rgba(112,64,184,0.12); color: #7040B8; border: 0.5px solid rgba(112,64,184,0.3); }
+.type-badge-read  { background: rgba(26,128,128,0.1);  color: #1A8080; border: 0.5px solid rgba(26,128,128,0.28); }
+
 /* ── Gradient cover variants (used when no img) ── */
 .gc-jesus    { background: linear-gradient(135deg, #2A3358 0%, #5B4A85 100%); }
 .gc-mary     { background: linear-gradient(135deg, #3B4F8A 0%, #7E8FC1 100%); }
@@ -2672,9 +2700,11 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-sq" onclick="openDetail('today-saint')">
+      <div class="card-sq card-read" onclick="openDetail('today-saint')">
         <div class="card-sq-cover">
           <img src="img/saintday.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Saint of the Day</div>
         <div class="card-sq-meta" id="today-saint-name">Today's saint</div>
@@ -2686,14 +2716,16 @@ html.app-font-xl  { font-size: 20px; }
         <div class="card-sq-title">Mass Readings</div>
         <div class="card-sq-meta">Daily liturgy</div>
       </div>
-      <div class="card-sq" onclick="openDetail('today-prayer')">
+      <div class="card-sq card-audio" onclick="openDetail('today-prayer')">
         <div class="card-sq-cover">
           <img src="img/jesusapostles.jpg" alt="">
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Morning Offering</div>
         <div class="card-sq-meta">Start your day · ~2 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('journal')">
+      <div class="card-sq card-read" onclick="openDetail('journal')">
         <div class="card-sq-cover">
           <img src="img/happyjesusbook.jpg" alt="">
         </div>
@@ -2711,36 +2743,46 @@ html.app-font-xl  { font-size: 20px; }
       <button class="section-link" onclick="goPage('learn')">See all</button>
     </div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('proof-jesus')">
+      <div class="card-wide card-read" onclick="openDetail('proof-jesus')">
         <div class="card-wide-cover">
           <img src="img/jesus.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Did Jesus Really Live?</div>
         <div class="card-wide-meta">Historical evidence · 12 min</div>
       </div>
-      <div class="card-wide" onclick="openDetail('apparitions')">
+      <div class="card-wide card-read" onclick="openDetail('apparitions')">
         <div class="card-wide-cover">
           <img src="img/mary.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Mary's Apparitions</div>
         <div class="card-wide-meta">Fatima, Lourdes, Guadalupe</div>
       </div>
-      <div class="card-wide" onclick="openDetail('commandments')">
+      <div class="card-wide card-read" onclick="openDetail('commandments')">
         <div class="card-wide-cover">
           <img src="img/ten.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">The Ten Commandments</div>
         <div class="card-wide-meta">Foundation of moral law</div>
       </div>
-      <div class="card-wide" onclick="openDetail('apologetics')">
+      <div class="card-wide card-read" onclick="openDetail('apologetics')">
         <div class="card-wide-cover">
           <img src="img/whyjesus.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Why Jesus?</div>
         <div class="card-wide-meta">The case for Christ · 8 lessons</div>
       </div>
-      <div class="card-wide" onclick="openDetail('prophets')">
-        <div class="card-wide-cover"><img src="img/prophets.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('prophets')">
+        <div class="card-wide-cover"><img src="img/prophets.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">The Prophets</div>
         <div class="card-wide-meta">Fulfilled prophecy</div>
       </div>
@@ -2755,41 +2797,51 @@ html.app-font-xl  { font-size: 20px; }
       <button class="section-link" onclick="goPage('miracles')">See all</button>
     </div>
     <div class="h-row">
-      <div class="card-sq" onclick="openDetail('miracle-eucharist')">
+      <div class="card-sq card-read" onclick="openDetail('miracle-eucharist')">
         <div class="card-sq-cover">
           <img src="img/eucharist-miracle.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Eucharistic Miracles</div>
         <div class="card-sq-meta">Lanciano, Buenos Aires &amp; more</div>
       </div>
-      <div class="card-sq" onclick="openDetail('miracle-shroud')">
+      <div class="card-sq card-read" onclick="openDetail('miracle-shroud')">
         <div class="card-sq-cover">
           <img src="img/shroud.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Shroud of Turin</div>
         <div class="card-sq-meta">Image science</div>
       </div>
-      <div class="card-sq" onclick="openDetail('miracle-fatima')">
+      <div class="card-sq card-read" onclick="openDetail('miracle-fatima')">
         <div class="card-sq-cover">
           <img src="img/mary.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Miracle of the Sun</div>
         <div class="card-sq-meta">Fatima, 1917</div>
       </div>
-      <div class="card-sq" onclick="openDetail('miracle-incorrupt')">
+      <div class="card-sq card-read" onclick="openDetail('miracle-incorrupt')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-saints">
             <svg viewBox="0 0 24 24"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Incorrupt Saints</div>
         <div class="card-sq-meta">Bodies that don't decay</div>
       </div>
-      <div class="card-sq" onclick="openDetail('miracle-lourdes')">
+      <div class="card-sq card-read" onclick="openDetail('miracle-lourdes')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-mary">
             <svg viewBox="0 0 24 24"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-sq-title">Healings at Lourdes</div>
         <div class="card-sq-meta">Medically verified</div>
@@ -2804,23 +2856,29 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('guardian-angel')">
+      <div class="card-wide card-read" onclick="openDetail('guardian-angel')">
         <div class="card-wide-cover">
           <img src="img/guardian.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">Your Guardian Angel</div>
         <div class="card-wide-meta">Who they are, what they do</div>
       </div>
-      <div class="card-wide" onclick="openDetail('archangels')">
+      <div class="card-wide card-read" onclick="openDetail('archangels')">
         <div class="card-wide-cover">
           <img src="img/archangel.jpg" alt="">
+        
+          <span class="type-pill type-pill-read">Read</span>
         </div>
         <div class="card-wide-title">The Archangels</div>
         <div class="card-wide-meta">Michael, Gabriel, Raphael</div>
       </div>
-      <div class="card-wide" onclick="openDetail('angel-prayer')">
+      <div class="card-wide card-audio" onclick="openDetail('angel-prayer')">
         <div class="card-wide-cover">
           <img src="img/angelofgod.jpg" alt="">
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-wide-title">Angel of God</div>
         <div class="card-wide-meta">Classic prayer · Audio</div>
@@ -2847,45 +2905,55 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-sq" onclick="openDetail('rosary-joyful')">
+      <div class="card-sq card-audio" onclick="openDetail('rosary-joyful')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-rosary">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="18" r="2"/><path d="M12 8v2M12 14v2"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Joyful Mysteries</div>
         <div class="card-sq-meta">Mon · Sat · ~18 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('rosary-sorrowful')">
+      <div class="card-sq card-audio" onclick="openDetail('rosary-sorrowful')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-rosary">
             <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Sorrowful Mysteries</div>
         <div class="card-sq-meta">Tue · Fri · ~18 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('rosary-glorious')">
+      <div class="card-sq card-audio" onclick="openDetail('rosary-glorious')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-rosary">
             <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Glorious Mysteries</div>
         <div class="card-sq-meta">Wed · Sun · ~18 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('rosary-luminous')">
+      <div class="card-sq card-audio" onclick="openDetail('rosary-luminous')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-rosary">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
           </div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Luminous Mysteries</div>
         <div class="card-sq-meta">Thu · ~18 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('hail-mary')">
+      <div class="card-sq card-audio" onclick="openDetail('hail-mary')">
         <div class="card-sq-cover">
           <img src="img/mary.jpg" alt="">
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">The Hail Mary</div>
         <div class="card-sq-meta">Origins &amp; meaning</div>
@@ -2904,133 +2972,133 @@ html.app-font-xl  { font-size: 20px; }
 
       <!-- Column 1 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-joseph')">
+        <div class="card-row card-read" onclick="openDetail('saint-joseph')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Joseph</div><div class="card-row-meta">Foster Father of Jesus · Mar 19</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Joseph</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span><span class="type-badge type-badge-read">Read</span>Foster Father of Jesus · Mar 19</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-therese-full')">
+        <div class="card-row card-read" onclick="openDetail('saint-therese-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Thérèse of Lisieux</div><div class="card-row-meta">The Little Flower · Oct 1</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Thérèse of Lisieux</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>The Little Flower · Oct 1</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-padre-pio-full')">
+        <div class="card-row card-read" onclick="openDetail('saint-padre-pio-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Padre Pio</div><div class="card-row-meta">Stigmatist · Sep 23</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Padre Pio</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Stigmatist · Sep 23</div></div>
         </div>
       </div>
 
       <!-- Column 2 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-faustina')">
+        <div class="card-row card-read" onclick="openDetail('saint-faustina')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Faustina</div><div class="card-row-meta">Divine Mercy · Oct 5</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Faustina</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Divine Mercy · Oct 5</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-monica')">
+        <div class="card-row card-read" onclick="openDetail('saint-monica')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Monica</div><div class="card-row-meta">Mother of St. Augustine · Aug 27</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Monica</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Mother of St. Augustine · Aug 27</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-magdalene')">
+        <div class="card-row card-read" onclick="openDetail('saint-magdalene')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Mary Magdalene</div><div class="card-row-meta">Apostle to the Apostles · Jul 22</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Mary Magdalene</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Apostle to the Apostles · Jul 22</div></div>
         </div>
       </div>
 
       <!-- Column 3 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-francis-full')">
+        <div class="card-row card-read" onclick="openDetail('saint-francis-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Francis of Assisi</div><div class="card-row-meta">Patron of Creation · Oct 4</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Francis of Assisi</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Patron of Creation · Oct 4</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-augustine')">
+        <div class="card-row card-read" onclick="openDetail('saint-augustine')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Augustine</div><div class="card-row-meta">Doctor of the Church · Aug 28</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Augustine</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Doctor of the Church · Aug 28</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-aquinas-full')">
+        <div class="card-row card-read" onclick="openDetail('saint-aquinas-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Thomas Aquinas</div><div class="card-row-meta">The Angelic Doctor · Jan 28</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Thomas Aquinas</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>The Angelic Doctor · Jan 28</div></div>
         </div>
       </div>
 
       <!-- Column 4 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-anthony-padua')">
+        <div class="card-row card-read" onclick="openDetail('saint-anthony-padua')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Anthony of Padua</div><div class="card-row-meta">Lost things · Jun 13</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Anthony of Padua</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Lost things · Jun 13</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-mother-teresa-full')">
+        <div class="card-row card-read" onclick="openDetail('saint-mother-teresa-full')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Teresa of Calcutta</div><div class="card-row-meta">Mother Teresa · Sep 5</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Teresa of Calcutta</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Mother Teresa · Sep 5</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-bernadette')">
+        <div class="card-row card-read" onclick="openDetail('saint-bernadette')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Bernadette</div><div class="card-row-meta">Visionary of Lourdes · Apr 16</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Bernadette</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Visionary of Lourdes · Apr 16</div></div>
         </div>
       </div>
 
       <!-- Column 5 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-joan')">
+        <div class="card-row card-read" onclick="openDetail('saint-joan')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Joan of Arc</div><div class="card-row-meta">Patroness of France · May 30</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Joan of Arc</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Patroness of France · May 30</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-jpii')">
+        <div class="card-row card-read" onclick="openDetail('saint-jpii')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. John Paul II</div><div class="card-row-meta">Pope · Oct 22</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. John Paul II</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Pope · Oct 22</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-michael')">
+        <div class="card-row card-read" onclick="openDetail('saint-michael')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Michael the Archangel</div><div class="card-row-meta">Defender · Sep 29</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Michael the Archangel</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Defender · Sep 29</div></div>
         </div>
       </div>
 
       <!-- Column 6 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-peter')">
+        <div class="card-row card-read" onclick="openDetail('saint-peter')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Peter the Apostle</div><div class="card-row-meta">First Pope · Jun 29</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Peter the Apostle</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>First Pope · Jun 29</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-paul')">
+        <div class="card-row card-read" onclick="openDetail('saint-paul')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Paul the Apostle</div><div class="card-row-meta">Apostle to the Gentiles · Jun 29</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Paul the Apostle</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Apostle to the Gentiles · Jun 29</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-kolbe')">
+        <div class="card-row card-read" onclick="openDetail('saint-kolbe')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Maximilian Kolbe</div><div class="card-row-meta">Martyr of Charity · Aug 14</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Maximilian Kolbe</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Martyr of Charity · Aug 14</div></div>
         </div>
       </div>
 
       <!-- Column 7 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-rita')">
+        <div class="card-row card-read" onclick="openDetail('saint-rita')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Rita of Cascia</div><div class="card-row-meta">Impossible causes · May 22</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Rita of Cascia</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Impossible causes · May 22</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-gianna')">
+        <div class="card-row card-read" onclick="openDetail('saint-gianna')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Gianna Molla</div><div class="card-row-meta">Mother & Martyr · Apr 28</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Gianna Molla</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Mother & Martyr · Apr 28</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-ignatius')">
+        <div class="card-row card-read" onclick="openDetail('saint-ignatius')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Ignatius of Loyola</div><div class="card-row-meta">Founder of the Jesuits · Jul 31</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Ignatius of Loyola</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Founder of the Jesuits · Jul 31</div></div>
         </div>
       </div>
 
       <!-- Column 8 -->
       <div class="v-col">
-        <div class="card-row" onclick="openDetail('saint-teresa-avila')">
+        <div class="card-row card-read" onclick="openDetail('saint-teresa-avila')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Teresa of Ávila</div><div class="card-row-meta">Doctor of the Church · Oct 15</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Teresa of Ávila</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Doctor of the Church · Oct 15</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saint-catherine-siena')">
+        <div class="card-row card-read" onclick="openDetail('saint-catherine-siena')">
           <div class="card-row-thumb"><img src="img/waves.jpg" alt=""></div>
-          <div class="card-row-info"><div class="card-row-title">St. Catherine of Siena</div><div class="card-row-meta">Doctor of the Church · Apr 29</div></div>
+          <div class="card-row-info"><div class="card-row-title">St. Catherine of Siena</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>Doctor of the Church · Apr 29</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saints-library')">
+        <div class="card-row card-read" onclick="openDetail('saints-library')">
           <div class="card-row-thumb"><div class="gradient-cover gc-gold-soft" style="background:linear-gradient(135deg,#B8893A 0%,#E8C68B 100%);"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div></div>
           <div class="card-row-info"><div class="card-row-title">Full Saints Library</div><div class="card-row-meta">All saints · A–Z reference</div></div>
         </div>
-        <div class="card-row" onclick="openDetail('saints-canonization')">
+        <div class="card-row card-read" onclick="openDetail('saints-canonization')">
           <div class="card-row-thumb"><div class="gradient-cover gc-saints" style="background:linear-gradient(135deg,#6B4E2C 0%,#B8893A 100%);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div></div>
-          <div class="card-row-info"><div class="card-row-title">How Saints Are Made</div><div class="card-row-meta">The path to canonization · 4 stages</div></div>
+          <div class="card-row-info"><div class="card-row-title">How Saints Are Made</div><div class="card-row-meta"><span class="type-badge type-badge-read">Read</span>The path to canonization · 4 stages</div></div>
         </div>
       </div>
 
@@ -3045,30 +3113,38 @@ html.app-font-xl  { font-size: 20px; }
       <button class="section-link" onclick="goPage('pray')">See all</button>
     </div>
     <div class="h-row">
-      <div class="card-sq" onclick="openDetail('audio-morning')">
+      <div class="card-sq card-audio" onclick="openDetail('audio-morning')">
         <div class="card-sq-cover">
           <img src="img/jesusapostles.jpg" alt="">
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Morning Offering</div>
         <div class="card-sq-meta">Audio · ~2 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('audio-angelus')">
+      <div class="card-sq card-audio" onclick="openDetail('audio-angelus')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 8c-.3 2-1.5 3-3 3H10c-1.5 0-2.7-1-3-3L6 8z"/><path d="M9 4l3-2 3 2"/></svg></div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">The Angelus</div>
         <div class="card-sq-meta">Audio · ~3 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('audio-divine-mercy')">
+      <div class="card-sq card-audio" onclick="openDetail('audio-divine-mercy')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6M12 16h.01"/></svg></div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Divine Mercy Chaplet</div>
         <div class="card-sq-meta">Audio · ~12 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('audio-examen')">
+      <div class="card-sq card-audio" onclick="openDetail('audio-examen')">
         <div class="card-sq-cover">
           <div class="gradient-cover gc-night"><svg viewBox="0 0 24 24"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div>
+        
+          <span class="type-pill type-pill-audio">Audio</span>
         </div>
         <div class="card-sq-title">Evening Examen</div>
         <div class="card-sq-meta">Audio · ~8 min</div>
@@ -3083,18 +3159,24 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-sq" onclick="openDetail('compline')">
-        <div class="card-sq-cover"><img src="img/night.jpg" alt=""></div>
+      <div class="card-sq card-audio" onclick="openDetail('compline')">
+        <div class="card-sq-cover"><img src="img/night.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-sq-title">Night Prayer</div>
         <div class="card-sq-meta">Compline · ~12 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('sleep-rosary')">
-        <div class="card-sq-cover"><img src="img/sleep.jpg" alt=""></div>
+      <div class="card-sq card-audio" onclick="openDetail('sleep-rosary')">
+        <div class="card-sq-cover"><img src="img/sleep.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-sq-title">Sleep Rosary</div>
         <div class="card-sq-meta">Gentle · ~25 min</div>
       </div>
-      <div class="card-sq" onclick="openDetail('psalm-91')">
-        <div class="card-sq-cover"><img src="img/woods.jpg" alt=""></div>
+      <div class="card-sq card-audio" onclick="openDetail('psalm-91')">
+        <div class="card-sq-cover"><img src="img/woods.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-sq-title">Psalm 91</div>
         <div class="card-sq-meta">"He who dwells…" · ~4 min</div>
       </div>
@@ -3108,23 +3190,31 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('stations-of-cross')">
-        <div class="card-wide-cover"><img src="img/stations.jpg" alt=""></div>
+      <div class="card-wide card-audio" onclick="openDetail('stations-of-cross')">
+        <div class="card-wide-cover"><img src="img/stations.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-wide-title">Stations of the Cross</div>
         <div class="card-wide-meta">14 stations · Fridays &amp; Lent</div>
       </div>
-      <div class="card-wide" onclick="openDetail('mary-full')">
-        <div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div>
+      <div class="card-wide card-audio" onclick="openDetail('mary-full')">
+        <div class="card-wide-cover"><img src="img/mary.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-wide-title">Mary &amp; Her Appearances</div>
         <div class="card-wide-meta">15 visits across 2,000 years</div>
       </div>
-      <div class="card-wide" onclick="openDetail('healing-love')">
-        <div class="card-wide-cover"><img src="img/healing.jpg" alt=""></div>
+      <div class="card-wide card-audio" onclick="openDetail('healing-love')">
+        <div class="card-wide-cover"><img src="img/healing.jpg" alt="">
+          <span class="type-pill type-pill-audio">Audio</span>
+        </div>
         <div class="card-wide-title">Healing &amp; Love</div>
         <div class="card-wide-meta">What the Church teaches</div>
       </div>
-      <div class="card-wide" onclick="openDetail('daily-rhythm')">
-        <div class="card-wide-cover"><img src="img/daily.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('daily-rhythm')">
+        <div class="card-wide-cover"><img src="img/daily.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">A Daily Rhythm</div>
         <div class="card-wide-meta">A complete prayer day</div>
       </div>
@@ -3138,13 +3228,17 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('pope')">
-        <div class="card-wide-cover"><img src="img/pope.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('pope')">
+        <div class="card-wide-cover"><img src="img/pope.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">The Pope</div>
         <div class="card-wide-meta">266 in unbroken line</div>
       </div>
-      <div class="card-wide" onclick="openDetail('sacraments')">
-        <div class="card-wide-cover"><img src="img/sacraments.jpg" alt=""></div>
+      <div class="card-wide card-read" onclick="openDetail('sacraments')">
+        <div class="card-wide-cover"><img src="img/sacraments.jpg" alt="">
+          <span class="type-pill type-pill-read">Read</span>
+        </div>
         <div class="card-wide-title">The Seven Sacraments</div>
         <div class="card-wide-meta">Channels of divine life</div>
       </div>
@@ -3168,7 +3262,7 @@ html.app-font-xl  { font-size: 20px; }
       </div>
     </div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('prophets')">
+      <div class="card-wide card-read" onclick="openDetail('prophets')">
         <div class="card-wide-cover"><img src="img/prophets.jpg" alt=""></div>
         <div class="card-wide-title">The Prophets</div>
         <div class="card-wide-meta">Voices across the ages</div>
@@ -3178,12 +3272,12 @@ html.app-font-xl  { font-size: 20px; }
         <div class="card-wide-title">Book of Revelation</div>
         <div class="card-wide-meta">Christ&rsquo;s victory revealed</div>
       </div>
-      <div class="card-wide" onclick="openDetail('apologetics')">
+      <div class="card-wide card-read" onclick="openDetail('apologetics')">
         <div class="card-wide-cover"><img src="img/whyjesus.jpg" alt=""></div>
         <div class="card-wide-title">Why Jesus?</div>
         <div class="card-wide-meta">The case for Christ</div>
       </div>
-      <div class="card-wide" onclick="openDetail('dictionary')">
+      <div class="card-wide card-read" onclick="openDetail('dictionary')">
         <div class="card-wide-cover"><img src="img/dictionary.jpg" alt=""></div>
         <div class="card-wide-title">Catholic Dictionary</div>
         <div class="card-wide-meta">Every key term defined</div>
@@ -3482,12 +3576,12 @@ html.app-font-xl  { font-size: 20px; }
 
     <div class="section-head"><div><div class="section-title">Marian Apparitions</div><div class="section-sub">When Heaven visited Earth</div></div></div>
     <div class="h-row">
-      <div class="card-wide" onclick="openDetail('miracle-fatima')">
+      <div class="card-wide card-read" onclick="openDetail('miracle-fatima')">
         <div class="card-wide-cover"><img src="img/mary.jpg" alt=""></div>
         <div class="card-wide-title">Fatima, Portugal</div>
         <div class="card-wide-meta">1917 · Miracle of the Sun · 70,000 witnesses</div>
       </div>
-      <div class="card-wide" onclick="openDetail('miracle-lourdes')">
+      <div class="card-wide card-read" onclick="openDetail('miracle-lourdes')">
         <div class="card-wide-cover"><div class="gradient-cover gc-mary"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg></div></div>
         <div class="card-wide-title">Lourdes, France</div>
         <div class="card-wide-meta">1858 · 70+ medical healings</div>
