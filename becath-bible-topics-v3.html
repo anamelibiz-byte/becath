@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCath — Scripture Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ─── BRAND VARS (from BeCath Brand Bible) ─── */
+:root {
+  --bg:          #FAFAF8;
+  --bg-soft:     #F2F0EB;
+  --bg-elev:     #FFFFFF;
+  --ink:         #1A1410;
+  --ink-mid:     #4A3C28;
+  --ink-muted:   #9A8E78;
+  --gold:        #A07820;
+  --gold-bright: #C49A28;
+  --gold-light:  rgba(160,120,32,0.10);
+  --gold-border: rgba(160,120,32,0.22);
+  --border:      rgba(0,0,0,0.07);
+  --shadow-sm:   0 1px 2px rgba(26,20,16,0.05);
+  --shadow-md:   0 4px 14px rgba(26,20,16,0.07);
+  /* Stained Glass Palette */
+  --sg-red:    #C84040;
+  --sg-amber:  #D08010;
+  --sg-gold:   #C8960A;
+  --sg-green:  #2A8A3A;
+  --sg-teal:   #1A8080;
+  --sg-blue:   #3060C0;
+  --sg-violet: #7040B8;
+  --ff-display: 'Cinzel', Georgia, serif;
+  --ff-serif:   'Cormorant Garamond', Georgia, serif;
+  --ff:         'Lato', -apple-system, sans-serif;
+  --radius:     18px;
+  --radius-sm:  12px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── STAINED GLASS STRIPE (Brand Signature) ── */
+.sg-stripe {
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--sg-red) 0%, var(--sg-red) 14.28%,
+    var(--sg-amber) 14.28%, var(--sg-amber) 28.57%,
+    var(--sg-gold) 28.57%, var(--sg-gold) 42.86%,
+    var(--sg-green) 42.86%, var(--sg-green) 57.14%,
+    var(--sg-teal) 57.14%, var(--sg-teal) 71.43%,
+    var(--sg-blue) 71.43%, var(--sg-blue) 85.71%,
+    var(--sg-violet) 85.71%, var(--sg-violet) 100%
+  );
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--ink);
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header .sg-stripe { position: absolute; top: 0; left: 0; right: 0; }
+
+/* Subtle cathedral window glow */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 110%, rgba(160,120,32,0.14), transparent),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(200,64,64,0.06), transparent),
+    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(48,96,192,0.07), transparent);
+}
+
+.header-inner {
+  position: relative;
+  padding: 52px 24px 44px;
+}
+
+.eyebrow {
+  font-family: var(--ff-display);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 18px;
+}
+
+header h1 {
+  font-family: var(--ff-serif);
+  font-size: clamp(30px, 7vw, 52px);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.15;
+}
+header h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+header p {
+  margin-top: 14px;
+  font-family: var(--ff);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-muted);
+  letter-spacing: 0.3px;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-top: 28px;
+}
+.stat { text-align: center; }
+.stat-num {
+  display: block;
+  font-family: var(--ff-serif);
+  font-size: 30px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--ff-display);
+  font-size: 8px;
+  color: var(--ink-muted);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── SEARCH ── */
+.search-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+}
+.search-box {
+  position: relative;
+  margin-bottom: 14px;
+}
+.search-box input {
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  font-family: var(--ff);
+  font-size: 15px;
+  background: var(--bg-elev);
+  border: 1.5px solid rgba(0,0,0,0.10);
+  border-radius: var(--radius);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.search-box input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-light);
+}
+.search-box input::placeholder { color: var(--ink-muted); }
+.search-icon {
+  position: absolute;
+  right: 18px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+  font-size: 18px;
+  pointer-events: none;
+}
+.search-hint {
+  font-family: var(--ff);
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-bottom: 18px;
+}
+.search-hint span {
+  color: var(--gold);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ── FILTER PILLS ── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pill {
+  padding: 6px 15px;
+  border-radius: 999px;
+  font-family: var(--ff-display);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  border: 1.5px solid rgba(0,0,0,0.10);
+  background: var(--bg-elev);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--gold); color: var(--gold); }
+.pill.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(160,120,32,0.25);
+}
+
+/* ── RESULTS ── */
+.results-info {
+  max-width: 720px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  font-family: var(--ff);
+  font-size: 11px;
+  color: var(--ink-muted);
+  min-height: 18px;
+  letter-spacing: 0.04em;
+}
+
+/* ── MAIN GRID ── */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  display: none;
+}
+.no-results.show { display: block; }
+.no-results p {
+  font-family: var(--ff-serif);
+  font-size: 22px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.no-results small {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--ff);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* ── TOPIC CARD ── */
+.topic-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.topic-card:hover { box-shadow: var(--shadow-md); }
+.topic-card.hidden { display: none; }
+
+/* left accent bar uses stained-glass color per category */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.card-accent {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.card-meta { flex: 1; min-width: 0; }
+.card-meta h3 {
+  font-family: var(--ff-serif);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.card-meta p {
+  font-family: var(--ff);
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300;
+}
+
+.card-category {
+  font-family: var(--ff-display);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+
+.chevron {
+  color: var(--ink-muted);
+  font-size: 13px;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.topic-card.open .chevron { transform: rotate(180deg); }
+
+/* ── VERSE PANEL ── */
+.verse-panel {
+  display: none;
+  padding: 0 20px 20px;
+  animation: slideDown 0.22s ease;
+}
+.topic-card.open .verse-panel { display: block; }
+
+/* Thin SG stripe divider above verses */
+.verse-divider {
+  height: 3px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg,
+    var(--sg-red), var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal), var(--sg-blue), var(--sg-violet)
+  );
+  opacity: 0.5;
+  width: 64px;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.verse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+/* Catholic-specific note banner */
+.catholic-note {
+  background: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-family: var(--ff);
+  font-size: 11px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+.catholic-note strong {
+  font-family: var(--ff-display);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.verse-item {
+  background: #FBF8F1;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.verse-ref {
+  font-family: var(--ff-display);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 7px;
+  display: block;
+}
+.verse-text {
+  font-family: var(--ff-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.65;
+}
+.verse-note {
+  font-family: var(--ff);
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 7px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* highlight */
+mark {
+  background: rgba(160,120,32,0.18);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  border-top: 1px solid var(--border);
+}
+.footer-logo {
+  font-family: var(--ff-display);
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(135deg,
+    var(--sg-red) 0%, var(--sg-red) 18%,
+    var(--sg-gold) 18%, var(--sg-gold) 40%,
+    var(--sg-blue) 40%, var(--sg-blue) 65%,
+    var(--sg-green) 65%, var(--sg-green) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+footer p {
+  font-family: var(--ff);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .card-category { display: none; }
+  .stats-row { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="sg-stripe"></div>
+
+<header>
+  <div class="sg-stripe"></div>
+  <div class="header-inner">
+    <span class="eyebrow">BeCath · Scripture Library</span>
+    <h1>What Does the Bible Say<br>About <em>Your Life?</em></h1>
+    <p>Search by topic, keyword, or verse — all through a Catholic lens</p>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-num">31</span><span class="stat-label">Topics</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Categories</span></div>
+      <div class="stat"><span class="stat-num">155+</span><span class="stat-label">Verses</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search topics, keywords, or verse references…" autocomplete="off">
+    <span class="search-icon">⌕</span>
+  </div>
+  <p class="search-hint">Try <span onclick="quickSearch('fear')">fear</span>, <span onclick="quickSearch('money')">money</span>, <span onclick="quickSearch('Psalm')">Psalm</span>, or <span onclick="quickSearch('identity')">identity</span></p>
+  <div class="filters">
+    <div class="pill active" onclick="filterCat('all', this)">All Topics</div>
+    <div class="pill" onclick="filterCat('money', this)">Money & Provision</div>
+    <div class="pill" onclick="filterCat('purpose', this)">Purpose & Calling</div>
+    <div class="pill" onclick="filterCat('healing', this)">Healing & Peace</div>
+    <div class="pill" onclick="filterCat('identity', this)">Identity & Worth</div>
+    <div class="pill" onclick="filterCat('relationships', this)">Relationships</div>
+    <div class="pill" onclick="filterCat('faith', this)">Faith & Breakthrough</div>
+  </div>
+</div>
+
+<div class="results-info" id="resultsInfo"></div>
+
+<main id="topicGrid">
+  <div class="no-results" id="noResults">
+    <p>"Seek and you shall find…"</p>
+    <small>No topics matched your search. Try different keywords.</small>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">BeCath</div>
+  <p>Scripture Library · The Catholic faith, made simple.</p>
+</footer>
+
+<script>
+// ── Category config (stained glass colors mapped to categories) ──
+const CATS = {
+  money:         { label:'Money & Provision',  color:'var(--sg-amber)',  bg:'rgba(208,128,16,0.07)',  border:'rgba(208,128,16,0.20)' },
+  purpose:       { label:'Purpose & Calling',  color:'var(--sg-blue)',   bg:'rgba(48,96,192,0.06)',   border:'rgba(48,96,192,0.18)'  },
+  healing:       { label:'Healing & Peace',    color:'var(--sg-green)',  bg:'rgba(42,138,58,0.07)',   border:'rgba(42,138,58,0.20)'  },
+  identity:      { label:'Identity & Worth',   color:'var(--sg-violet)', bg:'rgba(112,64,184,0.07)',  border:'rgba(112,64,184,0.18)' },
+  relationships: { label:'Relationships',      color:'var(--sg-red)',    bg:'rgba(200,64,64,0.06)',   border:'rgba(200,64,64,0.18)'  },
+  faith:         { label:'Faith & Breakthrough',color:'var(--sg-teal)',  bg:'rgba(26,128,128,0.07)',  border:'rgba(26,128,128,0.18)' },
+};
+
+const TOPICS = [
+  // ── MONEY & PROVISION ──
+  {
+    id:'prosperity', cat:'money',
+    title:'Prosperity',
+    summary:'God desires you to flourish — in every dimension of your life.',
+    cathNote:'The Church teaches prosperity as ordered to the common good. True flourishing (beatitudo) includes the spiritual, the communal, and the material — never one at the expense of others.',
+    verses:[
+      { ref:'3 John 1:2', text:'Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.', note:'The Greek word euodoo means to have a good journey — God wants your whole life to go well, not just your bank account.' },
+      { ref:'Jeremiah 29:11', text:'For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.', note:'Written to people in exile — God\'s prosperity promise doesn\'t require perfect circumstances.' },
+      { ref:'Deuteronomy 8:18', text:'Remember the Lord your God, for it is he who gives you the ability to produce wealth.', note:'Wealth-building capacity is a gift — not something earned apart from God. Gratitude keeps it ordered.' },
+      { ref:'Psalm 35:27', text:'Let the Lord be magnified, who has pleasure in the prosperity of His servant.', note:'God takes delight when His people flourish. This is not a guilty blessing — it is His design.' },
+      { ref:'Joshua 1:8', text:'Then you will be prosperous and successful.', note:'Attached to meditating on God\'s word day and night. Prosperity is connected to how and what you think.' },
+      { ref:'Proverbs 10:22', text:'The blessing of the Lord makes rich, and he adds no sorrow with it.', note:'True prosperity from God doesn\'t come with burnout, compromise, or shame.' },
+    ]
+  },
+  {
+    id:'provision', cat:'money',
+    title:'Provision',
+    summary:'God as your source — He meets every need.',
+    cathNote:'Catholic tradition holds that God\'s providence (providentia) extends to every creature. Trust in Providence is not passivity — it is the posture that lets you act without anxiety.',
+    verses:[
+      { ref:'Philippians 4:19', text:'And my God will meet all your needs according to the riches of his glory in Christ Jesus.', note:'Not some needs — all needs. The standard is His riches, not your circumstances.' },
+      { ref:'Matthew 6:26', text:'Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?', note:'Jesus uses nature as proof of God\'s provision instinct. You are worth more than sparrows.' },
+      { ref:'Psalm 23:1', text:'The Lord is my shepherd; I shall not want.', note:'"Shall not want" means nothing is missing — a statement of total sufficiency, not blind optimism.' },
+      { ref:'Luke 12:7', text:'Indeed, the very hairs of your head are all numbered. Don\'t be afraid; you are worth more than many sparrows.', note:'God\'s attention to the smallest detail of your life is the basis for trusting His provision.' },
+      { ref:'2 Corinthians 9:8', text:'And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.', note:'Provision isn\'t just for survival — it\'s so you can bless others. It flows through you.' },
+      { ref:'Isaiah 58:11', text:'The Lord will guide you always; he will satisfy your needs in a sun-scorched land.', note:'Even in dry, hard seasons — God\'s provision still reaches you.' },
+    ]
+  },
+  {
+    id:'stewardship', cat:'money',
+    title:'Stewardship',
+    summary:'Managing what God has entrusted to you — wisely.',
+    cathNote:'Catholic Social Teaching affirms the universal destination of goods: everything you have is ultimately entrusted to you, not permanently owned by you. Stewardship is accountability to God and neighbor.',
+    verses:[
+      { ref:'Luke 16:10', text:'Whoever can be trusted with very little can also be trusted with much.', note:'Faithfulness in small things is the prerequisite for bigger responsibility and bigger blessing.' },
+      { ref:'Matthew 25:21', text:'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things.', note:'The parable of the talents — God rewards those who multiply what they\'re given, not those who hide it.' },
+      { ref:'Proverbs 21:5', text:'The plans of the diligent lead to profit as surely as haste leads to poverty.', note:'Stewardship is intentional. Planning and diligence are spiritual practices, not just financial ones.' },
+      { ref:'1 Corinthians 4:2', text:'Now it is required that those who have been given a trust must prove faithful.', note:'Faithfulness — not just success — is the measure of good stewardship.' },
+      { ref:'Proverbs 27:23', text:'Be sure you know the condition of your flocks, give careful attention to your herds.', note:'Know your numbers. Pay attention to what you have. Biblical wisdom is never financially naive.' },
+      { ref:'Luke 14:28', text:'Suppose one of you wants to build a tower. Won\'t you first sit down and estimate the cost?', note:'Jesus taught planning ahead as basic wisdom. Budgeting is biblical.' },
+    ]
+  },
+  {
+    id:'generosity', cat:'money',
+    title:'Generosity & Giving',
+    summary:'You cannot out-give God.',
+    cathNote:'The tithe has roots in Catholic practice too — but the Church invites more: generosity as a virtue that shapes the soul, not just a percentage. St. John Chrysostom: "Not to share your goods with the poor is to steal from them."',
+    verses:[
+      { ref:'Luke 6:38', text:'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.', note:'Generosity activates a return. This is the overflow principle — it works in Kingdom economy.' },
+      { ref:'2 Corinthians 9:7', text:'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.', note:'The posture of the giver matters as much as the gift itself.' },
+      { ref:'Malachi 3:10', text:'Bring the whole tithe into the storehouse... Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven.', note:'The only place in Scripture where God invites you to test Him.' },
+      { ref:'Proverbs 11:24', text:'One person gives freely, yet gains even more; another withholds unduly, but comes to poverty.', note:'Generosity is counter-intuitive math — Kingdom economy operates differently than scarcity logic.' },
+      { ref:'Proverbs 19:17', text:'Whoever is kind to the poor lends to the Lord, and he will reward them for what they have done.', note:'Generosity toward the vulnerable is treated as a loan to God Himself.' },
+      { ref:'Galatians 6:7', text:'A man reaps what he sows.', note:'The harvest law applies to money, relationships, effort, and faith — universal and exact.' },
+    ]
+  },
+  {
+    id:'favor', cat:'money',
+    title:'Favor',
+    summary:'Divine positioning — doors open, blessings find you.',
+    cathNote:'Grace (gratia in Latin) literally means favor. Every moment of providential alignment in your life is an expression of God\'s ongoing favor extended through His grace.',
+    verses:[
+      { ref:'Psalm 5:12', text:'Surely, Lord, you bless the righteous; you surround them with your favor as with a shield.', note:'Favor is a shield — protection and positioning wrapped in one.' },
+      { ref:'Proverbs 3:4', text:'Then you will win favor and a good name in the sight of God and man.', note:'Favor with God and with people. Both matter for influence and opportunity.' },
+      { ref:'Luke 2:52', text:'And Jesus grew in wisdom and stature, and in favor with God and man.', note:'Even Jesus grew in favor. It is something you cultivate, not just receive once.' },
+      { ref:'Genesis 39:21', text:'But the Lord was with Joseph and showed him steadfast love and gave him favor in the sight of the keeper of the prison.', note:'Joseph had favor even in prison. Circumstances cannot contain what God has released.' },
+      { ref:'Psalm 90:17', text:'May the favor of the Lord our God rest on us; establish the work of our hands for us.', note:'Asking for favor is biblical. Make it a daily prayer — it is not presumption, it is trust.' },
+    ]
+  },
+  {
+    id:'debt', cat:'money',
+    title:'Debt & Financial Freedom',
+    summary:'Breaking cycles of lack.',
+    cathNote:'The Church has always had a complex relationship with debt — canon law once prohibited usury. The principle is clear: financial freedom enables freedom of conscience and generosity.',
+    verses:[
+      { ref:'Proverbs 22:7', text:'The rich rule over the poor, and the borrower is slave to the lender.', note:'Debt is described as slavery. Financial freedom is a form of spiritual freedom.' },
+      { ref:'Romans 13:8', text:'Let no debt remain outstanding, except the continuing debt to love one another.', note:'The only debt God endorses is love.' },
+      { ref:'Deuteronomy 15:6', text:'You will lend to many nations but will borrow from none.', note:'The promise for God\'s people is abundance, not lack — to be lenders, not borrowers.' },
+      { ref:'Psalm 37:21', text:'The wicked borrow and do not repay, but the righteous give generously.', note:'Integrity in financial dealings is part of righteous living.' },
+    ]
+  },
+
+  // ── PURPOSE & CALLING ──
+  {
+    id:'purpose', cat:'purpose',
+    title:'Purpose & Calling',
+    summary:'You were created on purpose, for a purpose — before you were born.',
+    cathNote:'Vocatio (vocation) is a central Catholic concept. Every person has a primary calling to holiness, and a particular calling — marriage, religious life, priesthood, single life — through which that holiness is lived out.',
+    verses:[
+      { ref:'Jeremiah 1:5', text:'Before I formed you in the womb I knew you, before you were born I set you apart.', note:'Purpose was established before your birth. You didn\'t earn it — you were designed for it.' },
+      { ref:'Ephesians 2:10', text:'For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.', note:'Good works — your calling — were prepared before you showed up. You\'re stepping into something pre-made.' },
+      { ref:'Romans 8:28', text:'And we know that in all things God works for the good of those who love him, who have been called according to his purpose.', note:'All things — even the hard things — are working toward your calling.' },
+      { ref:'Proverbs 16:9', text:'In their hearts humans plan their course, but the Lord establishes their steps.', note:'You plan, God directs. Both play a role in fulfilling purpose.' },
+      { ref:'Isaiah 46:10', text:'I make known the end from the beginning. I say, "My purpose will stand."', note:'God\'s purpose for you cannot be cancelled — even when life throws you off track.' },
+    ]
+  },
+  {
+    id:'vision', cat:'purpose',
+    title:'Vision & Hope',
+    summary:'Without vision, people drift. See your future clearly.',
+    cathNote:'Theological hope (spes) is one of the three theological virtues. It is not optimism — it is the confident expectation of eternal life and the graces necessary to reach it. That posture changes everything in the present.',
+    verses:[
+      { ref:'Proverbs 29:18', text:'Where there is no vision, the people perish.', note:'Vision is not optional — it\'s a survival need for your soul and your life.' },
+      { ref:'Habakkuk 2:2', text:'Write down the revelation and make it plain on tablets so that a herald may run with it.', note:'God told His people to write the vision down. Journaling and planning are biblical.' },
+      { ref:'Hebrews 11:1', text:'Now faith is confidence in what we hope for and assurance about what we do not see.', note:'Vision and faith are linked — faith gives substance to what you can only see spiritually.' },
+      { ref:'Isaiah 43:19', text:'See, I am doing a new thing! Now it springs up; do you not perceive it?', note:'God asks if you can perceive what He\'s doing. Vision is the ability to see it.' },
+      { ref:'Lamentations 3:25', text:'The Lord is good to those whose hope is in him, to the one who seeks him.', note:'Hope directed toward God — not just outcomes — is the anchor.' },
+    ]
+  },
+  {
+    id:'wisdom', cat:'purpose',
+    title:'Wisdom',
+    summary:'Discernment, clarity, and smart decisions.',
+    cathNote:'Sapientia (wisdom) is one of the Seven Gifts of the Holy Spirit. It is not acquired through study alone — it is infused by the Spirit and perfected through prayer, suffering, and humility.',
+    verses:[
+      { ref:'James 1:5', text:'If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault.', note:'Wisdom is available on demand. Ask without shame — God gives it freely.' },
+      { ref:'Proverbs 4:7', text:'The beginning of wisdom is this: Get wisdom, and whatever you get, get insight.', note:'The priority is clear — wisdom above everything else.' },
+      { ref:'Proverbs 9:10', text:'The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.', note:'True wisdom starts with reverence for God — not intelligence or experience.' },
+      { ref:'Colossians 4:5', text:'Be wise in the way you act toward outsiders; make the most of every opportunity.', note:'Wisdom applies to relationships, timing, and how you navigate influence.' },
+      { ref:'Proverbs 13:20', text:'Walk with the wise and become wise, for a companion of fools suffers harm.', note:'Your circle determines your wisdom level. Community is part of the wisdom equation.' },
+    ]
+  },
+  {
+    id:'gifts', cat:'purpose',
+    title:'Gifts & Talents',
+    summary:'God-given abilities — meant to be used boldly.',
+    cathNote:'The Church distinguishes charisms (gifts for the building up of the Body of Christ) from personal talents. Both come from God; both carry responsibility. "To whom much is given, much is required."',
+    verses:[
+      { ref:'Romans 12:6', text:'We have different gifts, according to the grace given to each of us.', note:'Your gifts are specific to you. Comparison robs you of what\'s distinctly yours.' },
+      { ref:'1 Peter 4:10', text:'Each of you should use whatever gift you have received to serve others, as faithful stewards of God\'s grace in its various forms.', note:'Gifts aren\'t just for you. They\'re how grace flows through you to others.' },
+      { ref:'1 Timothy 4:14', text:'Do not neglect your gift.', note:'A direct command. Your gift requires intentional attention and development.' },
+      { ref:'Proverbs 18:16', text:'A gift opens the way and ushers the giver into the presence of great people.', note:'Your gift is a door — it gets you into rooms your resume alone never could.' },
+      { ref:'Matthew 25:29', text:'For whoever has will be given more, and they will have an abundance.', note:'Using your gifts expands them. Hiding them leads to losing them.' },
+    ]
+  },
+  {
+    id:'work', cat:'purpose',
+    title:'Work & Excellence',
+    summary:'Working as if God is your boss.',
+    cathNote:'The theology of work in Catholic teaching is rich: Laborem Exercens (Pope St. John Paul II) argues work is not a curse but a participation in God\'s ongoing creation. Excellence at work is a form of worship.',
+    verses:[
+      { ref:'Colossians 3:23', text:'Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.', note:'Excellence isn\'t about impressing people — it\'s a form of worship.' },
+      { ref:'Proverbs 22:29', text:'Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank.', note:'Skill and excellence elevate you. Craft your work — it opens doors.' },
+      { ref:'Genesis 2:15', text:'The Lord God took the man and put him in the Garden of Eden to work it and take care of it.', note:'Work existed before the Fall. It\'s not a curse — it\'s a calling.' },
+      { ref:'Proverbs 14:23', text:'All hard work brings a profit, but mere talk leads only to poverty.', note:'Action over talk. Execution is the spiritual discipline.' },
+      { ref:'Ecclesiastes 9:10', text:'Whatever your hand finds to do, do it with all your might.', note:'Wholehearted effort applied to whatever is in front of you.' },
+    ]
+  },
+
+  // ── HEALING & PEACE ──
+  {
+    id:'healing', cat:'healing',
+    title:'Healing',
+    summary:'Physical, emotional, spiritual — He restores.',
+    cathNote:'The Anointing of the Sick (Extreme Unction) is a Sacrament precisely because healing is that important to God. The Church does not spiritualize away physical suffering — she meets it with oil, prayer, and the real presence of Christ.',
+    verses:[
+      { ref:'Isaiah 53:5', text:'But he was pierced for our transgressions... and by his wounds we are healed.', note:'Healing was purchased at the cross. It\'s not something you earn — it\'s already been paid for.' },
+      { ref:'Psalm 103:3', text:'Who forgives all your sins and heals all your diseases.', note:'Forgiveness and healing are paired in the same verse. They often work together.' },
+      { ref:'James 5:14–15', text:'Is anyone among you sick? Let them call the elders of the church to pray over them and anoint them with oil in the name of the Lord.', note:'The Sacrament of Anointing of the Sick is straight from Scripture — not a medieval invention.' },
+      { ref:'Jeremiah 17:14', text:'Heal me, Lord, and I will be healed; save me and I will be saved, for you are the one I praise.', note:'A simple and direct prayer — honest about need, confident about source.' },
+      { ref:'Psalm 30:2', text:'Lord my God, I called to you for help, and you healed me.', note:'Testimony of healing. What God did once, He can do again.' },
+      { ref:'Revelation 21:4', text:'He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.', note:'Complete healing is the final promise. Nothing broken will remain broken forever.' },
+    ]
+  },
+  {
+    id:'peace', cat:'healing',
+    title:'Peace (Shalom)',
+    summary:'Nothing missing, nothing broken — whole and complete.',
+    cathNote:'Pax — peace — is the greeting and closing of every Mass. The kiss of peace is not ceremonial sentiment; it is the transmission of Christ\'s actual peace, received in the Eucharist, extended to the community.',
+    verses:[
+      { ref:'John 14:27', text:'Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.', note:'God\'s peace is different from what the world offers — it\'s not circumstantial.' },
+      { ref:'Philippians 4:7', text:'And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.', note:'The peace doesn\'t have to make logical sense. It guards you anyway.' },
+      { ref:'Isaiah 26:3', text:'You will keep in perfect peace those whose minds are steadfast, because they trust in you.', note:'Perfect peace — shalom shalom in Hebrew, doubled for intensity. Available through focused trust.' },
+      { ref:'Numbers 6:24–26', text:'The Lord bless you and keep you; the Lord make his face shine on you... and give you peace.', note:'The Aaronic blessing. Jewish and Catholic liturgy both carry this ancient gift of Shalom.' },
+      { ref:'Romans 5:1', text:'Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ.', note:'Peace with God is the foundation that makes all inner peace possible.' },
+    ]
+  },
+  {
+    id:'anxiety', cat:'healing',
+    title:'Anxiety & Fear',
+    summary:'"Do not be afraid" — the most repeated command in all of Scripture.',
+    cathNote:'The Rosary is one of the most clinically-supported Catholic practices for anxiety reduction. Repetitive, meditative prayer calms the nervous system — which is not coincidental. God designed us this way.',
+    verses:[
+      { ref:'Isaiah 41:10', text:'So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you.', note:'The antidote to fear is presence — God with you, not just God for you.' },
+      { ref:'Philippians 4:6', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.', note:'Anxiety\'s replacement is prayer plus thanksgiving. The formula is practical and specific.' },
+      { ref:'2 Timothy 1:7', text:'For God has not given us a spirit of fear, but of power and love and a sound mind.', note:'Fear is not from God. Power, love, and a sound mind are your inheritance.' },
+      { ref:'Psalm 56:3', text:'When I am afraid, I put my trust in you.', note:'This verse assumes you\'ll feel afraid. The response is trust — not the absence of fear.' },
+      { ref:'1 Peter 5:7', text:'Cast all your anxiety on him because he cares for you.', note:'"All" — not some. God can handle the full weight of everything you\'re carrying.' },
+      { ref:'Matthew 6:34', text:'Therefore do not worry about tomorrow, for tomorrow will worry about itself.', note:'Jesus normalizes present difficulty while commanding present focus. One day at a time is biblical.' },
+    ]
+  },
+  {
+    id:'rest', cat:'healing',
+    title:'Rest',
+    summary:'Sabbath, renewal, and coming to God when you\'re weary.',
+    cathNote:'Sunday rest is not just a commandment — it is built into Catholic identity. The Mass is the center of the Lord\'s Day, and the Church asks Catholics to rest from servile work. Rest is an act of trust, not laziness.',
+    verses:[
+      { ref:'Matthew 11:28', text:'Come to me, all you who are weary and burdened, and I will give you rest.', note:'The invitation is to the exhausted — you don\'t have to earn your way to rest.' },
+      { ref:'Psalm 23:2', text:'He makes me lie down in green pastures, he leads me beside quiet waters.', note:'The Good Shepherd sometimes makes you rest — even when you think you can\'t stop.' },
+      { ref:'Exodus 20:10', text:'But the seventh day is a sabbath to the Lord your God. On it you shall not do any work.', note:'Rest is a commandment, not a suggestion. God built it into creation itself.' },
+      { ref:'Mark 6:31', text:'He said to them, "Come with me by yourselves to a quiet place and get some rest."', note:'Even Jesus pulled His disciples away from ministry to rest. Burnout isn\'t holiness.' },
+      { ref:'Psalm 127:2', text:'He grants sleep to those he loves.', note:'Striving and exhaustion aren\'t marks of favor. Rest is a gift to the beloved.' },
+    ]
+  },
+  {
+    id:'grief', cat:'healing',
+    title:'Grief & Loss',
+    summary:'God meets you in your pain.',
+    cathNote:'The Church offers the entire season of mourning — not just a funeral. All Souls\' Day, prayers for the dead, the Requiem Mass. Catholicism does not rush grief. It holds it and sanctifies it.',
+    verses:[
+      { ref:'Psalm 34:18', text:'The Lord is close to the brokenhearted and saves those who are crushed in spirit.', note:'God doesn\'t stand at a distance from your pain. He moves closer when you\'re crushed.' },
+      { ref:'Matthew 5:4', text:'Blessed are those who mourn, for they will be comforted.', note:'Mourning is honored in God\'s economy. It is not weakness — it opens you to comfort.' },
+      { ref:'John 11:35', text:'Jesus wept.', note:'The shortest verse in Scripture — and one of the most powerful. Jesus grieved. You are allowed to grieve.' },
+      { ref:'Isaiah 61:3', text:'To bestow on them a crown of beauty instead of ashes, the oil of joy instead of mourning.', note:'God\'s promise: mourning leads to something — beauty, joy, a garment of praise.' },
+      { ref:'Psalm 30:5', text:'Weeping may stay for the night, but rejoicing comes in the morning.', note:'Grief is real — and so is the morning. Both are simultaneously true.' },
+    ]
+  },
+
+  // ── IDENTITY & WORTH ──
+  {
+    id:'identity', cat:'identity',
+    title:'Identity in Christ',
+    summary:'Who you are — not what you\'ve done or what\'s been done to you.',
+    cathNote:'Baptism is the foundational identity event. At Baptism you were ontologically changed — made a child of God, incorporated into the Body of Christ, anointed priest, prophet, and king. That is not metaphor. That is reality.',
+    verses:[
+      { ref:'Galatians 2:20', text:'I have been crucified with Christ and I no longer live, but Christ lives in me.', note:'Your old self is not your identity. The one living in you now is greater than your history.' },
+      { ref:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!', note:'New creation — not improved version. This is a full identity reset.' },
+      { ref:'John 1:12', text:'Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God.', note:'Child of God is your primary identity. It supersedes every other label.' },
+      { ref:'1 Peter 2:9', text:'But you are a chosen people, a royal priesthood, a holy nation, God\'s special possession.', note:'Four identity statements in one verse: chosen, royal, holy, treasured. All yours.' },
+      { ref:'Ephesians 1:4', text:'For he chose us in him before the creation of the world to be holy and blameless in his sight.', note:'Chosen before time existed. Your identity predates your failures.' },
+    ]
+  },
+  {
+    id:'selfworth', cat:'identity',
+    title:'Self-Worth & Value',
+    summary:'Made in God\'s image. That doesn\'t change based on performance.',
+    cathNote:'Imago Dei — the image of God — is the irreducible basis of human dignity in Catholic teaching. No achievement adds to it. No sin erases it. Every human being carries this dignity from conception until natural death.',
+    verses:[
+      { ref:'Psalm 139:14', text:'I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.', note:'Fearfully and wonderfully — not accidentally, not barely. This is God\'s description of you.' },
+      { ref:'Genesis 1:27', text:'So God created mankind in his own image, in the image of God he created them.', note:'Image of God is the foundation of human worth. It doesn\'t increase or decrease based on achievement.' },
+      { ref:'Isaiah 43:4', text:'Since you are precious and honored in my sight, and because I love you.', note:'Precious and honored — God\'s description of you. Not because of what you\'ve done.' },
+      { ref:'Zephaniah 3:17', text:'The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you... and will rejoice over you with singing.', note:'God sings over you. That is not sentiment — it is a prophetic declaration.' },
+      { ref:'Luke 15:4', text:'Doesn\'t he leave the ninety-nine in the open country and go after the lost sheep?', note:'You are worth leaving everything for. That\'s how God measures your value.' },
+    ]
+  },
+  {
+    id:'belonging', cat:'identity',
+    title:'Belonging & Being Loved',
+    summary:'Nothing can separate you from the love of God.',
+    cathNote:'The Communion of Saints means you belong to a family that spans heaven and earth. You are never alone — not spiritually, not existentially. You are surrounded by a cloud of witnesses who love you and intercede for you.',
+    verses:[
+      { ref:'Romans 8:38–39', text:'For I am convinced that neither death nor life, neither angels nor demons... nor anything else in all creation, will be able to separate us from the love of God.', note:'An exhaustive list of what cannot separate you from love. Nothing qualifies.' },
+      { ref:'1 John 3:1', text:'See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!', note:'Lavished — not given sparingly. God\'s love is extravagant toward you.' },
+      { ref:'John 3:16', text:'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.', note:'Love was the motive. You are the reason.' },
+      { ref:'Ephesians 3:18', text:'May have power, together with all the Lord\'s holy people, to grasp how wide and long and high and deep is the love of Christ.', note:'Paul prays you\'d have power to comprehend love this big. It takes supernatural capacity.' },
+    ]
+  },
+  {
+    id:'shame', cat:'identity',
+    title:'Shame & Forgiveness',
+    summary:'Breaking the weight of shame, guilt, and condemnation.',
+    cathNote:'Confession (the Sacrament of Reconciliation) exists precisely because God knew we would struggle with shame and guilt. You don\'t have to carry it. You have access to actual absolution — not just reassurance.',
+    verses:[
+      { ref:'Romans 8:1', text:'Therefore, there is now no condemnation for those who are in Christ Jesus.', note:'No condemnation — zero. This is the legal verdict over your life in Christ.' },
+      { ref:'Isaiah 54:4', text:'Do not be afraid; you will not be put to shame. Do not fear disgrace; you will not be humiliated.', note:'God directly addresses shame and promises its defeat.' },
+      { ref:'Psalm 34:5', text:'Those who look to him are radiant; their faces are never covered with shame.', note:'Shame is replaced by radiance when you turn your gaze toward God.' },
+      { ref:'1 John 1:9', text:'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.', note:'Confession leads to cleansing. Shame keeps you silent; grace invites you to speak.' },
+      { ref:'Micah 7:19', text:'You will again have compassion on us; you will tread our sins underfoot and hurl all our iniquities into the depths of the sea.', note:'God hurls sin into the sea — not filed away, not pending review. Gone.' },
+    ]
+  },
+  {
+    id:'courage', cat:'identity',
+    title:'Courage & Boldness',
+    summary:'Strong and courageous — even when afraid.',
+    cathNote:'The martyrs of the Church are the ultimate examples of courage rooted in identity. They did not die because they were fearless — they died because they knew who they were and Whose they were. Identity produces courage.',
+    verses:[
+      { ref:'Joshua 1:9', text:'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.', note:'Courage is commanded — which means it\'s possible. God\'s presence is the reason.' },
+      { ref:'2 Timothy 1:7', text:'For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.', note:'Timidity is not your default. Power and love are the spirit you were given.' },
+      { ref:'Proverbs 28:1', text:'The wicked flee though no one pursues, but the righteous are as bold as a lion.', note:'Boldness is a characteristic of the righteous — it comes with alignment with God.' },
+      { ref:'Hebrews 4:16', text:'Let us then approach God\'s throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.', note:'Confidence toward God first — then boldness flows into everything else.' },
+    ]
+  },
+
+  // ── RELATIONSHIPS ──
+  {
+    id:'marriage', cat:'relationships',
+    title:'Marriage & Partnership',
+    summary:'God\'s design for covenant love.',
+    cathNote:'Marriage is one of the Seven Sacraments in the Catholic Church. It is not merely a legal contract — it is a covenant that images the relationship between Christ and the Church. That changes everything about how you approach it.',
+    verses:[
+      { ref:'Genesis 2:24', text:'That is why a man leaves his father and mother and is united to his wife, and they become one flesh.', note:'The original blueprint for marriage — a unity that transcends every other human relationship.' },
+      { ref:'Ephesians 5:25', text:'Husbands, love your wives, just as Christ loved the church and gave himself up for her.', note:'The standard for marital love is Christ\'s sacrifice. Covenantal, not transactional.' },
+      { ref:'Proverbs 18:22', text:'He who finds a wife finds what is good and receives favor from the Lord.', note:'A godly marriage is tied to favor. It\'s not just a relationship — it\'s a blessing carrier.' },
+      { ref:'Ecclesiastes 4:9', text:'Two are better than one, because they have a good return for their labor.', note:'Partnership multiplies output. You accomplish more together than separately.' },
+      { ref:'Song of Solomon 8:6', text:'Place me like a seal over your heart, like a seal on your arm; for love is as strong as death.', note:'The Bible is not shy about the depth and passion of covenant love.' },
+    ]
+  },
+  {
+    id:'parenting', cat:'relationships',
+    title:'Parenting & Family',
+    summary:'Raising children, generational blessing, and family legacy.',
+    cathNote:'The domestic church (ecclesia domestica) — the family — is the first school of faith. The Church charges parents with the primary responsibility for their children\'s faith formation. The school and the parish support; they don\'t replace.',
+    verses:[
+      { ref:'Proverbs 22:6', text:'Start children off on the way they should go, and even when they are old they will not turn from it.', note:'Early spiritual investment in children has lifelong impact.' },
+      { ref:'Psalm 127:3', text:'Children are a heritage from the Lord, offspring a reward from him.', note:'Children are described as a reward and inheritance — not a burden or interruption.' },
+      { ref:'Deuteronomy 6:6–7', text:'These commandments that I give you today are to be on your hearts. Impress them on your children. Talk about them when you sit at home.', note:'Faith is transmitted in ordinary daily moments — not just formal teaching.' },
+      { ref:'Ephesians 6:4', text:'Fathers, do not exasperate your children; instead, bring them up in the training and instruction of the Lord.', note:'Parenting with gentleness and spiritual intentionality, not just rules.' },
+    ]
+  },
+  {
+    id:'friendship', cat:'relationships',
+    title:'Friendship & Community',
+    summary:'Iron sharpens iron — who you walk with changes you.',
+    cathNote:'The Church is not just a building you visit — it is a body you belong to. The early Church met in homes, ate together, and held everything in common. That communal instinct is still the design.',
+    verses:[
+      { ref:'Proverbs 27:17', text:'As iron sharpens iron, so one person sharpens another.', note:'Growth requires friction. Real friendship makes you better, not just comfortable.' },
+      { ref:'John 15:13', text:'Greater love has no one than this: to lay down one\'s life for one\'s friends.', note:'Jesus defines deep friendship as sacrificial love — not just shared interests.' },
+      { ref:'Proverbs 13:20', text:'Walk with the wise and become wise, for a companion of fools suffers harm.', note:'Your circle is a destiny decision. Choose it intentionally.' },
+      { ref:'Hebrews 10:24–25', text:'And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together.', note:'Community is a command — and its purpose is to push each other forward.' },
+      { ref:'Ecclesiastes 4:9–10', text:'Two are better than one... If either of them falls down, one can help the other up.', note:'Community is a safety net. You were not designed for isolation.' },
+    ]
+  },
+  {
+    id:'forgiveness', cat:'relationships',
+    title:'Forgiveness of Others',
+    summary:'Releasing offense — not for them, but for your freedom.',
+    cathNote:'In the Lord\'s Prayer — prayed at every Mass — we ask God to forgive us "as we forgive those who trespass against us." We say those words every single day. Forgiveness of others is not optional for Catholics. It is structural.',
+    verses:[
+      { ref:'Matthew 18:21–22', text:'"Lord, how many times shall I forgive my brother or sister who sins against me? Up to seven times?" Jesus answered, "I tell you, not seven times, but seventy-seven times."', note:'Forgiveness is not limited. Jesus removed the counting.' },
+      { ref:'Colossians 3:13', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.', note:'The standard for forgiving others is how God forgave you — completely, without conditions.' },
+      { ref:'Luke 23:34', text:'Jesus said, "Father, forgive them, for they do not know what they are doing."', note:'Jesus modeled forgiveness in the middle of suffering — the hardest possible moment.' },
+      { ref:'Ephesians 4:31–32', text:'Get rid of all bitterness, rage and anger... Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.', note:'Bitterness is something to actively remove, not passively manage.' },
+    ]
+  },
+  {
+    id:'loneliness', cat:'relationships',
+    title:'Loneliness',
+    summary:'God with you in isolation — you are never truly alone.',
+    cathNote:'The saints who knew the most about loneliness — the Desert Fathers, Teresa of Ávila, Thomas Merton — describe it as a doorway. Solitude, entered willingly, becomes the place where you discover you are never truly alone.',
+    verses:[
+      { ref:'Deuteronomy 31:8', text:'The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.', note:'He goes before. He stays with. Neither promise leaves.' },
+      { ref:'Psalm 68:6', text:'God sets the lonely in families, he leads out the prisoners with singing.', note:'God actively responds to loneliness — He places people in community. This is His answer.' },
+      { ref:'Hebrews 13:5', text:'Never will I leave you; never will I forsake you.', note:'A double-never promise. God uses the strongest possible language for His commitment to you.' },
+      { ref:'Matthew 28:20', text:'And surely I am with you always, to the very end of the age.', note:'Always — not situationally, not when you deserve it. Always.' },
+    ]
+  },
+
+  // ── FAITH & BREAKTHROUGH ──
+  {
+    id:'faith', cat:'faith',
+    title:'Faith & Trust',
+    summary:'Walking by faith — even when you can\'t see the full picture.',
+    cathNote:'Faith (fides) in Catholic theology is not just intellectual assent — it is a gift of grace and a theological virtue. The Council of Trent and Vatican II both affirm that faith is a free human response to a divine invitation. It is simultaneously received and chosen.',
+    verses:[
+      { ref:'Hebrews 11:1', text:'Now faith is confidence in what we hope for and assurance about what we do not see.', note:'Faith is not blind — it\'s confident trust based on who God is, not what you see.' },
+      { ref:'Proverbs 3:5–6', text:'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.', note:'All your heart — partial trust is still worry. Submission is the key that makes paths straight.' },
+      { ref:'Matthew 17:20', text:'If you have faith as small as a mustard seed, you can say to this mountain, "Move from here to there," and it will move.', note:'The size of your faith matters less than the direction of it. A little faith in God moves mountains.' },
+      { ref:'2 Corinthians 5:7', text:'For we live by faith, not by sight.', note:'Faith is a posture — a way of navigating life when circumstances don\'t yet match the promise.' },
+      { ref:'James 2:17', text:'Faith by itself, if it is not accompanied by action, is dead.', note:'Faith requires corresponding action. Believing and moving forward together.' },
+    ]
+  },
+  {
+    id:'prayer', cat:'faith',
+    title:'Prayer & Hearing God',
+    summary:'How to talk to God — and actually hear back.',
+    cathNote:'The Church offers five forms of prayer: blessing, petition, intercession, thanksgiving, and praise. The Liturgy of the Hours sanctifies time itself — morning, midday, evening, and night. Prayer is not a supplement to Catholic life; it is the structure of it.',
+    verses:[
+      { ref:'Matthew 6:6', text:'But when you pray, go into your room, close the door and pray to your Father, who is unseen.', note:'Private prayer is valued. The relationship is primary — not the performance.' },
+      { ref:'John 10:27', text:'My sheep listen to my voice; I know them, and they follow me.', note:'Hearing God is your birthright as His sheep. He is speaking — practice listening.' },
+      { ref:'1 Thessalonians 5:17', text:'Pray continually.', note:'Prayer is a posture, not just an event. Keep the conversation with God open throughout the day.' },
+      { ref:'Jeremiah 33:3', text:'Call to me and I will answer you and tell you great and unsearchable things you do not know.', note:'God promises to answer — and to reveal things beyond what you could figure out yourself.' },
+      { ref:'Psalm 46:10', text:'Be still, and know that I am God.', note:'Stillness is the environment where you hear God. Silence is not empty — it\'s full of Him.' },
+    ]
+  },
+  {
+    id:'waiting', cat:'faith',
+    title:'Waiting & Patience',
+    summary:'The wilderness before the promised land — not wasted time.',
+    cathNote:'Advent is the Church\'s annual school of waiting. Every year, for four weeks, the entire global Church practices the posture of waiting together. Waiting is not passive — it is active expectation.',
+    verses:[
+      { ref:'Isaiah 40:31', text:'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.', note:'Waiting is the condition for renewed strength — not a pause from God\'s work, but part of it.' },
+      { ref:'Galatians 6:9', text:'Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.', note:'"Proper time" — God has a timing. The harvest is coming if you don\'t quit.' },
+      { ref:'Psalm 27:14', text:'Wait for the Lord; be strong and take heart and wait for the Lord.', note:'Waiting is active — it requires strength and courage, not passivity.' },
+      { ref:'Romans 8:25', text:'But if we hope for what we do not yet have, we wait for it patiently.', note:'Patience and hope are linked. You can wait patiently when hope is anchored in God.' },
+    ]
+  },
+  {
+    id:'trials', cat:'faith',
+    title:'Trials & Perseverance',
+    summary:'Hard seasons don\'t mean God left — they\'re often where growth happens.',
+    cathNote:'The theology of suffering (soteriology) is central to Catholicism in a way often unique among Christian traditions. Suffering united to Christ\'s cross is not wasted — it is redemptive. "Offer it up" is not dismissal; it is a theological invitation.',
+    verses:[
+      { ref:'James 1:2–4', text:'Consider it pure joy whenever you face trials of many kinds, because you know that the testing of your faith produces perseverance.', note:'Trials produce something — perseverance is the yield. The process is intentional, not random.' },
+      { ref:'Romans 5:3–4', text:'We also glory in our sufferings, because we know that suffering produces perseverance; perseverance, character; and character, hope.', note:'The chain reaction: suffering → perseverance → character → hope. Each trial builds something.' },
+      { ref:'2 Corinthians 4:17', text:'For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all.', note:'Perspective shift: what feels heavy is achieving something eternally weighty.' },
+      { ref:'John 16:33', text:'In this world you will have trouble. But take heart! I have overcome the world.', note:'Jesus doesn\'t promise an easy life — He promises He has overcome. That\'s enough.' },
+      { ref:'1 Peter 1:6–7', text:'These have come so that the proven genuineness of your faith may result in praise, glory and honor.', note:'Trials prove and refine the genuineness of faith — like gold tested by fire.' },
+    ]
+  },
+  {
+    id:'mindset', cat:'faith',
+    title:'Renewing Your Mind',
+    summary:'Breaking old thought patterns through truth and transformation.',
+    cathNote:'Lectio Divina — the ancient Catholic practice of sacred reading — is exactly this: slowly saturating the mind with Scripture until it reshapes how you see everything. It is the most ancient form of mind renewal the Church has.',
+    verses:[
+      { ref:'Romans 12:2', text:'Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God\'s will is.', note:'Transformation starts in the mind — not in circumstances. Change your thinking, change your life.' },
+      { ref:'Philippians 4:8', text:'Whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely... think about such things.', note:'A curated thought life is commanded. You get to choose what you meditate on.' },
+      { ref:'2 Corinthians 10:5', text:'We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ.', note:'Thoughts are capturable — you have authority over your inner narrative.' },
+      { ref:'Proverbs 23:7', text:'For as he thinks in his heart, so is he.', note:'Your inner belief system shapes your outer reality. The mind is the battleground.' },
+      { ref:'Isaiah 55:8–9', text:'"For my thoughts are not your thoughts, neither are your ways my ways," declares the Lord.', note:'God\'s thinking is higher. Renewing your mind means exchanging your thoughts for His.' },
+    ]
+  },
+];
+
+// ── RENDER ──
+function renderTopics(list) {
+  const grid = document.getElementById('topicGrid');
+  const noResults = document.getElementById('noResults');
+  const info = document.getElementById('resultsInfo');
+  grid.querySelectorAll('.topic-card').forEach(c => c.remove());
+
+  if (list.length === 0) {
+    noResults.classList.add('show');
+    info.textContent = '';
+    return;
+  }
+  noResults.classList.remove('show');
+  info.textContent = `Showing ${list.length} topic${list.length !== 1 ? 's' : ''}`;
+
+  list.forEach(t => {
+    const cat = CATS[t.cat];
+    const card = document.createElement('div');
+    card.className = 'topic-card';
+    card.dataset.id = t.id;
+
+    const cathNoteHTML = t.cathNote ? `
+      <div class="catholic-note">
+        <strong>Catholic Context</strong>
+        ${t.cathNote}
+      </div>` : '';
+
+    const verseHTML = t.verses.map(v => `
+      <div class="verse-item">
+        <span class="verse-ref">${v.ref}</span>
+        <div class="verse-text">"${v.text}"</div>
+        <div class="verse-note">${v.note}</div>
+      </div>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard('${t.id}')">
+        <div class="card-accent" style="background:${cat.color}"></div>
+        <div class="card-meta" style="padding-left:8px;">
+          <h3>${t.title}</h3>
+          <p>${t.summary}</p>
+        </div>
+        <div class="card-category" style="background:${cat.bg};color:${cat.color};border-color:${cat.border}">${cat.label}</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="verse-panel">
+        <div class="verse-divider"></div>
+        ${cathNoteHTML}
+        <div class="verse-grid">${verseHTML}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleCard(id) {
+  document.querySelector(`.topic-card[data-id="${id}"]`).classList.toggle('open');
+}
+
+let currentCat = 'all';
+let currentQuery = '';
+
+function doFilter() {
+  const q = currentQuery.toLowerCase().trim();
+  const result = TOPICS.filter(t => {
+    const catMatch = currentCat === 'all' || t.cat === currentCat;
+    if (!catMatch) return false;
+    if (!q) return true;
+    const blob = [
+      t.title, t.summary, t.cathNote || '',
+      ...t.verses.map(v => v.ref + ' ' + v.text + ' ' + v.note)
+    ].join(' ').toLowerCase();
+    return blob.includes(q);
+  });
+  renderTopics(result);
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentQuery = e.target.value;
+  doFilter();
+});
+
+function filterCat(cat, el) {
+  currentCat = cat;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  doFilter();
+}
+
+function quickSearch(term) {
+  currentQuery = term;
+  document.getElementById('searchInput').value = term;
+  doFilter();
+}
+
+renderTopics(TOPICS);
+</script>
+</body>
+</html>

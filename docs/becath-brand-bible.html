@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCath — Brand Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg2: #F2F0EB;
+  --bg3: #E8E4DA;
+  --white: #FFFFFF;
+  --ink: #1A1410;
+  --ink-mid: #4A3C28;
+  --ink-muted: #9A8E78;
+  --gold: #A07820;
+  --gold-bright: #C49A28;
+  --gold-light: rgba(160,120,32,0.1);
+  --gold-border: rgba(160,120,32,0.22);
+  --border: rgba(0,0,0,0.07);
+  --shadow: rgba(44,36,22,0.08);
+  /* Stained glass */
+  --sg-red: #C84040;
+  --sg-amber: #D08010;
+  --sg-gold: #C8960A;
+  --sg-green: #2A8A3A;
+  --sg-teal: #1A8080;
+  --sg-blue: #3060C0;
+  --sg-violet: #7040B8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+}
+
+/* ── SIDEBAR NAV ── */
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px; flex-shrink: 0;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  position: sticky; top: 0; height: 100vh;
+  overflow-y: auto; padding: 0 0 40px;
+}
+
+.sidebar-logo {
+  padding: 28px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 28px; font-weight: 700;
+  background: linear-gradient(135deg,
+    var(--sg-red) 0%, var(--sg-red) 22%,
+    var(--sg-gold) 22%, var(--sg-gold) 44%,
+    var(--sg-blue) 44%, var(--sg-blue) 67%,
+    var(--sg-green) 67%, var(--sg-green) 100%
+  );
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+}
+
+.logo-sub {
+  font-size: 9px; color: var(--ink-muted); letter-spacing: 0.2em;
+  text-transform: uppercase; font-family: 'Lato', sans-serif;
+}
+
+.nav-section { padding: 16px 0 0; }
+
+.nav-section-label {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.3em;
+  color: var(--ink-muted); text-transform: uppercase;
+  padding: 0 20px 8px; font-family: 'Lato', sans-serif;
+}
+
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px;
+  font-size: 12px; color: var(--ink-mid);
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none; font-family: 'Lato', sans-serif;
+  border-left: 3px solid transparent;
+}
+.nav-item:hover { background: var(--bg2); color: var(--gold); }
+.nav-item.active { border-left-color: var(--gold); background: var(--gold-light); color: var(--gold); font-weight: 500; }
+
+.nav-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── MAIN CONTENT ── */
+.main { flex: 1; padding: 0 0 80px; min-width: 0; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--white);
+  padding: 60px 48px 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg,
+    var(--sg-red), var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal), var(--sg-blue), var(--sg-violet)
+  );
+}
+.cover::after {
+  content: '';
+  position: absolute; top: 6px; left: 0; right: 0; height: 1px;
+  background: repeating-linear-gradient(90deg,
+    transparent 0px, transparent calc(14.28% - 1px),
+    rgba(255,255,255,0.6) calc(14.28% - 1px), rgba(255,255,255,0.6) 14.28%
+  );
+  background-size: 100% 100%;
+}
+
+.cover-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: 0.3em; color: var(--ink-muted);
+  text-transform: uppercase; margin-bottom: 16px;
+}
+
+.cover-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 64px; font-weight: 700; letter-spacing: 0.04em; line-height: 1;
+  background: linear-gradient(135deg,
+    var(--sg-red) 0%, var(--sg-red) 18%,
+    var(--sg-gold) 18%, var(--sg-gold) 40%,
+    var(--sg-blue) 40%, var(--sg-blue) 65%,
+    var(--sg-green) 65%, var(--sg-green) 100%
+  );
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300; font-style: italic;
+  color: var(--ink-mid); margin-bottom: 16px;
+}
+
+.cover-desc {
+  font-size: 13px; font-weight: 300; color: var(--ink-muted);
+  max-width: 560px; line-height: 1.7;
+}
+
+.cover-meta {
+  display: flex; gap: 24px; margin-top: 28px;
+  flex-wrap: wrap;
+}
+.cover-meta-item { font-size: 11px; color: var(--ink-muted); }
+.cover-meta-item strong { color: var(--gold); font-weight: 600; }
+
+/* ── SECTIONS ── */
+.section {
+  padding: 52px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: 0.3em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 400; color: var(--ink);
+  margin-bottom: 6px; line-height: 1.15;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+.section-sub {
+  font-size: 14px; font-weight: 300; color: var(--ink-muted);
+  margin-bottom: 36px; line-height: 1.6; max-width: 580px;
+}
+
+/* Stained glass divider */
+.sg-rule {
+  height: 3px; margin-bottom: 36px;
+  background: linear-gradient(90deg,
+    var(--sg-red), var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal), var(--sg-blue), var(--sg-violet)
+  );
+  width: 80px; border-radius: 99px;
+}
+
+/* ── BRAND ESSENCE ── */
+.essence-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 32px;
+}
+
+.essence-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  transition: all 0.2s;
+}
+.essence-card:hover { box-shadow: 0 4px 16px var(--shadow); }
+
+.essence-label {
+  font-family: 'Cinzel', serif;
+  font-size: 8px; font-weight: 600; letter-spacing: 0.24em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+}
+
+.essence-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 400; line-height: 1.55; color: var(--ink);
+}
+
+.tagline-block {
+  background: var(--white);
+  border: 2px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  text-align: center; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+}
+.tagline-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sg-red), var(--sg-gold), var(--sg-blue), var(--sg-green));
+}
+
+.tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-style: italic; font-weight: 400;
+  color: var(--ink); line-height: 1.35;
+}
+.tagline em { color: var(--gold); }
+
+/* ── COLOR SYSTEM ── */
+.color-grid { display: flex; flex-direction: column; gap: 24px; }
+
+.color-group-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  color: var(--ink-muted); text-transform: uppercase; margin-bottom: 12px;
+}
+
+.color-swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.swatch {
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 8px;
+}
+
+.swatch-box {
+  width: 80px; height: 80px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.swatch-box:hover { transform: scale(1.04); }
+
+.swatch-name {
+  font-size: 11px; font-weight: 600; color: var(--ink-mid);
+  font-family: 'Lato', sans-serif;
+}
+.swatch-hex {
+  font-size: 10px; color: var(--ink-muted); font-family: monospace;
+  background: var(--bg2); padding: 2px 6px; border-radius: 4px;
+  cursor: pointer; transition: background 0.2s;
+}
+.swatch-hex:hover { background: var(--gold-light); }
+
+/* Stained glass palette */
+.sg-palette {
+  display: flex; gap: 0; overflow: hidden;
+  border-radius: 16px; border: 1px solid var(--border);
+  height: 80px; margin-bottom: 8px;
+}
+
+.sg-swatch {
+  flex: 1; position: relative;
+  transition: flex 0.3s;
+  cursor: pointer;
+}
+.sg-swatch:hover { flex: 2; }
+
+.sg-swatch::after {
+  content: attr(data-name);
+  position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+  font-size: 8px; color: rgba(255,255,255,0.9); font-weight: 700;
+  letter-spacing: 0.06em; white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  opacity: 0; transition: opacity 0.2s;
+}
+.sg-swatch:hover::after { opacity: 1; }
+
+/* Lead lines between swatches */
+.sg-swatch + .sg-swatch {
+  border-left: 2px solid rgba(255,255,255,0.3);
+}
+
+/* ── TYPOGRAPHY ── */
+.type-showcase { display: flex; flex-direction: column; gap: 28px; }
+
+.type-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 28px;
+  position: relative; overflow: hidden;
+}
+.type-block::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.type-block.primary::before { background: linear-gradient(180deg, var(--sg-red), var(--sg-gold)); }
+.type-block.secondary::before { background: linear-gradient(180deg, var(--sg-blue), var(--sg-violet)); }
+.type-block.body::before { background: linear-gradient(180deg, var(--sg-green), var(--sg-teal)); }
+
+.type-meta {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+  color: var(--ink-muted); text-transform: uppercase; margin-bottom: 10px;
+}
+
+.type-sample-cinzel {
+  font-family: 'Cinzel', serif;
+  font-weight: 600; color: var(--ink); line-height: 1.2;
+}
+
+.type-sample-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--ink); line-height: 1.3;
+}
+
+.type-sample-lato {
+  font-family: 'Lato', sans-serif;
+  color: var(--ink-mid); line-height: 1.6;
+}
+
+.type-specs {
+  display: flex; gap: 20px; margin-top: 12px; flex-wrap: wrap;
+}
+.type-spec {
+  font-size: 10px; color: var(--ink-muted);
+  background: var(--bg2); padding: 3px 8px; border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ── LOGO SYSTEM ── */
+.logo-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 32px;
+}
+
+.logo-card {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.logo-display {
+  height: 120px; display: flex;
+  align-items: center; justify-content: center;
+}
+
+.logo-display.on-white { background: #FFFFFF; }
+.logo-display.on-cream { background: #F5F2ED; }
+.logo-display.on-dark { background: #0E1828; }
+.logo-display.on-black { background: #0A0703; }
+
+.logo-info {
+  padding: 10px 14px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+.logo-info-name { font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 1px; }
+.logo-info-use { font-size: 10px; color: var(--ink-muted); }
+
+/* Full wordmark */
+.wordmark-full {
+  font-family: 'Cinzel', serif;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.wm-light {
+  font-size: 32px;
+  background: linear-gradient(135deg,
+    var(--sg-red) 0%, var(--sg-red) 18%,
+    var(--sg-gold) 18%, var(--sg-gold) 40%,
+    var(--sg-blue) 40%, var(--sg-blue) 65%,
+    var(--sg-green) 65%, var(--sg-green) 100%
+  );
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.wm-dark {
+  font-size: 32px;
+  background: linear-gradient(135deg,
+    #E86060 0%, #E86060 18%,
+    #E8B030 18%, #E8B030 40%,
+    #6090E8 40%, #6090E8 65%,
+    #50D070 65%, #50D070 100%
+  );
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Icon only */
+.icon-only {
+  width: 56px; height: 56px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.icon-only.white-bg { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.icon-only.dark-bg { background: #0E1828; }
+
+.be-icon {
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 26px; line-height: 1;
+}
+.be-light {
+  background: linear-gradient(135deg, var(--sg-red) 0%, var(--sg-red) 25%, var(--sg-gold) 25%, var(--sg-gold) 50%, var(--sg-blue) 50%, var(--sg-blue) 75%, var(--sg-green) 75%, var(--sg-green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.be-dark {
+  background: linear-gradient(135deg, #E86060 0%, #E86060 25%, #E8B030 25%, #E8B030 50%, #6090E8 50%, #6090E8 75%, #50D070 75%, #50D070 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ── SIGNATURE ELEMENTS ── */
+.sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.sig-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+
+.sig-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  color: var(--ink); text-transform: uppercase; margin-bottom: 4px;
+}
+.sig-desc { font-size: 11px; color: var(--ink-muted); margin-bottom: 14px; line-height: 1.5; }
+
+/* Progress stripe demo */
+.stripe-demo {
+  height: 5px; border-radius: 99px;
+  background: linear-gradient(90deg,
+    var(--sg-red) 0%, var(--sg-red) 8%,
+    var(--sg-amber) 8%, var(--sg-amber) 18%,
+    var(--sg-gold) 18%, var(--sg-gold) 28%,
+    var(--sg-green) 28%, var(--sg-green) 38%,
+    var(--sg-teal) 38%, var(--sg-teal) 48%,
+    var(--sg-blue) 48%, var(--sg-blue) 62%,
+    var(--sg-violet) 62%, var(--sg-violet) 74%,
+    var(--sg-red) 74%, var(--sg-red) 82%,
+    var(--sg-gold) 82%, var(--sg-gold) 91%,
+    var(--sg-blue) 91%, var(--sg-blue) 100%
+  );
+  margin-bottom: 8px;
+}
+
+.stripe-demo-thin {
+  height: 3px; border-radius: 99px;
+  background: linear-gradient(90deg,
+    var(--sg-red), var(--sg-amber), var(--sg-gold),
+    var(--sg-green), var(--sg-teal), var(--sg-blue), var(--sg-violet)
+  );
+  opacity: 0.6;
+}
+
+/* CSS window demo */
+.window-demo {
+  width: 60px; height: 80px; margin: 0 auto;
+  position: relative;
+  background: linear-gradient(180deg, rgba(48,96,192,0.2), rgba(200,150,10,0.15));
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  border: 2px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.wd-p1 { position:absolute; width:28%; height:32%; top:8%; left:4%; background:rgba(200,64,64,0.5); border:1px solid rgba(255,255,255,0.4); }
+.wd-p2 { position:absolute; width:28%; height:32%; top:8%; right:4%; background:rgba(48,96,192,0.5); border:1px solid rgba(255,255,255,0.4); }
+.wd-p3 { position:absolute; width:48%; height:24%; top:8%; left:26%; background:rgba(200,150,10,0.55); border-radius:50% 50% 0 0/100% 100% 0 0; border:1px solid rgba(255,255,255,0.4); }
+.wd-p4 { position:absolute; width:38%; height:28%; top:43%; left:8%; background:rgba(42,138,58,0.5); border:1px solid rgba(255,255,255,0.4); }
+.wd-p5 { position:absolute; width:38%; height:28%; top:43%; right:8%; background:rgba(112,64,184,0.5); border:1px solid rgba(255,255,255,0.4); }
+.wd-h { position:absolute; top:50%; left:0; right:0; height:2px; background:rgba(255,255,255,0.5); }
+.wd-v { position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(255,255,255,0.5); }
+
+/* ── VOICE & TONE ── */
+.voice-grid { display: flex; flex-direction: column; gap: 16px; }
+
+.voice-pair {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+
+.voice-card {
+  border-radius: 14px; padding: 16px 18px;
+  border: 1px solid var(--border);
+}
+.voice-card.do {
+  background: rgba(42,138,58,0.05);
+  border-color: rgba(42,138,58,0.2);
+}
+.voice-card.dont {
+  background: rgba(200,64,64,0.04);
+  border-color: rgba(200,64,64,0.15);
+}
+
+.voice-badge {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 8px;
+  display: inline-block; padding: 2px 8px; border-radius: 99px;
+}
+.do .voice-badge { color: #1A6A1A; background: rgba(42,138,58,0.12); }
+.dont .voice-badge { color: #8B1A1A; background: rgba(200,64,64,0.1); }
+
+.voice-example {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic; color: var(--ink-mid); line-height: 1.5;
+}
+
+/* ── AUDIENCE ── */
+.audience-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+.audience-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 18px;
+  position: relative; overflow: hidden;
+}
+
+.aud-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+
+.aud-emoji { font-size: 28px; margin-bottom: 10px; display: block; }
+.aud-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 4px;
+}
+.aud-desc { font-size: 11px; color: var(--ink-muted); line-height: 1.55; }
+
+/* ── UI COMPONENTS ── */
+.component-grid { display: flex; flex-direction: column; gap: 20px; }
+
+.component-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.component-header {
+  padding: 12px 18px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--ink-muted); text-transform: uppercase;
+}
+
+.component-preview {
+  padding: 24px 20px;
+  background: var(--bg);
+}
+
+/* Button demos */
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.demo-btn {
+  padding: 12px 22px; border-radius: 99px; border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer;
+  transition: all 0.25s;
+}
+.demo-btn-primary {
+  background: var(--gold);
+  color: white;
+  box-shadow: 0 3px 12px rgba(160,120,32,0.3);
+}
+.demo-btn-primary:hover { transform: translateY(-1px); }
+.demo-btn-secondary {
+  background: var(--white);
+  color: var(--ink);
+  border: 1.5px solid var(--border);
+}
+.demo-btn-sg {
+  background: linear-gradient(135deg, #8B1A1A 0%, #A07820 35%, #1A5A8B 70%, #1A6A1A 100%);
+  background-size: 200%;
+  color: white;
+  box-shadow: 0 3px 12px rgba(160,120,32,0.3);
+  animation: sg-shift 6s ease infinite;
+}
+@keyframes sg-shift { 0%,100%{background-position:0%} 50%{background-position:100%} }
+
+/* Card demo */
+.demo-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 260px;
+}
+.demo-card-img {
+  height: 100px;
+  background: linear-gradient(135deg, rgba(48,96,192,0.3), rgba(200,150,10,0.2), rgba(200,64,64,0.15));
+  position: relative; overflow: hidden;
+}
+.demo-card-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,7,3,0.6) 0%, transparent 60%);
+}
+.demo-card-body { padding: 14px 16px; }
+.demo-card-label { font-size: 8px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.demo-card-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--ink); }
+.demo-card-meta { font-size: 10px; color: var(--ink-muted); margin-top: 2px; }
+
+/* Progress demo */
+.progress-demo { display: flex; flex-direction: column; gap: 8px; }
+.prog-track { height: 4px; background: var(--bg2); border-radius: 99px; overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--sg-violet), var(--sg-gold)); }
+.prog-dots-demo { display: flex; gap: 4px; }
+.prog-d { height: 4px; border-radius: 99px; background: var(--bg3); flex: 1; }
+.prog-d.done { background: rgba(160,120,32,0.5); }
+.prog-d.active { background: var(--gold-bright); flex: 2.5; }
+
+/* ── MOTION ── */
+.motion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.motion-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px;
+}
+.motion-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+.motion-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.motion-spec { font-family: monospace; font-size: 11px; color: var(--ink-muted); background: var(--bg2); padding: 6px 10px; border-radius: 6px; margin-top: 8px; }
+
+/* ── PHOTOGRAPHY / IMAGERY ── */
+.imagery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+.imagery-card {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.imagery-example {
+  height: 100px;
+  position: relative; overflow: hidden;
+}
+
+.img-stained-glass {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(200,64,64,0.6) 0%, transparent 40%),
+    radial-gradient(circle at 70% 20%, rgba(200,150,10,0.7) 0%, transparent 35%),
+    radial-gradient(circle at 50% 70%, rgba(48,96,192,0.6) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(42,138,58,0.5) 0%, transparent 40%),
+    #1a0a0a;
+}
+
+.img-architecture {
+  background:
+    linear-gradient(180deg, rgba(48,96,192,0.15) 0%, rgba(200,150,10,0.1) 100%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 20px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 28px, rgba(255,255,255,0.03) 28px, rgba(255,255,255,0.03) 30px),
+    #2a2018;
+}
+
+.img-manuscript {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(200,150,10,0.12) 0%, transparent 70%),
+    #F5F0E0;
+}
+
+.imagery-label {
+  padding: 10px 12px;
+  font-size: 10px; font-weight: 500; color: var(--ink-mid);
+  border-top: 1px solid var(--border);
+}
+.imagery-sub { font-size: 9px; color: var(--ink-muted); }
+
+/* ── DO / DON'T ── */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.dd-card { border-radius: 14px; padding: 18px; border: 1px solid; }
+.dd-do { background: rgba(42,138,58,0.05); border-color: rgba(42,138,58,0.2); }
+.dd-dont { background: rgba(200,64,64,0.04); border-color: rgba(200,64,64,0.15); }
+.dd-label { font-size: 9px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+.dd-do .dd-label { color: #1A6A1A; }
+.dd-dont .dd-label { color: #8B1A1A; }
+.dd-item { font-size: 12px; color: var(--ink-mid); padding: 4px 0; display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.dd-icon { flex-shrink: 0; margin-top: 2px; }
+
+/* ── COPY BUTTONS ── */
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 99px;
+  background: var(--bg2); border: 1px solid var(--border);
+  font-size: 10px; color: var(--ink-muted);
+  cursor: pointer; transition: all 0.2s; font-family: 'Lato', sans-serif;
+}
+.copy-btn:hover { background: var(--gold-light); color: var(--gold); border-color: var(--gold-border); }
+
+/* responsive */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .section { padding: 36px 24px; }
+  .cover { padding: 40px 24px 32px; }
+  .cover-logo { font-size: 48px; }
+  .essence-grid, .logo-grid, .voice-pair, .audience-grid, .motion-grid, .do-dont, .sig-grid { grid-template-columns: 1fr; }
+  .imagery-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">BeCath</div>
+    <div class="logo-sub">Brand Bible · 2025</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Foundation</div>
+    <a href="#brand-essence" class="nav-item active">
+      <div class="nav-dot" style="background:var(--sg-red);"></div> Brand Essence
+    </a>
+    <a href="#audience" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-amber);"></div> Audience
+    </a>
+    <a href="#voice" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-gold);"></div> Voice & Tone
+    </a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Visual Identity</div>
+    <a href="#logo" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-green);"></div> Logo System
+    </a>
+    <a href="#colors" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-teal);"></div> Color System
+    </a>
+    <a href="#typography" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-blue);"></div> Typography
+    </a>
+    <a href="#signature" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-violet);"></div> Signature Elements
+    </a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Application</div>
+    <a href="#components" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-red);"></div> UI Components
+    </a>
+    <a href="#imagery" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-gold);"></div> Imagery
+    </a>
+    <a href="#motion" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-blue);"></div> Motion
+    </a>
+    <a href="#donts" class="nav-item">
+      <div class="nav-dot" style="background:var(--sg-violet);"></div> Do's & Don'ts
+    </a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- COVER -->
+  <div class="cover" id="top">
+    <div class="cover-eyebrow">Official Brand Guidelines</div>
+    <div class="cover-logo">BeCath</div>
+    <div class="cover-title">The Catholic faith, made simple.</div>
+    <div class="cover-desc">This document defines the visual identity, voice, and design principles of BeCath. Every designer, developer, and content creator working on BeCath should treat this as the single source of truth for how the brand looks, sounds, and feels.</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>Version</strong> 1.0</div>
+      <div class="cover-meta-item"><strong>Year</strong> 2025</div>
+      <div class="cover-meta-item"><strong>Platform</strong> Web App · iOS · Android</div>
+      <div class="cover-meta-item"><strong>Category</strong> Faith & Wellness</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 1: BRAND ESSENCE ══ -->
+  <div class="section" id="brand-essence">
+    <div class="section-number">01 — Foundation</div>
+    <div class="section-title">Brand <em>Essence</em></div>
+    <div class="section-sub">The core beliefs that drive every design decision. When in doubt, return here.</div>
+    <div class="sg-rule"></div>
+
+    <div class="tagline-block" style="margin-bottom:24px;">
+      <div class="tagline">"The faith explained like you're<br>hearing it for the <em>first time.</em>"</div>
+    </div>
+
+    <div class="essence-grid">
+      <div class="essence-card">
+        <div class="essence-label">Mission</div>
+        <div class="essence-text">Make the Catholic faith accessible to the curious, the returning, and the seeking — with answers that are honest, clear, and beautiful.</div>
+      </div>
+      <div class="essence-card">
+        <div class="essence-label">Vision</div>
+        <div class="essence-text">A world where no one walks away from the faith simply because their questions were never answered.</div>
+      </div>
+      <div class="essence-card">
+        <div class="essence-label">Position</div>
+        <div class="essence-text">BeCath is the only Catholic app built for people who need to understand the faith <em>before</em> they can practice it.</div>
+      </div>
+      <div class="essence-card">
+        <div class="essence-label">Promise</div>
+        <div class="essence-text">Every question answered honestly. Every prayer guided beautifully. Every seeker met exactly where they are.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 28px;margin-top:16px;">
+      <div class="essence-label" style="margin-bottom:16px;">Brand Personality — 5 Words</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="padding:8px 16px;background:var(--bg2);border-radius:99px;font-family:'Cinzel',serif;font-size:12px;color:var(--ink);">Honest</div>
+        <div style="padding:8px 16px;background:var(--bg2);border-radius:99px;font-family:'Cinzel',serif;font-size:12px;color:var(--ink);">Sacred</div>
+        <div style="padding:8px 16px;background:var(--bg2);border-radius:99px;font-family:'Cinzel',serif;font-size:12px;color:var(--ink);">Accessible</div>
+        <div style="padding:8px 16px;background:var(--bg2);border-radius:99px;font-family:'Cinzel',serif;font-size:12px;color:var(--ink);">Warm</div>
+        <div style="padding:8px 16px;background:var(--bg2);border-radius:99px;font-family:'Cinzel',serif;font-size:12px;color:var(--ink);">Timeless</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2: AUDIENCE ══ -->
+  <div class="section" id="audience">
+    <div class="section-number">02 — Foundation</div>
+    <div class="section-title">Our <em>Audience</em></div>
+    <div class="section-sub">Three distinct user types. Every design decision should serve at least one of them.</div>
+    <div class="sg-rule"></div>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="aud-stripe" style="background:linear-gradient(90deg,var(--sg-red),var(--sg-amber));"></div>
+        <span class="aud-emoji">🕯️</span>
+        <div class="aud-name">The Returner</div>
+        <div class="aud-desc">Baptized Catholic, drifted away at 18, now 35 and asking whether any of this is actually true. Has questions nobody ever answered.</div>
+      </div>
+      <div class="audience-card">
+        <div class="aud-stripe" style="background:linear-gradient(90deg,var(--sg-blue),var(--sg-violet));"></div>
+        <span class="aud-emoji">🔍</span>
+        <div class="aud-name">The Seeker</div>
+        <div class="aud-desc">Genuinely curious about Christianity and Catholicism. Wants evidence, wants clarity, not preaching. Googles "did Jesus really exist" at midnight.</div>
+      </div>
+      <div class="audience-card">
+        <div class="aud-stripe" style="background:linear-gradient(90deg,var(--sg-gold),var(--sg-green));"></div>
+        <span class="aud-emoji">✝️</span>
+        <div class="aud-name">The Faithful</div>
+        <div class="aud-desc">Already practicing Catholic who wants richer prayer, deeper understanding, and beautiful daily devotions. Wants to go deeper, not start over.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--gold-border);border-radius:16px;padding:22px 26px;margin-top:16px;">
+      <div class="essence-label" style="margin-bottom:8px;">Primary Target</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--ink);line-height:1.5;">The 35 million lapsed Catholics in America who are asking real questions and need real answers before they'll pray again.</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 3: VOICE & TONE ══ -->
+  <div class="section" id="voice">
+    <div class="section-number">03 — Foundation</div>
+    <div class="section-title">Voice <em>&amp; Tone</em></div>
+    <div class="section-sub">BeCath sounds like a brilliant, spiritually grounded friend — not a priest, not a professor, not a corporate brand.</div>
+    <div class="sg-rule"></div>
+
+    <div class="voice-grid">
+      <div class="voice-pair">
+        <div class="voice-card do">
+          <div class="voice-badge">✓ Do</div>
+          <div class="voice-example">"The question isn't whether Jesus existed. Almost nobody debates that anymore. The question is what you do with what he claimed."</div>
+        </div>
+        <div class="voice-card dont">
+          <div class="voice-badge">✗ Don't</div>
+          <div class="voice-example">"As Catholics, we are called to embrace the teachings of the Magisterium with humble obedience and faithful adherence."</div>
+        </div>
+      </div>
+      <div class="voice-pair">
+        <div class="voice-card do">
+          <div class="voice-badge">✓ Do</div>
+          <div class="voice-example">"Your guardian angel has been with you since the moment you were born. They have a name. You can talk to them."</div>
+        </div>
+        <div class="voice-card dont">
+          <div class="voice-badge">✗ Don't</div>
+          <div class="voice-example">"The doctrine of guardian angels, as affirmed by the Catechism paragraph 336, states that from birth until death..."</div>
+        </div>
+      </div>
+      <div class="voice-pair">
+        <div class="voice-card do">
+          <div class="voice-badge">✓ Do</div>
+          <div class="voice-example">"Mary didn't become important because the Church decided she was. She became important because she said yes when everything depended on it."</div>
+        </div>
+        <div class="voice-card dont">
+          <div class="voice-badge">✗ Don't</div>
+          <div class="voice-example">"Non-Catholics often misunderstand our veneration of the Blessed Virgin Mary and confuse it with worship, but this is simply not true!"</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+        <div class="essence-label">Direct</div>
+        <div style="font-size:12px;color:var(--ink-muted);line-height:1.5;">Say the thing plainly. No throat-clearing. No hedging. No "as Catholics believe..."</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+        <div class="essence-label">Honest</div>
+        <div style="font-size:12px;color:var(--ink-muted);line-height:1.5;">Acknowledge hard questions. Don't minimize doubt. Don't pretend every question has a tidy answer.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+        <div class="essence-label">Human</div>
+        <div style="font-size:12px;color:var(--ink-muted);line-height:1.5;">Write for the person asking at midnight, not the theologian. Short sentences. Real words.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4: LOGO ══ -->
+  <div class="section" id="logo">
+    <div class="section-number">04 — Visual Identity</div>
+    <div class="section-title">Logo <em>System</em></div>
+    <div class="section-sub">The BeCath logo uses the Cinzel serif in a stained glass color treatment — the visual language of light through cathedral windows.</div>
+    <div class="sg-rule"></div>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-display on-white">
+          <span class="wordmark-full wm-light" style="font-size:36px;">BeCath</span>
+        </div>
+        <div class="logo-info"><div class="logo-info-name">Primary — Light Background</div><div class="logo-info-use">Default usage · white or cream backgrounds</div></div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-display on-dark">
+          <span class="wordmark-full wm-dark" style="font-size:36px;">BeCath</span>
+        </div>
+        <div class="logo-info"><div class="logo-info-name">Primary — Dark Background</div><div class="logo-info-use">Dark mode · night mode · dark cards</div></div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-display on-white">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div class="icon-only white-bg" style="box-shadow:0 2px 12px rgba(0,0,0,0.12);">
+              <span class="be-icon be-light">Be</span>
+            </div>
+          </div>
+        </div>
+        <div class="logo-info"><div class="logo-info-name">Icon Mark — Light</div><div class="logo-info-use">App icon · favicon · small sizes · social avatars</div></div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-display on-black">
+          <div class="icon-only" style="background:#FFFFFF;border-radius:13px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;">
+            <span class="be-icon be-light" style="font-size:30px;">Be</span>
+          </div>
+        </div>
+        <div class="logo-info"><div class="logo-info-name">App Icon — Recommended</div><div class="logo-info-use">iOS · Android · App Store submissions</div></div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-top:4px;">
+      <div class="essence-label" style="margin-bottom:12px;">Clear Space Rule</div>
+      <div style="font-size:13px;color:var(--ink-muted);line-height:1.6;">Always maintain clear space equal to the height of the capital "B" on all sides of the logo. Never place the logo on a busy background without sufficient contrast.</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 5: COLORS ══ -->
+  <div class="section" id="colors">
+    <div class="section-number">05 — Visual Identity</div>
+    <div class="section-title">Color <em>System</em></div>
+    <div class="section-sub">Two systems in one — the Stained Glass Palette (the brand signature) and the Interface Palette (backgrounds, text, borders).</div>
+    <div class="sg-rule"></div>
+
+    <div class="color-grid">
+
+      <!-- Stained glass palette -->
+      <div>
+        <div class="color-group-label">The Stained Glass Palette — Brand Signature</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:12px;">
+          <div class="sg-palette">
+            <div class="sg-swatch" style="background:var(--sg-red);" data-name="Crimson"></div>
+            <div class="sg-swatch" style="background:var(--sg-amber);" data-name="Amber"></div>
+            <div class="sg-swatch" style="background:var(--sg-gold);" data-name="Gold"></div>
+            <div class="sg-swatch" style="background:var(--sg-green);" data-name="Emerald"></div>
+            <div class="sg-swatch" style="background:var(--sg-teal);" data-name="Teal"></div>
+            <div class="sg-swatch" style="background:var(--sg-blue);" data-name="Sapphire"></div>
+            <div class="sg-swatch" style="background:var(--sg-violet);" data-name="Violet"></div>
+          </div>
+          <div style="padding:10px 16px;font-size:10px;color:var(--ink-muted);">Hover each panel to reveal color name · These colors are never used individually — always as a gradient or sequence</div>
+        </div>
+
+        <div class="color-swatches">
+          <div class="swatch">
+            <div class="swatch-box" style="background:#C84040;" onclick="copyColor('#C84040', this)"></div>
+            <div class="swatch-name">Crimson</div>
+            <div class="swatch-hex" onclick="copyColor('#C84040', this)">#C84040</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#D08010;" onclick="copyColor('#D08010', this)"></div>
+            <div class="swatch-name">Amber</div>
+            <div class="swatch-hex" onclick="copyColor('#D08010', this)">#D08010</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#C8960A;" onclick="copyColor('#C8960A', this)"></div>
+            <div class="swatch-name">Gold</div>
+            <div class="swatch-hex" onclick="copyColor('#C8960A', this)">#C8960A</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#2A8A3A;" onclick="copyColor('#2A8A3A', this)"></div>
+            <div class="swatch-name">Emerald</div>
+            <div class="swatch-hex" onclick="copyColor('#2A8A3A', this)">#2A8A3A</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#1A8080;" onclick="copyColor('#1A8080', this)"></div>
+            <div class="swatch-name">Teal</div>
+            <div class="swatch-hex" onclick="copyColor('#1A8080', this)">#1A8080</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#3060C0;" onclick="copyColor('#3060C0', this)"></div>
+            <div class="swatch-name">Sapphire</div>
+            <div class="swatch-hex" onclick="copyColor('#3060C0', this)">#3060C0</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#7040B8;" onclick="copyColor('#7040B8', this)"></div>
+            <div class="swatch-name">Violet</div>
+            <div class="swatch-hex" onclick="copyColor('#7040B8', this)">#7040B8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interface palette -->
+      <div>
+        <div class="color-group-label">The Interface Palette — App & Web</div>
+        <div class="color-swatches" style="flex-wrap:wrap;">
+          <div class="swatch">
+            <div class="swatch-box" style="background:#FAFAF8;border:1px solid #e0e0d8;" onclick="copyColor('#FAFAF8', this)"></div>
+            <div class="swatch-name">Background</div>
+            <div class="swatch-hex" onclick="copyColor('#FAFAF8', this)">#FAFAF8</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#F5F0E8;" onclick="copyColor('#F5F0E8', this)"></div>
+            <div class="swatch-name">Parchment</div>
+            <div class="swatch-hex" onclick="copyColor('#F5F0E8', this)">#F5F0E8</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#FFFFFF;border:1px solid #e0e0d8;" onclick="copyColor('#FFFFFF', this)"></div>
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex" onclick="copyColor('#FFFFFF', this)">#FFFFFF</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#1A1410;" onclick="copyColor('#1A1410', this)"></div>
+            <div class="swatch-name">Ink</div>
+            <div class="swatch-hex" onclick="copyColor('#1A1410', this)">#1A1410</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#4A3C28;" onclick="copyColor('#4A3C28', this)"></div>
+            <div class="swatch-name">Ink Mid</div>
+            <div class="swatch-hex" onclick="copyColor('#4A3C28', this)">#4A3C28</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#9A8E78;" onclick="copyColor('#9A8E78', this)"></div>
+            <div class="swatch-name">Ink Muted</div>
+            <div class="swatch-hex" onclick="copyColor('#9A8E78', this)">#9A8E78</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#A07820;" onclick="copyColor('#A07820', this)"></div>
+            <div class="swatch-name">Gold Primary</div>
+            <div class="swatch-hex" onclick="copyColor('#A07820', this)">#A07820</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-box" style="background:#0E1828;" onclick="copyColor('#0E1828', this)"></div>
+            <div class="swatch-name">Navy Dark</div>
+            <div class="swatch-hex" onclick="copyColor('#0E1828', this)">#0E1828</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 6: TYPOGRAPHY ══ -->
+  <div class="section" id="typography">
+    <div class="section-number">06 — Visual Identity</div>
+    <div class="section-title">Typographic <em>System</em></div>
+    <div class="section-sub">Three fonts. Each with a specific role. Never swap them.</div>
+    <div class="sg-rule"></div>
+
+    <div class="type-showcase">
+      <div class="type-block primary">
+        <div class="type-meta">Display / Headings / Labels / Buttons · Cinzel</div>
+        <div class="type-sample-cinzel" style="font-size:40px;">BeCath</div>
+        <div class="type-sample-cinzel" style="font-size:24px;margin-top:8px;">The Catholic Faith, Made Simple</div>
+        <div class="type-sample-cinzel" style="font-size:14px;margin-top:8px;letter-spacing:0.2em;color:var(--gold);">STATION III · ACTIVE</div>
+        <div class="type-specs">
+          <div class="type-spec">font-family: 'Cinzel', serif</div>
+          <div class="type-spec">Google Fonts · Free</div>
+          <div class="type-spec">Weights: 400, 500, 600, 700, 900</div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--ink-muted);line-height:1.5;">Use for: page titles, section labels, button text, station numbers, eyebrows, nav items. Never for long body copy.</div>
+      </div>
+
+      <div class="type-block secondary">
+        <div class="type-meta">Serif / Editorial / Scripture / Quotes · Cormorant Garamond</div>
+        <div class="type-sample-cormorant" style="font-size:38px;font-weight:400;">"He was crushed for our iniquities."</div>
+        <div class="type-sample-cormorant" style="font-size:24px;font-style:italic;margin-top:8px;color:var(--gold);">Design your future</div>
+        <div class="type-sample-cormorant" style="font-size:20px;margin-top:8px;color:var(--ink-mid);">Your progress tells a story</div>
+        <div class="type-specs">
+          <div class="type-spec">font-family: 'Cormorant Garamond', serif</div>
+          <div class="type-spec">Google Fonts · Free</div>
+          <div class="type-spec">Weights: 300, 400, 500, 600 · Italic variants</div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--ink-muted);line-height:1.5;">Use for: card titles, scripture quotes, page headlines, prayer text, reflection body, pull quotes. The heart of BeCath's literary feel.</div>
+      </div>
+
+      <div class="type-block body">
+        <div class="type-meta">UI / Body / Captions · Lato</div>
+        <div class="type-sample-lato" style="font-size:16px;">Every check-in, insight, and pattern you notice — it all adds up to who you're becoming.</div>
+        <div class="type-sample-lato" style="font-size:13px;margin-top:8px;color:var(--ink-muted);">Saint of the Day · Today's saint · Feast: May 4</div>
+        <div class="type-specs">
+          <div class="type-spec">font-family: 'Lato', sans-serif</div>
+          <div class="type-spec">Google Fonts · Free</div>
+          <div class="type-spec">Weights: 300, 400, 500, 700</div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--ink-muted);line-height:1.5;">Use for: body copy, descriptions, metadata, captions, navigation labels, small UI text. Never for headlines or prayer text.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 7: SIGNATURE ELEMENTS ══ -->
+  <div class="section" id="signature">
+    <div class="section-number">07 — Visual Identity</div>
+    <div class="section-title">Signature <em>Elements</em></div>
+    <div class="section-sub">Four design elements unique to BeCath. These are the brand's visual fingerprint — use them consistently.</div>
+    <div class="sg-rule"></div>
+
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-title">The Stained Glass Stripe</div>
+        <div class="sig-desc">The 7-color gradient with white lead lines. Used as a top border, section divider, and progress indicator. Never use as a background fill.</div>
+        <div class="stripe-demo"></div>
+        <div style="margin-top:4px;">
+          <div class="stripe-demo-thin"></div>
+        </div>
+        <div style="margin-top:8px;font-size:9px;color:var(--ink-muted);font-family:monospace;background:var(--bg2);padding:6px 8px;border-radius:6px;">Red → Amber → Gold → Emerald → Teal → Sapphire → Violet</div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-title">The CSS Stained Glass Window</div>
+        <div class="sig-desc">A purely CSS-rendered gothic arch window. Used in paywalls, onboarding, and hero sections. Represents the sacred without using stock imagery.</div>
+        <div style="display:flex;justify-content:center;padding:8px 0;">
+          <div class="window-demo">
+            <div class="wd-p1"></div><div class="wd-p2"></div><div class="wd-p3"></div>
+            <div class="wd-p4"></div><div class="wd-p5"></div>
+            <div class="wd-h"></div><div class="wd-v"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-title">The Multicolor Progress System</div>
+        <div class="sig-desc">Station progress, onboarding steps, and reading completion all use the stained glass color sequence. Completed = filled gradient. Active = bright pulse. Upcoming = muted.</div>
+        <div class="progress-demo" style="margin-top:8px;">
+          <div style="font-size:9px;color:var(--ink-muted);margin-bottom:4px;letter-spacing:0.1em;">PROGRESS BAR</div>
+          <div class="prog-track"><div class="prog-fill" style="width:42%;"></div></div>
+          <div style="font-size:9px;color:var(--ink-muted);margin:8px 0 4px;letter-spacing:0.1em;">DOT PROGRESS</div>
+          <div class="prog-dots-demo">
+            <div class="prog-d done"></div><div class="prog-d done"></div>
+            <div class="prog-d active"></div><div class="prog-d"></div><div class="prog-d"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-title">The Gold Accent System</div>
+        <div class="sig-desc">Primary gold (#A07820) is the single action color — buttons, active states, labels. Never use the stained glass colors individually for UI actions. Gold is the sole interactive color.</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+          <div style="height:36px;background:var(--gold);border-radius:99px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:0.14em;color:white;">PRIMARY ACTION</span>
+          </div>
+          <div style="height:36px;background:var(--gold-light);border:1.5px solid var(--gold-border);border-radius:99px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:0.14em;color:var(--gold);">SECONDARY ACTION</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 8: COMPONENTS ══ -->
+  <div class="section" id="components">
+    <div class="section-number">08 — Application</div>
+    <div class="section-title">UI <em>Components</em></div>
+    <div class="section-sub">The component library derived from the BeCath design system. Every component follows the same principles.</div>
+    <div class="sg-rule"></div>
+
+    <div class="component-grid">
+
+      <div class="component-block">
+        <div class="component-header">Buttons</div>
+        <div class="component-preview">
+          <div class="btn-row">
+            <button class="demo-btn demo-btn-primary">Begin Journey</button>
+            <button class="demo-btn demo-btn-secondary">Learn More</button>
+            <button class="demo-btn demo-btn-sg">Unlock BeCath</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <div class="component-header">Content Card</div>
+        <div class="component-preview">
+          <div class="demo-card">
+            <div class="demo-card-img"></div>
+            <div class="demo-card-body">
+              <div class="demo-card-label">Miracles · 12 min</div>
+              <div class="demo-card-title">Shroud of Turin</div>
+              <div class="demo-card-meta">Image science · undeniable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <div class="component-header">Progress Indicators</div>
+        <div class="component-preview">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="font-size:9px;letter-spacing:0.16em;color:var(--ink-muted);margin-bottom:6px;">READING PROGRESS · 42%</div>
+              <div class="prog-track" style="height:5px;"><div class="prog-fill" style="width:42%;"></div></div>
+            </div>
+            <div>
+              <div style="font-size:9px;letter-spacing:0.16em;color:var(--ink-muted);margin-bottom:6px;">STATION III OF XIV</div>
+              <div class="prog-dots-demo">
+                <div class="prog-d done"></div><div class="prog-d done"></div>
+                <div class="prog-d active"></div><div class="prog-d"></div><div class="prog-d"></div>
+                <div class="prog-d"></div><div class="prog-d"></div><div class="prog-d"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <div class="component-header">Section Divider</div>
+        <div class="component-preview">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="stripe-demo"></div>
+            <div class="stripe-demo-thin"></div>
+            <div style="height:1px;background:var(--border);"></div>
+          </div>
+          <div style="margin-top:10px;font-size:10px;color:var(--ink-muted);">Full stripe (5px) · Thin stripe (3px) · Plain rule</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ SECTION 9: IMAGERY ══ -->
+  <div class="section" id="imagery">
+    <div class="section-number">09 — Application</div>
+    <div class="section-title">Imagery <em>Guidelines</em></div>
+    <div class="section-sub">Stained glass is the BeCath visual signature. All imagery choices should feel like light through cathedral glass.</div>
+    <div class="sg-rule"></div>
+
+    <div class="imagery-grid">
+      <div class="imagery-card">
+        <div class="imagery-example img-stained-glass"></div>
+        <div class="imagery-label">
+          <div>Stained Glass Art</div>
+          <div class="imagery-sub">Primary imagery · Always use</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-example img-architecture"></div>
+        <div class="imagery-label">
+          <div>Sacred Architecture</div>
+          <div class="imagery-sub">Secondary · Cathedral interiors</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-example img-manuscript"></div>
+        <div class="imagery-label">
+          <div>Manuscript / Parchment</div>
+          <div class="imagery-sub">Accent · For scripture sections</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+      <div style="background:rgba(42,138,58,0.05);border:1px solid rgba(42,138,58,0.2);border-radius:12px;padding:16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;color:#1A6A1A;margin-bottom:8px;">✓ USE</div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;">Stained glass windows · Gothic architecture · Illuminated manuscripts · Candlelight photography · Sacred iconography · Mosaic details</div>
+      </div>
+      <div style="background:rgba(200,64,64,0.04);border:1px solid rgba(200,64,64,0.15);border-radius:12px;padding:16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;color:#8B1A1A;margin-bottom:8px;">✗ AVOID</div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;">Stock photos of people praying · Overly modern church photography · Flat cartoon illustrations · Generic religion clipart · Photos of crowds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 10: MOTION ══ -->
+  <div class="section" id="motion">
+    <div class="section-number">10 — Application</div>
+    <div class="section-title">Motion <em>Principles</em></div>
+    <div class="section-sub">Motion should feel like breath — intentional, calm, and never distracting from prayer or reading.</div>
+    <div class="sg-rule"></div>
+
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-label">Page Entrance</div>
+        <div class="motion-name">Staggered Fade Up</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">Elements enter from 14px below, fading in. Each element delayed 100ms from the previous.</div>
+        <div class="motion-spec">fadeUp · 0.5s · ease · stagger 0.1s</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-label">Card Expand</div>
+        <div class="motion-name">Max-height Reveal</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">Station cards expand via max-height transition. Feels like unfolding a page of scripture.</div>
+        <div class="motion-spec">max-height · 0.45s · cubic-bezier(0.4,0,0.2,1)</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-label">Button Hover</div>
+        <div class="motion-name">Lift + Shadow</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">Primary buttons lift 1–2px on hover with deepened shadow. Never rotate or scale dramatically.</div>
+        <div class="motion-spec">translateY(-1px) · 0.25s · ease</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-label">CTA Button</div>
+        <div class="motion-name">Stained Glass Shift</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">The paywall CTA button slowly cycles through the stained glass gradient — like light moving through a window.</div>
+        <div class="motion-spec">background-position · 6s · ease · infinite</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-label">Loading State</div>
+        <div class="motion-name">Gentle Pulse</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">Skeleton screens use a slow opacity pulse. Never use spinning loaders — too aggressive for a prayer app.</div>
+        <div class="motion-spec">opacity 0.4→0.8 · 1.5s · ease-in-out · infinite</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-label">Live Badge</div>
+        <div class="motion-name">Dot Pulse</div>
+        <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;">The live indicator dot scales and fades to signal an active session. Calm pulse, not urgent flash.</div>
+        <div class="motion-spec">scale(1→1.5) · 1.2s · ease-in-out · infinite</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-top:16px;">
+      <div class="essence-label" style="margin-bottom:8px;">The Golden Rule of BeCath Motion</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.5;">"Animation should never interrupt prayer. If someone is reading, the screen should be still. Motion serves entrance, not distraction."</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 11: DO'S & DON'TS ══ -->
+  <div class="section" id="donts">
+    <div class="section-number">11 — Rules</div>
+    <div class="section-title">Do's <em>&amp; Don'ts</em></div>
+    <div class="section-sub">The guardrails. When in doubt, check this section before shipping.</div>
+    <div class="sg-rule"></div>
+
+    <div class="do-dont">
+      <div class="dd-card dd-do">
+        <div class="dd-label">✓ Always Do</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Use Cinzel for all labels, buttons, and section markers</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Use Cormorant Garamond for all scripture, prayer, and reading text</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Use the stained glass stripe as a divider between major sections</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Use gold (#A07820) as the single interactive/action color</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Write content in plain, direct language — no jargon</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Give every screen generous white space and breathing room</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Use stained glass imagery as the primary visual language</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#2A8A3A;">✓</span>Keep motion slow and calm — never aggressive or distracting</div>
+      </div>
+      <div class="dd-card dd-dont">
+        <div class="dd-label">✗ Never Do</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use the individual stained glass colors for UI actions or buttons</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use Inter, Roboto, or system fonts anywhere in the interface</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Place the logo on a busy or low-contrast background</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use corporate, preachy, or theological jargon in copy</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use spinning loaders or jarring transition animations</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use stock photos of generic prayer or religious scenes</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Stretch, rotate, recolor, or outline the logo</div>
+        <div class="dd-item"><span class="dd-icon" style="color:#C84040;">✗</span>Use the stained glass gradient as a large background fill</div>
+      </div>
+    </div>
+
+    <!-- Final statement -->
+    <div style="background:var(--white);border:2px solid var(--gold-border);border-radius:16px;padding:28px 32px;margin-top:20px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sg-red),var(--sg-amber),var(--sg-gold),var(--sg-green),var(--sg-teal),var(--sg-blue),var(--sg-violet));"></div>
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">The BeCath Standard</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;line-height:1.5;color:var(--ink);">Every screen should feel like<br>stepping into a <em style="color:var(--gold);">cathedral</em> —<br>beautiful, quiet, and full of answers.</div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+  // Copy color hex on click
+  function copyColor(hex, el) {
+    navigator.clipboard.writeText(hex).then(() => {
+      const original = el.textContent;
+      el.textContent = '✓ Copied';
+      setTimeout(() => el.textContent = original, 1500);
+    });
+  }
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.section, .cover');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + id) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

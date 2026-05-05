@@ -1249,6 +1249,31 @@ img { display: block; max-width: 100%; }
 }
 
 /* ═══ Pray-page daily checklist ═══ */
+/* Search */
+.search-cat-btn {
+  display:flex;align-items:center;gap:8px;
+  padding:12px 14px;border-radius:14px;
+  background:var(--card-bg);border:1.5px solid var(--border);
+  color:var(--text);font-size:14px;font-weight:600;
+  text-align:left;cursor:pointer;width:100%;
+}
+.search-cat-btn:active { opacity:.7; }
+.search-result-row {
+  display:flex;align-items:center;gap:12px;
+  padding:13px 14px;border-radius:14px;
+  background:var(--card-bg);border:1px solid var(--border);
+  margin-bottom:8px;cursor:pointer;
+}
+.search-result-row:active { opacity:.7; }
+.search-result-icon {
+  width:38px;height:38px;border-radius:10px;
+  background:var(--bg-elev);display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.search-result-title { font-size:15px;font-weight:600;color:var(--text); }
+.search-result-cat { font-size:12px;color:var(--text-muted);margin-top:2px; }
+.search-no-results { text-align:center;padding:32px 0;color:var(--text-muted);font-size:15px; }
+
 .pray-checklist {
   margin: 6px 18px 18px;
   padding: 0;
@@ -3371,6 +3396,36 @@ html.app-font-xl  { font-size: 20px; }
 
   </section>
 
+  <!-- ═══════════════ SEARCH ═══════════════ -->
+  <section class="page" id="page-search">
+    <div class="section-head"><div><div class="section-title">Search</div><div class="section-sub">Find prayers, saints, topics &amp; more</div></div></div>
+
+    <div style="padding:0 18px 12px;">
+      <div style="position:relative;">
+        <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="search" placeholder="Search prayers, saints, topics…"
+          style="width:100%;box-sizing:border-box;padding:12px 14px 12px 42px;border-radius:14px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:16px;outline:none;-webkit-appearance:none;"
+          oninput="runSearch(this.value)" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+
+    <!-- Quick categories (shown when empty) -->
+    <div id="searchCategories" style="padding:0 18px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;">Browse by category</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <button class="search-cat-btn" onclick="fillSearch('prayers')">🙏 Prayers</button>
+        <button class="search-cat-btn" onclick="fillSearch('saints')">✝️ Saints</button>
+        <button class="search-cat-btn" onclick="fillSearch('scripture')">📖 Scripture</button>
+        <button class="search-cat-btn" onclick="fillSearch('rosary')">📿 Rosary</button>
+        <button class="search-cat-btn" onclick="fillSearch('sacraments')">⛪ Sacraments</button>
+        <button class="search-cat-btn" onclick="fillSearch('miracles')">✨ Miracles</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="searchResults" style="padding:0 18px;display:none;"></div>
+  </section>
+
   <!-- ═══════════════ PRAY ═══════════════ -->
   <section class="page" id="page-pray">
     <div class="section-head"><div><div class="section-title">Pray</div><div class="section-sub">Your daily rhythm of prayer</div></div></div>
@@ -3383,7 +3438,10 @@ html.app-font-xl  { font-size: 20px; }
             <div class="pray-checklist-title">Today's Prayers</div>
             <div class="pray-checklist-sub" id="prayChecklistSub">Tap each one as you pray it · resets daily</div>
           </div>
-          <div class="pray-checklist-count"><span id="prayDoneCount">0</span><span class="pray-of">/</span><span id="prayTotalCount">8</span></div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div id="prayStreakBadge" style="display:none;background:rgba(255,140,0,0.12);border:0.5px solid rgba(255,140,0,0.35);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;color:#E07000;white-space:nowrap;"></div>
+            <div class="pray-checklist-count"><span id="prayDoneCount">0</span><span class="pray-of">/</span><span id="prayTotalCount">8</span></div>
+          </div>
         </div>
         <div class="pray-progress"><div class="pray-progress-bar" id="prayProgressBar"></div></div>
         <ul class="pray-checks" id="prayChecks">
@@ -3594,8 +3652,8 @@ html.app-font-xl  { font-size: 20px; }
             <div class="disc-item-text"><div class="disc-item-title">The Councils</div><div class="disc-item-meta">How doctrine was defined</div></div>
             <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <div class="disc-item" onclick="openDetail('papacy')">
-            <div class="disc-item-text"><div class="disc-item-title">The Papacy</div><div class="disc-item-meta">Succession from Peter</div></div>
+          <div class="disc-item" onclick="openDetail('pope')">
+            <div class="disc-item-text"><div class="disc-item-title">The Papacy</div><div class="disc-item-meta">Succession from Peter · 266 popes</div></div>
             <svg class="disc-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
@@ -4150,7 +4208,7 @@ html.app-font-xl  { font-size: 20px; }
   </button>
 </nav>
 
-<script src="content.js?v=20260504-2"></script>
+<script src="content.js?v=20260504-3"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -4612,16 +4670,56 @@ html.app-font-xl  { font-size: 20px; }
     document.getElementById('mini-player').classList.add('show');
   }
 
-  // ── Pray page daily checklist (localStorage, resets daily) ──
-  function _prayKey(){
-    var d = new Date();
+  // ── Pray page daily checklist ── streak + history ──
+  var _PRAY_TOTAL = 8;
+  function _prayKey(d){
+    d = d || new Date();
     return 'pray-' + d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
   }
-  function _loadPrayState(){
-    try { return JSON.parse(localStorage.getItem(_prayKey()) || '{}'); } catch(e){ return {}; }
+  function _loadPrayState(d){
+    try { return JSON.parse(localStorage.getItem(_prayKey(d)) || '{}'); } catch(e){ return {}; }
   }
-  function _savePrayState(s){
-    try { localStorage.setItem(_prayKey(), JSON.stringify(s)); } catch(e){}
+  function _savePrayState(s, d){
+    try { localStorage.setItem(_prayKey(d), JSON.stringify(s)); } catch(e){}
+  }
+  function _prayDoneCount(state){
+    return Object.values(state).filter(Boolean).length;
+  }
+  // Streak: stored as { count: N, lastDate: 'pray-YYYY-M-D' }
+  function _loadStreak(){
+    try { return JSON.parse(localStorage.getItem('becath_pray_streak') || '{"count":0,"lastDate":""}'); } catch(e){ return {count:0,lastDate:''}; }
+  }
+  function _saveStreak(obj){
+    try { localStorage.setItem('becath_pray_streak', JSON.stringify(obj)); } catch(e){}
+  }
+  function _yesterdayKey(){
+    var y = new Date(); y.setDate(y.getDate() - 1);
+    return _prayKey(y);
+  }
+  function _checkAndUpdateStreak(allDone){
+    if (!allDone) return;
+    var today = _prayKey();
+    var streak = _loadStreak();
+    if (streak.lastDate === today) return; // already counted today
+    var yesterday = _yesterdayKey();
+    if (streak.lastDate === yesterday) {
+      streak.count += 1;
+    } else {
+      streak.count = 1; // broke streak or first time
+    }
+    streak.lastDate = today;
+    _saveStreak(streak);
+  }
+  function _renderPrayStreak(){
+    var streak = _loadStreak();
+    var badge = document.getElementById('prayStreakBadge');
+    if (!badge) return;
+    if (streak.count >= 1) {
+      badge.style.display = 'block';
+      badge.textContent = '🔥 ' + streak.count + (streak.count === 1 ? '-day streak' : '-day streak');
+    } else {
+      badge.style.display = 'none';
+    }
   }
   function _renderPrayCount(){
     var lis = document.querySelectorAll('#prayChecks li');
@@ -4636,9 +4734,10 @@ html.app-font-xl  { font-size: 20px; }
     if (bar) bar.style.width = (total ? Math.round(done/total*100) : 0) + '%';
     if (sub) {
       if (done === 0) sub.textContent = 'Tap each one as you pray it · resets daily';
-      else if (done === total) sub.textContent = '🎉 You completed your prayer day';
+      else if (done === total) sub.textContent = '🎉 You completed your prayer day!';
       else sub.textContent = done + ' of ' + total + ' done · keep going';
     }
+    _renderPrayStreak();
   }
   window.togglePrayCheck = function(li){
     li.classList.toggle('done');
@@ -4646,6 +4745,8 @@ html.app-font-xl  { font-size: 20px; }
     var state = _loadPrayState();
     state[key] = li.classList.contains('done');
     _savePrayState(state);
+    var allDone = _prayDoneCount(state) >= _PRAY_TOTAL;
+    _checkAndUpdateStreak(allDone);
     _renderPrayCount();
   };
   // Restore checklist state on load
@@ -4660,6 +4761,140 @@ html.app-font-xl  { font-size: 20px; }
   function closeMiniPlayer(){
     document.getElementById('mini-player').classList.remove('show');
   }
+
+  // ── Search ──
+  var _SEARCH_INDEX = [
+    // Prayers
+    {key:'angel-prayer',      title:'Angel of God Prayer',        cat:'Prayers',   icon:'🙏', tags:'guardian angel prayer short'},
+    {key:'hail-mary',         title:'Hail Mary',                  cat:'Prayers',   icon:'🙏', tags:'hail mary ave maria'},
+    {key:'audio-morning',     title:'Morning Offering (Audio)',    cat:'Audio',     icon:'🎧', tags:'morning prayer audio'},
+    {key:'audio-divine-mercy',title:'Divine Mercy Chaplet (Audio)',cat:'Audio',     icon:'🎧', tags:'divine mercy chaplet audio 3pm'},
+    {key:'audio-angelus',     title:'The Angelus (Audio)',         cat:'Audio',     icon:'🎧', tags:'angelus audio noon'},
+    {key:'audio-examen',      title:'Examen Prayer (Audio)',       cat:'Audio',     icon:'🎧', tags:'examen audio evening'},
+    {key:'compline',          title:'Night Prayer / Compline',     cat:'Prayers',   icon:'🌙', tags:'night prayer compline sleep'},
+    {key:'guardian-angel',    title:'Guardian Angel Prayer',       cat:'Prayers',   icon:'🙏', tags:'guardian angel prayer'},
+    {key:'psalm-91',          title:'Psalm 91',                    cat:'Scripture', icon:'📖', tags:'psalm 91 protection scripture'},
+    {key:'today-prayer',      title:"Today's Prayer",             cat:'Prayers',   icon:'🙏', tags:'daily prayer today'},
+    // Rosary
+    {key:'rosary-joyful',     title:'Joyful Mysteries',           cat:'Rosary',    icon:'📿', tags:'rosary joyful mysteries monday saturday'},
+    {key:'rosary-luminous',   title:'Luminous Mysteries',         cat:'Rosary',    icon:'📿', tags:'rosary luminous mysteries thursday'},
+    {key:'rosary-sorrowful',  title:'Sorrowful Mysteries',        cat:'Rosary',    icon:'📿', tags:'rosary sorrowful mysteries tuesday friday'},
+    {key:'rosary-glorious',   title:'Glorious Mysteries',         cat:'Rosary',    icon:'📿', tags:'rosary glorious mysteries wednesday sunday'},
+    {key:'sleep-rosary',      title:'Sleep Rosary (Audio)',        cat:'Audio',     icon:'🎧', tags:'sleep rosary audio night'},
+    // Sacraments
+    {key:'baptism',           title:'Baptism',                    cat:'Sacraments',icon:'💧', tags:'baptism sacrament'},
+    {key:'eucharist',         title:'The Eucharist',              cat:'Sacraments',icon:'✝️', tags:'eucharist mass communion sacrament'},
+    {key:'confession',        title:'Confession',                 cat:'Sacraments',icon:'✝️', tags:'confession reconciliation sacrament'},
+    {key:'confirmation',      title:'Confirmation',               cat:'Sacraments',icon:'✝️', tags:'confirmation sacrament'},
+    {key:'sacraments',        title:'The 7 Sacraments',           cat:'Sacraments',icon:'⛪', tags:'sacraments seven'},
+    // Saints
+    {key:'saint-joseph',      title:'St. Joseph',                 cat:'Saints',    icon:'✝️', tags:'saint joseph father patron'},
+    {key:'saint-michael',     title:'St. Michael the Archangel',  cat:'Saints',    icon:'⚔️', tags:'saint michael archangel'},
+    {key:'saint-faustina',    title:'St. Faustina',               cat:'Saints',    icon:'✝️', tags:'saint faustina divine mercy'},
+    {key:'saint-jpii',        title:'St. John Paul II',           cat:'Saints',    icon:'✝️', tags:'saint john paul jpii pope'},
+    {key:'saint-mother-teresa-full',title:'St. Teresa of Calcutta',cat:'Saints',  icon:'✝️', tags:'mother teresa calcutta saint'},
+    {key:'saint-therese-full',title:'St. Thérèse of Lisieux',     cat:'Saints',    icon:'🌹', tags:'saint therese lisieux little flower'},
+    {key:'saint-francis-full',title:'St. Francis of Assisi',      cat:'Saints',    icon:'✝️', tags:'saint francis assisi'},
+    {key:'saint-aquinas-full',title:'St. Thomas Aquinas',         cat:'Saints',    icon:'✝️', tags:'saint thomas aquinas philosopher'},
+    {key:'saint-augustine',   title:'St. Augustine',              cat:'Saints',    icon:'✝️', tags:'saint augustine confessions'},
+    {key:'saint-ignatius',    title:'St. Ignatius of Loyola',     cat:'Saints',    icon:'✝️', tags:'saint ignatius loyola jesuit'},
+    {key:'saint-bernadette',  title:'St. Bernadette',             cat:'Saints',    icon:'✝️', tags:'saint bernadette lourdes'},
+    {key:'saint-joan',        title:'St. Joan of Arc',            cat:'Saints',    icon:'⚔️', tags:'saint joan arc'},
+    {key:'saint-kolbe',       title:'St. Maximilian Kolbe',       cat:'Saints',    icon:'✝️', tags:'saint maximilian kolbe martyr'},
+    {key:'saint-padre-pio-full',title:'St. Padre Pio',            cat:'Saints',    icon:'✝️', tags:'saint padre pio stigmata'},
+    {key:'saint-teresa-avila',title:'St. Teresa of Ávila',        cat:'Saints',    icon:'✝️', tags:'saint teresa avila mystic'},
+    {key:'saint-gianna',      title:'St. Gianna Molla',           cat:'Saints',    icon:'✝️', tags:'saint gianna molla mother'},
+    {key:'saint-catherine-siena',title:'St. Catherine of Siena',  cat:'Saints',    icon:'✝️', tags:'saint catherine siena doctor'},
+    {key:'saint-anthony-padua',title:'St. Anthony of Padua',      cat:'Saints',    icon:'✝️', tags:'saint anthony padua lost things'},
+    {key:'saint-paul',        title:'St. Paul',                   cat:'Saints',    icon:'✝️', tags:'saint paul apostle'},
+    {key:'saint-peter',       title:'St. Peter',                  cat:'Saints',    icon:'✝️', tags:'saint peter apostle pope'},
+    {key:'saint-magdalene',   title:'St. Mary Magdalene',         cat:'Saints',    icon:'✝️', tags:'saint mary magdalene apostle'},
+    {key:'saint-monica',      title:'St. Monica',                 cat:'Saints',    icon:'✝️', tags:'saint monica mother prayer'},
+    {key:'saint-rita',        title:'St. Rita',                   cat:'Saints',    icon:'✝️', tags:'saint rita impossible cases'},
+    {key:'saints-library',    title:'Full Saints Library',        cat:'Saints',    icon:'📚', tags:'saints library all'},
+    {key:'saints-canonization',title:'How Saints Are Made',       cat:'Saints',    icon:'✝️', tags:'canonization beatification saints'},
+    {key:'today-saint',       title:"Saint of the Day",           cat:'Saints',    icon:'✝️', tags:'saint day today'},
+    // Scripture / God's Word
+    {key:'scripture-faith',   title:'Faith & Breakthrough',       cat:'Scripture', icon:'📖', tags:'faith scripture breakthrough'},
+    {key:'scripture-healing', title:'Healing & Peace',            cat:'Scripture', icon:'📖', tags:'healing peace scripture'},
+    {key:'scripture-identity',title:'Identity & Worth',           cat:'Scripture', icon:'📖', tags:'identity worth scripture'},
+    {key:'scripture-money',   title:'Money & Provision',          cat:'Scripture', icon:'📖', tags:'money provision scripture'},
+    {key:'scripture-purpose', title:'Purpose & Calling',          cat:'Scripture', icon:'📖', tags:'purpose calling scripture'},
+    {key:'scripture-relationships',title:'Relationships',         cat:'Scripture', icon:'📖', tags:'relationships scripture'},
+    {key:'topic-prosperity',  title:'Prosperity',                 cat:'Scripture', icon:'📖', tags:'prosperity abundance scripture'},
+    // Devotions
+    {key:'stations-of-cross', title:'Stations of the Cross',      cat:'Devotions', icon:'✝️', tags:'stations cross devotion'},
+    {key:'mary-full',         title:'Devotion to Mary',           cat:'Devotions', icon:'📿', tags:'mary devotion our lady'},
+    {key:'healing-love',      title:'Healing & Love Prayers',     cat:'Devotions', icon:'❤️', tags:'healing love devotion prayer'},
+    {key:'daily-rhythm',      title:'A Catholic Daily Rhythm',    cat:'Devotions', icon:'📅', tags:'daily rhythm schedule prayer'},
+    {key:'journal',           title:'Prayer Journal',             cat:'Devotions', icon:'📓', tags:'journal prayer reflection'},
+    // Faith
+    {key:'why-catholic',      title:'Why Catholic?',              cat:'Faith',     icon:'⛪', tags:'why catholic faith reason'},
+    {key:'apologetics',       title:'Apologetics',                cat:'Faith',     icon:'🛡️', tags:'apologetics defense faith'},
+    {key:'catechism',         title:'The Catechism',              cat:'Faith',     icon:'📚', tags:'catechism faith teaching'},
+    {key:'commandments',      title:'The Ten Commandments',       cat:'Faith',     icon:'📜', tags:'ten commandments'},
+    {key:'pope',              title:'The Pope',                   cat:'Faith',     icon:'⛪', tags:'pope papacy holy see'},
+    {key:'revelation',        title:'The Book of Revelation',     cat:'Scripture', icon:'📖', tags:'revelation apocalypse scripture'},
+    {key:'prophets',          title:'The Prophets',               cat:'Scripture', icon:'📖', tags:'prophets old testament scripture'},
+    {key:'proof-jesus',       title:'Historical Evidence for Jesus',cat:'Faith',  icon:'✝️', tags:'proof jesus evidence history'},
+    {key:'about',             title:'About BeCath',               cat:'App',       icon:'ℹ️', tags:'about becath app'},
+    // Miracles
+    {key:'miracle-lanciano',  title:'Miracle of Lanciano',        cat:'Miracles',  icon:'✨', tags:'miracle lanciano eucharist'},
+    {key:'miracle-lourdes',   title:'Miracle of Lourdes',         cat:'Miracles',  icon:'✨', tags:'miracle lourdes bernadette'},
+    {key:'miracle-fatima',    title:'Fatima',                     cat:'Miracles',  icon:'✨', tags:'fatima apparition miracle portugal'},
+    {key:'miracle-guadalupe', title:'Our Lady of Guadalupe',      cat:'Miracles',  icon:'✨', tags:'guadalupe apparition miracle'},
+    {key:'miracle-eucharist', title:'Eucharistic Miracles',       cat:'Miracles',  icon:'✨', tags:'eucharistic miracles'},
+    {key:'miracle-shroud',    title:'Shroud of Turin',            cat:'Miracles',  icon:'✨', tags:'shroud turin holy'},
+    {key:'miracle-padre-pio', title:'Padre Pio\'s Stigmata',     cat:'Miracles',  icon:'✨', tags:'padre pio stigmata miracle'},
+    {key:'miracle-buenosaires',title:'Buenos Aires Miracle',      cat:'Miracles',  icon:'✨', tags:'buenos aires eucharistic miracle'},
+    {key:'miracle-sokolka',   title:'Sokółka Miracle',            cat:'Miracles',  icon:'✨', tags:'sokolka eucharistic miracle'},
+    {key:'miracle-incorrupt', title:'Incorruptible Saints',       cat:'Miracles',  icon:'✨', tags:'incorruptible bodies saints'},
+    // Apparitions
+    {key:'apparitions',       title:'Marian Apparitions',         cat:'Miracles',  icon:'🕊️', tags:'marian apparitions mary'},
+    {key:'archangels',        title:'The Archangels',             cat:'Faith',     icon:'👼', tags:'archangels michael gabriel raphael'},
+    // Audio
+    {key:'baptism-full',      title:'Baptism (Extended)',         cat:'Sacraments',icon:'💧', tags:'baptism full extended'},
+  ];
+
+  window.fillSearch = function(q){
+    var inp = document.getElementById('searchInput');
+    if(inp){ inp.value = q; runSearch(q); }
+  };
+
+  window.runSearch = function(q){
+    var cats = document.getElementById('searchCategories');
+    var res  = document.getElementById('searchResults');
+    if(!q || !q.trim()){
+      if(cats) cats.style.display = '';
+      if(res)  res.style.display = 'none';
+      return;
+    }
+    if(cats) cats.style.display = 'none';
+    if(res)  res.style.display = '';
+    var term = q.toLowerCase().trim();
+    var words = term.split(/\s+/);
+    var hits = _SEARCH_INDEX.filter(function(item){
+      var haystack = (item.title + ' ' + item.cat + ' ' + (item.tags||'')).toLowerCase();
+      return words.every(function(w){ return haystack.indexOf(w) !== -1; });
+    });
+    if(hits.length === 0){
+      res.innerHTML = '<div class="search-no-results">No results for "<b>' + q.replace(/</g,'&lt;') + '</b>"<br><small style="color:var(--text-muted)">Try saints, rosary, prayers, miracles…</small></div>';
+      return;
+    }
+    res.innerHTML = hits.map(function(h){
+      return '<div class="search-result-row" onclick="openDetail(\''+h.key+'\')">'+
+        '<div class="search-result-icon">'+h.icon+'</div>'+
+        '<div><div class="search-result-title">'+h.title+'</div>'+
+        '<div class="search-result-cat">'+h.cat+'</div></div>'+
+        '</div>';
+    }).join('');
+  };
+
+  // Clear search input when navigating away
+  document.addEventListener('DOMContentLoaded', function(){
+    var inp = document.getElementById('searchInput');
+    if(inp){ inp.addEventListener('search', function(){ if(!this.value) runSearch(''); }); }
+  });
 
   // ── Old onboarding modal removed — replaced by inline ob2 flow ──
   (function(){
@@ -4797,24 +5032,24 @@ html.app-font-xl  { font-size: 20px; }
       key = SAINT_ROTATION[dayOfYear % SAINT_ROTATION.length];
     }
 
-    // Resolve the saint's full detail data
-    var saintData = (window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || null;
+    // Store the key — content.js may not be parsed yet at this point
+    window._todaySaintKey = key;
 
-    if (saintData) {
-      // Inject into DETAIL so openDetail('today-saint') shows the right saint
-      // We do this after DETAIL is built (IIFE runs after script parse)
-      window._todaySaintKey = key;
-      window._todaySaintData = saintData;
-
-      // Update the home card subtitle
-      var nameEl = document.getElementById('today-saint-name');
-      if (nameEl) nameEl.textContent = saintData.title || 'Today\'s saint';
-    } else {
-      // We have the key string but content not loaded yet (content.js loads async) — handle below
-      window._todaySaintKey = key;
-      var nameEl = document.getElementById('today-saint-name');
-      // Will be resolved when openDetail fires
+    // Update the saint name card — runs after full page load so content.js is guaranteed parsed
+    function updateSaintName() {
+      var data = (window.BECATH_CONTENT && window.BECATH_CONTENT[key])
+               || (window.DETAIL && window.DETAIL[key])
+               || null;
+      if (data) {
+        window._todaySaintData = data;
+        var nameEl = document.getElementById('today-saint-name');
+        if (nameEl) nameEl.textContent = data.title || 'Today\'s saint';
+      }
     }
+    // Try immediately (in case content.js was already parsed via cache)
+    updateSaintName();
+    // Also run after window load to catch async/deferred parse
+    window.addEventListener('load', updateSaintName);
   })();
 
   // ── Onboarding state → Me page "Your Path" row ──

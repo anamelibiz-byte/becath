@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCath Rebuild Checklist</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #FAFAF8; color: #1A1410; margin: 0; padding: 20px; }
+  h1 { font-family: Georgia, serif; font-size: 22px; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #9A8E78; margin-bottom: 24px; }
+  .progress-bar-wrap { background: #E8E4DA; border-radius: 99px; height: 8px; margin-bottom: 24px; }
+  .progress-bar { height: 8px; border-radius: 99px; background: linear-gradient(90deg,#C84040,#D08010,#C8960A,#2A8A3A,#1A8080,#3060C0,#7040B8); transition: width 0.4s; width: 0%; }
+  .progress-label { font-size: 12px; color: #9A8E78; margin-bottom: 16px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-family: Georgia, serif; font-size: 13px; font-weight: 700; color: #A07820; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #A07820; }
+  .item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; margin-bottom: 4px; cursor: pointer; transition: background 0.15s; border: 1px solid transparent; }
+  .item:hover { background: #F2F0EB; }
+  .item.done { opacity: 0.5; }
+  .item.done .label { text-decoration: line-through; }
+  .cb { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #C8C0B0; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .item.done .cb { background: #2A8A3A; border-color: #2A8A3A; }
+  .cb svg { display: none; }
+  .item.done .cb svg { display: block; }
+  .label { font-size: 13px; color: #1A1410; line-height: 1.4; }
+  .tag { font-size: 10px; padding: 1px 7px; border-radius: 99px; margin-left: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .tag-js  { background: rgba(48,96,192,0.1); color: #3060C0; }
+  .tag-css { background: rgba(160,120,32,0.1); color: #A07820; }
+  .tag-html{ background: rgba(200,64,64,0.1); color: #C84040; }
+  .tag-key { background: rgba(42,138,58,0.1); color: #2A8A3A; }
+  .note { font-size: 11px; color: #9A8E78; margin-top: 2px; }
+  .reset-btn { font-size: 11px; color: #9A8E78; background: none; border: 1px solid #D0C8B8; border-radius: 6px; padding: 4px 10px; cursor: pointer; float: right; }
+  .reset-btn:hover { color: #C84040; border-color: #C84040; }
+  @media (min-width: 700px) { body { max-width: 680px; margin: 0 auto; padding: 32px 20px; } }
+</style>
+</head>
+<body>
+
+<h1>BeCath — Brand Rebuild Checklist</h1>
+<div class="subtitle">Option C: New shell, same content. Check off each item as it's ported to the new index.html.</div>
+<button class="reset-btn" onclick="resetAll()">Reset all</button>
+
+<div class="progress-label"><span id="done-count">0</span> / <span id="total-count">0</span> items complete</div>
+<div class="progress-bar-wrap"><div class="progress-bar" id="prog"></div></div>
+
+<!-- ═══ SHELL ═══ -->
+<div class="section">
+  <div class="section-title">1 — New Shell (CSS + Fonts)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Add fonts: Cinzel, Cormorant Garamond, Lato <span class="tag tag-html">HTML</span></div><div class="note">Google Fonts link in &lt;head&gt;</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">CSS variables — brand bible token values <span class="tag tag-css">CSS</span></div><div class="note">--bg #FAFAF8, --ink #1A1410, --gold #A07820, all SG colors, dark mode overrides</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Stained glass stripe — top of every page <span class="tag tag-css">CSS</span></div><div class="note">5px segmented bar, 7-color sequence with lead-line dividers</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Page system (.page / .page.active / goPage) <span class="tag tag-js">JS</span></div><div class="note">Keep identical logic — _pageStack, goBack()</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Bottom nav — 5 tabs: Home, Pray, Learn, Miracles, Me <span class="tag tag-html">HTML</span></div><div class="note">Cinzel labels, gold active state, active-dot indicator</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Top bar — BeCath wordmark + greeting + icons <span class="tag tag-html">HTML</span></div><div class="note">id="greet", search icon goPage('search'), profile icon goPage('me')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Mini player HTML + JS <span class="tag tag-html">HTML</span><span class="tag tag-js">JS</span></div><div class="note">id="mini-player", id="mp-title", playMiniPlayer(), closeMiniPlayer()</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Theme toggle (Auto / Light / Dark) + JS <span class="tag tag-js">JS</span></div><div class="note">id="theme-seg", localStorage 'becath_theme', html.theme-light/dark classes</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Scroll-reveal animation system <span class="tag tag-js">JS</span></div><div class="note">IntersectionObserver on .section-head, .h-row, .featured etc.</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">content.js script tag (window.BECATH_CONTENT) <span class="tag tag-html">HTML</span></div><div class="note">&lt;script src="content.js"&gt; — rich detail entries merge into DETAIL object</div></div>
+  </div>
+</div>
+
+<!-- ═══ HOME PAGE ═══ -->
+<div class="section">
+  <div class="section-title">2 — Home Page (page-home)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Onboarding gate overlay (#becath-onboarding-wrap) <span class="tag tag-key">KEY</span></div><div class="note">position:fixed full-screen, hides on completion. All 3 ob2 screens + result screen + bottom bar</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Onboarding JS — ob2Select, ob2Next, ob2GoBack, ob2Complete, ob2Restart, ob2ResetPath, ob2ShowResult, ob2Init <span class="tag tag-js">JS</span></div><div class="note">localStorage keys: becath_onboarding_complete, becath_onboarding_data</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Featured hero card — "Why Catholic?" <span class="tag tag-html">HTML</span></div><div class="note">onclick="openDetail('why-catholic')"</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Continue section (id="continue-section") — hidden by default <span class="tag tag-html">HTML</span></div><div class="note">id="continue-row" — shown for returning users</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Today section — 4 square cards <span class="tag tag-html">HTML</span></div><div class="note">Saint of the Day (id="today-saint-name"), Mass Readings, Morning Offering, Prayer Starter. id="today-date"</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Learn section — 5 wide cards <span class="tag tag-html">HTML</span></div><div class="note">Did Jesus Really Live?, Mary's Apparitions, Ten Commandments, Why Jesus?, The Prophets. "See all" → goPage('learn')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Miracles section — 5 square cards <span class="tag tag-html">HTML</span></div><div class="note">Eucharistic Miracles, Shroud, Miracle of the Sun, Incorrupt Saints, Healings at Lourdes. "See all" → goPage('miracles')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Angels section — 3 wide cards <span class="tag tag-html">HTML</span></div><div class="note">Guardian Angel, The Archangels, Angel of God</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Rosary section — 5 square cards <span class="tag tag-html">HTML</span></div><div class="note">Joyful, Sorrowful, Glorious, Luminous Mysteries + The Hail Mary. "See all" → goPage('pray')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Saints section — 23 list rows + "See all" <span class="tag tag-html">HTML</span></div><div class="note">Joseph, Thérèse, Padre Pio, Faustina, Monica, Magdalene, Francis, Augustine, Aquinas, Anthony, Mother Teresa, Bernadette, Joan, JPII, Michael, Peter, Paul, Kolbe, Rita, Gianna, Ignatius, Teresa of Ávila, Catherine of Siena</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Audio section — 2 square cards preview <span class="tag tag-html">HTML</span></div><div class="note">Morning Offering audio, Sleep Rosary. "See all" → goPage('pray')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Greeting + date JS (id="greet", id="today-date") <span class="tag tag-js">JS</span></div><div class="note">Reads name from becath_onboarding_data.q1, fallback becath_profile.name</div></div>
+  </div>
+</div>
+
+<!-- ═══ PRAY PAGE ═══ -->
+<div class="section">
+  <div class="section-title">3 — Pray Page (page-pray)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Daily Prayer Checklist — 8 items <span class="tag tag-key">KEY</span></div><div class="note">Morning Offering, Guardian Angel, Gospel, Angelus, Divine Mercy, Rosary, Examen, Night Prayer. Progress bar. Resets daily via localStorage.</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Checklist JS — togglePrayCheck(), loadPrayState(), id="prayDoneCount", id="prayTotalCount" <span class="tag tag-js">JS</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Daily Rhythm full-width card <span class="tag tag-html">HTML</span></div><div class="note">openDetail('daily-rhythm'), img/daily.jpg</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Audio Prayers — chip filter row + 6 list rows <span class="tag tag-html">HTML</span></div><div class="note">Morning Offering, Angelus, Rosary, Divine Mercy Chaplet, Evening Examen, Night Prayer (Compline)</div></div>
+  </div>
+</div>
+
+<!-- ═══ LEARN PAGE ═══ -->
+<div class="section">
+  <div class="section-title">4 — Learn Page (page-learn)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Featured hero — "Why Catholic?" <span class="tag tag-html">HTML</span></div><div class="note">img/jesus.jpg, "Start Here" eyebrow</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Why Jesus? — 3 wide cards <span class="tag tag-html">HTML</span></div><div class="note">Did Jesus Really Live?, Mary's Apparitions, Ten Commandments</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Scripture — 3 list rows <span class="tag tag-html">HTML</span></div><div class="note">The Prophets, Book of Revelation, Catechism</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Sacraments — 4 square cards <span class="tag tag-html">HTML</span></div><div class="note">Eucharist, Baptism, Confession, Confirmation</div></div>
+  </div>
+</div>
+
+<!-- ═══ MIRACLES PAGE ═══ -->
+<div class="section">
+  <div class="section-title">5 — Miracles Page (page-miracles)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">St. Augustine quote block <span class="tag tag-html">HTML</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Eucharistic Miracles — 3 list rows <span class="tag tag-html">HTML</span></div><div class="note">Lanciano, Buenos Aires, Sokółka</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Marian Apparitions — 3 wide cards <span class="tag tag-html">HTML</span></div><div class="note">Fatima, Lourdes, Guadalupe</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Saintly Miracles — 3 list rows <span class="tag tag-html">HTML</span></div><div class="note">Padre Pio's Stigmata, Incorrupt Saints, Shroud of Turin</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">"More miracles coming" empty state <span class="tag tag-html">HTML</span></div></div>
+  </div>
+</div>
+
+<!-- ═══ ME PAGE ═══ -->
+<div class="section">
+  <div class="section-title">6 — Me Page (page-me)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Theme toggle row (Auto / Light / Dark) <span class="tag tag-html">HTML</span></div><div class="note">id="theme-seg"</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">7 profile rows <span class="tag tag-html">HTML</span></div><div class="note">Prayer Journal, Prosperity Scriptures, About BeCath, A Daily Rhythm, Catholic Dictionary, How Saints Are Made, Notifications</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Dynamic "Your Path" / "Start Here" row injected by JS <span class="tag tag-js">JS</span></div><div class="note">Reads becath_onboarding_complete + becath_onboarding_data, inserts above first profile-row</div></div>
+  </div>
+</div>
+
+<!-- ═══ MASS READINGS PAGE ═══ -->
+<div class="section">
+  <div class="section-title">7 — Mass Readings Page (page-mass-readings)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">SG stripe + topbar with back btn + Aa font size btn <span class="tag tag-html">HTML</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Date banner + Liturgy badge + SG divider <span class="tag tag-html">HTML</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">4 tabs: Reading I, Psalm, Gospel, Alleluia <span class="tag tag-html">HTML</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">All 4 reading panels + reflection CTAs <span class="tag tag-html">HTML</span></div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Font controls float + all mass readings JS <span class="tag tag-js">JS</span></div><div class="note">mrSwitchTab, mrToggleFontControls, mrSetFont, mrSetDate, audio button toggle</div></div>
+  </div>
+</div>
+
+<!-- ═══ DETAIL PAGE ═══ -->
+<div class="section">
+  <div class="section-title">8 — Detail Page (page-detail)</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Detail hero, back btn, content shell <span class="tag tag-html">HTML</span></div><div class="note">id="detail-hero", id="detail-eyebrow", id="detail-title", id="detail-meta", id="detail-body"</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">openDetail() JS + DETAIL object (all 75 keys) <span class="tag tag-js">JS</span><span class="tag tag-key">KEY</span></div><div class="note">All stubs + merge with window.BECATH_CONTENT from content.js</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Rich block renderer (renderRichBlock) <span class="tag tag-js">JS</span></div><div class="note">Handles: text, image, quote, accordion (db-accordion), list, audio, stations, grid, checklist</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Journal special renderer <span class="tag tag-js">JS</span></div><div class="note">Compose UI + localStorage saved entries. openDetail('journal')</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Dictionary special renderer <span class="tag tag-js">JS</span></div><div class="note">Search input + A-Z pills + filterDictionaryByLetter(). openDetail('dictionary')</div></div>
+  </div>
+</div>
+
+<!-- ═══ SEARCH PAGE ═══ -->
+<div class="section">
+  <div class="section-title">9 — Search Page (page-search)</div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Search input + results list <span class="tag tag-html">HTML</span><span class="tag tag-js">JS</span></div><div class="note">goPage('search'), searches DETAIL keys + titles</div></div>
+  </div>
+</div>
+
+<!-- ═══ DETAIL CONTENT ═══ -->
+<div class="section">
+  <div class="section-title">10 — All 75 openDetail() Keys Verified</div>
+  <div style="font-size:11px;color:#9A8E78;margin-bottom:10px;">Each key must exist in DETAIL object or window.BECATH_CONTENT</div>
+
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">about, angel-prayer, apologetics, apparitions, archangels</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">audio-angelus, audio-divine-mercy, audio-examen, audio-morning</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">baptism, baptism-full, catechism, commandments, compline, confession, confirmation</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">daily-rhythm, dictionary, eucharist, guardian-angel, hail-mary, healing-love, journal</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">mary-full, miracle-buenosaires, miracle-eucharist, miracle-fatima, miracle-guadalupe</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">miracle-incorrupt, miracle-lanciano, miracle-lourdes, miracle-padre-pio, miracle-shroud, miracle-sokolka</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">pope, proof-jesus, prophets, prosperity, psalm-91, revelation</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">rosary-glorious, rosary-joyful, rosary-luminous, rosary-sorrowful, sacraments</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">saint-anthony-padua, saint-aquinas-full, saint-augustine, saint-bernadette, saint-catherine-siena</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">saint-faustina, saint-francis-full, saint-gianna, saint-ignatius, saint-joan, saint-joseph</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">saint-jpii, saint-kolbe, saint-magdalene, saint-michael, saint-monica, saint-mother-teresa-full</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">saint-padre-pio-full, saint-paul, saint-peter, saint-rita, saint-teresa-avila, saint-therese-full</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="label">saints-canonization, saints-library, sleep-rosary, stations-of-cross, today-mass, today-prayer, today-saint, why-catholic</div></div></div>
+</div>
+
+<!-- ═══ FINAL QA ═══ -->
+<div class="section">
+  <div class="section-title">11 — Final QA Before Push</div>
+
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">All 5 nav tabs navigate correctly</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Onboarding gate fires on first visit, skips on return</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Dark mode works on all pages</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Prayer checklist persists + resets daily</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">openDetail() works for 10 random keys</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Journal: write + save + view entries works</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Dictionary: search + A-Z filter works</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Mass readings: tabs + Aa font size works</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">stations-reading.html still works (separate file)</div></div>
+  </div>
+  <div class="item" onclick="toggle(this)">
+    <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="1.5 6 4.5 9 10.5 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div><div class="label">Run git diff vs old index.html — no missing IDs</div></div>
+  </div>
+</div>
+
+<script>
+  function toggle(item) {
+    item.classList.toggle('done');
+    save();
+    updateProgress();
+  }
+
+  function save() {
+    var states = [];
+    document.querySelectorAll('.item').forEach(function(item) {
+      states.push(item.classList.contains('done') ? '1' : '0');
+    });
+    try { localStorage.setItem('becath_rebuild_checklist', states.join('')); } catch(e){}
+  }
+
+  function load() {
+    try {
+      var saved = localStorage.getItem('becath_rebuild_checklist') || '';
+      document.querySelectorAll('.item').forEach(function(item, i) {
+        if (saved[i] === '1') item.classList.add('done');
+      });
+    } catch(e){}
+  }
+
+  function updateProgress() {
+    var items = document.querySelectorAll('.item');
+    var done = document.querySelectorAll('.item.done').length;
+    var total = items.length;
+    document.getElementById('done-count').textContent = done;
+    document.getElementById('total-count').textContent = total;
+    document.getElementById('prog').style.width = (done / total * 100) + '%';
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all checkboxes?')) return;
+    document.querySelectorAll('.item').forEach(function(i) { i.classList.remove('done'); });
+    try { localStorage.removeItem('becath_rebuild_checklist'); } catch(e){}
+    updateProgress();
+  }
+
+  load();
+  updateProgress();
+</script>
+</body>
+</html>

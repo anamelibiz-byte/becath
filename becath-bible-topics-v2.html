@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCath — Bible Topic Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink: #0F0A04;
+  --parchment: #F9F4EC;
+  --gold: #B8892A;
+  --gold-light: #E8D5A3;
+  --gold-pale: #FDF8EE;
+  --stone: #8A7A68;
+  --stone-light: #C4B8A8;
+  --card: #FFFFFF;
+  --border: #EAE0D0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--parchment);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--ink);
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(184,137,42,0.12), transparent);
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+  position: relative;
+}
+header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 7vw, 56px);
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.1;
+  position: relative;
+}
+header h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+header p {
+  margin-top: 14px;
+  color: var(--stone-light);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 28px;
+  position: relative;
+}
+.stat { text-align: center; }
+.stat-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  color: var(--stone-light);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── SEARCH BAR ── */
+.search-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+}
+.search-box {
+  position: relative;
+  margin-bottom: 16px;
+}
+.search-box input {
+  width: 100%;
+  padding: 16px 52px 16px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.search-box input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(184,137,42,0.10);
+}
+.search-box input::placeholder { color: var(--stone-light); }
+.search-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--stone-light);
+  font-size: 18px;
+  pointer-events: none;
+}
+.search-hint {
+  font-size: 11px;
+  color: var(--stone);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.search-hint span { color: var(--gold); cursor: pointer; }
+
+/* ── FILTER PILLS ── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pill {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--stone);
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--gold); color: var(--gold); }
+.pill.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+/* ── RESULTS INFO ── */
+.results-info {
+  max-width: 760px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  font-size: 12px;
+  color: var(--stone);
+  min-height: 18px;
+}
+
+/* ── MAIN GRID ── */
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  display: none;
+}
+.no-results.show { display: block; }
+.no-results p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--stone);
+  font-style: italic;
+}
+.no-results small {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--stone-light);
+}
+
+/* ── TOPIC CARD ── */
+.topic-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.topic-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+.topic-card.hidden { display: none; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  cursor: pointer;
+  user-select: none;
+}
+.cat-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.card-meta { flex: 1; min-width: 0; }
+.card-meta h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.card-meta p {
+  font-size: 12px;
+  color: var(--stone);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300;
+}
+.card-category {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.chevron {
+  color: var(--stone-light);
+  font-size: 14px;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.topic-card.open .chevron { transform: rotate(180deg); }
+
+/* ── VERSE PANEL ── */
+.verse-panel {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 0 22px 22px;
+  animation: slideDown 0.2s ease;
+}
+.topic-card.open .verse-panel { display: block; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.verse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.verse-item {
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-light);
+  border-radius: 12px;
+  padding: 14px 16px;
+  position: relative;
+}
+.verse-ref {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+}
+.verse-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.verse-note {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 6px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── highlight matches ── */
+mark {
+  background: rgba(184,137,42,0.20);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--stone-light);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">BeCath · Scripture Library</span>
+  <h1>What Does the Bible Say<br>About <em>Your Life?</em></h1>
+  <p>Search by topic, keyword, or verse reference</p>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">31</span><span class="stat-label">Topics</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Categories</span></div>
+    <div class="stat"><span class="stat-num" id="verse-count">155+</span><span class="stat-label">Verses</span></div>
+  </div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search topics, keywords, or verse references…" autocomplete="off">
+    <span class="search-icon">⌕</span>
+  </div>
+  <p class="search-hint">Try <span onclick="quickSearch('fear')">fear</span>, <span onclick="quickSearch('money')">money</span>, <span onclick="quickSearch('Psalm')">Psalm</span>, or <span onclick="quickSearch('identity')">identity</span></p>
+  <div class="filters">
+    <div class="pill active" onclick="filterCat('all', this)">All Topics</div>
+    <div class="pill" onclick="filterCat('money', this)">💰 Money & Provision</div>
+    <div class="pill" onclick="filterCat('purpose', this)">🧭 Purpose & Calling</div>
+    <div class="pill" onclick="filterCat('healing', this)">🌿 Healing & Peace</div>
+    <div class="pill" onclick="filterCat('identity', this)">👑 Identity & Worth</div>
+    <div class="pill" onclick="filterCat('relationships', this)">❤️ Relationships</div>
+    <div class="pill" onclick="filterCat('faith', this)">⚡ Faith & Breakthrough</div>
+  </div>
+</div>
+
+<div class="results-info" id="resultsInfo"></div>
+
+<main id="topicGrid">
+  <div class="no-results" id="noResults">
+    <p>"Seek and you shall find…"</p>
+    <small>No topics matched your search. Try different keywords.</small>
+  </div>
+</main>
+
+<footer>BeCath App · Bible Topic Library · Built for everyday believers</footer>
+
+<script>
+const TOPICS = [
+  // ── MONEY & PROVISION ──
+  {
+    id:'prosperity', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Prosperity', summary:'God desires you to flourish — spirit, soul, and finances.',
+    verses:[
+      { ref:'3 John 1:2', text:'Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.', note:'The original Greek word for prosper (euodoo) means to have a good journey — God wants your whole life to go well.' },
+      { ref:'Jeremiah 29:11', text:'For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.', note:'Written to people in exile — God\'s prosperity promise doesn\'t require perfect circumstances.' },
+      { ref:'Deuteronomy 8:18', text:'Remember the Lord your God, for it is he who gives you the ability to produce wealth.', note:'Wealth-building capacity is a gift — not something earned apart from God.' },
+      { ref:'Psalm 35:27', text:'Let the Lord be magnified, who has pleasure in the prosperity of His servant.', note:'God actually takes delight when His people flourish. This isn\'t a guilty blessing.' },
+      { ref:'Joshua 1:8', text:'Then you will be prosperous and successful.', note:'Attached to meditating on God\'s word day and night — prosperity is connected to how you think.' },
+      { ref:'Proverbs 10:22', text:'The blessing of the Lord makes rich, and he adds no sorrow with it.', note:'True prosperity from God doesn\'t come with burnout, compromise, or shame.' },
+    ]
+  },
+  {
+    id:'provision', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Provision', summary:'God as your source — He meets every need.',
+    verses:[
+      { ref:'Philippians 4:19', text:'And my God will meet all your needs according to the riches of his glory in Christ Jesus.', note:'Not some needs — all needs. The standard is His riches, not your circumstances.' },
+      { ref:'Matthew 6:26', text:'Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?', note:'Jesus uses nature as proof of God\'s provision instinct.' },
+      { ref:'Psalm 23:1', text:'The Lord is my shepherd; I shall not want.', note:'"Shall not want" means nothing is missing — a statement of total sufficiency.' },
+      { ref:'Luke 12:7', text:'Indeed, the very hairs of your head are all numbered. Don\'t be afraid; you are worth more than many sparrows.', note:'God\'s attention to detail about you personally is the basis for trusting His provision.' },
+      { ref:'2 Corinthians 9:8', text:'And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.', note:'Provision isn\'t just for survival — it\'s so you can bless others too.' },
+      { ref:'Isaiah 58:11', text:'The Lord will guide you always; he will satisfy your needs in a sun-scorched land.', note:'Even in dry, hard seasons — God\'s provision still reaches you.' },
+    ]
+  },
+  {
+    id:'stewardship', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Stewardship', summary:'Managing what God has entrusted to you wisely.',
+    verses:[
+      { ref:'Luke 16:10', text:'Whoever can be trusted with very little can also be trusted with much.', note:'Faithfulness in small things is the prerequisite for bigger responsibility and blessing.' },
+      { ref:'Matthew 25:21', text:'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things.', note:'The parable of the talents — God rewards those who multiply what they\'re given.' },
+      { ref:'Proverbs 21:5', text:'The plans of the diligent lead to profit as surely as haste leads to poverty.', note:'Stewardship is intentional. Planning and diligence are spiritual practices.' },
+      { ref:'1 Corinthians 4:2', text:'Now it is required that those who have been given a trust must prove faithful.', note:'Faithfulness — not just success — is the measure of good stewardship.' },
+      { ref:'Proverbs 27:23', text:'Be sure you know the condition of your flocks, give careful attention to your herds.', note:'Biblical financial wisdom: know your numbers. Pay attention to what you have.' },
+      { ref:'Luke 14:28', text:'Suppose one of you wants to build a tower. Won\'t you first sit down and estimate the cost?', note:'Jesus taught planning ahead as basic wisdom — budgeting is biblical.' },
+    ]
+  },
+  {
+    id:'generosity', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Generosity & Giving', summary:'The sowing and reaping principle — you can\'t out-give God.',
+    verses:[
+      { ref:'Luke 6:38', text:'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.', note:'Generosity activates a return — this is the overflow principle.' },
+      { ref:'2 Corinthians 9:7', text:'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.', note:'The posture of the giver matters as much as the gift itself.' },
+      { ref:'Malachi 3:10', text:'Bring the whole tithe into the storehouse... Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven.', note:'The only place in Scripture where God invites you to test Him.' },
+      { ref:'Proverbs 11:24', text:'One person gives freely, yet gains even more; another withholds unduly, but comes to poverty.', note:'Generosity is counter-intuitive math — Kingdom economy works differently.' },
+      { ref:'Proverbs 19:17', text:'Whoever is kind to the poor lends to the Lord, and he will reward them for what they have done.', note:'Generosity toward the vulnerable is treated as a loan to God Himself.' },
+      { ref:'Galatians 6:7', text:'A man reaps what he sows.', note:'The harvest law is universal and applies to money, relationships, effort, and faith.' },
+    ]
+  },
+  {
+    id:'favor', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Favor', summary:'Divine positioning — doors open, blessings find you.',
+    verses:[
+      { ref:'Psalm 5:12', text:'Surely, Lord, you bless the righteous; you surround them with your favor as with a shield.', note:'Favor is a shield — protection and positioning wrapped in one.' },
+      { ref:'Proverbs 3:4', text:'Then you will win favor and a good name in the sight of God and man.', note:'Favor with God and with people. Both matter for influence and opportunity.' },
+      { ref:'Luke 2:52', text:'And Jesus grew in wisdom and stature, and in favor with God and man.', note:'Favor is something you grow in — it\'s not static.' },
+      { ref:'Genesis 39:21', text:'But the Lord was with Joseph and showed him steadfast love and gave him favor in the sight of the keeper of the prison.', note:'Joseph had favor even in prison — circumstances can\'t contain God\'s favor.' },
+      { ref:'Esther 2:17', text:'Now the king was attracted to Esther more than to any of the other women, and she won his grace and favor.', note:'Esther\'s favor opened a door that saved an entire people group.' },
+      { ref:'Psalm 90:17', text:'May the favor of the Lord our God rest on us; establish the work of our hands for us.', note:'Asking for favor is biblical. Make it a daily prayer.' },
+    ]
+  },
+  {
+    id:'debt', cat:'money', catLabel:'💰 Money & Provision', catColor:'#B8892A', catBg:'#FDF6E3',
+    title:'Debt & Financial Freedom', summary:'Breaking cycles of lack and living in true freedom.',
+    verses:[
+      { ref:'Proverbs 22:7', text:'The rich rule over the poor, and the borrower is slave to the lender.', note:'Debt is described as slavery. Financial freedom is a form of spiritual freedom.' },
+      { ref:'Romans 13:8', text:'Let no debt remain outstanding, except the continuing debt to love one another.', note:'The only debt God endorses is love.' },
+      { ref:'Proverbs 6:1–5', text:'If you have put up security for your neighbor... do this, my son, to free yourself.', note:'Scripture takes debt seriously and counsels urgency in getting free from it.' },
+      { ref:'Deuteronomy 15:6', text:'You will lend to many nations but will borrow from none.', note:'The promise for God\'s people is to be lenders, not borrowers — abundance, not lack.' },
+      { ref:'Psalm 37:21', text:'The wicked borrow and do not repay, but the righteous give generously.', note:'Integrity in financial dealings is part of righteous living.' },
+    ]
+  },
+
+  // ── PURPOSE & CALLING ──
+  {
+    id:'purpose', cat:'purpose', catLabel:'🧭 Purpose & Calling', catColor:'#4A8DC4', catBg:'#EBF4FF',
+    title:'Purpose & Calling', summary:'You were created on purpose, for a purpose — before you were born.',
+    verses:[
+      { ref:'Jeremiah 1:5', text:'Before I formed you in the womb I knew you, before you were born I set you apart.', note:'Purpose was established before your birth. You didn\'t earn it — you were designed for it.' },
+      { ref:'Ephesians 2:10', text:'For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.', note:'Good works (your calling) were prepared before you showed up. You\'re stepping into something pre-made.' },
+      { ref:'Romans 8:28', text:'And we know that in all things God works for the good of those who love him, who have been called according to his purpose.', note:'All things — even hard things — are working toward your calling.' },
+      { ref:'Proverbs 16:9', text:'In their hearts humans plan their course, but the Lord establishes their steps.', note:'You plan, God directs. Both play a role in fulfilling purpose.' },
+      { ref:'Ecclesiastes 3:1', text:'There is a time for everything, and a season for every activity under the heavens.', note:'Purpose unfolds in seasons. You\'re never off-schedule with God.' },
+      { ref:'Isaiah 46:10', text:'I make known the end from the beginning, from ancient times, what is still to come. I say, "My purpose will stand."', note:'God\'s purpose for you cannot be cancelled — even when life throws you off track.' },
+    ]
+  },
+  {
+    id:'vision', cat:'purpose', catLabel:'🧭 Purpose & Calling', catColor:'#4A8DC4', catBg:'#EBF4FF',
+    title:'Vision & Hope', summary:'Without vision, people drift. See your future clearly.',
+    verses:[
+      { ref:'Proverbs 29:18', text:'Where there is no vision, the people perish.', note:'Vision is not optional — it\'s a survival need for your soul and your life.' },
+      { ref:'Habakkuk 2:2', text:'Write down the revelation and make it plain on tablets so that a herald may run with it.', note:'God told His people to write the vision down. Journaling and vision boards are biblical.' },
+      { ref:'Romans 8:24–25', text:'Hope that is seen is no hope at all. Who hopes for what they already have? But if we hope for what we do not yet have, we wait for it patiently.', note:'Hope is for things not yet seen. Vision lives in the space between now and what\'s coming.' },
+      { ref:'Hebrews 11:1', text:'Now faith is confidence in what we hope for and assurance about what we do not see.', note:'Vision and faith are linked — faith gives substance to what you can only see spiritually.' },
+      { ref:'Lamentations 3:25', text:'The Lord is good to those whose hope is in him, to the one who seeks him.', note:'Hope directed toward God — not just outcomes — is the anchor.' },
+      { ref:'Isaiah 43:19', text:'See, I am doing a new thing! Now it springs up; do you not perceive it?', note:'God asks if you can perceive what He\'s doing. Vision is the ability to see it.' },
+    ]
+  },
+  {
+    id:'wisdom', cat:'purpose', catLabel:'🧭 Purpose & Calling', catColor:'#4A8DC4', catBg:'#EBF4FF',
+    title:'Wisdom', summary:'Proverbs as a life manual — discernment and smart decisions.',
+    verses:[
+      { ref:'James 1:5', text:'If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault.', note:'Wisdom is available on demand. Ask without shame — God gives it freely.' },
+      { ref:'Proverbs 4:7', text:'The beginning of wisdom is this: Get wisdom, and whatever you get, get insight.', note:'The priority is clear — wisdom above everything else.' },
+      { ref:'Proverbs 3:13', text:'Blessed are those who find wisdom, those who gain understanding.', note:'Wisdom brings blessing into every area of life.' },
+      { ref:'Proverbs 9:10', text:'The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.', note:'True wisdom starts with reverence for God — not intelligence or experience.' },
+      { ref:'Colossians 4:5', text:'Be wise in the way you act toward outsiders; make the most of every opportunity.', note:'Wisdom applies to relationships, timing, and how you navigate influence.' },
+      { ref:'Proverbs 13:20', text:'Walk with the wise and become wise, for a companion of fools suffers harm.', note:'Your circle determines your wisdom level. Community is part of the wisdom equation.' },
+    ]
+  },
+  {
+    id:'gifts', cat:'purpose', catLabel:'🧭 Purpose & Calling', catColor:'#4A8DC4', catBg:'#EBF4FF',
+    title:'Gifts & Talents', summary:'God-given abilities — meant to be used boldly.',
+    verses:[
+      { ref:'Romans 12:6', text:'We have different gifts, according to the grace given to each of us.', note:'Your gifts are specific to you — comparison robs you of what\'s yours.' },
+      { ref:'1 Peter 4:10', text:'Each of you should use whatever gift you have received to serve others, as faithful stewards of God\'s grace in its various forms.', note:'Gifts aren\'t just for you. They\'re how grace flows through you to others.' },
+      { ref:'Matthew 25:29', text:'For whoever has will be given more, and they will have an abundance.', note:'Using your gifts expands them. Hiding them leads to losing them.' },
+      { ref:'1 Timothy 4:14', text:'Do not neglect your gift.', note:'A direct command. Your gift requires intentional attention and development.' },
+      { ref:'Proverbs 18:16', text:'A gift opens the way and ushers the giver into the presence of great people.', note:'Your gift is a door — it gets you into rooms your resume alone never could.' },
+    ]
+  },
+  {
+    id:'work', cat:'purpose', catLabel:'🧭 Purpose & Calling', catColor:'#4A8DC4', catBg:'#EBF4FF',
+    title:'Work & Excellence', summary:'Working as if God is your boss — with integrity and excellence.',
+    verses:[
+      { ref:'Colossians 3:23', text:'Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.', note:'Excellence isn\'t about impressing people — it\'s a form of worship.' },
+      { ref:'Proverbs 22:29', text:'Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank.', note:'Skill and excellence elevate you. Craft your work — it opens doors.' },
+      { ref:'Ecclesiastes 9:10', text:'Whatever your hand finds to do, do it with all your might.', note:'Wholehearted effort applied to whatever is in front of you.' },
+      { ref:'Genesis 2:15', text:'The Lord God took the man and put him in the Garden of Eden to work it and take care of it.', note:'Work existed before the fall. It\'s not a curse — it\'s a calling.' },
+      { ref:'Proverbs 14:23', text:'All hard work brings a profit, but mere talk leads only to poverty.', note:'Action over talk. Execution is the spiritual discipline.' },
+    ]
+  },
+
+  // ── HEALING & PEACE ──
+  {
+    id:'healing', cat:'healing', catLabel:'🌿 Healing & Peace', catColor:'#4CA87D', catBg:'#EDFAF4',
+    title:'Healing', summary:'Physical, emotional, and spiritual healing — He restores.',
+    verses:[
+      { ref:'Isaiah 53:5', text:'But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed.', note:'Healing was purchased at the cross. It\'s not something you earn — it\'s already paid for.' },
+      { ref:'Psalm 103:3', text:'Who forgives all your sins and heals all your diseases.', note:'Forgiveness and healing are paired in the same verse. They often work together.' },
+      { ref:'Jeremiah 17:14', text:'Heal me, Lord, and I will be healed; save me and I will be saved, for you are the one I praise.', note:'A simple and direct prayer — honest about need, confident about source.' },
+      { ref:'James 5:16', text:'Confess your sins to each other and pray for each other so that you may be healed.', note:'Healing often flows through community and vulnerability.' },
+      { ref:'Psalm 30:2', text:'Lord my God, I called to you for help, and you healed me.', note:'Testimony of healing. What God did once He can do again.' },
+      { ref:'Revelation 21:4', text:'He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.', note:'Complete healing is the final promise. Nothing broken will remain broken forever.' },
+    ]
+  },
+  {
+    id:'peace', cat:'healing', catLabel:'🌿 Healing & Peace', catColor:'#4CA87D', catBg:'#EDFAF4',
+    title:'Peace (Shalom)', summary:'Nothing missing, nothing broken — whole and complete.',
+    verses:[
+      { ref:'John 14:27', text:'Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.', note:'God\'s peace is different from what the world offers — it\'s not circumstantial.' },
+      { ref:'Philippians 4:7', text:'And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.', note:'The peace doesn\'t have to make logical sense. It guards you anyway.' },
+      { ref:'Isaiah 26:3', text:'You will keep in perfect peace those whose minds are steadfast, because they trust in you.', note:'Perfect peace — shalom shalom in Hebrew, doubled for intensity — is available through focused trust.' },
+      { ref:'Numbers 6:24–26', text:'The Lord bless you and keep you; the Lord make his face shine on you... and give you peace.', note:'The ancient blessing of Shalom — God\'s comprehensive wholeness over your life.' },
+      { ref:'Romans 5:1', text:'Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ.', note:'Peace with God is the foundation that makes inner peace possible.' },
+      { ref:'Psalm 119:165', text:'Great peace have those who love your law, and nothing can make them stumble.', note:'Rooting your life in Scripture produces a stability that external things can\'t shake.' },
+    ]
+  },
+  {
+    id:'anxiety', cat:'healing', catLabel:'🌿 Healing & Peace', catColor:'#4CA87D', catBg:'#EDFAF4',
+    title:'Anxiety & Fear', summary:'"Do not be afraid" — the most repeated command in the Bible.',
+    verses:[
+      { ref:'Isaiah 41:10', text:'So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you.', note:'The antidote to fear is presence — God with you, not just God for you.' },
+      { ref:'Philippians 4:6', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.', note:'Anxiety\'s replacement is prayer + thanksgiving. The formula is practical and specific.' },
+      { ref:'Matthew 6:34', text:'Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.', note:'Jesus normalizes present difficulty while commanding present focus. One day at a time is biblical.' },
+      { ref:'2 Timothy 1:7', text:'For God has not given us a spirit of fear, but of power and love and a sound mind.', note:'Fear is not from God. Power, love, and a sound mind are your inheritance.' },
+      { ref:'Psalm 56:3', text:'When I am afraid, I put my trust in you.', note:'This verse assumes you\'ll feel afraid. The response is trust — not the absence of fear.' },
+      { ref:'1 Peter 5:7', text:'Cast all your anxiety on him because he cares for you.', note:'"All" — not some. God can handle the full weight of everything you\'re carrying.' },
+    ]
+  },
+  {
+    id:'rest', cat:'healing', catLabel:'🌿 Healing & Peace', catColor:'#4CA87D', catBg:'#EDFAF4',
+    title:'Rest', summary:'Sabbath, renewal, and coming to God when you\'re weary.',
+    verses:[
+      { ref:'Matthew 11:28', text:'Come to me, all you who are weary and burdened, and I will give you rest.', note:'The invitation is to the exhausted — you don\'t have to earn your way to rest.' },
+      { ref:'Psalm 23:2', text:'He makes me lie down in green pastures, he leads me beside quiet waters.', note:'The Good Shepherd sometimes makes you rest — even when you think you can\'t stop.' },
+      { ref:'Exodus 20:10', text:'But the seventh day is a sabbath to the Lord your God. On it you shall not do any work.', note:'Rest is a commandment, not a suggestion. God built it into creation itself.' },
+      { ref:'Mark 6:31', text:'Then, because so many people were coming and going that they did not even have a chance to eat, he said to them, "Come with me by yourselves to a quiet place and get some rest."', note:'Even Jesus pulled His disciples away from ministry to rest. Burnout isn\'t holiness.' },
+      { ref:'Psalm 127:2', text:'In vain you rise early and stay up late, toiling for food to eat — for he grants sleep to those he loves.', note:'Striving and exhaustion aren\'t marks of favor. Rest is a gift to the beloved.' },
+    ]
+  },
+  {
+    id:'grief', cat:'healing', catLabel:'🌿 Healing & Peace', catColor:'#4CA87D', catBg:'#EDFAF4',
+    title:'Grief & Loss', summary:'God meets you in your pain — mourning, comfort, and restoration.',
+    verses:[
+      { ref:'Psalm 34:18', text:'The Lord is close to the brokenhearted and saves those who are crushed in spirit.', note:'God doesn\'t stand at a distance from your pain. He moves closer when you\'re crushed.' },
+      { ref:'Matthew 5:4', text:'Blessed are those who mourn, for they will be comforted.', note:'Mourning is honored in God\'s economy. It is not weakness — it opens you to comfort.' },
+      { ref:'John 11:35', text:'Jesus wept.', note:'The shortest verse in the Bible — and one of the most powerful. Jesus grieved. You are allowed to grieve.' },
+      { ref:'Isaiah 61:3', text:'To comfort all who mourn, and provide for those who grieve in Zion — to bestow on them a crown of beauty instead of ashes.', note:'God\'s promise: mourning leads to something — beauty, oil of joy, a garment of praise.' },
+      { ref:'Psalm 30:5', text:'Weeping may stay for the night, but rejoicing comes in the morning.', note:'Grief is real — and so is the morning. Both are true at the same time.' },
+      { ref:'Revelation 21:4', text:'He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.', note:'The final word on grief is not the grief — it\'s God tenderly wiping every tear away.' },
+    ]
+  },
+
+  // ── IDENTITY & WORTH ──
+  {
+    id:'identity', cat:'identity', catLabel:'👑 Identity & Worth', catColor:'#9B59B6', catBg:'#F9F0FF',
+    title:'Identity in Christ', summary:'Who you are — not what you\'ve done or what\'s been done to you.',
+    verses:[
+      { ref:'Galatians 2:20', text:'I have been crucified with Christ and I no longer live, but Christ lives in me.', note:'Your old self is not your identity. The one living in you now is greater than your history.' },
+      { ref:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!', note:'New creation — not improved version. This is a full identity reset.' },
+      { ref:'John 1:12', text:'Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God.', note:'Child of God is your primary identity. It supersedes every other label.' },
+      { ref:'Romans 8:14–15', text:'For those who are led by the Spirit of God are the children of God... and by him we cry, "Abba, Father."', note:'Abba is the intimate word — like "Daddy." Your relationship with God is that close.' },
+      { ref:'1 Peter 2:9', text:'But you are a chosen people, a royal priesthood, a holy nation, God\'s special possession.', note:'Four identity statements in one verse: chosen, royal, holy, treasured.' },
+      { ref:'Ephesians 1:4', text:'For he chose us in him before the creation of the world to be holy and blameless in his sight.', note:'Chosen before time existed. Your identity predates your failures.' },
+    ]
+  },
+  {
+    id:'selfworth', cat:'identity', catLabel:'👑 Identity & Worth', catColor:'#9B59B6', catBg:'#F9F0FF',
+    title:'Self-Worth & Value', summary:'Made in God\'s image — that doesn\'t change based on performance.',
+    verses:[
+      { ref:'Psalm 139:14', text:'I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.', note:'Fearfully and wonderfully made — not accidentally, not barely. Wonderfully.' },
+      { ref:'Genesis 1:27', text:'So God created mankind in his own image, in the image of God he created them.', note:'Image of God is the foundation of human worth. It doesn\'t increase or decrease based on achievement.' },
+      { ref:'Matthew 10:31', text:'So don\'t be afraid; you are worth more than many sparrows.', note:'God uses creation to establish your worth. You are more valuable than you feel.' },
+      { ref:'Isaiah 43:4', text:'Since you are precious and honored in my sight, and because I love you.', note:'Precious and honored — God\'s description of you. Not because of what you\'ve done.' },
+      { ref:'Luke 15:4', text:'Suppose one of you has a hundred sheep and loses one of them. Doesn\'t he leave the ninety-nine in the open country and go after the lost sheep?', note:'You are worth leaving everything for. That\'s how God sees your value.' },
+      { ref:'Zephaniah 3:17', text:'The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.', note:'God sings over you. Let that sink in.' },
+    ]
+  },
+  {
+    id:'belonging', cat:'identity', catLabel:'👑 Identity & Worth', catColor:'#9B59B6', catBg:'#F9F0FF',
+    title:'Belonging & Being Loved', summary:'Nothing can separate you from the love of God.',
+    verses:[
+      { ref:'Romans 8:38–39', text:'For I am convinced that neither death nor life, neither angels nor demons... nor anything else in all creation, will be able to separate us from the love of God.', note:'An exhaustive list of what cannot separate you from love. Nothing qualifies.' },
+      { ref:'1 John 3:1', text:'See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!', note:'Lavished — not given sparingly. God\'s love is extravagant toward you.' },
+      { ref:'John 3:16', text:'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.', note:'The most famous verse in Scripture. Love was the motive. You are the reason.' },
+      { ref:'Song of Solomon 2:4', text:'He has taken me to the banquet hall, and his banner over me is love.', note:'God\'s banner — His flag flying over your life — declares love as your identity.' },
+      { ref:'Ephesians 3:18', text:'May have power, together with all the Lord\'s holy people, to grasp how wide and long and high and deep is the love of Christ.', note:'Paul prays you\'d have power to comprehend love this big. It takes supernatural capacity.' },
+    ]
+  },
+  {
+    id:'shame', cat:'identity', catLabel:'👑 Identity & Worth', catColor:'#9B59B6', catBg:'#F9F0FF',
+    title:'Shame & Forgiveness', summary:'Breaking the weight of shame, guilt, and condemnation.',
+    verses:[
+      { ref:'Romans 8:1', text:'Therefore, there is now no condemnation for those who are in Christ Jesus.', note:'No condemnation — zero. This is the legal verdict over your life in Christ.' },
+      { ref:'Isaiah 54:4', text:'Do not be afraid; you will not be put to shame. Do not fear disgrace; you will not be humiliated.', note:'God directly addresses shame and promises its defeat.' },
+      { ref:'Psalm 34:5', text:'Those who look to him are radiant; their faces are never covered with shame.', note:'Shame is replaced by radiance when you turn your gaze toward God.' },
+      { ref:'1 John 1:9', text:'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.', note:'Confession leads to cleansing. Shame keeps you silent; grace invites you to speak.' },
+      { ref:'Micah 7:19', text:'You will again have compassion on us; you will tread our sins underfoot and hurl all our iniquities into the depths of the sea.', note:'God hurls sin into the sea — not filed away, not pending review. Gone.' },
+    ]
+  },
+  {
+    id:'courage', cat:'identity', catLabel:'👑 Identity & Worth', catColor:'#9B59B6', catBg:'#F9F0FF',
+    title:'Courage & Boldness', summary:'Strong and courageous — even when afraid.',
+    verses:[
+      { ref:'Joshua 1:9', text:'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.', note:'Courage is commanded — which means it\'s possible. And God\'s presence is the reason.' },
+      { ref:'2 Timothy 1:7', text:'For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.', note:'Timidity is not your default. Power and love are the spirit you were given.' },
+      { ref:'Proverbs 28:1', text:'The wicked flee though no one pursues, but the righteous are as bold as a lion.', note:'Boldness is a characteristic of the righteous — it comes with alignment with God.' },
+      { ref:'Acts 4:31', text:'After they prayed, the place where they were meeting was shaken. And they were all filled with the Holy Spirit and spoke the word of God boldly.', note:'Boldness came after prayer. It\'s something you receive, not manufacture.' },
+      { ref:'Hebrews 4:16', text:'Let us then approach God\'s throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.', note:'Confidence toward God first — then boldness flows into everything else.' },
+    ]
+  },
+
+  // ── RELATIONSHIPS ──
+  {
+    id:'marriage', cat:'relationships', catLabel:'❤️ Relationships', catColor:'#E74C3C', catBg:'#FFF0F0',
+    title:'Marriage & Partnership', summary:'God\'s design for covenant, love, and building together.',
+    verses:[
+      { ref:'Genesis 2:24', text:'That is why a man leaves his father and mother and is united to his wife, and they become one flesh.', note:'The original blueprint for marriage — unity that transcends the family you came from.' },
+      { ref:'Ephesians 5:25', text:'Husbands, love your wives, just as Christ loved the church and gave himself up for her.', note:'The standard for marital love is Christ\'s sacrifice. It\'s not transactional — it\'s covenantal.' },
+      { ref:'Proverbs 18:22', text:'He who finds a wife finds what is good and receives favor from the Lord.', note:'A godly marriage is tied to favor. It\'s not just a relationship — it\'s a blessing carrier.' },
+      { ref:'Ecclesiastes 4:9', text:'Two are better than one, because they have a good return for their labor.', note:'Partnership multiplies output. You accomplish more together than separately.' },
+      { ref:'Song of Solomon 8:6', text:'Place me like a seal over your heart, like a seal on your arm; for love is as strong as death.', note:'The Bible is not shy about the depth and passion of love in marriage.' },
+    ]
+  },
+  {
+    id:'parenting', cat:'relationships', catLabel:'❤️ Relationships', catColor:'#E74C3C', catBg:'#FFF0F0',
+    title:'Parenting & Family', summary:'Raising children, generational blessing, and family legacy.',
+    verses:[
+      { ref:'Proverbs 22:6', text:'Start children off on the way they should go, and even when they are old they will not turn from it.', note:'Early spiritual investment in children has lifelong impact.' },
+      { ref:'Psalm 127:3', text:'Children are a heritage from the Lord, offspring a reward from him.', note:'Children are described as a reward and inheritance — not a burden or interruption.' },
+      { ref:'Deuteronomy 6:6–7', text:'These commandments that I give you today are to be on your hearts. Impress them on your children. Talk about them when you sit at home.', note:'Faith is transmitted in ordinary daily moments — not just formal teaching.' },
+      { ref:'Ephesians 6:4', text:'Fathers, do not exasperate your children; instead, bring them up in the training and instruction of the Lord.', note:'Parenting with gentleness and spiritual intentionality, not just rules.' },
+      { ref:'Psalm 128:3', text:'Your wife will be like a fruitful vine within your house; your children will be like olive shoots around your table.', note:'A picture of generational blessing — fruitfulness passing through the family.' },
+    ]
+  },
+  {
+    id:'friendship', cat:'relationships', catLabel:'❤️ Relationships', catColor:'#E74C3C', catBg:'#FFF0F0',
+    title:'Friendship & Community', summary:'Iron sharpens iron — who you walk with changes you.',
+    verses:[
+      { ref:'Proverbs 27:17', text:'As iron sharpens iron, so one person sharpens another.', note:'Growth requires friction. Real friendship makes you better, not just comfortable.' },
+      { ref:'Ecclesiastes 4:9–10', text:'Two are better than one... If either of them falls down, one can help the other up.', note:'Community is a safety net. You were not designed for isolation.' },
+      { ref:'John 15:13', text:'Greater love has no one than this: to lay down one\'s life for one\'s friends.', note:'Jesus defines deep friendship as sacrificial love — not just affinity.' },
+      { ref:'Proverbs 13:20', text:'Walk with the wise and become wise, for a companion of fools suffers harm.', note:'Your circle is a destiny decision. Choose it intentionally.' },
+      { ref:'Hebrews 10:24–25', text:'And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together.', note:'Community is a command — and its purpose is to push each other forward.' },
+    ]
+  },
+  {
+    id:'forgiveness', cat:'relationships', catLabel:'❤️ Relationships', catColor:'#E74C3C', catBg:'#FFF0F0',
+    title:'Forgiveness of Others', summary:'Releasing offense — not for them, but for your freedom.',
+    verses:[
+      { ref:'Matthew 18:21–22', text:'Then Peter came to Jesus and asked, "Lord, how many times shall I forgive my brother or sister who sins against me? Up to seven times?" Jesus answered, "I tell you, not seven times, but seventy-seven times."', note:'Forgiveness is not limited. Jesus removed the counting.' },
+      { ref:'Colossians 3:13', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.', note:'The standard for forgiving others is how God forgave you — completely, without conditions.' },
+      { ref:'Mark 11:25', text:'And when you stand praying, if you hold anything against anyone, forgive them, so that your Father in heaven may forgive you your sins.', note:'Unforgiveness blocks the flow of God\'s forgiveness toward you. It\'s a spiritual connection.' },
+      { ref:'Luke 23:34', text:'Jesus said, "Father, forgive them, for they do not know what they are doing."', note:'Jesus modeled forgiveness in the middle of suffering — the hardest possible moment.' },
+      { ref:'Ephesians 4:31–32', text:'Get rid of all bitterness, rage and anger... Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.', note:'Bitterness is something to actively remove, not passively manage. Forgiveness fills that space.' },
+    ]
+  },
+  {
+    id:'loneliness', cat:'relationships', catLabel:'❤️ Relationships', catColor:'#E74C3C', catBg:'#FFF0F0',
+    title:'Loneliness', summary:'God with you in isolation — you are never truly alone.',
+    verses:[
+      { ref:'Deuteronomy 31:8', text:'The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.', note:'Two promises: He goes before, and He stays with. Neither leaves.' },
+      { ref:'Psalm 68:6', text:'God sets the lonely in families, he leads out the prisoners with singing.', note:'God actively responds to loneliness — He places people. Community is His answer.' },
+      { ref:'Isaiah 41:10', text:'So do not fear, for I am with you; do not be dismayed, for I am your God.', note:'The antidote to loneliness is presence — and God\'s is constant.' },
+      { ref:'Hebrews 13:5', text:'Never will I leave you; never will I forsake you.', note:'A double-never promise. God uses the strongest possible language for His commitment.' },
+      { ref:'Matthew 28:20', text:'And surely I am with you always, to the very end of the age.', note:'Always — not situationally, not when you deserve it. Always.' },
+    ]
+  },
+
+  // ── FAITH & BREAKTHROUGH ──
+  {
+    id:'faith', cat:'faith', catLabel:'⚡ Faith & Breakthrough', catColor:'#3498DB', catBg:'#EBF5FB',
+    title:'Faith & Trust', summary:'Walking by faith — even when you can\'t see the full picture.',
+    verses:[
+      { ref:'Hebrews 11:1', text:'Now faith is confidence in what we hope for and assurance about what we do not see.', note:'Faith is not blind — it\'s confident trust based on who God is, not what you see.' },
+      { ref:'Proverbs 3:5–6', text:'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.', note:'All your heart — partial trust is still worry. Submission is the key that makes paths straight.' },
+      { ref:'Romans 10:17', text:'Consequently, faith comes from hearing the message, and the message is heard through the word about Christ.', note:'Faith is built by hearing Scripture. What you expose yourself to increases your faith.' },
+      { ref:'Matthew 17:20', text:'Truly I tell you, if you have faith as small as a mustard seed, you can say to this mountain, "Move from here to there," and it will move.', note:'The size of your faith matters less than the direction of it. A little faith in God moves mountains.' },
+      { ref:'2 Corinthians 5:7', text:'For we live by faith, not by sight.', note:'Faith is a posture — a way of navigating life when circumstances don\'t yet match the promise.' },
+      { ref:'James 2:17', text:'Faith by itself, if it is not accompanied by action, is dead.', note:'Faith requires corresponding action. Believing and moving forward together.' },
+    ]
+  },
+  {
+    id:'prayer', cat:'faith', catLabel:'⚡ Faith & Breakthrough', catColor:'#3498DB', catBg:'#EBF5FB',
+    title:'Prayer & Hearing God', summary:'How to talk to God — and actually hear back.',
+    verses:[
+      { ref:'Matthew 6:6', text:'But when you pray, go into your room, close the door and pray to your Father, who is unseen.', note:'Private prayer is valued. The relationship is primary — not the performance.' },
+      { ref:'John 10:27', text:'My sheep listen to my voice; I know them, and they follow me.', note:'Hearing God is your birthright as His sheep. He is speaking — practice listening.' },
+      { ref:'1 Thessalonians 5:17', text:'Pray continually.', note:'Prayer is a posture, not just an event. Keep the conversation with God open throughout the day.' },
+      { ref:'Jeremiah 33:3', text:'Call to me and I will answer you and tell you great and unsearchable things you do not know.', note:'God promises to answer — and to reveal things beyond what you could figure out yourself.' },
+      { ref:'Psalm 46:10', text:'Be still, and know that I am God.', note:'Stillness is the environment where you hear God. Silence is not empty — it\'s full of Him.' },
+      { ref:'Luke 18:1', text:'Then Jesus told his disciples a parable to show them that they should always pray and not give up.', note:'Persistence in prayer matters. Don\'t stop praying because it hasn\'t happened yet.' },
+    ]
+  },
+  {
+    id:'waiting', cat:'faith', catLabel:'⚡ Faith & Breakthrough', catColor:'#3498DB', catBg:'#EBF5FB',
+    title:'Waiting & Patience', summary:'The wilderness before the promised land — not wasted time.',
+    verses:[
+      { ref:'Isaiah 40:31', text:'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.', note:'Waiting is the condition for renewed strength — not a pause from God\'s work but part of it.' },
+      { ref:'Galatians 6:9', text:'Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.', note:'"Proper time" — God has a timing. The harvest is coming if you don\'t quit.' },
+      { ref:'Psalm 27:14', text:'Wait for the Lord; be strong and take heart and wait for the Lord.', note:'Waiting is active — it requires strength and courage, not passivity.' },
+      { ref:'Lamentations 3:25', text:'The Lord is good to those whose hope is in him, to the one who seeks him.', note:'Seeking God during the wait is not wasted effort. He is good in the middle of it.' },
+      { ref:'Romans 8:25', text:'But if we hope for what we do not yet have, we wait for it patiently.', note:'Patience and hope are linked. You can wait patiently when hope is anchored in God.' },
+    ]
+  },
+  {
+    id:'trials', cat:'faith', catLabel:'⚡ Faith & Breakthrough', catColor:'#3498DB', catBg:'#EBF5FB',
+    title:'Trials & Perseverance', summary:'Hard seasons don\'t mean God left — they\'re often where growth happens.',
+    verses:[
+      { ref:'James 1:2–4', text:'Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds, because you know that the testing of your faith produces perseverance.', note:'Trials produce something — perseverance is the yield. The process is intentional, not random.' },
+      { ref:'Romans 5:3–4', text:'We also glory in our sufferings, because we know that suffering produces perseverance; perseverance, character; and character, hope.', note:'The chain reaction: suffering → perseverance → character → hope. Each trial builds something.' },
+      { ref:'1 Peter 1:6–7', text:'In all this you greatly rejoice, though now for a little while you may have had to suffer grief in various trials. These have come so that the proven genuineness of your faith may result in praise.', note:'Trials prove and refine the genuineness of faith — like gold tested by fire.' },
+      { ref:'2 Corinthians 4:17', text:'For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all.', note:'Perspective shift: what feels heavy is achieving something eternally weighty.' },
+      { ref:'John 16:33', text:'In this world you will have trouble. But take heart! I have overcome the world.', note:'Jesus doesn\'t promise an easy life — He promises He has overcome. That\'s enough.' },
+    ]
+  },
+  {
+    id:'mindset', cat:'faith', catLabel:'⚡ Faith & Breakthrough', catColor:'#3498DB', catBg:'#EBF5FB',
+    title:'Renewing Your Mind', summary:'Breaking old thought patterns through truth and transformation.',
+    verses:[
+      { ref:'Romans 12:2', text:'Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God\'s will is.', note:'Transformation starts in the mind — not in circumstances. Change your thinking, change your life.' },
+      { ref:'Philippians 4:8', text:'Whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely... think about such things.', note:'A curated thought life is commanded. You get to choose what you meditate on.' },
+      { ref:'2 Corinthians 10:5', text:'We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ.', note:'Thoughts are capturable — you have authority over your inner narrative.' },
+      { ref:'Proverbs 23:7', text:'For as he thinks in his heart, so is he.', note:'Your inner belief system shapes your outer reality. The mind is the battleground.' },
+      { ref:'Isaiah 55:8–9', text:'"For my thoughts are not your thoughts, neither are your ways my ways," declares the Lord.', note:'God\'s thinking is higher. Renewing your mind means exchanging your thoughts for His.' },
+    ]
+  },
+];
+
+// ── RENDER ──
+function renderTopics(list) {
+  const grid = document.getElementById('topicGrid');
+  const noResults = document.getElementById('noResults');
+  const info = document.getElementById('resultsInfo');
+
+  const cards = grid.querySelectorAll('.topic-card');
+  cards.forEach(c => c.remove());
+
+  if (list.length === 0) {
+    noResults.classList.add('show');
+    info.textContent = '';
+    return;
+  }
+  noResults.classList.remove('show');
+  info.textContent = `Showing ${list.length} topic${list.length !== 1 ? 's' : ''}`;
+
+  list.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'topic-card';
+    card.dataset.id = t.id;
+
+    const verseHTML = t.verses.map(v => `
+      <div class="verse-item">
+        <span class="verse-ref">${v.ref}</span>
+        <div class="verse-text">"${v.text}"</div>
+        <div class="verse-note">${v.note}</div>
+      </div>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard('${t.id}')">
+        <div class="cat-dot" style="background:${t.catColor}"></div>
+        <div class="card-meta">
+          <h3>${t.title}</h3>
+          <p>${t.summary}</p>
+        </div>
+        <div class="card-category" style="background:${t.catBg};color:${t.catColor}">${t.catLabel}</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="verse-panel">
+        <div class="verse-grid">${verseHTML}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleCard(id) {
+  const card = document.querySelector(`.topic-card[data-id="${id}"]`);
+  card.classList.toggle('open');
+}
+
+// ── SEARCH ──
+let currentCat = 'all';
+let currentQuery = '';
+
+function doFilter() {
+  const q = currentQuery.toLowerCase().trim();
+  const result = TOPICS.filter(t => {
+    const catMatch = currentCat === 'all' || t.cat === currentCat;
+    if (!catMatch) return false;
+    if (!q) return true;
+    const blob = [
+      t.title, t.summary,
+      ...t.verses.map(v => v.ref + ' ' + v.text + ' ' + v.note)
+    ].join(' ').toLowerCase();
+    return blob.includes(q);
+  });
+  renderTopics(result);
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentQuery = e.target.value;
+  doFilter();
+});
+
+function filterCat(cat, el) {
+  currentCat = cat;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  doFilter();
+}
+
+function quickSearch(term) {
+  currentQuery = term;
+  document.getElementById('searchInput').value = term;
+  doFilter();
+}
+
+// ── INIT ──
+renderTopics(TOPICS);
+</script>
+</body>
+</html>

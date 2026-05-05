@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCath — The Catholic Faith, Made Simple</title>
+<meta name="description" content="The Catholic faith explained like you're hearing it for the first time. Daily prayers, deep teachings, and real answers — beautifully designed.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg2: #F2F0EB;
+  --white: #FFFFFF;
+  --ink: #1A1410;
+  --ink-mid: #4A3C28;
+  --ink-muted: #9A8E78;
+  --gold: #A07820;
+  --gold-bright: #C49A28;
+  --gold-light: rgba(160,120,32,0.1);
+  --gold-border: rgba(160,120,32,0.22);
+  --gold-glow: rgba(160,120,32,0.2);
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.13);
+  --shadow: rgba(44,36,22,0.07);
+  --shadow-lg: rgba(44,36,22,0.15);
+  --sg-red: #C84040;
+  --sg-amber: #D08010;
+  --sg-gold: #C8960A;
+  --sg-green: #2A8A3A;
+  --sg-teal: #1A8080;
+  --sg-blue: #3060C0;
+  --sg-violet: #7040B8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ══ STAINED GLASS STRIPE ══ */
+.sg-stripe {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--sg-red) 0%,var(--sg-red) 8%,
+    var(--sg-amber) 8%,var(--sg-amber) 18%,
+    var(--sg-gold) 18%,var(--sg-gold) 28%,
+    var(--sg-green) 28%,var(--sg-green) 38%,
+    var(--sg-teal) 38%,var(--sg-teal) 48%,
+    var(--sg-blue) 48%,var(--sg-blue) 62%,
+    var(--sg-violet) 62%,var(--sg-violet) 74%,
+    var(--sg-red) 74%,var(--sg-red) 82%,
+    var(--sg-gold) 82%,var(--sg-gold) 91%,
+    var(--sg-blue) 91%,var(--sg-blue) 100%
+  );
+  position: relative;
+}
+.sg-stripe::after {
+  content:'';
+  position:absolute;inset:0;
+  background: repeating-linear-gradient(90deg,
+    transparent 0px,transparent calc(10% - 1px),
+    rgba(255,255,255,0.4) calc(10% - 1px),rgba(255,255,255,0.4) 10%
+  );
+}
+
+.sg-divider {
+  height: 3px;
+  background: linear-gradient(90deg,var(--sg-red),var(--sg-amber),var(--sg-gold),var(--sg-green),var(--sg-teal),var(--sg-blue),var(--sg-violet));
+  opacity: 0.5;
+}
+
+/* ══ NAV ══ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 28px; font-weight: 700; letter-spacing: 0.04em;
+  background: linear-gradient(135deg,
+    var(--sg-red) 0%,var(--sg-red) 18%,
+    var(--sg-gold) 18%,var(--sg-gold) 40%,
+    var(--sg-blue) 40%,var(--sg-blue) 65%,
+    var(--sg-green) 65%,var(--sg-green) 100%
+  );
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--ink-muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  padding: 10px 22px;
+  background: var(--gold);
+  color: white !important;
+  border-radius: 99px;
+  font-family: 'Cinzel', serif !important;
+  font-size: 11px !important; font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  box-shadow: 0 3px 12px var(--gold-glow);
+  transition: all 0.25s !important;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 5px 18px var(--gold-glow); color: white !important; }
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 60px 5%;
+}
+
+/* Layered bg */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+
+.hero-bg-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 70% 50%, rgba(160,120,32,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 90% 20%, rgba(48,96,192,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(200,64,64,0.04) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* Stained glass window art — right side decoration */
+.hero-window {
+  position: absolute; right: -40px; top: 50%;
+  transform: translateY(-50%);
+  width: 520px; height: 680px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hero-window-arch {
+  width: 100%; height: 100%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  position: relative; overflow: hidden;
+  border: 6px solid rgba(0,0,0,0.15);
+  background: transparent;
+}
+
+.hw-panel { position: absolute; border: 3px solid rgba(255,255,255,0.5); }
+.hw-1 { width:30%;height:25%;top:3%;left:4%;background:rgba(200,64,64,0.7); }
+.hw-2 { width:30%;height:25%;top:3%;left:36%;background:rgba(200,150,10,0.8); }
+.hw-3 { width:30%;height:25%;top:3%;right:4%;background:rgba(48,96,192,0.7); }
+.hw-4 { width:46%;height:30%;top:30%;left:4%;background:rgba(42,138,58,0.7); border-radius:50% 50% 0 0/30% 30% 0 0; }
+.hw-5 { width:46%;height:30%;top:30%;right:4%;background:rgba(112,64,184,0.7); border-radius:50% 50% 0 0/30% 30% 0 0; }
+.hw-6 { width:90%;height:20%;top:63%;left:5%;background:rgba(26,128,128,0.65); }
+.hw-7 { width:43%;height:20%;bottom:5%;left:5%;background:rgba(200,64,64,0.6); }
+.hw-8 { width:43%;height:20%;bottom:5%;right:5%;background:rgba(48,96,192,0.6); }
+.hw-cross-h { position:absolute;top:50%;left:0;right:0;height:6px;background:rgba(255,255,255,0.7); }
+.hw-cross-v { position:absolute;left:50%;top:0;bottom:0;width:6px;background:rgba(255,255,255,0.7); }
+
+.hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  gap: 60px; width: 100%;
+  position: relative; z-index: 1;
+}
+
+.hero-content { flex: 1; max-width: 580px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-eyebrow::before {
+  content:'';
+  width: 28px; height: 2px;
+  background: linear-gradient(90deg, var(--sg-red), var(--sg-gold));
+  border-radius: 99px;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 400; line-height: 1.08;
+  color: var(--ink); margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.hero-title em {
+  font-style: italic; color: var(--gold);
+  text-shadow: 0 0 40px rgba(160,120,32,0.15);
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300; line-height: 1.7;
+  color: var(--ink-mid); margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+.btn-primary {
+  padding: 16px 32px;
+  background: var(--gold);
+  color: white; border: none;
+  border-radius: 99px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 6px 24px var(--gold-glow);
+  transition: all 0.28s;
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content:'';
+  position:absolute;inset:0;
+  background: repeating-linear-gradient(90deg,
+    transparent 0px,transparent 24px,
+    rgba(255,255,255,0.07) 24px,rgba(255,255,255,0.07) 25px
+  );
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(160,120,32,0.35); }
+
+.btn-secondary {
+  padding: 16px 28px;
+  background: transparent;
+  color: var(--ink-mid); border: 2px solid var(--border-strong);
+  border-radius: 99px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.25s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--ink-muted);
+}
+.trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sg-green); }
+
+/* Phone mockup */
+.hero-visual {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.phone-frame {
+  width: 280px; height: 560px;
+  background: var(--white);
+  border-radius: 44px;
+  border: 3px solid rgba(0,0,0,0.12);
+  box-shadow:
+    0 0 0 8px rgba(255,255,255,0.8),
+    0 30px 80px rgba(44,36,22,0.2),
+    0 4px 20px rgba(44,36,22,0.1);
+  overflow: hidden;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-12px) rotate(0deg); }
+}
+
+.phone-notch {
+  width: 100px; height: 28px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto;
+  position: relative; z-index: 5;
+}
+
+.phone-content {
+  padding: 0; overflow: hidden; height: calc(100% - 28px);
+  background: var(--bg);
+}
+
+.phone-stripe { height: 3px; background: linear-gradient(90deg,var(--sg-red),var(--sg-amber),var(--sg-gold),var(--sg-green),var(--sg-teal),var(--sg-blue),var(--sg-violet)); }
+
+.phone-topbar {
+  background: var(--white); padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.phone-logo {
+  font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700;
+  background: linear-gradient(135deg,var(--sg-red) 0%,var(--sg-red) 18%,var(--sg-gold) 18%,var(--sg-gold) 40%,var(--sg-blue) 40%,var(--sg-blue) 65%,var(--sg-green) 65%,var(--sg-green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.phone-greeting { font-size: 9px; color: var(--ink-muted); letter-spacing: 0.06em; }
+
+.phone-hero-card {
+  margin: 10px; border-radius: 14px; overflow: hidden;
+  height: 130px; position: relative;
+  background: linear-gradient(135deg,#1a0a2e 0%,#2a1050 40%,#0d0820 100%);
+}
+.phc-glow {
+  position:absolute;inset:0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%,rgba(200,150,10,0.25) 0%,transparent 70%);
+}
+.phc-panels {
+  position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);padding:1px;opacity:0.4;
+}
+.phc-panel:nth-child(1){background:rgba(200,64,64,0.5);}
+.phc-panel:nth-child(2){background:rgba(200,150,10,0.6);}
+.phc-panel:nth-child(3){background:rgba(48,96,192,0.5);}
+.phc-panel:nth-child(4){background:rgba(42,138,58,0.5);}
+.phc-panel:nth-child(5){background:rgba(200,150,10,0.4);}
+.phc-panel:nth-child(6){background:rgba(112,64,184,0.5);}
+.phc-content {
+  position:absolute;bottom:0;left:0;right:0;
+  padding:10px 12px;
+  background: linear-gradient(to top,rgba(10,7,3,0.8),transparent);
+}
+.phc-label { font-size:7px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:0.2em;margin-bottom:2px; }
+.phc-title { font-family:'Cormorant Garamond',serif;font-size:15px;color:white;font-weight:500; }
+.phc-sub { font-size:9px;color:rgba(255,255,255,0.65);margin-top:1px; }
+
+.phone-section-label { padding:8px 12px 4px;font-family:'Cinzel',serif;font-size:8px;color:var(--ink-muted);letter-spacing:0.2em; }
+
+.phone-cards { display:flex;gap:8px;padding:0 10px;overflow:hidden; }
+.phone-card {
+  flex-shrink:0;width:100px;border-radius:10px;overflow:hidden;
+  border:1.5px solid var(--border-strong);background:var(--white);
+}
+.pc-img {
+  height:70px;
+  background: linear-gradient(135deg,rgba(48,96,192,0.3),rgba(200,150,10,0.2));
+}
+.pc-img.v2 { background:linear-gradient(135deg,rgba(200,64,64,0.25),rgba(200,64,64,0.1)); }
+.pc-img.v3 { background:linear-gradient(135deg,rgba(42,138,58,0.25),rgba(26,128,128,0.15)); }
+.pc-body { padding:6px 7px; }
+.pc-title { font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--ink);margin-bottom:1px; }
+.pc-meta { font-size:8px;color:var(--ink-muted); }
+
+.phone-nav {
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(250,250,248,0.96);border-top:1px solid var(--border);
+  display:flex;padding:6px 0 12px;
+}
+.pn-item { flex:1;display:flex;flex-direction:column;align-items:center;gap:2px; }
+.pn-label { font-size:7px;color:var(--ink-muted); }
+.pn-item.active .pn-label { color:var(--gold); }
+.pn-item.active svg { color:var(--gold); }
+.pn-item svg { color:var(--ink-muted);width:14px;height:14px; }
+
+/* Glow around phone */
+.phone-glow {
+  position:absolute;inset:-20px;
+  background: radial-gradient(ellipse 70% 50% at 50% 60%,rgba(160,120,32,0.12) 0%,transparent 70%);
+  pointer-events:none; z-index:-1;
+}
+
+/* ══ SECTION BASE ══ */
+.section {
+  padding: 100px 5%;
+  max-width: 1300px; margin: 0 auto;
+}
+
+.section-full { padding: 100px 0; overflow: hidden; }
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.32em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before {
+  content:''; width: 32px; height: 2px;
+  background: linear-gradient(90deg,var(--sg-red),var(--sg-gold));
+  border-radius: 99px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400; line-height: 1.12; color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+.section-sub {
+  font-size: 17px; font-weight: 300; color: var(--ink-muted);
+  line-height: 1.7; max-width: 560px; margin-bottom: 52px;
+}
+
+/* ══ FOR WHO SECTION ══ */
+.who-section { background: var(--white); }
+.who-inner { max-width: 1200px; margin: 0 auto; padding: 100px 5%; }
+
+.who-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--border);
+  border-radius: 20px; overflow: hidden;
+  border: 2px solid var(--border-strong);
+}
+
+.who-card {
+  background: var(--white);
+  padding: 36px 32px;
+  transition: background 0.25s;
+  position: relative; overflow: hidden;
+}
+.who-card:hover { background: #FDFBF5; }
+
+.who-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+
+.who-emoji { font-size: 36px; margin-bottom: 18px; display: block; }
+
+.who-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 500; color: var(--ink);
+  margin-bottom: 8px; line-height: 1.2;
+}
+
+.who-desc {
+  font-size: 15px; font-weight: 300; color: var(--ink-mid);
+  line-height: 1.7; margin-bottom: 20px;
+}
+
+.who-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-style: italic; color: var(--ink-muted);
+  line-height: 1.6;
+  padding-left: 14px;
+  border-left: 2px solid var(--gold-border);
+}
+
+/* ══ FEATURES ══ */
+.features-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--white);
+  border: 2px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 32px 30px;
+  position: relative; overflow: hidden;
+  transition: all 0.25s;
+}
+.feature-card:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 8px 32px var(--shadow);
+  transform: translateY(-2px);
+}
+
+.feature-card.large { grid-column: span 2; padding: 40px; }
+
+.feature-left-border {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+}
+
+.feat-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  border: 1.5px solid rgba(0,0,0,0.08);
+}
+
+.feat-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 500; color: var(--ink);
+  margin-bottom: 8px; line-height: 1.2;
+}
+
+.feat-desc {
+  font-size: 14px; font-weight: 300; color: var(--ink-muted);
+  line-height: 1.65;
+}
+
+.feat-items { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.feat-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink-mid);
+}
+.feat-item-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* Large feature — horizontal layout */
+.feature-card.large { display: flex; align-items: center; gap: 48px; }
+.large-content { flex: 1; }
+.large-visual { flex-shrink: 0; }
+
+/* Content preview strip */
+.content-strip {
+  display: flex; flex-direction: column; gap: 8px; width: 260px;
+}
+.cs-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+.cs-item:hover { border-color: var(--gold-border); transform: translateX(3px); }
+
+.cs-icon { font-size: 20px; flex-shrink: 0; }
+.cs-text { flex: 1; }
+.cs-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--ink); margin-bottom: 1px; }
+.cs-meta { font-size: 10px; color: var(--ink-muted); }
+.cs-badge {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 3px 8px; border-radius: 99px; flex-shrink: 0;
+  text-transform: uppercase;
+}
+.badge-free { color: var(--sg-green); background: rgba(42,138,58,0.1); border: 1px solid rgba(42,138,58,0.2); }
+.badge-audio { color: var(--sg-red); background: rgba(200,64,64,0.08); border: 1px solid rgba(200,64,64,0.15); }
+
+/* ══ QUESTION SECTION ══ */
+.questions-section {
+  background: var(--ink);
+  padding: 100px 5%;
+  position: relative; overflow: hidden;
+}
+.questions-section::before {
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%,rgba(200,150,10,0.08) 0%,transparent 50%),
+    radial-gradient(ellipse 50% 60% at 80% 80%,rgba(48,96,192,0.06) 0%,transparent 50%);
+}
+
+.qs-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+.qs-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.32em;
+  color: var(--gold-bright); text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.qs-eyebrow::before {
+  content:''; width: 32px; height: 2px;
+  background: linear-gradient(90deg,var(--sg-red),var(--sg-gold));
+}
+
+.qs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 56px); font-weight: 400;
+  line-height: 1.12; color: white; margin-bottom: 16px;
+}
+.qs-title em { font-style: italic; color: var(--gold-bright); }
+
+.qs-sub {
+  font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.6);
+  line-height: 1.7; max-width: 520px; margin-bottom: 52px;
+}
+
+.questions-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.question-card {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 18px; padding: 26px 24px;
+  cursor: pointer; transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+.question-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(200,150,10,0.4);
+  transform: translateY(-2px);
+}
+.question-card::before {
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:3px;
+  background: transparent;
+  transition: background 0.25s;
+}
+.question-card:hover::before { background: var(--gold-bright); }
+
+.q-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+
+.q-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 400; color: white;
+  line-height: 1.3; margin-bottom: 8px;
+}
+
+.q-sub { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+.q-arrow {
+  position: absolute; bottom: 20px; right: 20px;
+  opacity: 0; transition: opacity 0.2s;
+  color: var(--gold-bright);
+}
+.question-card:hover .q-arrow { opacity: 1; }
+
+/* ══ TESTIMONIALS ══ */
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.test-card {
+  background: var(--white);
+  border: 2px solid var(--border-strong);
+  border-radius: 20px; padding: 28px 26px;
+  position: relative; overflow: hidden;
+  transition: all 0.25s;
+}
+.test-card:hover { box-shadow: 0 8px 30px var(--shadow); transform: translateY(-2px); }
+
+.test-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+
+.test-stars { color: var(--sg-gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+
+.test-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic; font-weight: 400;
+  color: var(--ink); line-height: 1.65; margin-bottom: 18px;
+}
+.test-quote::before {
+  content:'"';
+  font-size: 48px; line-height: 0.6;
+  color: var(--gold); opacity: 0.2;
+  display: block; margin-bottom: 8px;
+  font-style: normal;
+}
+
+.test-author {
+  font-size: 12px; font-weight: 700; color: var(--ink-mid);
+  letter-spacing: 0.06em;
+}
+.test-desc { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ══ PRICING ══ */
+.pricing-section { background: var(--white); }
+.pricing-inner { max-width: 900px; margin: 0 auto; padding: 100px 5%; }
+
+.pricing-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; margin-top: 0;
+}
+
+.price-card {
+  border: 2px solid var(--border-strong);
+  border-radius: 24px; overflow: hidden;
+  transition: all 0.3s;
+}
+.price-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px var(--shadow); }
+
+.price-card.featured {
+  border-color: var(--gold-bright);
+  box-shadow: 0 8px 32px var(--gold-glow);
+}
+
+.price-header {
+  padding: 28px 28px 20px;
+  background: var(--bg);
+  border-bottom: 1.5px solid var(--border);
+  position: relative;
+}
+
+.price-card.featured .price-header { background: #FDFBF5; }
+
+.popular-tag {
+  position: absolute; top: -1px; right: 28px;
+  background: linear-gradient(135deg,var(--sg-red),var(--sg-gold));
+  color: white; font-family: 'Cinzel', serif;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.18em;
+  padding: 5px 14px; border-radius: 0 0 10px 10px;
+  text-transform: uppercase;
+}
+
+.price-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--ink); margin-bottom: 14px;
+}
+
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 400; color: var(--ink); line-height: 1;
+  margin-bottom: 4px;
+}
+.price-amount span { font-size: 20px; color: var(--ink-muted); font-weight: 300; }
+
+.price-period { font-size: 12px; color: var(--ink-muted); margin-bottom: 10px; }
+
+.price-save {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--sg-green); background: rgba(42,138,58,0.1);
+  border: 1px solid rgba(42,138,58,0.2);
+  padding: 4px 12px; border-radius: 99px;
+}
+
+.price-body { padding: 24px 28px; }
+
+.price-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.pf-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-mid); }
+.pf-check { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.pf-yes { background: rgba(42,138,58,0.1); }
+.pf-no { background: var(--bg2); }
+
+.price-cta {
+  width: 100%; padding: 14px;
+  border: none; border-radius: 99px; cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; transition: all 0.25s;
+}
+.price-cta.primary {
+  background: var(--gold); color: white;
+  box-shadow: 0 4px 16px var(--gold-glow);
+}
+.price-cta.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 22px var(--gold-glow); }
+.price-cta.secondary {
+  background: var(--bg2); color: var(--ink-mid);
+  border: 1.5px solid var(--border-strong);
+}
+.price-cta.secondary:hover { background: var(--bg); border-color: var(--gold-border); color: var(--gold); }
+
+.trial-note {
+  text-align: center; margin-top: 20px;
+  font-size: 13px; color: var(--ink-muted); line-height: 1.6;
+}
+
+/* ══ FINAL CTA ══ */
+.final-cta {
+  background: var(--ink);
+  padding: 120px 5%;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%,rgba(200,150,10,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(200,64,64,0.04) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 40% at 90% 20%,rgba(48,96,192,0.05) 0%,transparent 50%);
+}
+
+.final-cross {
+  font-size: 48px; display: block; margin-bottom: 20px;
+  position: relative; z-index: 1;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+@keyframes pulse-glow { 0%,100%{opacity:0.8} 50%{opacity:1} }
+
+.final-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 64px); font-weight: 400;
+  color: white; line-height: 1.12; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.final-title em { font-style: italic; color: var(--gold-bright); }
+
+.final-sub {
+  font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.6);
+  line-height: 1.7; max-width: 520px; margin: 0 auto 40px;
+  position: relative; z-index: 1;
+}
+
+.final-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+
+.btn-light {
+  padding: 16px 32px;
+  background: white; color: var(--ink);
+  border: none; border-radius: 99px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  transition: all 0.28s;
+}
+.btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
+
+.btn-ghost {
+  padding: 16px 28px;
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1.5px solid rgba(255,255,255,0.2); border-radius: 99px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+/* ══ FOOTER ══ */
+footer {
+  background: #0E0C08;
+  padding: 60px 5% 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 48px;
+  flex-wrap: wrap; margin-bottom: 48px;
+}
+
+.footer-brand {}
+.footer-logo {
+  font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700;
+  background: linear-gradient(135deg,var(--sg-red) 0%,var(--sg-red) 18%,var(--sg-gold) 18%,var(--sg-gold) 40%,var(--sg-blue) 40%,var(--sg-blue) 65%,var(--sg-green) 65%,var(--sg-green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display: block; margin-bottom: 10px;
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic; color: rgba(255,255,255,0.4);
+  line-height: 1.5; max-width: 220px;
+}
+
+.footer-links-group {}
+.flg-title {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+  color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 14px;
+}
+.flg-links { display: flex; flex-direction: column; gap: 8px; }
+.flg-links a {
+  font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none;
+  transition: color 0.2s;
+}
+.flg-links a:hover { color: var(--gold-bright); }
+
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-sg-stripe {
+  height: 3px; width: 120px;
+  background: linear-gradient(90deg,var(--sg-red),var(--sg-amber),var(--sg-gold),var(--sg-green),var(--sg-teal),var(--sg-blue),var(--sg-violet));
+  border-radius: 99px; opacity: 0.4;
+}
+
+/* ══ SCROLL ANIMATIONS ══ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) {
+  .hero-inner { flex-direction: column; }
+  .hero-visual { display: none; }
+  .who-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-card.large { flex-direction: column; }
+  .questions-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .large-visual { width: 100%; }
+  .content-strip { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP STRIPE -->
+<div class="sg-stripe"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">BeCath</a>
+    <ul class="nav-links">
+      <li><a href="#for-who">Who It's For</a></li>
+      <li><a href="#content">Content</a></li>
+      <li><a href="#questions">Questions</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#" class="nav-cta">Open App →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-window">
+      <div class="hero-window-arch">
+        <div class="hw-panel hw-1"></div><div class="hw-panel hw-2"></div>
+        <div class="hw-panel hw-3"></div><div class="hw-panel hw-4"></div>
+        <div class="hw-panel hw-5"></div><div class="hw-panel hw-6"></div>
+        <div class="hw-panel hw-7"></div><div class="hw-panel hw-8"></div>
+        <div class="hw-cross-h"></div><div class="hw-cross-v"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">The Catholic Faith</div>
+      <h1 class="hero-title">
+        The faith explained<br>like you're hearing it<br>for the <em>first time.</em>
+      </h1>
+      <p class="hero-sub">Daily prayers, deep teachings, and real answers to the questions Catholics were never taught to ask. Beautifully designed. Always with you.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Open BeCath Free
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#content" class="btn-secondary">See What's Inside</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><div class="trust-dot"></div> Free to start</div>
+        <div class="trust-item"><div class="trust-dot" style="background:var(--sg-blue);"></div> No account required</div>
+        <div class="trust-item"><div class="trust-dot" style="background:var(--sg-red);"></div> Works on any device</div>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="hero-visual">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-content">
+          <div class="phone-stripe"></div>
+          <div class="phone-topbar">
+            <div class="phone-logo">BeCath</div>
+            <div class="phone-greeting">GOOD MORNING</div>
+          </div>
+          <div class="phone-hero-card">
+            <div class="phc-glow"></div>
+            <div class="phc-panels">
+              <div class="phc-panel"></div><div class="phc-panel"></div>
+              <div class="phc-panel"></div><div class="phc-panel"></div>
+              <div class="phc-panel"></div><div class="phc-panel"></div>
+            </div>
+            <div class="phc-content">
+              <div class="phc-label">Featured</div>
+              <div class="phc-title">Why Catholic?</div>
+              <div class="phc-sub">7-day journey through the proof of Christ</div>
+            </div>
+          </div>
+          <div class="phone-section-label">Today · May 4</div>
+          <div class="phone-cards">
+            <div class="phone-card">
+              <div class="pc-img"></div>
+              <div class="pc-body"><div class="pc-title">Saint of the Day</div><div class="pc-meta">Today's saint</div></div>
+            </div>
+            <div class="phone-card">
+              <div class="pc-img v2"></div>
+              <div class="pc-body"><div class="pc-title">Mass Readings</div><div class="pc-meta">Daily liturgy</div></div>
+            </div>
+            <div class="phone-card">
+              <div class="pc-img v3"></div>
+              <div class="pc-body"><div class="pc-title">Morning Prayer</div><div class="pc-meta">~2 min</div></div>
+            </div>
+          </div>
+          <div class="phone-nav">
+            <div class="pn-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <div class="pn-label">Home</div>
+            </div>
+            <div class="pn-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+              <div class="pn-label">Pray</div>
+            </div>
+            <div class="pn-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <div class="pn-label">Learn</div>
+            </div>
+            <div class="pn-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div class="pn-label">Miracles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-glow"></div>
+    </div>
+  </div>
+</section>
+
+<div class="sg-divider"></div>
+
+<!-- ══ FOR WHO ══ -->
+<section class="who-section" id="for-who">
+  <div class="who-inner">
+    <div class="section-eyebrow reveal">Who BeCath Is For</div>
+    <h2 class="section-title reveal">Wherever you are<br>on your <em>journey</em></h2>
+    <p class="section-sub reveal">BeCath was built for three kinds of people. You'll know immediately which one you are.</p>
+
+    <div class="who-grid reveal">
+      <div class="who-card">
+        <div class="who-stripe" style="background:linear-gradient(90deg,var(--sg-red),var(--sg-amber));"></div>
+        <span class="who-emoji">🕯️</span>
+        <div class="who-name">The Returner</div>
+        <div class="who-desc">You were baptized Catholic, drifted away at 18, and now at 35 you're asking whether any of this is actually true. You need answers before you can believe again.</div>
+        <div class="who-quote">"I had questions nobody ever answered. BeCath actually answered them."</div>
+      </div>
+      <div class="who-card">
+        <div class="who-stripe" style="background:linear-gradient(90deg,var(--sg-blue),var(--sg-violet));"></div>
+        <span class="who-emoji">🔍</span>
+        <div class="who-name">The Seeker</div>
+        <div class="who-desc">You're genuinely curious about Christianity and Catholicism. You want evidence, clarity, and honesty — not preaching. You've googled "did Jesus really exist" at midnight.</div>
+        <div class="who-quote">"Finally, someone explaining it without assuming I already believe."</div>
+      </div>
+      <div class="who-card">
+        <div class="who-stripe" style="background:linear-gradient(90deg,var(--sg-gold),var(--sg-green));"></div>
+        <span class="who-emoji">✝️</span>
+        <div class="who-name">The Faithful</div>
+        <div class="who-desc">You're already practicing and want richer prayer, deeper understanding, and beautiful daily devotions. You want to go deeper, not start over.</div>
+        <div class="who-quote">"The daily readings and audio prayers have transformed my mornings."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sg-divider"></div>
+
+<!-- ══ FEATURES ══ -->
+<section id="content">
+  <div class="section">
+    <div class="section-eyebrow reveal">Everything Inside</div>
+    <h2 class="section-title reveal">A complete Catholic<br><em>library in your pocket</em></h2>
+    <p class="section-sub reveal">From daily Mass readings to deep teachings on angels, prophets, and miracles — everything you need to know and pray.</p>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-left-border" style="background:linear-gradient(180deg,var(--sg-red),var(--sg-amber));"></div>
+        <div class="feat-icon" style="background:rgba(200,64,64,0.08);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C84040" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="feat-title">Pray Every Day</div>
+        <div class="feat-desc">Morning offering, the Rosary, Divine Mercy, Stations of the Cross, Night Prayer. Audio-guided for when your hands are full.</div>
+        <div class="feat-items">
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-red);"></div> The Holy Rosary · All Mysteries</div>
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-amber);"></div> Divine Mercy Chaplet</div>
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-gold);"></div> Sleep Rosary · Night Prayer</div>
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-left-border" style="background:linear-gradient(180deg,var(--sg-blue),var(--sg-violet));"></div>
+        <div class="feat-icon" style="background:rgba(48,96,192,0.08);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3060C0" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M12 2v2"/></svg>
+        </div>
+        <div class="feat-title">Understand the Faith</div>
+        <div class="feat-desc">Angels, saints, prophets, Mary, the sacraments — explained simply and honestly. No jargon. No assumptions about what you already believe.</div>
+        <div class="feat-items">
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-blue);"></div> Your Guardian Angel</div>
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-violet);"></div> The 9 Choirs of Angels</div>
+          <div class="feat-item"><div class="feat-item-dot" style="background:var(--sg-blue);"></div> Why Is Mary Special?</div>
+        </div>
+      </div>
+
+      <div class="feature-card large reveal">
+        <div class="feature-left-border" style="background:linear-gradient(180deg,var(--sg-gold),var(--sg-green));"></div>
+        <div class="large-content">
+          <div class="feat-icon" style="background:rgba(160,120,32,0.1);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A07820" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="feat-title">Encounter the Miraculous</div>
+          <div class="feat-desc">Documented, investigated, undeniable. The miracle evidence that has survived scientific scrutiny — from the Shroud of Turin to Eucharistic miracles to Mary's apparitions at Fatima and Lourdes.</div>
+        </div>
+        <div class="large-visual">
+          <div class="content-strip">
+            <div class="cs-item">
+              <div class="cs-icon">🔬</div>
+              <div class="cs-text"><div class="cs-title">Shroud of Turin</div><div class="cs-meta">Image science · undeniable</div></div>
+              <div class="cs-badge badge-free">Free</div>
+            </div>
+            <div class="cs-item">
+              <div class="cs-icon">🩸</div>
+              <div class="cs-text"><div class="cs-title">Eucharistic Miracles</div><div class="cs-meta">Lanciano · Buenos Aires</div></div>
+              <div class="cs-badge badge-free">Free</div>
+            </div>
+            <div class="cs-item">
+              <div class="cs-icon">✨</div>
+              <div class="cs-text"><div class="cs-title">Mary's Apparitions</div><div class="cs-meta">Fatima · Lourdes · Guadalupe</div></div>
+              <div class="cs-badge badge-audio">Audio</div>
+            </div>
+            <div class="cs-item">
+              <div class="cs-icon">📖</div>
+              <div class="cs-text"><div class="cs-title">Book of Revelation</div><div class="cs-meta">Christ's victory revealed</div></div>
+              <div class="cs-badge badge-free">Free</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="sg-divider"></div>
+
+<!-- ══ QUESTIONS ══ -->
+<section class="questions-section" id="questions">
+  <div class="qs-inner">
+    <div class="qs-eyebrow reveal">Real Answers</div>
+    <h2 class="qs-title reveal">The questions Catholics<br>were never <em>taught to ask</em></h2>
+    <p class="qs-sub reveal">BeCath exists because the faith was never clearly explained to most of the people who were raised in it. These are the questions we answer.</p>
+
+    <div class="questions-grid">
+      <div class="question-card reveal reveal-delay-1">
+        <span class="q-icon">🧠</span>
+        <div class="q-text">Was Jesus a real historical person?</div>
+        <div class="q-sub">What secular historians say — and what it means</div>
+        <div class="q-arrow">→</div>
+      </div>
+      <div class="question-card reveal reveal-delay-2">
+        <span class="q-icon">😇</span>
+        <div class="q-text">Do you really have a guardian angel?</div>
+        <div class="q-sub">Official Church teaching, not folklore</div>
+        <div class="q-arrow">→</div>
+      </div>
+      <div class="question-card reveal reveal-delay-3">
+        <span class="q-icon">👑</span>
+        <div class="q-text">Why is Mary so important to Catholics?</div>
+        <div class="q-sub">The four dogmas explained in plain language</div>
+        <div class="q-arrow">→</div>
+      </div>
+      <div class="question-card reveal reveal-delay-1">
+        <span class="q-icon">⚗️</span>
+        <div class="q-text">Is the Shroud of Turin real?</div>
+        <div class="q-sub">What science found — and what it couldn't explain</div>
+        <div class="q-arrow">→</div>
+      </div>
+      <div class="question-card reveal reveal-delay-2">
+        <span class="q-icon">🕊️</span>
+        <div class="q-text">What are angels — actually?</div>
+        <div class="q-sub">The nine choirs and what each one does</div>
+        <div class="q-arrow">→</div>
+      </div>
+      <div class="question-card reveal reveal-delay-3">
+        <span class="q-icon">📖</span>
+        <div class="q-text">What does the Book of Revelation mean?</div>
+        <div class="q-sub">It's not a newspaper. Here's what it actually is.</div>
+        <div class="q-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sg-divider"></div>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section>
+  <div class="section">
+    <div class="section-eyebrow reveal">From Real Users</div>
+    <h2 class="section-title reveal">People meeting the faith<br>for the <em>first time</em></h2>
+
+    <div class="testimonials-grid">
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-stripe" style="background:linear-gradient(90deg,var(--sg-red),var(--sg-amber));"></div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">BeCath answered questions I've had about Catholicism my whole life. I finally understand what I actually believe — and why.</div>
+        <div class="test-author">Maria T.</div>
+        <div class="test-desc">Returning Catholic · Tampa, FL</div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-stripe" style="background:linear-gradient(90deg,var(--sg-blue),var(--sg-violet));"></div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">I'm not even Catholic but the content on angels and miracles is the most intellectually honest thing I've read on religion. Bookmarked everything.</div>
+        <div class="test-author">James R.</div>
+        <div class="test-desc">Curious skeptic · New York, NY</div>
+      </div>
+      <div class="test-card reveal reveal-delay-3">
+        <div class="test-stripe" style="background:linear-gradient(90deg,var(--sg-gold),var(--sg-green));"></div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">The Sleep Rosary changed my evenings completely. The audio quality and the pacing is perfect. I fall asleep in peace every night now.</div>
+        <div class="test-author">Catherine M.</div>
+        <div class="test-desc">Daily user · Chicago, IL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sg-divider"></div>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Simple Pricing</div>
+    <h2 class="section-title reveal" style="text-align:center;">Start free.<br><em>Go deeper</em> when you're ready.</h2>
+    <p class="section-sub reveal" style="text-align:center;margin:0 auto 48px;">The explanatory content is free forever. Audio prayers and deep teachings unlock with a subscription.</p>
+
+    <div class="pricing-grid reveal">
+
+      <div class="price-card">
+        <div class="price-header">
+          <div class="price-name">Free Forever</div>
+          <div class="price-amount">$0</div>
+          <div class="price-period">Always free · No account needed</div>
+        </div>
+        <div class="price-body">
+          <div class="price-features">
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Daily Mass Readings</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Saint of the Day</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>All explanatory content</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Angels, Saints, Miracles</div>
+            <div class="pf-item"><div class="pf-check pf-no"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9A8E78" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><span style="color:var(--ink-muted)">Audio prayers</span></div>
+            <div class="pf-item"><div class="pf-check pf-no"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9A8E78" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><span style="color:var(--ink-muted)">Sleep prayers</span></div>
+          </div>
+          <button class="price-cta secondary" onclick="window.open('https://becath.com/app')">Open Free App</button>
+        </div>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-header">
+          <div class="popular-tag">Most Popular</div>
+          <div class="price-name">Annual</div>
+          <div class="price-amount">$3.99<span>/mo</span></div>
+          <div class="price-period">$47.99 billed annually</div>
+          <div class="price-save">Save 44% vs monthly</div>
+        </div>
+        <div class="price-body">
+          <div class="price-features">
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Everything in Free</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>All audio prayers</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Sleep & night prayer</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Full Rosary library</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>New content weekly</div>
+            <div class="pf-item"><div class="pf-check pf-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2A8A3A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>7-day free trial</div>
+          </div>
+          <button class="price-cta primary">Start 7-Day Free Trial</button>
+        </div>
+      </div>
+
+    </div>
+    <p class="trial-note">7 days free — no charge until trial ends. Cancel anytime.</p>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="final-cta">
+  <span class="final-cross">✝</span>
+  <h2 class="final-title reveal">Something is<br>calling <em>you here.</em></h2>
+  <p class="final-sub reveal">That feeling isn't random. Start where you are. Ask the question you've been carrying. The faith is waiting — and it has answers.</p>
+  <div class="final-actions reveal">
+    <a href="https://becath.com/app" class="btn-light">
+      Open BeCath Free
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A1410" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="#questions" class="btn-ghost">Browse the Questions</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">BeCath</span>
+      <div class="footer-tagline">"The faith explained like you're hearing it for the first time."</div>
+    </div>
+    <div class="footer-links-group">
+      <div class="flg-title">Explore</div>
+      <div class="flg-links">
+        <a href="#">Daily Readings</a>
+        <a href="#">Audio Prayers</a>
+        <a href="#">Angels & Saints</a>
+        <a href="#">Miracles</a>
+        <a href="#">Why Catholic?</a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <div class="flg-title">Learn</div>
+      <div class="flg-links">
+        <a href="#">Guardian Angels</a>
+        <a href="#">Mary's Apparitions</a>
+        <a href="#">The Prophets</a>
+        <a href="#">Book of Revelation</a>
+        <a href="#">The Sacraments</a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <div class="flg-title">About</div>
+      <div class="flg-links">
+        <a href="#">About BeCath</a>
+        <a href="#">Pricing</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 BeCath · Made with care, for God's glory</div>
+    <div class="footer-sg-stripe"></div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Question cards navigate to app
+  document.querySelectorAll('.question-card').forEach(card => {
+    card.addEventListener('click', () => {
+      window.open('https://becath.com/app', '_blank');
+    });
+  });
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 120) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = 'var(--gold)';
+      }
+    });
+  });
+</script>
+</body>
+</html>
