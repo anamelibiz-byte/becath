@@ -471,6 +471,12 @@ img { display: block; max-width: 100%; }
 .list-arrow {
   color: var(--text-mute); flex-shrink: 0;
 }
+.list-play {
+  width: 28px; height: 28px; flex-shrink: 0;
+  color: var(--text-mute);
+}
+.list-play svg { width: 28px; height: 28px; }
+.list-row.card-audio { border-left: 3px solid #7040B8; padding-left: 13px; margin-left: -13px; }
 
 /* ── Bottom nav ── */
 .bottom-nav {
@@ -3620,6 +3626,98 @@ html.app-font-xl  { font-size: 20px; }
   </section>
 
   <!-- ═══════════════ ME ═══════════════ -->
+  <!-- ═══ LISTEN PAGE ═══ -->
+  <section class="page" id="page-listen">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Listen</div>
+        <div class="section-sub">Guided audio prayer &amp; meditation</div>
+      </div>
+    </div>
+
+    <!-- Daily Prayers -->
+    <div class="section-head" style="margin-top:4px;"><div><div class="section-title" style="font-size:0.85rem;color:var(--text-mute);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;">Daily Prayers</div></div></div>
+    <div class="list">
+      <div class="list-row card-audio" onclick="openDetail('today-prayer')">
+        <div class="list-thumb"><div class="gradient-cover gc-morning"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Morning Offering</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~2 min · Start your day</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('audio-angelus')">
+        <div class="list-thumb"><div class="gradient-cover gc-prayer"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M6 8h12l-1 8c-.3 2-1.5 3-3 3H10c-1.5 0-2.7-1-3-3L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div></div>
+        <div class="list-body"><div class="list-title">The Angelus</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~3 min · Noon prayer</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('audio-divine-mercy')">
+        <div class="list-thumb"><div class="gradient-cover gc-eucharist"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Divine Mercy Chaplet</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~12 min · 3 PM</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('audio-examen')">
+        <div class="list-thumb"><div class="gradient-cover gc-night"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Evening Examen</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~8 min · Evening</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+    </div>
+
+    <!-- The Rosary -->
+    <div class="section-head" style="margin-top:8px;"><div><div class="section-title" style="font-size:0.85rem;color:var(--text-mute);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;">The Rosary</div></div></div>
+    <div class="list">
+      <div class="list-row card-audio" onclick="openDetail('rosary-joyful')">
+        <div class="list-thumb"><div class="gradient-cover gc-rosary"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><circle cx="12" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="18" r="2"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Joyful Mysteries</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~18 min · Mon &amp; Sat</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('rosary-sorrowful')">
+        <div class="list-thumb"><div class="gradient-cover gc-rosary"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Sorrowful Mysteries</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~18 min · Tue &amp; Fri</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('rosary-glorious')">
+        <div class="list-thumb"><div class="gradient-cover gc-rosary"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Glorious Mysteries</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~18 min · Wed &amp; Sun</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('rosary-luminous')">
+        <div class="list-thumb"><div class="gradient-cover gc-rosary"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Luminous Mysteries</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~18 min · Thu</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+    </div>
+
+    <!-- Night & Sleep -->
+    <div class="section-head" style="margin-top:8px;"><div><div class="section-title" style="font-size:0.85rem;color:var(--text-mute);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;">Night &amp; Sleep</div></div></div>
+    <div class="list">
+      <div class="list-row card-audio" onclick="openDetail('compline')">
+        <div class="list-thumb"><div class="gradient-cover gc-night"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Night Prayer (Compline)</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~12 min · Liturgy of the Hours</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('sleep-rosary')">
+        <div class="list-thumb"><div class="gradient-cover gc-sleep"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Sleep Rosary</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~25 min · Gentle</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+      <div class="list-row card-audio" onclick="openDetail('psalm-91')">
+        <div class="list-thumb"><div class="gradient-cover gc-bible"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div></div>
+        <div class="list-body"><div class="list-title">Psalm 91</div><div class="list-meta"><span class="type-badge type-badge-audio">Audio</span>~4 min · He who dwells…</div></div>
+        <div class="list-play"><svg viewBox="0 0 24 24" fill="#7040B8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16" fill="white"/></svg></div>
+      </div>
+    </div>
+
+    <!-- Guided Meditations (coming soon) -->
+    <div class="section-head" style="margin-top:8px;"><div><div class="section-title" style="font-size:0.85rem;color:var(--text-mute);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;">Guided Meditations</div><div class="section-sub" style="font-size:0.72rem;">Coming soon</div></div></div>
+    <div style="padding:0 18px 18px;">
+      <div style="border:1px dashed var(--line);border-radius:var(--radius);padding:20px 18px;text-align:center;">
+        <div style="font-size:1.4rem;margin-bottom:8px;opacity:0.4;">🎧</div>
+        <div style="font-family:var(--ff-display);font-size:0.8rem;font-weight:600;letter-spacing:0.06em;color:var(--text-mute);">Scripture Meditations · Lectio Divina · Healing Prayer</div>
+        <div style="font-size:0.72rem;color:var(--text-faint);margin-top:4px;">Audio dropping soon</div>
+      </div>
+    </div>
+
+  </section><!-- /page-listen -->
+
+  <!-- ═══ ME PAGE ═══ -->
   <section class="page" id="page-me">
     <div class="section-head"><div><div class="section-title">Me</div><div class="section-sub">Your personal space</div></div></div>
     <div style="padding:0;">
@@ -3973,9 +4071,9 @@ html.app-font-xl  { font-size: 20px; }
     <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
     <span>Miracles</span>
   </button>
-  <button class="nav-tab" data-page="me" onclick="goPage('me')">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-    <span>Me</span>
+  <button class="nav-tab" data-page="listen" onclick="goPage('listen')">
+    <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+    <span>Listen</span>
   </button>
 </nav>
 
