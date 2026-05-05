@@ -193,6 +193,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--ff-display); font-size: 0.65rem; color: var(--gold);
   font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   background: none; border: none; cursor: pointer;
+  white-space: nowrap; flex-shrink: 0;
 }
 
 /* ── Featured hero (16:9) ── */
@@ -709,6 +710,47 @@ img { display: block; max-width: 100%; }
 .sb-topic-chevron {
   width: 14px; height: 14px; flex-shrink: 0;
   color: var(--text-mute); opacity: 0.5;
+}
+
+/* ── Home Scripture Accordions ── */
+.hsa {
+  border-bottom: 1px solid var(--line);
+}
+.hsa-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 4px; cursor: pointer;
+  user-select: none;
+}
+.hsa-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; opacity: 0.8;
+}
+.hsa-labels { flex: 1; min-width: 0; }
+.hsa-title {
+  font-size: 0.98rem; font-weight: 600; color: var(--text); line-height: 1.3;
+}
+.hsa-sub {
+  font-size: 0.73rem; color: var(--text-mute); margin-top: 2px;
+}
+.hsa-chevron {
+  width: 16px; height: 16px; flex-shrink: 0;
+  color: var(--text-faint);
+  transition: transform 0.22s ease;
+}
+.hsa.open .hsa-chevron { transform: rotate(90deg); }
+.hsa-body { display: none; padding-bottom: 6px; }
+.hsa.open .hsa-body { display: block; }
+.hsa-topic-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 4px 10px 20px;
+  cursor: pointer; border-radius: 10px;
+  transition: background 0.12s;
+}
+.hsa-topic-row:hover, .hsa-topic-row:active { background: var(--bg-soft); }
+.hsa-topic-title {
+  font-size: 0.9rem; font-weight: 500; color: var(--text); line-height: 1.3;
+}
+.hsa-topic-sub {
+  font-size: 0.72rem; color: var(--text-mute); margin-top: 1px;
 }
 
 /* ── Pill chip row ── */
@@ -2763,59 +2805,8 @@ html.app-font-xl  { font-size: 20px; }
       </div>
       <button class="section-link" onclick="goPage('scripture-browse')">See all</button>
     </div>
-    <div class="h-row">
-      <div class="card-wide" onclick="openDetail('scripture-money')">
-        <div class="card-wide-cover">
-          <div class="gradient-cover gc-scripture">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-          </div>
-        </div>
-        <div class="card-wide-title">Money &amp; Provision</div>
-        <div class="card-wide-meta">What does God say about your finances?</div>
-      </div>
-      <div class="card-wide" onclick="openDetail('scripture-purpose')">
-        <div class="card-wide-cover">
-          <div class="gradient-cover gc-bible">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-        </div>
-        <div class="card-wide-title">Purpose &amp; Calling</div>
-        <div class="card-wide-meta">Why are you here? God has an answer.</div>
-      </div>
-      <div class="card-wide" onclick="openDetail('scripture-healing')">
-        <div class="card-wide-cover">
-          <img src="img/healing.jpg" alt="">
-        </div>
-        <div class="card-wide-title">Healing &amp; Peace</div>
-        <div class="card-wide-meta">For anxiety, grief, and the weight you carry</div>
-      </div>
-      <div class="card-wide" onclick="openDetail('scripture-identity')">
-        <div class="card-wide-cover">
-          <div class="gradient-cover gc-rosary">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-        </div>
-        <div class="card-wide-title">Identity &amp; Worth</div>
-        <div class="card-wide-meta">Who does God say you are?</div>
-      </div>
-      <div class="card-wide" onclick="openDetail('scripture-relationships')">
-        <div class="card-wide-cover">
-          <div class="gradient-cover gc-eucharist">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-        </div>
-        <div class="card-wide-title">Relationships</div>
-        <div class="card-wide-meta">Love, family, forgiveness — from Scripture</div>
-      </div>
-      <div class="card-wide" onclick="openDetail('scripture-faith')">
-        <div class="card-wide-cover">
-          <div class="gradient-cover gc-prayer">
-            <svg viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674z"/></svg>
-          </div>
-        </div>
-        <div class="card-wide-title">Faith &amp; Breakthrough</div>
-        <div class="card-wide-meta">For hard seasons, doubt, and waiting on God</div>
-      </div>
+    <div id="home-scripture-accordions" style="margin:0 4px;">
+      <!-- Rendered by JS below -->
     </div>
 
     <!-- Rosary & Mary -->
@@ -3862,7 +3853,7 @@ html.app-font-xl  { font-size: 20px; }
   </button>
 </nav>
 
-<script src="content.js?v=20260504-1"></script>
+<script src="content.js?v=20260504-2"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -5156,6 +5147,97 @@ html.app-font-xl  { font-size: 20px; }
   }
   // Also render immediately in case page is already shown
   renderTopics('all');
+})();
+
+// ── Home screen: God's Word for You accordions ──────────────────────────────
+(function() {
+  var HOME_CATS = [
+    { cat:'money',         label:'Money & Provision',   sub:'What does God say about your finances?',        color:'var(--sg-amber)',  gcClass:'gc-scripture' },
+    { cat:'purpose',       label:'Purpose & Calling',   sub:'Why are you here? God has an answer.',          color:'var(--sg-blue)',   gcClass:'gc-bible'    },
+    { cat:'healing',       label:'Healing & Peace',     sub:'For anxiety, grief, and the weight you carry',  color:'var(--sg-green)',  gcClass:'gc-eucharist'},
+    { cat:'identity',      label:'Identity & Worth',    sub:'Who does God say you are?',                     color:'var(--sg-violet)', gcClass:'gc-rosary'   },
+    { cat:'relationships', label:'Relationships',        sub:'Love, family, forgiveness — from Scripture',    color:'var(--sg-red)',    gcClass:'gc-prayer'   },
+    { cat:'faith',         label:'Faith & Breakthrough', sub:'For hard seasons, doubt, and waiting on God',  color:'var(--sg-teal)',   gcClass:'gc-eucharist'},
+  ];
+
+  var HOME_TOPICS = [
+    { cat:'money',         label:'Prosperity',          sub:'God desires you to flourish',                   id:'topic-prosperity'      },
+    { cat:'money',         label:'Provision',           sub:'God as your source — He meets every need',      id:'topic-provision'       },
+    { cat:'money',         label:'Stewardship',         sub:'Managing what God entrusted to you',            id:'topic-stewardship'     },
+    { cat:'money',         label:'Generosity & Giving', sub:'You cannot out-give God',                       id:'topic-generosity'      },
+    { cat:'money',         label:'Favor',               sub:'Divine positioning',                            id:'topic-favor'           },
+    { cat:'money',         label:'Debt & Freedom',      sub:'Breaking cycles of lack',                       id:'topic-debt-freedom'    },
+    { cat:'purpose',       label:'Purpose & Calling',   sub:'Created on purpose, for a purpose',             id:'topic-purpose'         },
+    { cat:'purpose',       label:'Gifts & Talents',     sub:'What God placed in you is not an accident',     id:'topic-gifts'           },
+    { cat:'purpose',       label:'Work & Excellence',   sub:'Everything you do can be an act of worship',    id:'topic-work'            },
+    { cat:'purpose',       label:'Wisdom & Discernment',sub:'How to hear God in the noise',                  id:'topic-wisdom'          },
+    { cat:'purpose',       label:'Dreams & Vision',     sub:'God plants holy desires as seeds of vocation',  id:'topic-dreams'          },
+    { cat:'healing',       label:'Healing',             sub:'Jesus healed then, and He heals now',           id:'topic-healing'         },
+    { cat:'healing',       label:'Peace & Anxiety',     sub:'The peace that surpasses understanding',        id:'topic-peace'           },
+    { cat:'healing',       label:'Rest & Sabbath',      sub:'God rested. He commands your rest.',            id:'topic-rest'            },
+    { cat:'healing',       label:'Grief & Suffering',   sub:'God does not waste your pain',                  id:'topic-grief'           },
+    { cat:'healing',       label:'Shalom',              sub:'Biblical wholeness — body, soul, and spirit',   id:'topic-shalom'          },
+    { cat:'identity',      label:'Identity in Christ',  sub:'Who you are before you do anything',            id:'topic-identity'        },
+    { cat:'identity',      label:'Imago Dei',           sub:'Made in the image and likeness of God',         id:'topic-imago-dei'       },
+    { cat:'identity',      label:'Baptism & New Life',  sub:'You are a new creation',                        id:'topic-baptism'         },
+    { cat:'identity',      label:'Courage & Boldness',  sub:'The fear of man is a snare — you are free',     id:'topic-courage'         },
+    { cat:'identity',      label:'Worth & Dignity',     sub:'You were worth dying for',                      id:'topic-worth'           },
+    { cat:'relationships', label:'Love',                sub:'Agape — the love that lays down its life',      id:'topic-love'            },
+    { cat:'relationships', label:'Marriage & Family',   sub:'The domestic church',                           id:'topic-marriage'        },
+    { cat:'relationships', label:'Friendship',          sub:'Iron sharpens iron',                            id:'topic-friendship'      },
+    { cat:'relationships', label:'Forgiveness',         sub:'The most countercultural act in the world',     id:'topic-forgiveness'     },
+    { cat:'relationships', label:'Unity & Community',   sub:'You were not made to do this alone',            id:'topic-unity'           },
+    { cat:'faith',         label:'Faith',               sub:'The substance of things hoped for',             id:'topic-faith'           },
+    { cat:'faith',         label:'Prayer',              sub:'Ask, seek, knock — the mechanics of heaven',    id:'topic-prayer'          },
+    { cat:'faith',         label:'Spiritual Warfare',   sub:'You are in a battle — here is your armor',      id:'topic-spiritual-warfare'},
+    { cat:'faith',         label:'Waiting & Patience',  sub:'Holy waiting is not passive — it is powerful',  id:'topic-waiting'         },
+    { cat:'faith',         label:'Mind & Renewal',      sub:'What you think shapes what you become',         id:'topic-mind'            },
+  ];
+
+  window.homeScriptureToggle = function(btn) {
+    var acc = btn.closest('.hsa');
+    var isOpen = acc.classList.contains('open');
+    document.querySelectorAll('#home-scripture-accordions .hsa').forEach(function(a){ a.classList.remove('open'); });
+    if (!isOpen) acc.classList.add('open');
+  };
+
+  function buildHomeAccordions() {
+    var container = document.getElementById('home-scripture-accordions');
+    if (!container) return;
+    var html = '';
+    HOME_CATS.forEach(function(c) {
+      var topics = HOME_TOPICS.filter(function(t){ return t.cat === c.cat; });
+      var topicRows = topics.map(function(t){
+        return '<div class="hsa-topic-row" onclick="openDetail(\'' + t.id + '\')">'
+          + '<div style="width:7px;height:7px;border-radius:50%;background:' + c.color + ';flex-shrink:0;opacity:0.7;margin-top:3px;"></div>'
+          + '<div style="flex:1;">'
+          + '<div class="hsa-topic-title">' + t.label + '</div>'
+          + '<div class="hsa-topic-sub">' + t.sub + '</div>'
+          + '</div>'
+          + '<svg style="width:14px;height:14px;flex-shrink:0;color:var(--text-faint);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
+          + '</div>';
+      }).join('');
+      html += '<div class="hsa">'
+        + '<div class="hsa-head" onclick="homeScriptureToggle(this)">'
+        + '<div class="hsa-dot" style="background:' + c.color + ';"></div>'
+        + '<div class="hsa-labels">'
+        + '<div class="hsa-title">' + c.label + '</div>'
+        + '<div class="hsa-sub">' + c.sub + '</div>'
+        + '</div>'
+        + '<svg class="hsa-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
+        + '</div>'
+        + '<div class="hsa-body">' + topicRows + '</div>'
+        + '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildHomeAccordions);
+  } else {
+    buildHomeAccordions();
+  }
 })();
 </script>
 
