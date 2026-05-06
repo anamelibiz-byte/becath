@@ -78,6 +78,7 @@ window.becathSignOut = async function() {
   window._becathToken = null;
   window.BECATH_USER  = null;
   window.BECATH_SUB   = null;
+  localStorage.removeItem('becath_sub_cache');
   showAuthWall('login');
 };
 
@@ -97,12 +98,25 @@ async function _refreshToken(refresh_token) {
 // ── Fetch subscription status ──
 window.becathFetchSub = async function() {
   if (!window._becathToken) return null;
-  const r = await supaFetch('/rest/v1/becath_subscriptions?select=*&limit=1', {
+  const uid = window.BECATH_USER?.id;
+  const filter = uid ? `?select=*&user_id=eq.${uid}&limit=1` : '?select=*&limit=1';
+  const r = await supaFetch('/rest/v1/becath_subscriptions' + filter, {
     headers: { 'Accept': 'application/json' }
   });
   if (r.ok && Array.isArray(r.data) && r.data.length) {
     window.BECATH_SUB = r.data[0];
+    // Cache status in localStorage so it survives page reloads
+    localStorage.setItem('becath_sub_cache', JSON.stringify(r.data[0]));
     return r.data[0];
+  }
+  // Fall back to cached sub on network failure
+  const cached = localStorage.getItem('becath_sub_cache');
+  if (cached) {
+    try {
+      const sub = JSON.parse(cached);
+      window.BECATH_SUB = sub;
+      return sub;
+    } catch(e) {}
   }
   return null;
 };
