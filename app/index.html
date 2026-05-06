@@ -4663,6 +4663,10 @@ html.app-font-xl  { font-size: 20px; }
     Object.keys(window.BECATH_CONTENT).forEach(function(k){
       DETAIL[k] = window.BECATH_CONTENT[k];
     });
+    // topic-prosperity always uses the full 'prosperity' entry (32 quotes)
+    if (window.BECATH_CONTENT['prosperity']) {
+      DETAIL['topic-prosperity'] = window.BECATH_CONTENT['prosperity'];
+    }
   }
 
   // Today's saint is resolved after _todaySaintKey is set (see saint calendar script below)
