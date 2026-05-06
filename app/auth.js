@@ -325,9 +325,11 @@ window.becathBoot = async function() {
     await _refreshToken(stored.refresh_token);
   }
 
-  // No valid token → show signup
+  // No valid token → show signup (but only if onboarding is done)
   if (!window._becathToken) {
-    showAuthWall('signup');
+    if (localStorage.getItem('becath_onboarding_complete') === 'true') {
+      showAuthWall('signup');
+    }
     return;
   }
 
@@ -335,7 +337,10 @@ window.becathBoot = async function() {
   const sub = await becathFetchSub();
   updateAuthUI();
   if (!becathIsActive()) {
-    showPaywall();
+    // Only show paywall if onboarding is done
+    if (localStorage.getItem('becath_onboarding_complete') === 'true') {
+      showPaywall();
+    }
   }
 };
 

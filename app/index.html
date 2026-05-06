@@ -5882,7 +5882,15 @@ html.app-font-xl  { font-size: 20px; }
     var wrap = document.getElementById('becath-onboarding-wrap');
     if (wrap) {
       wrap.classList.add('ob2-hidden');
-      setTimeout(function() { wrap.style.display = 'none'; }, 420);
+      setTimeout(function() {
+        wrap.style.display = 'none';
+        // After onboarding: show signup if not logged in, paywall if logged in but not active
+        if (window._becathToken) {
+          if (typeof becathIsActive === 'function' && !becathIsActive()) showPaywall();
+        } else {
+          if (typeof showAuthWall === 'function') showAuthWall('signup');
+        }
+      }, 420);
     }
   };
 
@@ -6196,7 +6204,7 @@ window.selectPlan = function(plan) {
 
 </script>
 
-<script src="auth.js?v=20260506-2"></script>
+<script src="auth.js?v=20260506-3"></script>
 
 </body>
 </html>
