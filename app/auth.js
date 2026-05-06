@@ -121,7 +121,7 @@ window.becathIsActive = function() {
 
 // ── Create Stripe Checkout Session via Edge Function ──
 window.becathCheckout = async function(plan) {
-  if (!window._becathToken) { showAuthWall('login'); return; }
+  if (!window._becathToken) { showAuthWall('signup'); return; }
 
   // Silently refresh token before checkout to avoid expired-JWT errors
   try {
@@ -326,7 +326,12 @@ window.becathBoot = async function() {
   const sub = await becathFetchSub();
   updateAuthUI();
   if (!becathIsActive()) {
-    showPaywall();
+    // Only show paywall if user is logged in — otherwise show signup
+    if (window._becathToken) {
+      showPaywall();
+    } else {
+      showAuthWall('signup');
+    }
   }
 };
 
