@@ -220,12 +220,12 @@ window.becathDoSignUp = async function() {
   if (pass.length < 6) { err.textContent = 'Password must be at least 6 characters.'; return; }
   try {
     document.getElementById('auth-submit-signup').textContent = 'Creating account…';
-    await becathSignUp(email, pass);
-    // Sign in immediately to get a full session token
-    await becathSignIn(email, pass);
+    const signupData = await becathSignUp(email, pass);
+    // If signup didn't return a session, sign in to get one
+    if (!window._becathToken) await becathSignIn(email, pass);
     hideAuthWall();
-    // Go straight to checkout
-    await becathCheckout(window._selectedPlan || 'monthly');
+    // Show paywall so user can pick plan before checkout
+    showPaywall();
   } catch(e) {
     err.textContent = e.message;
   } finally {
