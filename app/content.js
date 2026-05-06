@@ -1,21 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════════
-   BeCath v3 — Content
+/*
+   BeCath v3 - Content
    Each entry: { eyebrow, title, meta, img?, gc?, hasAudio?, blocks: [] }
-   Block types:
-     - { type:'p', text }                            paragraph
-     - { type:'h', text }                            heading
-     - { type:'sectionLabel', text }                 small uppercase divider label
-     - { type:'quote', text, cite }                  scripture / pull quote
-     - { type:'callout', tone, title, body }         tone: gold/blue/rose/sage
-     - { type:'lead', eyebrow, text, quote? }        navy lead card with optional quote
-     - { type:'subsection', title, subtitle, blocks } collapsible-style sub group
-     - { type:'rolegrid', items:[{title,body}] }     2-col grid of roles
-     - { type:'archangel', icon, name, meaning, body }
-     - { type:'prayer', label, text }                full prayer text
-     - { type:'list', items:[..] }
-     - { type:'verseList', items:[{cite,text}] }
-     - { type:'audioRow', title, meta }              optional audio reference
-   ═══════════════════════════════════════════════════════════════════ */
+*/
 
 window.BECATH_CONTENT = {
 
@@ -202,7 +188,7 @@ window.BECATH_CONTENT = {
   },
 
   // ────────────────────────────────────────────────────────
-  // 7-DAY JOURNEY · Day 3 · Mary's Apparitions
+  // 7-DAY JOURNEY · Day 3 · Mary\'s Apparitions
   // ────────────────────────────────────────────────────────
   'apparitions': {
     eyebrow: 'Day 3 · Why Catholic?',
@@ -792,7 +778,7 @@ window.BECATH_CONTENT = {
         { type:'p', text:'Three questions — one for each denial. Jesus restored Peter publicly and specifically to the role of shepherd. The leader who feeds and tends God\'s entire flock.' }
       ]},
 
-      { type:'accordion', eyebrow:'History', title:"Peter's Leadership in the Early Church", subtitle:'The evidence', blocks:[
+      { type:'accordion', eyebrow:'History', title:"Peter\'s Leadership in the Early Church", subtitle:'The evidence', blocks:[
         { type:'p', text:'The evidence of Peter\'s primacy runs throughout the entire New Testament:' },
         { type:'list', items:[
           'Peter speaks first at Pentecost — the first sermon in Church history. He leads 3,000 to Baptism.',
@@ -1038,7 +1024,7 @@ window.BECATH_CONTENT = {
       { type:'callout', tone:'rose', title:'Through Mary, to Jesus', body:'Everything Mary asks leads to her Son. She always points to Christ, never to herself.' },
 
       { type:'accordion', eyebrow:'Fatima 1925', title:'Five First Saturdays', subtitle:'Monthly devotion', open:true, blocks:[
-        { type:'callout', tone:'rose', title:"Our Lady's Promise", body:'"All those who on the first Saturdays of five consecutive months go to confession, receive Communion, say five decades of the Rosary and keep me company for 15 minutes meditating on the mysteries — I promise to assist them at the hour of death with all the graces necessary for the salvation of their souls."' },
+        { type:'callout', tone:'rose', title:"Our Lady\'s Promise", body:'"All those who on the first Saturdays of five consecutive months go to confession, receive Communion, say five decades of the Rosary and keep me company for 15 minutes meditating on the mysteries — I promise to assist them at the hour of death with all the graces necessary for the salvation of their souls."' },
         { type:'h', text:'Four Requirements Each First Saturday' },
         { type:'list', items:[
           '<strong>Confession</strong> — within 8 days before or after the First Saturday',
@@ -1069,7 +1055,7 @@ window.BECATH_CONTENT = {
         ]}
       ]},
 
-      { type:'accordion', eyebrow:'Fatima', title:"Mary's Core Messages", subtitle:'What she keeps asking', blocks:[
+      { type:'accordion', eyebrow:'Fatima', title:"Mary\'s Core Messages", subtitle:'What she keeps asking', blocks:[
         { type:'list', items:[
           'Pray the Rosary every day — requested at every single appearance',
           'Do penance and make sacrifices for the conversion of sinners',
@@ -1179,7 +1165,7 @@ window.BECATH_CONTENT = {
 
       { type:'accordion', eyebrow:'Core', title:'The One Common Theme', subtitle:'What it all adds up to', blocks:[
         { type:'p', text:'If you strip every appearance down to its core — past the location, the century, the language, the visionary, the miracle — one truth remains in every single one:' },
-        { type:'quote', text:"God's mercy is available. The door is open. But you must turn around and walk back through it.", cite:'The pattern of every approved appearance' },
+        { type:'quote', text:"God\'s mercy is available. The door is open. But you must turn around and walk back through it.", cite:'The pattern of every approved appearance' },
         { type:'list', items:[
           '<strong>God has not abandoned humanity.</strong> He sent His Son. His Son ascended. He sent His Spirit. And He keeps sending His Mother to places no one is looking — to remind the smallest, most forgotten people that Heaven has not stopped watching.',
           '<strong>The stakes are real.</strong> At Fatima, Akita, and Kibeho — Mary was shown real consequences of a world continuing in sin. She wept. She warned. She offered a way out. Every visit includes urgency because she knows what is at stake for human souls.',
@@ -2142,7 +2128,7 @@ window.BECATH_CONTENT = {
       { type:'accordion', eyebrow:'d. c.64 AD · Jun 29', title:'St. Peter the Apostle', subtitle:'First Pope', blocks:[
         { type:'h', text:'His Story' },
         { type:'p', text:'Simon was a fisherman on the Sea of Galilee when Jesus called him. Jesus immediately renamed him Peter (Rock) — a name no one had ever been given before — signaling his future role. He was present at the Transfiguration, the Agony in the Garden, and witnessed the Resurrection appearances. He denied Jesus three times on the night of the arrest. He was restored by the Risen Jesus on the beach with the three-fold "Do you love me?" He preached the first Christian sermon at Pentecost, performed the first healing, presided over the first Council. He went to Rome, led the Church there, and was martyred — crucified upside down, declaring himself unworthy to die in the same posture as his Lord.' },
-        { type:'callout', tone:'blue', title:"St. Peter's Basilica", body:'Stands directly over the tomb of Peter — confirmed by archaeological excavation beneath the high altar in the 20th century. Every Pope celebrates Mass above the bones of the first Pope. The succession is not merely symbolic — it is physically continuous.' },
+        { type:'callout', tone:'blue', title:"St. Peter\'s Basilica", body:'Stands directly over the tomb of Peter — confirmed by archaeological excavation beneath the high altar in the 20th century. Every Pope celebrates Mass above the bones of the first Pope. The succession is not merely symbolic — it is physically continuous.' },
         { type:'h', text:'Patron of' },
         { type:'p', text:'Popes · fishermen · net makers · Rome · the universal Church' },
         { type:'prayer', label:'Prayer to St. Peter',
@@ -2246,7 +2232,7 @@ window.BECATH_CONTENT = {
   },
 
   // ────────────────────────────────────────────────────────
-  // PROSPERITY — God's promises in Scripture
+  // PROSPERITY — God\'s promises in Scripture
   // ────────────────────────────────────────────────────────
   'prosperity': {
     eyebrow: 'Scripture',
@@ -2524,7 +2510,7 @@ window.BECATH_CONTENT = {
     gc: 'gc-pope',
     blocks: [
       { type:'p', text:'Simon was a fisherman on the Sea of Galilee when Jesus called him. Jesus immediately renamed him Peter (Rock) — a name no one had ever been given before — signaling his future role. He was present at the Transfiguration, the Agony in the Garden, and witnessed the Resurrection appearances. He denied Jesus three times on the night of the arrest. He was restored by the Risen Jesus on the beach with the three-fold "Do you love me?" He preached the first Christian sermon at Pentecost, performed the first healing, presided over the first Council. He went to Rome, led the Church there, and was martyred — crucified upside down, declaring himself unworthy to die in the same posture as his Lord.' },
-      { type:'callout', tone:'blue', title:"St. Peter's Basilica", body:'Stands directly over the tomb of Peter — confirmed by archaeological excavation beneath the high altar in the 20th century. Every Pope celebrates Mass above the bones of the first Pope. The succession is not merely symbolic — it is physically continuous.' },
+      { type:'callout', tone:'blue', title:"St. Peter\'s Basilica", body:'Stands directly over the tomb of Peter — confirmed by archaeological excavation beneath the high altar in the 20th century. Every Pope celebrates Mass above the bones of the first Pope. The succession is not merely symbolic — it is physically continuous.' },
       { type:'p', text:'<strong>Patron of:</strong> Popes · fishermen · net makers · Rome · the universal Church' },
       { type:'prayer', label:'Prayer to St. Peter',
         text:'St. Peter — you denied Jesus three times and He made you the foundation of His Church anyway. When I feel like I have failed too many times, too badly, too publicly — remind me of your story. Pray for me so I can get back up. Help me to love Jesus even in my weakness, and to trust that He is not finished with me. Amen.' }
@@ -3280,7 +3266,7 @@ window.BECATH_CONTENT = {
   // ────────────────────────────────────────────────────────
 
   'scripture-money': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Money & Provision',
     meta: 'What God says about your finances · 6 topics',
     gc: 'gc-scripture',
@@ -3356,7 +3342,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-purpose': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Purpose & Calling',
     meta: 'Why are you here? God has an answer · 5 topics',
     gc: 'gc-bible',
@@ -3420,7 +3406,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-healing': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Healing & Peace',
     meta: 'For anxiety, grief, and the weight you carry · 5 topics',
     img: 'img/healing.jpg',
@@ -3487,7 +3473,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-identity': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Identity & Worth',
     meta: 'Who does God say you are? · 5 topics',
     gc: 'gc-rosary',
@@ -3551,7 +3537,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-relationships': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Relationships',
     meta: 'Love, family, and forgiveness — from Scripture · 5 topics',
     gc: 'gc-eucharist',
@@ -3616,7 +3602,7 @@ window.BECATH_CONTENT = {
   },
 
   'scripture-faith': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Faith & Breakthrough',
     meta: 'For hard seasons, doubt, and waiting on God · 5 topics',
     gc: 'gc-prayer',
@@ -3683,12 +3669,12 @@ window.BECATH_CONTENT = {
   },
 
 
-  // ── God's Word for You — 31 Individual Topic Pages ──────────────────────
+  // ── God\'s Word for You — 31 Individual Topic Pages ──────────────────────
 
   // MONEY & PROVISION ─────────────────────────────────────────────────────
 
   'topic-prosperity': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Prosperity',
     meta: 'God desires you to flourish',
     gc: 'gc-scripture',
@@ -3711,7 +3697,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-provision': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Provision',
     meta: 'God as your source',
     gc: 'gc-scripture',
@@ -3734,7 +3720,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-stewardship': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Stewardship',
     meta: 'Managing what God entrusted to you',
     gc: 'gc-scripture',
@@ -3756,7 +3742,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-generosity': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Generosity & Giving',
     meta: 'You cannot out-give God',
     gc: 'gc-scripture',
@@ -3778,7 +3764,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-favor': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Favor',
     meta: 'Divine positioning — doors open',
     gc: 'gc-scripture',
@@ -3800,7 +3786,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-debt-freedom': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Debt & Financial Freedom',
     meta: 'Breaking cycles of lack',
     gc: 'gc-scripture',
@@ -3824,7 +3810,7 @@ window.BECATH_CONTENT = {
   // PURPOSE & CALLING ─────────────────────────────────────────────────────
 
   'topic-purpose': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Purpose & Calling',
     meta: 'You were created on purpose',
     gc: 'gc-bible',
@@ -3846,7 +3832,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-gifts': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Gifts & Talents',
     meta: 'What God placed in you is not an accident',
     gc: 'gc-bible',
@@ -3867,7 +3853,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-work': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Work & Excellence',
     meta: 'Everything you do can be worship',
     gc: 'gc-bible',
@@ -3889,7 +3875,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-wisdom': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Wisdom & Discernment',
     meta: 'How to hear God in the noise',
     gc: 'gc-bible',
@@ -3911,7 +3897,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-dreams': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Dreams & Vision',
     meta: 'God plants holy desires in you',
     gc: 'gc-bible',
@@ -3935,7 +3921,7 @@ window.BECATH_CONTENT = {
   // HEALING & PEACE ────────────────────────────────────────────────────────
 
   'topic-healing': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Healing',
     meta: 'Jesus healed then — and He heals now',
     gc: 'gc-green',
@@ -3957,7 +3943,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-peace': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Peace & Anxiety',
     meta: 'The peace that surpasses understanding',
     gc: 'gc-green',
@@ -3979,7 +3965,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-rest': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Rest & Sabbath',
     meta: 'God rested. He commands yours.',
     gc: 'gc-green',
@@ -4001,7 +3987,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-grief': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Grief & Suffering',
     meta: 'God does not waste your pain',
     gc: 'gc-green',
@@ -4023,7 +4009,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-shalom': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Shalom',
     meta: 'Biblical wholeness — body, soul, and spirit',
     gc: 'gc-green',
@@ -4047,7 +4033,7 @@ window.BECATH_CONTENT = {
   // IDENTITY & WORTH ───────────────────────────────────────────────────────
 
   'topic-identity': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Identity in Christ',
     meta: 'Who you are before you do anything',
     gc: 'gc-rosary',
@@ -4069,7 +4055,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-imago-dei': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Imago Dei',
     meta: 'Made in the image and likeness of God',
     gc: 'gc-rosary',
@@ -4090,7 +4076,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-baptism': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Baptism & New Life',
     meta: 'You are a new creation',
     gc: 'gc-rosary',
@@ -4112,7 +4098,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-courage': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Courage & Boldness',
     meta: 'The fear of man is a snare — you are free',
     gc: 'gc-rosary',
@@ -4134,7 +4120,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-worth': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Worth & Dignity',
     meta: 'You were worth dying for',
     gc: 'gc-rosary',
@@ -4157,7 +4143,7 @@ window.BECATH_CONTENT = {
   // RELATIONSHIPS ──────────────────────────────────────────────────────────
 
   'topic-love': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Love',
     meta: 'Agape — the love that lays down its life',
     gc: 'gc-eucharist',
@@ -4178,7 +4164,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-marriage': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Marriage & Family',
     meta: 'The domestic church',
     gc: 'gc-eucharist',
@@ -4200,7 +4186,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-friendship': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Friendship',
     meta: 'Iron sharpens iron',
     gc: 'gc-eucharist',
@@ -4221,7 +4207,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-forgiveness': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Forgiveness',
     meta: 'The most countercultural act in the world',
     gc: 'gc-eucharist',
@@ -4242,7 +4228,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-unity': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Unity & Community',
     meta: 'You were not made to do this alone',
     gc: 'gc-eucharist',
@@ -4265,7 +4251,7 @@ window.BECATH_CONTENT = {
   // FAITH & BREAKTHROUGH ───────────────────────────────────────────────────
 
   'topic-faith': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Faith',
     meta: 'The substance of things hoped for',
     gc: 'gc-prayer',
@@ -4287,7 +4273,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-prayer': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Prayer',
     meta: 'Ask, seek, knock',
     gc: 'gc-prayer',
@@ -4309,7 +4295,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-spiritual-warfare': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Spiritual Warfare',
     meta: 'You are in a battle — here is your armor',
     gc: 'gc-prayer',
@@ -4331,7 +4317,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-waiting': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Waiting & Patience',
     meta: 'Holy waiting is not passive — it is powerful',
     gc: 'gc-prayer',
@@ -4353,7 +4339,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-mind': {
-    eyebrow: "God's Word for You",
+    eyebrow: "God\'s Word for You",
     title: 'Mind & Renewal',
     meta: 'What you think shapes who you become',
     gc: 'gc-prayer',
@@ -4439,12 +4425,13 @@ window.BECATH_CONTENT['councils'] = {
     { type:'callout', tone:'violet', title:'Vatican II · 1962–1965', body:'Called by Pope St. John XXIII ("Good Pope John"), continued by Paul VI. Produced 16 documents covering liturgy, divine revelation, the Church, ecumenism, religious freedom, and the Church in the modern world. Lumen Gentium (the Church) and Gaudium et Spes (the Church in the modern world) are its most studied texts. It did not change doctrine — it renewed the Church\'s way of presenting it.' },
     { type:'callout', tone:'gold', title:'Is There a Vatican III?', body:'No council has been called since Vatican II. Some theologians and bishops have suggested one may be needed — others argue Vatican II\'s documents have not yet been fully received. The decision belongs to the Pope alone.' },
   ]
+  },
 
 
   // ────────────────────────────────────────────────────────
   // EUCHARISTIC MIRACLES
   // ────────────────────────────────────────────────────────
-  'miracle-lanciano': {
+window.BECATH_CONTENT['miracle-lanciano'] = {
     eyebrow: 'Eucharistic Miracle',
     title: 'Lanciano, Italy — 8th Century',
     meta: 'The oldest recorded Eucharistic miracle · Scientifically verified',
@@ -4469,9 +4456,9 @@ window.BECATH_CONTENT['councils'] = {
       { type:'quote', text:'Blessed are those who have not seen and yet have believed.', cite:'John 20:29' },
       { type:'prayer', label:'Prayer Before the Eucharist', text:'Lord Jesus, I believe You are truly present — Body, Blood, Soul, and Divinity — in the Eucharist. Where science reaches its limits, faith steps forward. I receive You not because I understand, but because I trust. Amen.' }
     ]
-  },
+};
 
-  'miracle-buenosaires': {
+window.BECATH_CONTENT['miracle-buenosaires'] = {
     eyebrow: 'Eucharistic Miracle',
     title: 'Buenos Aires, Argentina — 1996',
     meta: 'Investigated personally by Cardinal Jorge Mario Bergoglio — now Pope Francis',
@@ -4482,16 +4469,16 @@ window.BECATH_CONTENT['councils'] = {
         text:'In 1996, a consecrated Host was found discarded in a candleholder at a Buenos Aires church. Standard practice is to place the Host in water and allow it to dissolve. Instead, it began to transform — turning into bleeding flesh. The local bishop at the time was Cardinal Jorge Mario Bergoglio.',
       },
       { type:'callout', tone:'gold', title:'What Happened', body:'The Host was placed in water and stored in the tabernacle. Eight days later, it had transformed into a bloody, flesh-like substance. Cardinal Bergoglio ordered it photographed and preserved. In 1999, a sample was sent — without any identification of its origin — to Dr. Frederick Zugibe, a leading forensic pathologist and cardiologist in New York.' },
-      { type:'sectionLabel', text:'The Scientist's Report' },
+      { type:'sectionLabel', text:'The Scientist\'s Report' },
       { type:'p', text:'Dr. Zugibe examined the tissue without knowing what it was or where it came from. His findings: the tissue was real human heart muscle — specifically from the left ventricle, inflamed and alive. White blood cells were present. This meant the tissue was alive at the time of examination — a scientific impossibility for tissue that had been sitting in water for years.' },
-      { type:'callout', tone:'blue', title:'Dr. Zugibe's Conclusion', body:'"The analyzed material is a fragment of the myocardium [heart muscle]... The white blood cells indicate the sample was alive when tested. How a fragment of human heart, kept in water for three years, could remain alive — I have no scientific explanation."' },
+      { type:'callout', tone:'blue', title:'Dr. Zugibe\'s Conclusion', body:'"The analyzed material is a fragment of the myocardium [heart muscle]... The white blood cells indicate the sample was alive when tested. How a fragment of human heart, kept in water for three years, could remain alive — I have no scientific explanation."' },
       { type:'p', text:'When Dr. Zugibe was finally told the origin of the sample — a consecrated Eucharistic Host — he was reportedly stunned.' },
       { type:'quote', text:'For my flesh is real food and my blood is real drink.', cite:'John 6:55' },
       { type:'prayer', label:'Act of Faith', text:'Lord, I believe — help my unbelief. You have given me evidence that reaches past science into mystery. I choose faith. I choose You. Amen.' }
     ]
-  },
+};
 
-  'miracle-sokolka': {
+window.BECATH_CONTENT['miracle-sokolka'] = {
     eyebrow: 'Eucharistic Miracle',
     title: 'Sokółka, Poland — 2008',
     meta: 'Cardiac muscle tissue · Confirmed by independent pathologists',
@@ -4517,7 +4504,7 @@ window.BECATH_CONTENT['councils'] = {
   // ────────────────────────────────────────────────────────
   // APPARITION MIRACLES
   // ────────────────────────────────────────────────────────
-  'miracle-fatima': {
+window.BECATH_CONTENT['miracle-fatima'] = {
     eyebrow: 'Marian Apparition',
     title: 'Fátima, Portugal — 1917',
     meta: 'Witnessed by 70,000 people · Predicted before it happened',
@@ -4539,11 +4526,11 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>Third Secret:</strong> Sealed and not opened until 2000. It depicted the assassination attempt on a pope — widely interpreted as the 1981 attack on Pope John Paul II, who credited Our Lady of Fátima with saving his life.'
       ]},
       { type:'callout', tone:'blue', title:'Church Approval', body:'The apparitions were approved by the Bishop of Leiria in 1930 after a rigorous canonical investigation. Two of the three children — Francisco and Jacinta — have been canonized as saints. The feast of Our Lady of Fátima is May 13.' },
-      { type:'prayer', label:'Fátima Prayer (The Angel's Prayer)', text:'O my Jesus, forgive us our sins, save us from the fires of hell. Lead all souls to Heaven, especially those in most need of Thy mercy. Amen.' }
+      { type:'prayer', label:'Fátima Prayer (The Angel\'s Prayer)', text:'O my Jesus, forgive us our sins, save us from the fires of hell. Lead all souls to Heaven, especially those in most need of Thy mercy. Amen.' }
     ]
-  },
+};
 
-  'miracle-lourdes': {
+window.BECATH_CONTENT['miracle-lourdes'] = {
     eyebrow: 'Marian Apparition',
     title: 'Lourdes, France — 1858',
     meta: '70+ verified medical miracles · Investigated by the Lourdes Medical Bureau',
@@ -4553,23 +4540,23 @@ window.BECATH_CONTENT['councils'] = {
       { type:'lead', eyebrow:'February 11, 1858 — A 14-Year-Old Girl',
         text:'Bernadette Soubirous, a poor, uneducated 14-year-old girl in southern France, reported 18 apparitions of a "beautiful Lady" in the grotto of Massabielle. The Lady eventually identified herself: "I am the Immaculate Conception" — a theological term Bernadette had never heard and did not understand.',
       },
-      { type:'callout', tone:'gold', title:'The Spring That Wasn't There', body:'During one apparition, the Lady instructed Bernadette to "dig in the ground and drink." Bernadette dug — and a spring appeared. That spring has never stopped flowing. Today it produces 32,000 gallons of water per day and has been the site of scientifically verified miraculous healings for over 165 years.' },
+      { type:'callout', tone:'gold', title:'The Spring That Wasn\'t There', body:'During one apparition, the Lady instructed Bernadette to "dig in the ground and drink." Bernadette dug — and a spring appeared. That spring has never stopped flowing. Today it produces 32,000 gallons of water per day and has been the site of scientifically verified miraculous healings for over 165 years.' },
       { type:'sectionLabel', text:'The Medical Evidence' },
       { type:'p', text:'The Lourdes Medical Bureau — founded in 1883 — is an independent body of medical professionals that investigates healing claims at Lourdes. Their process is extraordinarily rigorous: the cure must be instantaneous, complete, permanent, and without medical explanation. To date, 70 healings have been officially declared miraculous by the Church after meeting this standard.' },
       { type:'list', items:[
         'Cases of advanced tuberculosis resolved instantaneously.',
         'Bone cancer with no remaining trace.',
         'Blindness reversed with no medical intervention.',
-        'Cases declared "inexplicable" by the Bureau's own secular physicians.',
+        'Cases declared "inexplicable" by the Bureau\'s own secular physicians.',
         'Six million pilgrims visit Lourdes annually — making it one of the most visited pilgrimage sites in the world.'
       ]},
-      { type:'callout', tone:'blue', title:'Bernadette's Life', body:'Bernadette Soubirous spent her remaining years as a nun in Nevers, France. She died in 1879 at age 35 and was canonized in 1933. Her body remains incorrupt — preserved without embalming — and can be seen today at the chapel in Nevers.' },
+      { type:'callout', tone:'blue', title:'Bernadette\'s Life', body:'Bernadette Soubirous spent her remaining years as a nun in Nevers, France. She died in 1879 at age 35 and was canonized in 1933. Her body remains incorrupt — preserved without embalming — and can be seen today at the chapel in Nevers.' },
       { type:'quote', text:'Penance! Penance! Penance! Pray to God for sinners.', cite:'Our Lady of Lourdes to Bernadette' },
       { type:'prayer', label:'Prayer to Our Lady of Lourdes', text:'Our Lady of Lourdes, you appeared to a child the world overlooked and asked for prayer and penance. Give us the simplicity of Bernadette — to trust, to kneel, and to believe what we cannot explain. Intercede for us. Amen.' }
     ]
-  },
+};
 
-  'miracle-guadalupe': {
+window.BECATH_CONTENT['miracle-guadalupe'] = {
     eyebrow: 'Marian Apparition',
     title: 'Our Lady of Guadalupe — 1531',
     meta: 'Mexico City · Tilma image with no scientific explanation · 9 million conversions',
@@ -4585,16 +4572,16 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>The fabric:</strong> The tilma is made of ayate cloth — a rough cactus fiber that should have disintegrated within 20 years. It has survived nearly 500 years without any preservation treatment.',
         '<strong>No brushstrokes:</strong> Infrared and ultraviolet analysis found no sketch marks, no sizing, and no sign of human painting technique. The image appears to have been "placed" on the cloth.',
         '<strong>The eyes:</strong> Ophthalmologists examining the eyes in the image found reflections consistent with a living human eye — including the distortion caused by the curvature of the cornea. Figures appear reflected in the eye as they would in a real human eye.',
-        '<strong>The stars:</strong> The arrangement of stars on Mary's mantle corresponds exactly to the star positions over Mexico City on December 12, 1531 — viewed from above, as if from space.',
+        '<strong>The stars:</strong> The arrangement of stars on Mary\'s mantle corresponds exactly to the star positions over Mexico City on December 12, 1531 — viewed from above, as if from space.',
         '<strong>Temperature:</strong> The tilma maintains a constant temperature of 98.6°F — the temperature of a living human body.'
       ]},
       { type:'callout', tone:'gold', title:'9 Million Conversions in 7 Years', body:'Before the apparitions, Spanish missionaries had struggled for years with minimal results in Mexico. After the tilma appeared, approximately 9 million indigenous people converted to Christianity within 7 years. The image spoke directly to indigenous symbolism: Mary stood before the sun (not worshipped as a god), on the moon (not feared), and wore the black sash — the sign of pregnancy in Aztec culture, announcing she carried the Son of God.' },
       { type:'callout', tone:'blue', title:'Feast Day', body:'December 12 is the Feast of Our Lady of Guadalupe. She is the Patroness of the Americas and of unborn children. Her basilica in Mexico City is the most visited Catholic pilgrimage site in the world — receiving 20 million visitors annually.' },
-      { type:'prayer', label:'Prayer to Our Lady of Guadalupe', text:'Our Lady of Guadalupe, you appeared not to the powerful but to the humble. You speak in the language of those who feel overlooked. Intercede for us — for the unborn, for the poor, for all who need a mother's protection. Amen.' }
+      { type:'prayer', label:'Prayer to Our Lady of Guadalupe', text:'Our Lady of Guadalupe, you appeared not to the powerful but to the humble. You speak in the language of those who feel overlooked. Intercede for us — for the unborn, for the poor, for all who need a mother\'s protection. Amen.' }
     ]
-  },
+};
 
-  'miracle-shroud': {
+window.BECATH_CONTENT['miracle-shroud'] = {
     eyebrow: 'Physical Evidence',
     title: 'The Shroud of Turin',
     meta: 'The most scientifically studied artifact in human history',
@@ -4616,9 +4603,9 @@ window.BECATH_CONTENT['councils'] = {
       { type:'callout', tone:'blue', title:'The Image Formation Mystery', body:'No known technology — ancient or modern — can reproduce the Shroud image. STURP (Shroud of Turin Research Project) scientists concluded: the image was formed by some kind of radiant energy that scorched the outermost fibers. Some researchers have proposed that a burst of radiation at the moment of resurrection could explain the image formation — an event that, by definition, lies outside the scope of science.' },
       { type:'prayer', label:'Prayer Before the Holy Face', text:'Holy Face of Jesus — marked by suffering, radiant with love — I look at You and remember what You endured. Every wound was for me. I do not need to understand everything to believe. I only need to look at You. Amen.' }
     ]
-  },
+};
 
-  'miracle-incorrupt': {
+window.BECATH_CONTENT['miracle-incorrupt'] = {
     eyebrow: 'Physical Evidence',
     title: 'Incorrupt Saints',
     meta: 'Bodies preserved without embalming — across centuries',
@@ -4626,7 +4613,7 @@ window.BECATH_CONTENT['councils'] = {
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:'Death That Looks Like Sleep',
-        text:'Incorruptibility is the phenomenon of a saint's body remaining preserved after death — without embalming, without special burial conditions — sometimes for centuries. The Church does not claim supernatural cause automatically, but many cases have defied scientific explanation.',
+        text:'Incorruptibility is the phenomenon of a saint\'s body remaining preserved after death — without embalming, without special burial conditions — sometimes for centuries. The Church does not claim supernatural cause automatically, but many cases have defied scientific explanation.',
       },
       { type:'sectionLabel', text:'Notable Incorrupt Saints' },
       { type:'list', items:[
@@ -4640,9 +4627,9 @@ window.BECATH_CONTENT['councils'] = {
       { type:'p', text:'These cases do not "prove" the resurrection or constitute doctrine. They are signs — given to the faithful as reminders that the body matters, that holiness leaves a mark, and that what seems like an ending is not always what it appears.' },
       { type:'prayer', label:'Prayer for a Holy Death', text:'Lord Jesus, who conquered death and rose in glory — help me live in a way that makes me unafraid of dying. Let my life be spent so entirely for You that at the end, nothing is wasted. Amen.' }
     ]
-  },
+};
 
-  'miracle-padre-pio': {
+window.BECATH_CONTENT['miracle-padre-pio'] = {
     eyebrow: 'Modern Miracle',
     title: 'Padre Pio — The Stigmatist of San Giovanni',
     meta: '1887–1968 · 50 years of stigmata · Millions of verified testimonies',
@@ -4652,7 +4639,7 @@ window.BECATH_CONTENT['councils'] = {
       { type:'lead', eyebrow:'A Priest Who Bled for 50 Years',
         text:'Francesco Forgione — known as Padre Pio — was an Italian Capuchin priest who bore the stigmata (the wounds of Christ) for 50 consecutive years. He is one of the most documented miracle workers in modern history and was canonized by Pope John Paul II in 2002.',
       },
-      { type:'callout', tone:'gold', title:'The Stigmata — Examined by Doctors', body:'Multiple physicians examined Padre Pio's wounds over the decades — including skeptical doctors sent by Church authorities specifically to investigate fraud. All found the same thing: real open wounds that bled, did not become infected, did not heal, and showed no sign of self-infliction. The wounds bled approximately a cup of blood daily. They disappeared completely at the moment of his death.' },
+      { type:'callout', tone:'gold', title:'The Stigmata — Examined by Doctors', body:'Multiple physicians examined Padre Pio\'s wounds over the decades — including skeptical doctors sent by Church authorities specifically to investigate fraud. All found the same thing: real open wounds that bled, did not become infected, did not heal, and showed no sign of self-infliction. The wounds bled approximately a cup of blood daily. They disappeared completely at the moment of his death.' },
       { type:'sectionLabel', text:'Documented Phenomena' },
       { type:'list', items:[
         '<strong>Bilocation:</strong> Padre Pio was reported simultaneously in two places on multiple verified occasions — including during World War II, when Allied pilots reported seeing a friar in the sky who turned their planes away from San Giovanni Rotondo. The town was never bombed.',
@@ -4661,7 +4648,7 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>The scent:</strong> A mysterious fragrance of flowers or incense was often reported in his presence — and at the moment of his reported bilocations.',
         '<strong>Fasting:</strong> For extended periods, he reportedly subsisted on almost no food — surviving primarily on the Eucharist.'
       ]},
-      { type:'callout', tone:'blue', title:'His Words', body:'"Pray, hope, and don't worry. Worry is useless. God is merciful and will hear your prayer." This single statement has brought peace to millions.' },
+      { type:'callout', tone:'blue', title:'His Words', body:'"Pray, hope, and don\'t worry. Worry is useless. God is merciful and will hear your prayer." This single statement has brought peace to millions.' },
       { type:'prayer', label:'Prayer Through Padre Pio', text:'Padre Pio — you suffered willingly what Christ suffered, and you did not flinch. You heard confessions for hours, bore wounds for decades, and never stopped praying for others. Pray for us now. Help us carry what we carry with even a fraction of your trust. Amen.' }
     ]
   },
@@ -4669,18 +4656,18 @@ window.BECATH_CONTENT['councils'] = {
   // ────────────────────────────────────────────────────────
   // ROSARY MYSTERIES
   // ────────────────────────────────────────────────────────
-  'rosary-joyful': {
+window.BECATH_CONTENT['rosary-joyful'] = {
     eyebrow: 'The Holy Rosary',
     title: 'Joyful Mysteries',
     meta: 'Prayed on Mondays & Saturdays · The Incarnation',
     gc: 'gc-rosary',
     hasAudio: false,
     blocks: [
-      { type:'callout', tone:'gold', title:'How to Pray the Rosary', body:'Begin with the Apostles' Creed, then an Our Father, three Hail Marys, a Glory Be. Then for each of the five mysteries: announce the mystery, pray an Our Father, ten Hail Marys, a Glory Be, and the Fátima Prayer. End with the Hail Holy Queen.' },
+      { type:'callout', tone:'gold', title:'How to Pray the Rosary', body:'Begin with the Apostles\' Creed, then an Our Father, three Hail Marys, a Glory Be. Then for each of the five mysteries: announce the mystery, pray an Our Father, ten Hail Marys, a Glory Be, and the Fátima Prayer. End with the Hail Holy Queen.' },
       { type:'sectionLabel', text:'The Five Joyful Mysteries' },
       { type:'subsection', title:'1. The Annunciation', subtitle:'Luke 1:26–38', blocks:[
         { type:'p', text:'The angel Gabriel appears to Mary in Nazareth and announces that she will conceive and bear the Son of God. Mary asks how this can be since she is a virgin. Gabriel tells her the Holy Spirit will come upon her. Mary says: <em>"Behold, I am the handmaid of the Lord. May it be done to me according to your word."</em>' },
-        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Humility — the willingness to say yes to God even when we do not understand. Mary's fiat ("let it be done") is the hinge on which salvation history turns.' }
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Humility — the willingness to say yes to God even when we do not understand. Mary\'s fiat ("let it be done") is the hinge on which salvation history turns.' }
       ]},
       { type:'subsection', title:'2. The Visitation', subtitle:'Luke 1:39–56', blocks:[
         { type:'p', text:'Mary travels to visit her cousin Elizabeth, who is pregnant with John the Baptist. When Mary arrives and greets Elizabeth, John leaps in the womb. Elizabeth, filled with the Holy Spirit, cries out: <em>"Blessed are you among women, and blessed is the fruit of your womb!"</em> Mary responds with the Magnificat.' },
@@ -4695,14 +4682,14 @@ window.BECATH_CONTENT['councils'] = {
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Obedience and purity of intention — doing what God asks even when it costs.' }
       ]},
       { type:'subsection', title:'5. Finding Jesus in the Temple', subtitle:'Luke 2:41–52', blocks:[
-        { type:'p', text:'When Jesus is 12, the family travels to Jerusalem for Passover. On the return journey, Mary and Joseph realize Jesus is missing. After three days of searching, they find Him in the Temple — sitting among the teachers, listening and asking questions. When Mary asks why He did this, He answers: <em>"Did you not know that I must be in my Father's house?"</em>' },
+        { type:'p', text:'When Jesus is 12, the family travels to Jerusalem for Passover. On the return journey, Mary and Joseph realize Jesus is missing. After three days of searching, they find Him in the Temple — sitting among the teachers, listening and asking questions. When Mary asks why He did this, He answers: <em>"Did you not know that I must be in my Father\'s house?"</em>' },
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Seeking God above all things — even when He seems lost, He is exactly where He should be.' }
       ]},
       { type:'prayer', label:'Hail Holy Queen', text:'Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ. Amen.' }
     ]
-  },
+};
 
-  'rosary-sorrowful': {
+window.BECATH_CONTENT['rosary-sorrowful'] = {
     eyebrow: 'The Holy Rosary',
     title: 'Sorrowful Mysteries',
     meta: 'Prayed on Tuesdays & Fridays · The Passion',
@@ -4713,7 +4700,7 @@ window.BECATH_CONTENT['councils'] = {
       { type:'sectionLabel', text:'The Five Sorrowful Mysteries' },
       { type:'subsection', title:'1. The Agony in the Garden', subtitle:'Luke 22:39–46', blocks:[
         { type:'p', text:'Jesus goes to the Garden of Gethsemane after the Last Supper. He prays: <em>"Father, if you are willing, take this cup from me; yet not my will, but yours be done."</em> His sweat falls like drops of blood (a documented medical phenomenon called hematidrosis, caused by extreme psychological distress). His disciples fall asleep.' },
-        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Conformity to God's will — the hardest prayer: not my will, but Yours.' }
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Conformity to God\'s will — the hardest prayer: not my will, but Yours.' }
       ]},
       { type:'subsection', title:'2. The Scourging at the Pillar', subtitle:'Matthew 27:26', blocks:[
         { type:'p', text:'Pilate, seeking to appease the crowd, orders Jesus scourged. Roman scourging used a flagrum — leather straps with lead balls or bone fragments that tore flesh. The Shroud of Turin documents over 120 separate scourge marks across the entire body. Jesus endured this without speaking.' },
@@ -4733,9 +4720,9 @@ window.BECATH_CONTENT['councils'] = {
       ]},
       { type:'prayer', label:'Prayer at the Cross', text:'Lord Jesus, at the cross I stop. I stop my excuses, my complaints, my smallness. You hung there for me. That is enough to silence everything. Thank You. Amen.' }
     ]
-  },
+};
 
-  'rosary-glorious': {
+window.BECATH_CONTENT['rosary-glorious'] = {
     eyebrow: 'The Holy Rosary',
     title: 'Glorious Mysteries',
     meta: 'Prayed on Wednesdays & Sundays · The Resurrection',
@@ -4757,18 +4744,18 @@ window.BECATH_CONTENT['councils'] = {
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Love — the Holy Spirit poured into our hearts as the bond between Father and Son.' }
       ]},
       { type:'subsection', title:'4. The Assumption of Mary', subtitle:'Catechism §966', blocks:[
-        { type:'p', text:'Mary, at the end of her earthly life, is taken body and soul into heavenly glory. This is defined dogma (Pius XII, 1950). Mary's body was not subject to corruption — she who carried the Author of Life was not left to decay. She is the first fully redeemed human being, the prototype of what resurrection means for all of us.' },
+        { type:'p', text:'Mary, at the end of her earthly life, is taken body and soul into heavenly glory. This is defined dogma (Pius XII, 1950). Mary\'s body was not subject to corruption — she who carried the Author of Life was not left to decay. She is the first fully redeemed human being, the prototype of what resurrection means for all of us.' },
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Devotion to Mary — she is the image of what we are called to become.' }
       ]},
       { type:'subsection', title:'5. The Coronation of Mary', subtitle:'Revelation 12:1', blocks:[
-        { type:'p', text:'Mary is crowned Queen of Heaven and Earth — not as a goddess, but as the greatest of God's creatures, elevated by grace. Scripture describes her as the woman clothed with the sun, with the moon under her feet, and a crown of twelve stars on her head. She reigns not by her own power but entirely by the gift of her Son.' },
+        { type:'p', text:'Mary is crowned Queen of Heaven and Earth — not as a goddess, but as the greatest of God\'s creatures, elevated by grace. Scripture describes her as the woman clothed with the sun, with the moon under her feet, and a crown of twelve stars on her head. She reigns not by her own power but entirely by the gift of her Son.' },
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Eternal happiness — the crown awaits all who persevere to the end.' }
       ]},
       { type:'prayer', label:'Hail Holy Queen', text:'Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. Turn then, most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ. Amen.' }
     ]
-  },
+};
 
-  'rosary-luminous': {
+window.BECATH_CONTENT['rosary-luminous'] = {
     eyebrow: 'The Holy Rosary',
     title: 'Luminous Mysteries',
     meta: 'Prayed on Thursdays · The Public Ministry · Added by St. John Paul II in 2002',
@@ -4778,19 +4765,19 @@ window.BECATH_CONTENT['councils'] = {
       { type:'callout', tone:'gold', title:'The Mysteries of Light', body:'St. John Paul II added the Luminous Mysteries in his apostolic letter Rosarium Virginis Mariae (2002), filling a gap in the Rosary by focusing on the public ministry of Jesus — the years of His teaching, signs, and proclamation of the Kingdom.' },
       { type:'sectionLabel', text:'The Five Luminous Mysteries' },
       { type:'subsection', title:'1. The Baptism of Jesus', subtitle:'Matthew 3:13–17', blocks:[
-        { type:'p', text:'Jesus presents Himself for baptism by John in the Jordan River. John protests — it should be the other way around. Jesus insists: "It is fitting to fulfill all righteousness." At His baptism, the heavens open, the Spirit descends as a dove, and the Father's voice is heard: <em>"This is my beloved Son, with whom I am well pleased."</em> The Trinity is revealed simultaneously for the first time.' },
+        { type:'p', text:'Jesus presents Himself for baptism by John in the Jordan River. John protests — it should be the other way around. Jesus insists: "It is fitting to fulfill all righteousness." At His baptism, the heavens open, the Spirit descends as a dove, and the Father\'s voice is heard: <em>"This is my beloved Son, with whom I am well pleased."</em> The Trinity is revealed simultaneously for the first time.' },
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Openness to the Holy Spirit — the willingness to receive what God wants to give.' }
       ]},
       { type:'subsection', title:'2. The Wedding at Cana', subtitle:'John 2:1–12', blocks:[
-        { type:'p', text:'At a wedding in Cana, the wine runs out. Mary tells Jesus: "They have no wine." Jesus says: "My hour has not yet come." Mary turns to the servants and says: <em>"Do whatever he tells you."</em> Jesus turns 120–180 gallons of water into the finest wine. This is His first public miracle — initiated by His mother's intercession.' },
-        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Mary's intercession — she notices what we lack and brings our need to her Son.' }
+        { type:'p', text:'At a wedding in Cana, the wine runs out. Mary tells Jesus: "They have no wine." Jesus says: "My hour has not yet come." Mary turns to the servants and says: <em>"Do whatever he tells you."</em> Jesus turns 120–180 gallons of water into the finest wine. This is His first public miracle — initiated by His mother\'s intercession.' },
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Mary\'s intercession — she notices what we lack and brings our need to her Son.' }
       ]},
       { type:'subsection', title:'3. The Proclamation of the Kingdom', subtitle:'Mark 1:15', blocks:[
         { type:'p', text:'Jesus begins His public ministry with a message: <em>"The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel."</em> He heals, casts out demons, forgives sins, and calls disciples. He reveals that the Kingdom of God is not a future political state — it is a present reality available to all who receive it.' },
-        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Repentance and trust in God's mercy — the Kingdom is closer than we think.' }
+        { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Repentance and trust in God\'s mercy — the Kingdom is closer than we think.' }
       ]},
       { type:'subsection', title:'4. The Transfiguration', subtitle:'Matthew 17:1–8', blocks:[
-        { type:'p', text:'Jesus takes Peter, James, and John up a high mountain. Before them, He is transfigured — His face shines like the sun, His clothes become dazzling white. Moses and Elijah appear with Him. The Father's voice speaks from a cloud: <em>"This is my beloved Son, with whom I am well pleased; listen to him."</em> The disciples fall on their faces in awe.' },
+        { type:'p', text:'Jesus takes Peter, James, and John up a high mountain. Before them, He is transfigured — His face shines like the sun, His clothes become dazzling white. Moses and Elijah appear with Him. The Father\'s voice speaks from a cloud: <em>"This is my beloved Son, with whom I am well pleased; listen to him."</em> The disciples fall on their faces in awe.' },
         { type:'callout', tone:'rose', title:'Fruit of this Mystery', body:'Desire for holiness — we are meant to be transformed, transfigured, made like Him.' }
       ]},
       { type:'subsection', title:'5. The Institution of the Eucharist', subtitle:'Matthew 26:26–28', blocks:[
@@ -4804,7 +4791,7 @@ window.BECATH_CONTENT['councils'] = {
   // ────────────────────────────────────────────────────────
   // SACRAMENTS SUB-PAGES
   // ────────────────────────────────────────────────────────
-  'baptism': {
+window.BECATH_CONTENT['baptism'] = {
     eyebrow: 'The Sacraments',
     title: 'Baptism',
     meta: 'The door to the Church · Full teaching',
@@ -4827,9 +4814,9 @@ window.BECATH_CONTENT['councils'] = {
       { type:'callout', tone:'blue', title:'Emergency Baptism', body:'In an emergency, any person — even a non-Christian — can baptize validly using water and the words: "I baptize you in the name of the Father, and of the Son, and of the Holy Spirit." The intention must be to do what the Church does.' },
       { type:'prayer', label:'Prayer of Remembrance', text:'Lord, on the day of my baptism, You claimed me. Whatever I have done since — You claimed me first. Let me live worthy of that name written on my soul. Amen.' }
     ]
-  },
+};
 
-  'confession': {
+window.BECATH_CONTENT['confession'] = {
     eyebrow: 'The Sacraments',
     title: 'Confession (Reconciliation)',
     meta: 'The sacrament of healing · How it works, why it matters',
@@ -4849,12 +4836,12 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>5. Receive absolution</strong> — the priest says the words of absolution. In that moment, your sins are truly forgiven by God through His minister.'
       ]},
       { type:'callout', tone:'gold', title:'Seal of Confession', body:'The seal of confession is absolute and inviolable. A priest may never, under any circumstances, reveal anything heard in confession — not to police, not to parents, not under threat of death. This seal has never been broken in 2,000 years of Church history. You are safe to speak.' },
-      { type:'callout', tone:'blue', title:'What If I'm Embarrassed?', body:'The priest has heard everything. He is not there to judge you — he is there to stand in for Christ and speak the words of mercy. Many priests say that hearing confessions is the most beautiful part of their priesthood. The more specific and honest you are, the more free you will feel afterward.' },
+      { type:'callout', tone:'blue', title:'What If I\'m Embarrassed?', body:'The priest has heard everything. He is not there to judge you — he is there to stand in for Christ and speak the words of mercy. Many priests say that hearing confessions is the most beautiful part of their priesthood. The more specific and honest you are, the more free you will feel afterward.' },
       { type:'prayer', label:'Act of Contrition', text:'O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasions of sin. Amen.' }
     ]
-  },
+};
 
-  'confirmation': {
+window.BECATH_CONTENT['confirmation'] = {
     eyebrow: 'The Sacraments',
     title: 'Confirmation',
     meta: 'The completion of baptism · Sealed with the Holy Spirit',
@@ -4868,19 +4855,19 @@ window.BECATH_CONTENT['councils'] = {
       { type:'callout', tone:'gold', title:'What Happens at Confirmation', body:'The bishop (or delegated priest) anoints the forehead with Sacred Chrism oil in the sign of the cross, lays hands on the person, and says: "Be sealed with the Gift of the Holy Spirit." In that moment, the seven gifts of the Holy Spirit are given: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, Fear of the Lord.' },
       { type:'sectionLabel', text:'The Seven Gifts of the Holy Spirit' },
       { type:'list', items:[
-        '<strong>Wisdom:</strong> Seeing life from God's perspective — what matters eternally.',
+        '<strong>Wisdom:</strong> Seeing life from God\'s perspective — what matters eternally.',
         '<strong>Understanding:</strong> Deeper grasp of the faith and its meaning.',
         '<strong>Counsel:</strong> Good judgment in moral decisions.',
         '<strong>Fortitude:</strong> Courage to live and defend the faith.',
-        '<strong>Knowledge:</strong> Understanding of God's creation and how it leads back to Him.',
+        '<strong>Knowledge:</strong> Understanding of God\'s creation and how it leads back to Him.',
         '<strong>Piety:</strong> Reverence for God and care for His people.',
-        '<strong>Fear of the Lord:</strong> Awe before God's greatness — not terror, but reverence.'
+        '<strong>Fear of the Lord:</strong> Awe before God\'s greatness — not terror, but reverence.'
       ]},
       { type:'prayer', label:'Come, Holy Spirit', text:'Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love. Send forth your Spirit and they shall be created, and you shall renew the face of the earth. Amen.' }
     ]
-  },
+};
 
-  'catechism': {
+window.BECATH_CONTENT['catechism'] = {
     eyebrow: 'The Faith',
     title: 'The Catechism',
     meta: 'What Catholics believe and why — the complete summary',
@@ -4901,9 +4888,9 @@ window.BECATH_CONTENT['councils'] = {
       { type:'callout', tone:'blue', title:'Reading the Catechism', body:'The full CCC has 2,865 numbered paragraphs. The best place to start is the YouCat (Youth Catechism) or the Compendium — both are official summaries approved by the Church. The full CCC is available free online at vatican.va.' },
       { type:'prayer', label:'The Nicene Creed', text:'I believe in one God, the Father almighty, maker of heaven and earth, of all things visible and invisible. I believe in one Lord Jesus Christ, the Only Begotten Son of God, born of the Father before all ages. God from God, Light from Light, true God from true God, begotten, not made, consubstantial with the Father; through him all things were made. For us men and for our salvation he came down from heaven, and by the Holy Spirit was incarnate of the Virgin Mary, and became man. For our sake he was crucified under Pontius Pilate, he suffered death and was buried, and rose again on the third day in accordance with the Scriptures. He ascended into heaven and is seated at the right hand of the Father. He will come again in glory to judge the living and the dead and his kingdom will have no end. I believe in the Holy Spirit, the Lord, the giver of life, who proceeds from the Father and the Son, who with the Father and the Son is adored and glorified, who has spoken through the prophets. I believe in one, holy, catholic and apostolic Church. I confess one Baptism for the forgiveness of sins and I look forward to the resurrection of the dead and the life of the world to come. Amen.' }
     ]
-  },
+};
 
-  'commandments': {
+window.BECATH_CONTENT['commandments'] = {
     eyebrow: 'The Faith',
     title: 'The Ten Commandments',
     meta: 'Given to Moses · Fulfilled by Christ · The foundation of moral life',
@@ -4911,7 +4898,7 @@ window.BECATH_CONTENT['councils'] = {
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:'Not a Cage — A Blueprint',
-        text:'The Ten Commandments were given to Moses on Mount Sinai as the covenant law of God's people. Jesus did not abolish them — He fulfilled and deepened them. They are not restrictions on freedom; they are the architecture of a life that works.',
+        text:'The Ten Commandments were given to Moses on Mount Sinai as the covenant law of God\'s people. Jesus did not abolish them — He fulfilled and deepened them. They are not restrictions on freedom; they are the architecture of a life that works.',
         quote:{ text:'Do not think that I have come to abolish the Law or the Prophets; I have not come to abolish them but to fulfill them.', cite:'Matthew 5:17' }
       },
       { type:'sectionLabel', text:'The Ten Commandments' },
@@ -4924,15 +4911,15 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>6. You shall not commit adultery.</strong> Sexual intimacy belongs within marriage. Chastity is not repression — it is freedom.',
         '<strong>7. You shall not steal.</strong> Respect what belongs to others — property, time, reputation.',
         '<strong>8. You shall not bear false witness.</strong> Tell the truth. Every lie damages the fabric of human community.',
-        '<strong>9. You shall not covet your neighbor's wife.</strong> Guard your heart — desire itself must be ordered.',
-        '<strong>10. You shall not covet your neighbor's goods.</strong> Contentment is a virtue. Envy is a poison.'
+        '<strong>9. You shall not covet your neighbor\'s wife.</strong> Guard your heart — desire itself must be ordered.',
+        '<strong>10. You shall not covet your neighbor\'s goods.</strong> Contentment is a virtue. Envy is a poison.'
       ]},
       { type:'callout', tone:'gold', title:'Jesus Summarizes the Law', body:'"Love the Lord your God with all your heart and with all your soul and with all your mind. This is the first and greatest commandment. And the second is like it: Love your neighbor as yourself. All the Law and the Prophets hang on these two commandments." (Matthew 22:37–40)' },
       { type:'prayer', label:'Prayer for a Clean Heart', text:'Lord, You gave us Your commandments not to burden us but to protect us. Where I have broken them — forgive me. Where I struggle to keep them — strengthen me. Write Your law not on stone but on my heart. Amen.' }
     ]
-  },
+};
 
-  'church-history': {
+window.BECATH_CONTENT['church-history'] = {
     eyebrow: 'The Faith',
     title: 'Church History',
     meta: '2,000 years · Councils, saints, reformations, and continuity',
@@ -4959,11 +4946,11 @@ window.BECATH_CONTENT['councils'] = {
       { type:'subsection', title:'The Modern Church (1800–Today)', subtitle:'', blocks:[
         { type:'p', text:'Vatican I (1870) defines papal infallibility. Vatican II (1962–1965) renews the Church for the modern world. St. John Paul II helps bring down Communism. Pope Francis leads the Church in 2024 through the complexities of the modern world. Through it all — the same Creed, the same sacraments, the same Mass.' }
       ]},
-      { type:'callout', tone:'gold', title:'21 Ecumenical Councils', body:'The Church has held 21 Ecumenical Councils over 2,000 years — gatherings of the world's bishops to define doctrine and address crises. Every council has produced definitions the Church still holds today. The most recent was Vatican II (1962–1965).' }
+      { type:'callout', tone:'gold', title:'21 Ecumenical Councils', body:'The Church has held 21 Ecumenical Councils over 2,000 years — gatherings of the world\'s bishops to define doctrine and address crises. Every council has produced definitions the Church still holds today. The most recent was Vatican II (1962–1965).' }
     ]
-  },
+};
 
-  'councils': {
+window.BECATH_CONTENT['councils'] = {
     eyebrow: 'The Faith',
     title: 'The Ecumenical Councils',
     meta: '21 Councils · 2,000 years of defined doctrine',
@@ -4971,7 +4958,7 @@ window.BECATH_CONTENT['councils'] = {
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:'When the Church Speaks Definitively',
-        text:'An Ecumenical Council is a gathering of all the world's Catholic bishops, convened and confirmed by the Pope, to define doctrine or address serious matters affecting the whole Church. Their definitions on faith and morals are irreformable — they cannot be undone.',
+        text:'An Ecumenical Council is a gathering of all the world\'s Catholic bishops, convened and confirmed by the Pope, to define doctrine or address serious matters affecting the whole Church. Their definitions on faith and morals are irreformable — they cannot be undone.',
       },
       { type:'sectionLabel', text:'The Most Important Councils' },
       { type:'list', items:[
@@ -4981,13 +4968,13 @@ window.BECATH_CONTENT['councils'] = {
         '<strong>Chalcedon (451 AD):</strong> Defined that Christ is one person with two complete natures — fully God and fully human.',
         '<strong>Trent (1545–1563 AD):</strong> Defined Catholic doctrine on Scripture, Tradition, justification, and the sacraments in response to the Protestant Reformation.',
         '<strong>Vatican I (1869–1870 AD):</strong> Defined papal primacy and papal infallibility.',
-        '<strong>Vatican II (1962–1965 AD):</strong> Renewed the Church's engagement with the modern world — liturgical reform, ecumenism, religious freedom.'
+        '<strong>Vatican II (1962–1965 AD):</strong> Renewed the Church\'s engagement with the modern world — liturgical reform, ecumenism, religious freedom.'
       ]},
       { type:'callout', tone:'gold', title:'What Infallibility Means', body:'When the Pope defines a doctrine of faith or morals "ex cathedra" (from the chair — formally binding the whole Church), that definition is protected from error by the Holy Spirit. This has happened twice: the Immaculate Conception (1854) and the Assumption of Mary (1950). It does not mean every papal statement is infallible.' }
     ]
-  },
+};
 
-  'hail-mary': {
+window.BECATH_CONTENT['hail-mary'] = {
     eyebrow: 'Prayer',
     title: 'The Hail Mary',
     meta: 'The most prayed prayer in the world after the Our Father',
@@ -5000,18 +4987,18 @@ window.BECATH_CONTENT['councils'] = {
       { type:'prayer', label:'The Hail Mary', text:'Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.' },
       { type:'sectionLabel', text:'Line by Line' },
       { type:'list', items:[
-        '<strong>"Hail Mary, full of grace"</strong> — the angel Gabriel's exact words to Mary. (Luke 1:28)',
-        '<strong>"The Lord is with thee"</strong> — also from Gabriel's greeting.',
-        '<strong>"Blessed art thou among women, and blessed is the fruit of thy womb"</strong> — Elizabeth's exact words when Mary arrived at her home. (Luke 1:42)',
+        '<strong>"Hail Mary, full of grace"</strong> — the angel Gabriel\'s exact words to Mary. (Luke 1:28)',
+        '<strong>"The Lord is with thee"</strong> — also from Gabriel\'s greeting.',
+        '<strong>"Blessed art thou among women, and blessed is the fruit of thy womb"</strong> — Elizabeth\'s exact words when Mary arrived at her home. (Luke 1:42)',
         '<strong>"Jesus"</strong> — the name added to make explicit who "the fruit of thy womb" is.',
         '<strong>"Holy Mary, Mother of God"</strong> — defined doctrine from the Council of Ephesus (431 AD).',
-        '<strong>"Pray for us sinners, now and at the hour of our death"</strong> — the Church's petition, added by the 15th century and formally standardized.'
+        '<strong>"Pray for us sinners, now and at the hour of our death"</strong> — the Church\'s petition, added by the 15th century and formally standardized.'
       ]},
       { type:'callout', tone:'gold', title:'Why Ask Mary to Pray?', body:'Asking Mary to pray for us is no different from asking a friend to pray for you — except Mary is in Heaven, closer to God than any human soul. "The prayer of a righteous person is powerful and effective." (James 5:16) If this is true of any saint, how much more of the Mother of God?' },
     ]
-  },
+};
 
-  'about': {
+window.BECATH_CONTENT['about'] = {
     eyebrow: 'BeCatholic',
     title: 'About BeCath',
     meta: 'BeCath.com · hello@becath.com',
@@ -5019,13 +5006,11 @@ window.BECATH_CONTENT['councils'] = {
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:'Why This App Exists',
-        text:'BeCath was built for people who want to go deeper into the Catholic faith — whether you're brand new, coming back after years away, or a lifelong Catholic who wants to understand what you've always believed.',
+        text:'BeCath was built for people who want to go deeper into the Catholic faith — whether you\'re brand new, coming back after years away, or a lifelong Catholic who wants to understand what you\'ve always believed.',
       },
       { type:'callout', tone:'gold', title:'What BeCath Is', body:'A comprehensive faith companion — covering saints, scripture, sacraments, miracles, apologetics, prayers, and the full sweep of 2,000 years of Catholic belief. Everything is written with care, sourced from Scripture and the Catechism, and designed to be read anywhere.' },
       { type:'sectionLabel', text:'Contact' },
-      { type:'callout', tone:'blue', title:'Get in Touch', body:'For questions, feedback, or content suggestions: hello@becath.com
-
-We read every message.' },
+      { type:'callout', tone:'blue', title:'Get in Touch', body:'For questions, feedback, or content suggestions: hello@becath.com. We read every message.' },
       { type:'sectionLabel', text:'Legal' },
       { type:'list', items:[
         'Privacy Policy — available at BeCath.com/privacy',
@@ -5034,7 +5019,4 @@ We read every message.' },
         'BeCath.com © 2024. All rights reserved.'
       ]}
     ]
-  },
-
-
 };
