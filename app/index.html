@@ -4664,17 +4664,7 @@ html.app-font-xl  { font-size: 20px; }
     });
   }
 
-  // Resolve today's saint — substitute the calendar/rotation saint into the 'today-saint' slot
-  (function(){
-    var key = window._todaySaintKey;
-    if (!key) return;
-    var sd = (window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || DETAIL[key];
-    if (!sd) return;
-    DETAIL['today-saint'] = Object.assign({}, sd, {
-      eyebrow: 'Saint of the Day · ' + (sd.eyebrow || 'Saint'),
-      img: sd.img || 'img/saintday.jpg'
-    });
-  })();
+  // Today's saint is resolved after _todaySaintKey is set (see saint calendar script below)
 
   // ── Rich block renderer ──
   // A detail entry can have either { body: "string" } (legacy) or { blocks: [...] }
@@ -5540,6 +5530,17 @@ html.app-font-xl  { font-size: 20px; }
     // Store the key — content.js may not be parsed yet at this point
     window._todaySaintKey = key;
 
+    // Also substitute into DETAIL now that we have the key
+    function resolveTodaySaint() {
+      var sd = (window.BECATH_CONTENT && window.BECATH_CONTENT[key]) || (window.DETAIL && window.DETAIL[key]);
+      if (sd && window.DETAIL) {
+        window.DETAIL['today-saint'] = Object.assign({}, sd, {
+          eyebrow: 'Saint of the Day · ' + (sd.eyebrow || 'Saint'),
+          img: sd.img || 'img/saintday.jpg'
+        });
+      }
+    }
+
     // Update the saint name card — runs after full page load so content.js is guaranteed parsed
     function updateSaintName() {
       var data = (window.BECATH_CONTENT && window.BECATH_CONTENT[key])
@@ -5547,6 +5548,7 @@ html.app-font-xl  { font-size: 20px; }
                || null;
       if (data) {
         window._todaySaintData = data;
+        resolveTodaySaint();
         var nameEl = document.getElementById('today-saint-name');
         if (nameEl) nameEl.textContent = data.title || 'Today\'s saint';
       }
