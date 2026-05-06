@@ -222,7 +222,8 @@ window.becathDoSignUp = async function() {
     document.getElementById('auth-submit-signup').textContent = 'Creating account…';
     await becathSignUp(email, pass);
     hideAuthWall();
-    showPaywall();
+    // Go straight to checkout — no extra paywall step
+    await becathCheckout(window._selectedPlan || 'monthly');
   } catch(e) {
     err.textContent = e.message;
   } finally {
@@ -289,12 +290,17 @@ window.updateAuthUI = function() {
 };
 
 // ── Boot: restore session + check subscription ──
+function _revealApp() {
+  const shell = document.getElementById('app-shell');
+  if (shell) shell.style.opacity = '1';
+}
+
 window.becathBoot = async function() {
   // Handle post-checkout redirect
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkout') === 'success') {
     history.replaceState({}, '', window.location.pathname);
-    // Poll for subscription update (webhook may take a moment)
+    _revealApp();
     let tries = 0;
     const poll = setInterval(async () => {
       const sub = await becathFetchSub();
@@ -311,22 +317,24 @@ window.becathBoot = async function() {
 
   const stored = _loadStoredSession();
   if (!stored) {
-    // First visit — show auth wall after short delay
-    setTimeout(() => showAuthWall('signup'), 800);
+    // First visit — reveal app then show signup
+    _revealApp();
+    setTimeout(() => showAuthWall('signup'), 300);
     return;
   }
 
   // Try to refresh token silently
   const refreshed = stored.refresh_token ? await _refreshToken(stored.refresh_token) : null;
   if (!refreshed && !stored.access_token) {
+    _revealApp();
     showAuthWall('login');
     return;
   }
 
   const sub = await becathFetchSub();
   updateAuthUI();
+  _revealApp();
   if (!becathIsActive()) {
-    // Only show paywall if user is logged in — otherwise show signup
     if (window._becathToken) {
       showPaywall();
     } else {
