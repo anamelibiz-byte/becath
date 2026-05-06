@@ -221,8 +221,10 @@ window.becathDoSignUp = async function() {
   try {
     document.getElementById('auth-submit-signup').textContent = 'Creating account…';
     await becathSignUp(email, pass);
+    // Sign in immediately to get a full session token
+    await becathSignIn(email, pass);
     hideAuthWall();
-    // Go straight to checkout — no extra paywall step
+    // Go straight to checkout
     await becathCheckout(window._selectedPlan || 'monthly');
   } catch(e) {
     err.textContent = e.message;
