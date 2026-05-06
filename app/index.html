@@ -4452,7 +4452,7 @@ html.app-font-xl  { font-size: 20px; }
     </div>
 
     <!-- CTA -->
-    <button id="paywall-cta" onclick="becathCheckout(window._selectedPlan||'monthly')"
+    <button id="paywall-cta" onclick="window._becathToken ? becathCheckout(window._selectedPlan||'monthly') : showAuthWall('signup')"
       style="width:100%;padding:16px;border-radius:14px;background:var(--gold);border:none;color:#1a1208;font-size:16px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.06em;margin-bottom:10px;">
       Start 3-Day Free Trial
     </button>
@@ -6196,7 +6196,7 @@ window.selectPlan = function(plan) {
 
 </script>
 
-<script src="auth.js?v=20260506-1"></script>
+<script src="auth.js?v=20260506-2"></script>
 
 </body>
 </html>

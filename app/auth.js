@@ -298,17 +298,19 @@ function _revealApp() {
 }
 
 window.becathBoot = async function() {
+  _revealApp();
+
   // Handle post-checkout redirect
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkout') === 'success') {
     history.replaceState({}, '', window.location.pathname);
-    _revealApp();
     let tries = 0;
     const poll = setInterval(async () => {
       const sub = await becathFetchSub();
       if (sub && (sub.status === 'active' || sub.status === 'trialing')) {
         clearInterval(poll);
         hidePaywall();
+        hideAuthWall();
         updateAuthUI();
         _showToast && _showToast('Welcome to BeCath Premium! ✝️');
       }
@@ -317,31 +319,23 @@ window.becathBoot = async function() {
     return;
   }
 
+  // Try to restore session
   const stored = _loadStoredSession();
-  if (!stored) {
-    // First visit — reveal app then show signup
-    _revealApp();
-    setTimeout(() => showAuthWall('signup'), 300);
+  if (stored && stored.refresh_token) {
+    await _refreshToken(stored.refresh_token);
+  }
+
+  // No valid token → show signup
+  if (!window._becathToken) {
+    showAuthWall('signup');
     return;
   }
 
-  // Try to refresh token silently
-  const refreshed = stored.refresh_token ? await _refreshToken(stored.refresh_token) : null;
-  if (!refreshed && !stored.access_token) {
-    _revealApp();
-    showAuthWall('login');
-    return;
-  }
-
+  // Logged in — check subscription
   const sub = await becathFetchSub();
   updateAuthUI();
-  _revealApp();
   if (!becathIsActive()) {
-    if (window._becathToken) {
-      showPaywall();
-    } else {
-      showAuthWall('signup');
-    }
+    showPaywall();
   }
 };
 
