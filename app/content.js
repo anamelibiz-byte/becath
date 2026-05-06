@@ -3541,6 +3541,7 @@ window.BECATH_CONTENT = {
     title: 'Relationships',
     meta: 'Love, family, and forgiveness — from Scripture · 5 topics',
     gc: 'gc-eucharist',
+    img: 'img/relationship.jpg',
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:'What Scripture Says',
@@ -3810,6 +3811,7 @@ window.BECATH_CONTENT = {
   // PURPOSE & CALLING ─────────────────────────────────────────────────────
 
   'topic-purpose': {
+  img: 'img/faith.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Purpose & Calling',
     meta: 'You were created on purpose',
@@ -3921,6 +3923,7 @@ window.BECATH_CONTENT = {
   // HEALING & PEACE ────────────────────────────────────────────────────────
 
   'topic-healing': {
+  img: 'img/restore.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Healing',
     meta: 'Jesus healed then — and He heals now',
@@ -3943,6 +3946,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-peace': {
+  img: 'img/olive.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Peace & Anxiety',
     meta: 'The peace that surpasses understanding',
@@ -4033,6 +4037,7 @@ window.BECATH_CONTENT = {
   // IDENTITY & WORTH ───────────────────────────────────────────────────────
 
   'topic-identity': {
+  img: 'img/worth.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Identity in Christ',
     meta: 'Who you are before you do anything',
@@ -4120,6 +4125,7 @@ window.BECATH_CONTENT = {
   },
 
   'topic-worth': {
+  img: 'img/worth.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Worth & Dignity',
     meta: 'You were worth dying for',
@@ -4147,6 +4153,7 @@ window.BECATH_CONTENT = {
     title: 'Love',
     meta: 'Agape — the love that lays down its life',
     gc: 'gc-eucharist',
+    img: 'img/relationship.jpg',
     hasAudio: false,
     blocks: [
       { type:'lead', eyebrow:"What God Says",
@@ -4251,6 +4258,7 @@ window.BECATH_CONTENT = {
   // FAITH & BREAKTHROUGH ───────────────────────────────────────────────────
 
   'topic-faith': {
+  img: 'img/faith.jpg',
     eyebrow: "God\'s Word for You",
     title: 'Faith',
     meta: 'The substance of things hoped for',
