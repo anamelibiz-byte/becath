@@ -303,7 +303,13 @@ window.becathBoot = async function() {
   // Handle post-checkout redirect
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkout') === 'success') {
-    history.replaceState({}, '', window.location.pathname);
+    // Replace current URL and clear back-stack entry pointing to Stripe
+    history.replaceState(null, '', window.location.pathname);
+    // Push a clean state so back button stays within the app
+    history.pushState(null, '', window.location.pathname);
+    window.addEventListener('popstate', function() {
+      history.pushState(null, '', window.location.pathname);
+    });
     let tries = 0;
     const poll = setInterval(async () => {
       const sub = await becathFetchSub();

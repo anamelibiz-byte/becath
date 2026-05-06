@@ -4654,7 +4654,8 @@ html.app-font-xl  { font-size: 20px; }
 
     'about':              { eyebrow:'About', title:'About BeCath', meta:'Our mission', body:'BeCath exists to help people discover why the Catholic faith is true — through evidence, prayer, and the witness of the saints. Built with care, designed to lead you closer to God.' },
     'journal':            { eyebrow:'Personal', title:'My Journal', meta:'Private prayer reflections', img:'img/journal.jpg', body:'Your journal is private and stored only on your device. Open it from the Today card on Home, or from this menu.' },
-    'prosperity':         { eyebrow:'Scripture', title:'Prosperity Scriptures', meta:'God\'s promises of provision', img:'img/prosperity.jpg', body:'Scripture teaches that God provides for those who trust Him. "And my God will supply every need of yours according to his riches in glory in Christ Jesus." (Phil 4:19) "Seek first the kingdom of God and his righteousness, and all these things will be added to you." (Matt 6:33) "The Lord is my shepherd; I shall not want." (Ps 23:1) True prosperity in the Catholic tradition is wholeness — body, soul, family, work — flowing from a heart aligned with God\'s will.' }
+    'prosperity':         (window.BECATH_CONTENT && window.BECATH_CONTENT['prosperity']) || { eyebrow:'Scripture', title:'Prosperity Scriptures', meta:'God\'s promises of provision', img:'img/prosperity.jpg', body:'Scripture teaches that God provides for those who trust Him.' },
+    'topic-prosperity':   (window.BECATH_CONTENT && window.BECATH_CONTENT['prosperity']) || { eyebrow:'Scripture', title:'Prosperity Scriptures', meta:'God\'s promises of provision', img:'img/prosperity.jpg', body:'Scripture teaches that God provides for those who trust Him.' }
   };
 
   // Merge rich content from content.js — these override any stub above.
@@ -6206,7 +6207,7 @@ window.selectPlan = function(plan) {
 
 </script>
 
-<script src="auth.js?v=20260506-4"></script>
+<script src="auth.js?v=20260506-5"></script>
 
 </body>
 </html>
