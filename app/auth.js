@@ -122,6 +122,13 @@ window.becathIsActive = function() {
 // ── Create Stripe Checkout Session via Edge Function ──
 window.becathCheckout = async function(plan) {
   if (!window._becathToken) { showAuthWall('login'); return; }
+
+  // Silently refresh token before checkout to avoid expired-JWT errors
+  try {
+    const stored = JSON.parse(localStorage.getItem('becath_session') || 'null');
+    if (stored?.refresh_token) await _refreshToken(stored.refresh_token);
+  } catch(_) {}
+
   const priceId = plan === 'yearly' ? PRICE_YEARLY : PRICE_MONTHLY;
   const appUrl  = window.location.origin + window.location.pathname;
   try {
@@ -250,7 +257,7 @@ window.becathDoForgot = async function() {
   if (!email) { err.textContent = 'Enter your email.'; return; }
   const r = await supaFetch('/auth/v1/recover', {
     method: 'POST',
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ email, redirect_to: 'https://becath.com/app' })
   });
   if (r.ok) {
     err.style.color = '#1A8080';
