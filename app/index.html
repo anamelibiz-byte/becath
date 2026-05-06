@@ -4235,68 +4235,158 @@ html.app-font-xl  { font-size: 20px; }
 <!-- ═══════════════════════════════════════════════════
      AUTH OVERLAY
 ════════════════════════════════════════════════════ -->
-<div id="becath-auth-overlay" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;overflow-y:auto;">
+<div id="becath-auth-overlay" style="display:none;position:fixed;inset:0;z-index:9000;overflow-y:auto;flex-direction:column;">
 
-  <div style="width:100%;max-width:380px;">
-    <!-- Logo -->
-    <div style="text-align:center;margin-bottom:32px;">
-      <div style="font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;letter-spacing:0.12em;color:var(--text);">BECATH</div>
-      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;letter-spacing:0.06em;">Your Catholic Daily Companion</div>
-    </div>
-
-    <!-- Error -->
-    <div id="auth-error" style="color:#C84040;font-size:13px;text-align:center;min-height:18px;margin-bottom:8px;"></div>
-
-    <!-- LOGIN FORM -->
-    <div id="auth-login-form" style="display:flex;flex-direction:column;gap:12px;">
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;text-align:center;margin-bottom:4px;color:var(--text);">Sign In</div>
-      <input id="login-email" type="email" placeholder="Email" autocomplete="email"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <input id="login-pass" type="password" placeholder="Password" autocomplete="current-password"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <button id="auth-submit-login" onclick="becathDoSignIn()"
-        style="padding:15px;border-radius:12px;background:var(--gold);border:none;color:#1a1208;font-size:15px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.06em;">Sign In</button>
-      <div style="text-align:center;font-size:13px;color:var(--text-muted);">
-        <span onclick="setAuthMode('forgot')" style="cursor:pointer;text-decoration:underline;">Forgot password?</span>
-      </div>
-      <div style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:4px;">
-        No account? <span onclick="setAuthMode('signup')" style="cursor:pointer;color:var(--gold);font-weight:600;">Create one</span>
-      </div>
-    </div>
-
-    <!-- SIGNUP FORM -->
-    <div id="auth-signup-form" style="display:none;flex-direction:column;gap:12px;">
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;text-align:center;margin-bottom:4px;color:var(--text);">Create Account</div>
-      <input id="signup-email" type="email" placeholder="Email" autocomplete="email"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <input id="signup-pass" type="password" placeholder="Password (min 6 chars)" autocomplete="new-password"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <input id="signup-pass2" type="password" placeholder="Confirm password" autocomplete="new-password"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <button id="auth-submit-signup" onclick="becathDoSignUp()"
-        style="padding:15px;border-radius:12px;background:var(--gold);border:none;color:#1a1208;font-size:15px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.06em;">Create Account</button>
-      <div style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:4px;">
-        Already have an account? <span onclick="setAuthMode('login')" style="cursor:pointer;color:var(--gold);font-weight:600;">Sign in</span>
-      </div>
-    </div>
-
-    <!-- FORGOT PASSWORD FORM -->
-    <div id="auth-forgot-form" style="display:none;flex-direction:column;gap:12px;">
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;text-align:center;margin-bottom:4px;color:var(--text);">Reset Password</div>
-      <input id="forgot-email" type="email" placeholder="Your email"
-        style="padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
-      <button onclick="becathDoForgot()"
-        style="padding:15px;border-radius:12px;background:var(--gold);border:none;color:#1a1208;font-size:15px;font-weight:700;cursor:pointer;">Send Reset Link</button>
-      <div style="text-align:center;font-size:13px;color:var(--text-muted);">
-        <span onclick="setAuthMode('login')" style="cursor:pointer;text-decoration:underline;">Back to sign in</span>
-      </div>
-    </div>
-
-    <!-- Terms -->
-    <div style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:24px;line-height:1.6;">
-      By continuing you agree to our <span style="text-decoration:underline;">Terms</span> and <span style="text-decoration:underline;">Privacy Policy</span>.
-    </div>
+  <!-- Stained-glass stripe top -->
+  <div style="height:5px;flex-shrink:0;background:linear-gradient(90deg,#C84040 0%,#C84040 8%,#D08010 8%,#D08010 18%,#C8960A 18%,#C8960A 28%,#2A8A3A 28%,#2A8A3A 38%,#1A8080 38%,#1A8080 48%,#3060C0 48%,#3060C0 62%,#7040B8 62%,#7040B8 74%,#C84040 74%,#C84040 82%,#C8960A 82%,#C8960A 91%,#3060C0 91%,#3060C0 100%);position:relative;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0px,transparent calc(10% - 1px),rgba(255,255,255,0.4) calc(10% - 1px),rgba(255,255,255,0.4) 10%);"></div>
   </div>
+
+  <!-- Main content area -->
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px 48px;min-height:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(160,120,32,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 10% 80%,rgba(200,64,64,0.04) 0%,transparent 50%),var(--bg);">
+
+    <!-- Decorative stained-glass window (background, subtle) -->
+    <div style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:280px;height:380px;opacity:0.06;pointer-events:none;border-radius:50% 50% 0 0/20% 20% 0 0;overflow:hidden;border:5px solid rgba(0,0,0,0.15);">
+      <div style="position:absolute;width:28%;height:22%;top:4%;left:4%;background:rgba(200,64,64,0.8);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:28%;height:22%;top:4%;left:36%;background:rgba(200,150,10,0.85);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:28%;height:22%;top:4%;right:4%;background:rgba(48,96,192,0.8);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:44%;height:28%;top:30%;left:4%;background:rgba(42,138,58,0.8);border-radius:50% 50% 0 0/30% 30% 0 0;border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:44%;height:28%;top:30%;right:4%;background:rgba(112,64,184,0.8);border-radius:50% 50% 0 0/30% 30% 0 0;border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:90%;height:18%;top:62%;left:5%;background:rgba(26,128,128,0.75);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:43%;height:16%;bottom:4%;left:5%;background:rgba(200,64,64,0.7);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;width:43%;height:16%;bottom:4%;right:5%;background:rgba(48,96,192,0.7);border:2px solid rgba(255,255,255,0.4);"></div>
+      <div style="position:absolute;top:50%;left:0;right:0;height:5px;background:rgba(255,255,255,0.6);"></div>
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:5px;background:rgba(255,255,255,0.6);"></div>
+    </div>
+
+    <div style="width:100%;max-width:380px;position:relative;z-index:1;">
+
+      <!-- Logo header -->
+      <div style="text-align:center;margin-bottom:28px;">
+        <!-- Stained-glass multi-color logo -->
+        <div style="font-family:'Cinzel',serif;font-size:2rem;font-weight:700;letter-spacing:0.14em;background:linear-gradient(135deg,#C84040 0%,#C84040 18%,#C8960A 18%,#C8960A 40%,#3060C0 40%,#3060C0 65%,#2A8A3A 65%,#2A8A3A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">BECATH</div>
+        <!-- Stained-glass divider -->
+        <div style="height:3px;background:linear-gradient(90deg,#C84040,#D08010,#C8960A,#2A8A3A,#1A8080,#3060C0,#7040B8);opacity:0.5;border-radius:99px;margin:10px auto 0;width:60px;"></div>
+        <!-- Eyebrow tagline -->
+        <div style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-top:10px;">The Catholic Faith, Made Simple</div>
+      </div>
+
+      <!-- Auth card -->
+      <div style="background:var(--bg-elev,#fff);border-radius:20px;border:1px solid rgba(160,120,32,0.18);box-shadow:0 8px 32px rgba(44,36,22,0.10),0 2px 8px rgba(44,36,22,0.06);padding:28px 24px 24px;position:relative;overflow:hidden;">
+
+        <!-- Card top accent line -->
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C84040,#D08010,#C8960A,#2A8A3A,#1A8080,#3060C0,#7040B8);opacity:0.6;"></div>
+
+        <!-- Error message -->
+        <div id="auth-error" style="color:#C84040;font-size:13px;text-align:center;min-height:18px;margin-bottom:10px;font-family:'Lato',sans-serif;"></div>
+
+        <!-- ── LOGIN FORM ── -->
+        <div id="auth-login-form" style="display:flex;flex-direction:column;gap:14px;">
+          <div style="text-align:center;margin-bottom:4px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--text);letter-spacing:-0.01em;line-height:1.1;">Welcome back</div>
+            <div style="font-family:'Lato',sans-serif;font-size:13px;color:var(--text-mute,#7A7060);margin-top:4px;font-weight:300;">Sign in to continue your journey</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="login-email" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Email</label>
+            <input id="login-email" type="email" placeholder="you@example.com" autocomplete="email"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="login-pass" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Password</label>
+            <input id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <button id="auth-submit-login" onclick="becathDoSignIn()"
+            style="margin-top:4px;padding:15px 32px;border-radius:99px;background:var(--gold,#A07820);border:none;color:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.16em;text-transform:uppercase;box-shadow:0 6px 20px rgba(160,120,32,0.3);transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;"
+            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(160,120,32,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(160,120,32,0.3)'">Sign In</button>
+          <div style="text-align:center;font-size:13px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+            <span onclick="setAuthMode('forgot')" style="cursor:pointer;color:var(--gold);text-decoration:none;font-weight:500;">Forgot password?</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin:2px 0;">
+            <div style="flex:1;height:1px;background:rgba(160,120,32,0.15);"></div>
+            <span style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.16em;color:var(--text-mute,#7A7060);text-transform:uppercase;">or</span>
+            <div style="flex:1;height:1px;background:rgba(160,120,32,0.15);"></div>
+          </div>
+          <div style="text-align:center;font-size:13px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+            New to BeCath? <span onclick="setAuthMode('signup')" style="cursor:pointer;color:var(--gold);font-weight:700;">Create a free account</span>
+          </div>
+        </div>
+
+        <!-- ── SIGNUP FORM ── -->
+        <div id="auth-signup-form" style="display:none;flex-direction:column;gap:14px;">
+          <div style="text-align:center;margin-bottom:4px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--text);letter-spacing:-0.01em;line-height:1.1;">Begin your journey</div>
+            <div style="font-family:'Lato',sans-serif;font-size:13px;color:var(--text-mute,#7A7060);margin-top:4px;font-weight:300;">Create your free Catholic companion</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="signup-email" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Email</label>
+            <input id="signup-email" type="email" placeholder="you@example.com" autocomplete="email"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="signup-pass" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Password</label>
+            <input id="signup-pass" type="password" placeholder="Min 6 characters" autocomplete="new-password"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="signup-pass2" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Confirm Password</label>
+            <input id="signup-pass2" type="password" placeholder="••••••••" autocomplete="new-password"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <button id="auth-submit-signup" onclick="becathDoSignUp()"
+            style="margin-top:4px;padding:15px 32px;border-radius:99px;background:var(--gold,#A07820);border:none;color:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.16em;text-transform:uppercase;box-shadow:0 6px 20px rgba(160,120,32,0.3);transition:transform 0.2s,box-shadow 0.2s;"
+            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(160,120,32,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(160,120,32,0.3)'">Create Account</button>
+          <div style="text-align:center;font-size:13px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+            Already have an account? <span onclick="setAuthMode('login')" style="cursor:pointer;color:var(--gold);font-weight:700;">Sign in</span>
+          </div>
+        </div>
+
+        <!-- ── FORGOT PASSWORD FORM ── -->
+        <div id="auth-forgot-form" style="display:none;flex-direction:column;gap:14px;">
+          <div style="text-align:center;margin-bottom:4px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--text);letter-spacing:-0.01em;line-height:1.1;">Reset Password</div>
+            <div style="font-family:'Lato',sans-serif;font-size:13px;color:var(--text-mute,#7A7060);margin-top:4px;font-weight:300;">We'll send a reset link to your email</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <label for="forgot-email" style="font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">Email</label>
+            <input id="forgot-email" type="email" placeholder="you@example.com"
+              style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(160,120,32,0.2);background:var(--bg-soft,#F2F0EB);color:var(--text);font-size:15px;font-family:'Lato',sans-serif;outline:none;width:100%;box-sizing:border-box;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(160,120,32,0.55)'" onblur="this.style.borderColor='rgba(160,120,32,0.2)'">
+          </div>
+          <button onclick="becathDoForgot()"
+            style="margin-top:4px;padding:15px 32px;border-radius:99px;background:var(--gold,#A07820);border:none;color:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:0.16em;text-transform:uppercase;box-shadow:0 6px 20px rgba(160,120,32,0.3);transition:transform 0.2s,box-shadow 0.2s;"
+            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(160,120,32,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(160,120,32,0.3)'">Send Reset Link</button>
+          <div style="text-align:center;font-size:13px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+            <span onclick="setAuthMode('login')" style="cursor:pointer;color:var(--gold);font-weight:500;">← Back to sign in</span>
+          </div>
+        </div>
+
+      </div><!-- /card -->
+
+      <!-- Trust signals -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+          <div style="width:5px;height:5px;border-radius:50%;background:#2A8A3A;flex-shrink:0;"></div>Free to start
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+          <div style="width:5px;height:5px;border-radius:50%;background:#3060C0;flex-shrink:0;"></div>No spam, ever
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-mute,#7A7060);font-family:'Lato',sans-serif;">
+          <div style="width:5px;height:5px;border-radius:50%;background:#C8960A;flex-shrink:0;"></div>Cancel anytime
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div style="text-align:center;font-size:11px;color:var(--text-mute,#7A7060);margin-top:14px;line-height:1.6;font-family:'Lato',sans-serif;">
+        By continuing you agree to our <span style="text-decoration:underline;cursor:pointer;">Terms</span> &amp; <span style="text-decoration:underline;cursor:pointer;">Privacy Policy</span>
+      </div>
+    </div><!-- /max-width container -->
+  </div><!-- /main content -->
 </div>
 
 <!-- ═══════════════════════════════════════════════════
