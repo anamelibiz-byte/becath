@@ -4226,6 +4226,15 @@ html.app-font-xl  { font-size: 20px; }
         </button>
         <button class="btn-secondary" id="detail-save-btn" onclick="toggleSaveItem()">Save for later</button>
       </div>
+      <div id="detail-coming-soon" style="display:none;margin:0 0 18px 0;">
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface2,#f5f0e8);border-radius:12px;padding:14px 16px;">
+          <span style="font-size:22px;">🎧</span>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:var(--text1,#1a1a1a);">Audio Coming Soon</div>
+            <div style="font-size:12px;color:var(--text2,#666);margin-top:2px;">Guided audio for this session is on the way. Check back soon.</div>
+          </div>
+        </div>
+      </div>
       <div class="detail-body" id="detail-body"></div>
     </div>
   </section>
@@ -4542,7 +4551,7 @@ html.app-font-xl  { font-size: 20px; }
   </button>
 </nav>
 
-<script src="content.js?v=20260506-1"></script>
+<script src="content.js?v=20260506-2"></script>
 <script>
   // ── Theme ──
   function applyTheme(mode){
@@ -4963,9 +4972,14 @@ html.app-font-xl  { font-size: 20px; }
       bodyEl.innerHTML = '';
     }
 
-    // Show/hide audio buttons
+    // Show/hide audio buttons and coming soon banner
+    // hasAudio:false = text/scripture page (no audio expected, hide both)
+    // hasAudio:true  = real audio available (show play button)
+    // hasAudio undefined = audio coming soon (show coming soon banner)
     var audioBtns = document.getElementById('detail-audio-btns');
-    if (audioBtns) audioBtns.style.display = (d.hasAudio === false) ? 'none' : 'block';
+    var comingSoon = document.getElementById('detail-coming-soon');
+    if (audioBtns) audioBtns.style.display = (d.hasAudio === true) ? 'block' : 'none';
+    if (comingSoon) comingSoon.style.display = (d.hasAudio === undefined) ? 'block' : 'none';
 
     var hero = document.getElementById('detail-hero');
     hero.classList.remove('hero-compact', 'hero-hidden');

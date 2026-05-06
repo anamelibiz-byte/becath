@@ -3269,6 +3269,7 @@ window.BECATH_CONTENT = {
     eyebrow: "God\'s Word for You",
     title: 'Money & Provision',
     meta: 'What God says about your finances · 6 topics',
+    img: 'img/worth.jpg',
     gc: 'gc-scripture',
     hasAudio: false,
     blocks: [
@@ -3345,6 +3346,7 @@ window.BECATH_CONTENT = {
     eyebrow: "God\'s Word for You",
     title: 'Purpose & Calling',
     meta: 'Why are you here? God has an answer · 5 topics',
+    img: 'img/faith.jpg',
     gc: 'gc-bible',
     hasAudio: false,
     blocks: [
@@ -3476,6 +3478,7 @@ window.BECATH_CONTENT = {
     eyebrow: "God\'s Word for You",
     title: 'Identity & Worth',
     meta: 'Who does God say you are? · 5 topics',
+    img: 'img/worth.jpg',
     gc: 'gc-rosary',
     hasAudio: false,
     blocks: [
@@ -3606,6 +3609,7 @@ window.BECATH_CONTENT = {
     eyebrow: "God\'s Word for You",
     title: 'Faith & Breakthrough',
     meta: 'For hard seasons, doubt, and waiting on God · 5 topics',
+    img: 'img/faith.jpg',
     gc: 'gc-prayer',
     hasAudio: false,
     blocks: [
